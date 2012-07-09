@@ -1,13 +1,17 @@
+require 'carrierwave/orm/activerecord'
+
 class User < ActiveRecord::Base
-  attr_accessible :fb_access_token, :fb_valid_to, :email, :name, :facebook_id, :gender, :current_city
+  attr_accessible :fb_access_token, :fb_valid_to, :email, :name, :facebook_id, :gender, :current_city, :yelp_profile_id, :remote_photo_url
   has_many :reviews
   
   validates_uniqueness_of :email, :if => lambda { !self.email.nil? }
   validates_uniqueness_of :fb_access_token, :if => lambda { self.email.nil? && !self.fb_access_token.nil? }
-  
-  def photo
-    "http://graph.facebook.com/#{facebook_id}/picture?type=large" unless facebook_id.blank?
-  end
+
+  mount_uploader :photo, ProfilePhotoUploader
+
+  #def photo
+  #  "http://graph.facebook.com/#{facebook_id}/picture?type=large" unless facebook_id.blank?
+  #end
   
   
   def self.create_from_facebook(code)

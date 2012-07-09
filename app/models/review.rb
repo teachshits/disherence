@@ -1,3 +1,5 @@
+require 'carrierwave/orm/activerecord'
+
 class Review < ActiveRecord::Base
   attr_accessible :dish_id, :user_id, :opinion
   
@@ -5,6 +7,8 @@ class Review < ActiveRecord::Base
   belongs_to :user
   
   validates :user_id, :uniqueness => {:scope => [:dish_id, :opinion]}
+
+  mount_uploader :photo, ReviewPhotoUploader
   
   def agree?(user_id)
     if review_user_choise = Review.find_by_dish_id_and_user_id(self.dish_id, self.user_id)
