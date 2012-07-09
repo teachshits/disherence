@@ -9,9 +9,13 @@ class User < ActiveRecord::Base
 
   mount_uploader :photo, ProfilePhotoUploader
 
-  #def photo
-  #  "http://graph.facebook.com/#{facebook_id}/picture?type=large" unless facebook_id.blank?
-  #end
+  def photo
+    if !self.photo.blank?
+      self.photo
+    else
+     "http://graph.facebook.com/#{facebook_id}/picture?type=large" unless facebook_id.blank?
+    end
+  end
   
   
   def self.create_from_facebook(code)

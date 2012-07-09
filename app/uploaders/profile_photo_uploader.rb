@@ -28,7 +28,9 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  process :resize_to_fill => [90, 90]
+  version :thumb do
+      process :resize_to_fill => [90, 90]
+  end
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -53,5 +55,8 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  def filename
+       @name ||= "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
 
 end
