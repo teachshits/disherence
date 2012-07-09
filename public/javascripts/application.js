@@ -41,15 +41,20 @@ $(document).bind('pagecreate',function(){
 	$('.btn_agree_d, .btn_disagree_d').live('click', function(){		
 		$status_obj = $(this).parent('.op_btns_d').prev('.op_status_d')
 		$btn_obj = $(this)
-		$bg_url = "url('images/td-choise-buttons.png')"
+		$bg_url = "url('/images/td-choise-buttons.png')"
 		
 		$.getScript(this.href, function(data){
-			if (data == 1) {
-				if ($(this).hasClass('btn_agree_d')) {$status.css('background', $bg_url+" 5px -50px")}
-				if ($(this).hasClass('btn_disagree_d')) {$status.css('background', $bg_url+" 5px -100px")}
+			if (data[0] == 1) {
 				
-				$(this).parent('.op_btns_d').fadeOut()
-				$status.slideDown()
+				//buttons animation
+				if ($btn_obj.hasClass('btn_agree_d')) {$status_obj.css('background', $bg_url+" 5px -50px")}
+				if ($btn_obj.hasClass('btn_disagree_d')) {$status_obj.css('background', $bg_url+" 5px -100px")}
+				$btn_obj.parent('.op_btns_d').fadeOut()
+				$status_obj.slideDown()
+				
+				//update stats
+				update_dish_stats($status_obj, data.split(','))
+				
 			} else {
 				window.location.replace(data.substr(1,data.length))
 			}
@@ -59,12 +64,17 @@ $(document).bind('pagecreate',function(){
 	})
 	
 	$('.op_status_d').live('click', function(){
-		$(this).fadeOut()
-		$(this).next('.op_btns_d').fadeIn()
+		$status_obj = $(this)
+		$.getScript(this.href, function(data){
+			if (data[0] == 1) {
+				update_dish_stats($status_obj, data.split(','))
+			}
+		});	
+		$status_obj.fadeOut()
+		$status_obj.next('.op_btns_d').fadeIn()
+		return false;
 	})
 	
-	
-
 	$('.users').live('tap', function(event){
 		swipe_users('left',$(this))
 	})
@@ -104,8 +114,17 @@ $(document).bind('pagecreate',function(){
 	
 })
 
+function update_dish_stats(element, data) {
+	$stats = element.prev('.stats')
+	$stats.children('.like').html(data[1])
+	$stats.children('.dislike').html(data[2])
+	
+	element.parent('.dish_info').prev('.rating').children('span').html(data[3])
+}
+
+
 function update_feed_stats(element, data) {
-	console.log(element)
+	
 	$rrinfo_stats = element.prev('.urinfo').prev('.rrinfo').children('.stats')
 	$rrinfo_stats.children('.likes').html(data[1])
 	$rrinfo_stats.children('.users').html(data[2])

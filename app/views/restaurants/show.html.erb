@@ -37,13 +37,7 @@
 						<div class="dislike"><%= d.dislikes %></div>
 						<div class="like"><%= d.likes %></div>
 					</div>
-					<div class="op_status_d">
-						<img class="trsp" src="/images/trsp.gif"/>
-					</div>
-					<div class="op_btns_d">
-						<a class="btn_agree_d" href="/reviews/awesome/<%= d.id %>"></a>
-						<a class="btn_disagree_d" href="/reviews/awful/<%= d.id %>"></a>
-					</div>
+					<%= awesome_buttons(session[:user],d) %>	
 				</div>
 				<div class="user_img" style="background: url('<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.user.photo %>') left center"></div>
 				<div class="comment"><%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.comment.to_s[0..50] %></div>					

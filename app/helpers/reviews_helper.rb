@@ -1,18 +1,18 @@
 module ReviewsHelper
   
-  def awesome_buttons(user, review)
+  def awesome_buttons(user, dish)
     op_btns_add_class = ''
     status_add_class = ''
     
-    if user && agree = review.agree?(user.id)
+    if user && dish && review = Review.find_by_dish_id_and_user_id(dish.id,user.id)
       op_btns_add_class = ' hidden'
-      status_add_class = agree == 1 ? ' agree' :  ' disagree'
+      status_add_class = review.opinion == true ? ' like' :  ' dislike'
     end
     
-		raw "<a class=\"op_status#{status_add_class}\" href=\"/reviews/destroy/#{review.dish_id}/#{review.id}\"><img class=\"trsp\" src=\"images/trsp.gif\"/></a>
-		<div class=\"op_btns#{op_btns_add_class}\">
-			<a class=\"btn_agree\" href=\"/reviews/agree/#{review.id}\"></a>
-			<a class=\"btn_disagree\" href=\"/reviews/disagree/#{review.id}\"></a>
+    raw "<a class=\"op_status_d#{status_add_class}\" href=\"/reviews/destroy/#{dish.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
+		<div class=\"op_btns_d#{op_btns_add_class}\">
+			<a class=\"btn_agree_d\" href=\"/reviews/awesome/#{dish.id}\"></a>
+			<a class=\"btn_disagree_d\" href=\"/reviews/awful/#{dish.id}\"></a>
 		</div>"
   end
   
@@ -25,7 +25,7 @@ module ReviewsHelper
       status_add_class = agree == 1 ? ' agree' :  ' disagree'
     end
     
-		raw "<a class=\"op_status#{status_add_class}\" href=\"/reviews/destroy/#{review.dish_id}/#{review.id}\"><img class=\"trsp\" src=\"images/trsp.gif\"/></a>
+		raw "<a class=\"op_status#{status_add_class}\" href=\"/reviews/destroy/#{review.dish_id}/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
 		<div class=\"op_btns#{op_btns_add_class}\">
 			<a class=\"btn_agree\" href=\"/reviews/agree/#{review.id}\"></a>
 			<a class=\"btn_disagree\" href=\"/reviews/disagree/#{review.id}\"></a>

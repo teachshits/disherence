@@ -91,7 +91,7 @@ $urinfo_h: $review_w / 5
 		background: left center
 		background-size: 320px
 		position: relative
-		overflow: hidden
+		// overflow: hidden
 		.name
 			float: left
 			font-family: CompPro_bold
@@ -150,19 +150,31 @@ $urinfo_h: $review_w / 5
 			padding: 5px 7px 12px 20px
 			margin-top: 1px
 			text-shadow: 0 2px 2px #999
+		.name
+			line-height: 0.8em
+			padding: 10px 0 0 10px
+			width: 170px
 			
 		.op_status_d
 			height: 48px
 			width: 290px
 			background-size: 285px
-			position: absolute
 			top: 60px
 			left: 20px
-			display: none
+			display: block
+			position: absolute
+			
+		.like 
+			background: url('/images/td-choise-buttons.png') 0 -50px
+
+		.dislike 
+			background: url('/images/td-choise-buttons.png') 0 -100px
+			
 		.op_btns_d
 			position: absolute
 			top: 60px
 			left: 25px
+			
 			.btn_agree_d, .btn_disagree_d
 				float: left
 				background: url('../images/td-choise-buttons.png') no-repeat
