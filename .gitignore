@@ -11,6 +11,7 @@
 /db/*.sqlite3
 /db/migrate/*yelp.rb
 /db/schema.rb
+.sass-cache
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
