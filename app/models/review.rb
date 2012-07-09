@@ -1,7 +1,7 @@
 require 'carrierwave/orm/activerecord'
 
 class Review < ActiveRecord::Base
-  attr_accessible :dish_id, :user_id, :opinion
+  attr_accessible :dish_id, :user_id, :opinion, :comment
   
   belongs_to :dish
   belongs_to :user
@@ -65,7 +65,7 @@ class Review < ActiveRecord::Base
     r = super(data)
     dish = Dish.find_by_id(r.dish_id)
     
-    if r.opinion == true
+    if r.opinion
       dish.update_attributes(:likes => dish.likes + 1)
     else
       dish.update_attributes(:dislikes => dish.dislikes + 1)

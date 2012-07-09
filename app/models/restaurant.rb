@@ -1,5 +1,5 @@
 class Restaurant < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :name, :city, :address, :phone, :cuisine, :bill, :yelp_reviews_count, :lat, :lng, :yelp_restaurant_id
   has_many :dishes
    
   RAD_PER_DEG = 0.017453293 # PI/180; PI = 3.1415926535
