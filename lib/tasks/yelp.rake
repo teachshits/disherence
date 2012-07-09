@@ -35,6 +35,8 @@ namespace :yelp do
           review = Review.create(:user_id => user.id, :dish_id => dish.id, :comment => hightlight.quote, :opinion => true)
           review.remote_photo_url = hightlight.dish_photo_url
           review.save
+          dish.photos += 1
+          dish.save
         end
 
         puts user.inspect
