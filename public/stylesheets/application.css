@@ -40,6 +40,17 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
   src: local("CompPro_bold");
   src: url("../fonts/PFDinTextCompPro-Medium.ttf") format("truetype"); }
 
+#resataurants_button {
+  background: url("/images/plate.png") no-repeat;
+  background-size: 53px;
+  height: 53px;
+  width: 53px;
+  bottom: 10px;
+  right: 20px;
+  display: block;
+  position: fixed;
+  z-index: 1; }
+
 #logo {
   background: url("/images/logo.png") no-repeat;
   background-size: contain;
@@ -230,7 +241,10 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
     font-size: 1.7em;
     margin: 10px 10px 0 10px; }
     .more_place_info .info .name {
-      float: left; }
+      float: left;
+      line-height: 0.9em;
+      padding: 5px 0 5px 10px;
+      width: 155px; }
     .more_place_info .info .like, .more_place_info .info .dislike {
       background: url("/images/pli-like.png") no-repeat left center;
       background-size: 30px;
@@ -316,7 +330,8 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
     #map .restaurant .stats {
       text-shadow: none;
       float: left;
-      font-family: CompPro_bold; }
+      font-family: CompPro_bold;
+      width: 250px; }
   #map .hr {
     margin-left: 64px;
     margin-right: 10px;
@@ -402,7 +417,8 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
     height: 110px;
     background: left center;
     background-size: 320px;
-    position: relative; }
+    position: relative;
+    overflow: hidden; }
     #top_dishes .dish .name {
       float: left;
       font-family: CompPro_bold;

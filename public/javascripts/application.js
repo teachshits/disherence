@@ -1,5 +1,19 @@
 $(document).bind('pagecreate',function(){
 	
+	$('#resataurants_button').live('click', function(){
+		
+		link = this.href  
+		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
+		
+		setInterval(function(){
+			if ($.cookie("lat") != null && $.cookie("lng") != null){
+				window.location = link + '?lat=' + $.cookie("lat") + '&lng=' + $.cookie("lng")
+			}	
+		},3000);
+		
+		return false;
+	})
+	
 	$('.btn_agree, .btn_disagree').live('click', function(){
 		$status_obj = $(this).parent('.op_btns').prev('.op_status')
 		$btn_obj = $(this)
@@ -114,6 +128,17 @@ $(document).bind('pagecreate',function(){
 	
 })
 
+
+function getLocation(pos)
+{
+	$.cookie("lat", pos.coords.latitude);
+	$.cookie("lng", pos.coords.longitude);
+}
+function unknownLocation()
+{
+  console.log('Could not find location');
+}
+
 function update_dish_stats(element, data) {
 	$stats = element.prev('.stats')
 	$stats.children('.like').html(data[1])
@@ -180,7 +205,7 @@ function load_map(markers, element_id) {
 		mapTypeControl: false,
 		streetViewControl: false,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		maxZoom: 17,
+		maxZoom: 15,
 		center: new google.maps.LatLng(0,0)
   }
   map = new google.maps.Map(document.getElementById(element_id),mapOptions);

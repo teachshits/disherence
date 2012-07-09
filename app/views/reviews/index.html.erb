@@ -6,6 +6,8 @@
 
 <div data-role="content fixed">
 	
+	<a id="resataurants_button" href='/restaurants'><img class="trsp" src="/images/trsp.gif"/></a>
+	
 	<% @reviews.each do |rw|%>
 	<div class="review" style="background-image: url('<%= rw.photo %>')">
 		<div class="curtain"></div>
@@ -45,7 +47,7 @@
 			</div>
 		</div>
 		<script> 
-		load_map([['Blue Bottle Coffee', 37.7824639581484, -122.407822608948, 1],['Blue Bottle Coffee', 37.7958648561632, -122.393876744337, 1]], 'map_canvas<%= rw.id %>')
+		load_map([['<%= rw.dish.restaurant.name %>', <%= rw.dish.restaurant.lat %>, <%= rw.dish.restaurant.lng %>, 1]], 'map_canvas<%= rw.id %>')
 		</script>
 	</div>
 	<div class="rhr"></div>
