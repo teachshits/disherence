@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   mount_uploader :photo, ProfilePhotoUploader
 
   def photo
-    if !self.photo.blank?
-      self.photo
+    if !self[:photo].blank?
+      self[:photo]
     else
      "http://graph.facebook.com/#{facebook_id}/picture?type=large" unless facebook_id.blank?
     end
