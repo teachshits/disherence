@@ -9,6 +9,9 @@ class Review < ActiveRecord::Base
   validates :user_id, :uniqueness => {:scope => [:dish_id, :opinion]}
 
   mount_uploader :photo, ReviewPhotoUploader
+
+  after_create :process_after_create
+  after_destroy :process_after_destroy
   
   def agree?(user_id)
     if review_user_choise = Review.find_by_dish_id_and_user_id(self.dish_id, self.user_id)
@@ -35,14 +38,14 @@ class Review < ActiveRecord::Base
     if rd = find_by_dish_id_and_user_id(dish_id,user_id)
       rd.destroy
     end
-    create(:dish_id => dish_id, :user_id => user_id, :opinion => true)
+    self.class.create(:dish_id => dish_id, :user_id => user_id, :opinion => true)
   end
   
   def self.awful(dish_id, user_id)
     if rd = find_by_dish_id_and_user_id(dish_id,user_id)
       rd.destroy
     end
-    create(:dish_id => dish_id, :user_id => user_id, :opinion => false)
+    self.class.create(:dish_id => dish_id, :user_id => user_id, :opinion => false)
   end
   
   def self.agree(review_id, user_id)
@@ -61,25 +64,20 @@ class Review < ActiveRecord::Base
     end
   end
 
-  def self.create(data)
-    r = super(data)
-    dish = Dish.find_by_id(r.dish_id)
-    
-    if r.opinion
-      dish.update_attributes(:likes => dish.likes + 1)
-    else
-      dish.update_attributes(:dislikes => dish.dislikes + 1)
+  private
+    def process_after_create(record)
+      if record.opinion
+        record.dish.update_attributes(:likes => record.dish.likes + 1)
+      else
+        record.dish.update_attributes(:dislikes => record.dish.dislikes + 1)
+      end
     end
-    r
-  end
-  
-  def destroy
-    if self.opinion == true
-      self.dish.update_attributes(:likes => self.dish.likes - 1)
-    else
-      self.dish.update_attributes(:dislikes => self.dish.dislikes - 1)
+
+    def process_after_destroy(record)
+      if record.opinion
+        record.dish.update_attributes(:likes => record.dish.likes - 1)
+      else
+        record.dish.update_attributes(:dislikes => record.dish.dislikes - 1)
+      end
     end
-    super
-  end
-  
 end
