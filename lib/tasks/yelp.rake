@@ -1,7 +1,7 @@
 namespace :yelp do
   desc "Convert parsed Yelp's Highlights to Disherense models' "
   task :convert => :environment do
-    count = Yelp::HighlightDish.count
+    count = Yelp::HighlightDish.where('dish_photo_url IS NOT NULL').count
     current = 0
     Yelp::HighlightDish.where('dish_photo_url IS NOT NULL').find_each(:batch_size => 100) do |hightlight|
       begin
@@ -28,8 +28,11 @@ namespace :yelp do
           dish = Dish.create(:restaurant_id => restaurant.id, :name => hightlight.dish_name)
           restaurant.yelp_reviews_count += hightlight.reviews_count
           restaurant.save
+        end
 
-          review = Review.new(:user_id => user.id, :dish_id => dish.id, :comment => hightlight.quote, :opinion => true)
+        review = Review.where(:user_id => user.id, :dish_id => dish.id, :comment => hightlight.quote).first
+        unless review
+          review = Review.create(:user_id => user.id, :dish_id => dish.id, :comment => hightlight.quote, :opinion => true)
           review.remote_photo_url = hightlight.dish_photo_url
           review.save
         end
