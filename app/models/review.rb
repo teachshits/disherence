@@ -10,8 +10,21 @@ class Review < ActiveRecord::Base
 
   mount_uploader :photo, ReviewPhotoUploader
 
-  after_create :process_after_create
-  after_destroy :process_after_destroy
+  after_create do |record|
+    if record.opinion
+      record.dish.update_attributes(:likes => record.dish.likes + 1)
+    else
+      record.dish.update_attributes(:dislikes => record.dish.dislikes + 1)
+    end
+  end
+
+  after_destroy do |record|
+    if record.opinion
+      record.dish.update_attributes(:likes => record.dish.likes - 1)
+    else
+      record.dish.update_attributes(:dislikes => record.dish.dislikes - 1)
+    end
+  end
   
   def agree?(user_id)
     if review_user_choise = Review.find_by_dish_id_and_user_id(self.dish_id, self.user_id)
@@ -63,21 +76,4 @@ class Review < ActiveRecord::Base
       end
     end
   end
-
-  private
-    def process_after_create(record)
-      if record.opinion
-        record.dish.update_attributes(:likes => record.dish.likes + 1)
-      else
-        record.dish.update_attributes(:dislikes => record.dish.dislikes + 1)
-      end
-    end
-
-    def process_after_destroy(record)
-      if record.opinion
-        record.dish.update_attributes(:likes => record.dish.likes - 1)
-      else
-        record.dish.update_attributes(:dislikes => record.dish.dislikes - 1)
-      end
-    end
 end

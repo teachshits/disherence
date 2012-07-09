@@ -25,11 +25,8 @@ class ReviewPhotoUploader < CarrierWave::Uploader::Base
       process :resize_to => [640, 480]
   end
 
-  def resize_to(size)
-    width = size[0]
-    height = size[1]
-    
-    manipulate! do |img|       
+  def resize_to(width, height)
+    manipulate! do |img|
       if img.width <= img.height
         k = width/img.width
         img.resize!(width, (img.height*k).round)
@@ -37,7 +34,7 @@ class ReviewPhotoUploader < CarrierWave::Uploader::Base
         k = height/img.height
         img.resize!((img.width*k).round, height)
       end
-      img = img.crop(CenterGravity, width, height)
+      img.crop(CenterGravity, width, height)
     end
      
   end
