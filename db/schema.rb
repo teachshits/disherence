@@ -11,7 +11,71 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706115546) do
+ActiveRecord::Schema.define(:version => 20120707153646) do
+
+  create_table "dishes", :force => true do |t|
+    t.integer  "restaurant_id"
+    t.string   "name"
+    t.integer  "photos",        :default => 0, :null => false
+    t.integer  "likes",         :default => 0
+    t.integer  "dislikes",      :default => 0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "restaurants", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "cuisine"
+    t.string   "bill"
+    t.integer  "yelp_reviews_count"
+    t.integer  "lat",                :limit => 8
+    t.integer  "lng",                :limit => 8
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "dish_id"
+    t.string   "photo"
+    t.boolean  "opinion"
+    t.string   "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.string   "remember_me_token"
+    t.string   "photo"
+    t.string   "name"
+    t.integer  "facebook_id",                  :limit => 8
+    t.string   "twitter_id"
+    t.string   "vkontakte_id"
+    t.string   "gender"
+    t.string   "current_city"
+    t.string   "fb_access_token"
+    t.string   "oauth_token_secret"
+    t.string   "oauth_token"
+    t.datetime "fb_valid_to"
+    t.datetime "remember_me_token_expires_at"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
 
   create_table "yelp_highlight_dishes", :force => true do |t|
     t.integer  "restaraunt_id"
@@ -34,7 +98,6 @@ ActiveRecord::Schema.define(:version => 20120706115546) do
   create_table "yelp_restaurants", :force => true do |t|
     t.string   "name"
     t.string   "ylp_uri"
-    t.datetime "updated_at"
     t.string   "lat"
     t.string   "lng"
     t.string   "rating"
@@ -64,7 +127,6 @@ ActiveRecord::Schema.define(:version => 20120706115546) do
     t.string   "tv"
     t.string   "caters"
     t.string   "wheelchair_accessible"
-    t.datetime "created_at"
     t.string   "fsq_id"
     t.string   "fsq_name"
     t.string   "fsq_address"
@@ -78,15 +140,15 @@ ActiveRecord::Schema.define(:version => 20120706115546) do
     t.boolean  "has_menu",              :default => false
     t.integer  "db_status"
     t.integer  "our_network_id"
-    t.boolean  "menu_copied",           :default => false
+    t.boolean  "menu_copied"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
-  add_index "yelp_restaurants", ["city"], :name => "city"
-  add_index "yelp_restaurants", ["fsq_id"], :name => "index_ylp_parser_restaurants_on_fsq_id"
-  add_index "yelp_restaurants", ["has_menu"], :name => "has_menu"
-  add_index "yelp_restaurants", ["lat"], :name => "lat"
-  add_index "yelp_restaurants", ["lng"], :name => "lng"
-  add_index "yelp_restaurants", ["name"], :name => "name"
-  add_index "yelp_restaurants", ["ylp_uri"], :name => "index_ylp_parser_restaurants_on_ylp_uri"
+  add_index "yelp_restaurants", ["city"], :name => "index_yelp_restaurants_on_city"
+  add_index "yelp_restaurants", ["fsq_id"], :name => "index_yelp_restaurants_on_fsq_id"
+  add_index "yelp_restaurants", ["has_menu"], :name => "index_yelp_restaurants_on_has_menu"
+  add_index "yelp_restaurants", ["name"], :name => "index_yelp_restaurants_on_name"
+  add_index "yelp_restaurants", ["ylp_uri"], :name => "index_yelp_restaurants_on_ylp_uri", :unique => true
 
 end

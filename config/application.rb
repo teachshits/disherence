@@ -12,7 +12,7 @@ end
 require "yelp"
 
 module Disherence
-  class Application < Rails::Application
+  class Application < Rails::Application    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -60,5 +60,17 @@ module Disherence
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    # Facebook auth setup
+    config.facebook_app_id = '361774547226492'
+    config.client_secret = 'fa99050016ad86df1bf9819e1d89c22c'
+    config.redirect_uri = 'http://demo.disherence.com/users/auth_callback/facebook'
+    
+    config.fb_auth_url = 'https://www.facebook.com/dialog/oauth'
+    config.fb_auth_url += "?client_id=#{config.facebook_app_id}"
+    config.fb_auth_url += "&redirect_uri=#{config.redirect_uri}"
+    config.fb_auth_url += '&scope=email,publish_actions,offline_access'
+    config.fb_auth_url += "&state=#{rand(10)}"
+    
   end
 end

@@ -1,0 +1,53 @@
+<script>window.location.hash = ''</script>
+<div data-role="header">
+	<%= user_picture%>
+	<h1 id="logo"></h1>
+</div><!-- /header -->
+
+<div data-role="content fixed">
+	
+	<% @reviews.each do |rw|%>
+	<div class="review" style="background-image: url('<%= rw.photo %>')">
+		<div class="curtain"></div>
+		<div class="rrinfo">
+			<h2><Lazania><%= rw.dish.name %></h2>
+			<a class="place_name" href="/restaurants/show/<%= rw.dish.restaurant.id %>"><%= rw.dish.restaurant.name %></a>
+			<div class="place_address"><%= rw.dish.restaurant.address %></div>
+			<div class="hr"></div>
+			<div class="stats">
+				<div class="likes"><%= rw.dish.likes %></div>
+				<div class="users"><%= rw.dish.likes + rw.dish.dislikes %></div>
+				<div class="photos"><%= rw.dish.photos %></div>
+			</div>
+		</div>
+		<div class="urinfo">
+			<div class="photo" style="background-image: url('<%= rw.user.photo %>')"></div>
+			<div class="stats">
+				<h2 class="name"><%= rw.user.name %></h2>
+				<div class="opinion"><%= rw.opinion == true ? 'It`s Awesome': 'It`s Awful'%></div>
+				<a href="#" class="disagree_count">#<span><%= rw.count_disagree %></span> user(s) disagree</a>
+			</div>
+			<%= users_agreed(session[:user], rw) %>	
+		</div>
+		<%= agree_buttons(session[:user],rw) %>
+		<div class="more_place_info">
+			<div class="cover"></div>
+			<div class="content">
+				<div class="map_canvas" id="map_canvas<%= rw.id %>"></div>
+				<div class="info">
+					<div class="name"><%= rw.dish.name %></div>
+					<div class="dislike"><%= rw.dish.dislikes %></div>
+					<div class="like"><%= rw.dish.likes %></div>
+				</div>
+				<div class="hr"></div>
+				<div class="description"><%= rw.comment %></div>
+				<!-- <div class="price">$15</div> -->
+			</div>
+		</div>
+		<script> 
+		load_map([['Blue Bottle Coffee', 37.7824639581484, -122.407822608948, 1],['Blue Bottle Coffee', 37.7958648561632, -122.393876744337, 1]], 'map_canvas<%= rw.id %>')
+		</script>
+	</div>
+	<div class="rhr"></div>
+<% end %>	
+</div><!-- /content -->

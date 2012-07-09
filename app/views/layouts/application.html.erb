@@ -1,14 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Disherence</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Disherence</title> 
+	<meta name="viewport" content="width=device-width, target-densitydpi=high-dpi">
+	<link rel="stylesheet" href="/themes/Disherence.min.css" />
+	<link rel="stylesheet" href="/stylesheets/jquery.mobile.structure-1.1.0.min.css" />
+	<link rel="stylesheet" href="/stylesheets/jquery.mobile.scrollview.css" />
+	<link rel="stylesheet" href="/stylesheets/application.css" />
+	<script src="/javascripts/jquery-1.7.1.min.js"></script>
+	<script src="/javascripts/jquery.mobile-1.1.0.min.js"></script>
+	<script src="/javascripts/jquery.easing.1.3.js"></script>
+	<script src="/javascripts/jquery.mobile.scrollview.js"></script>
+	<script src="/javascripts/scrollview.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAuEnV8Q2S5-Q284dxPFLHohCE37L0gPlo&sensor=false" type="text/javascript"></script>
+	<script src="/javascripts/application.js"></script>
 </head>
 <body>
-
-<%= yield %>
-
+	<div data-role="page" data-theme="a">
+		<%= yield %>
+	</div><!-- /page -->
 </body>
 </html>

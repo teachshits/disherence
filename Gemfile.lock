@@ -131,6 +131,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  httparty (~> 0.8.3)
   jquery-rails
   mysql2 (~> 0.3.11)
   rails (= 3.2.6)

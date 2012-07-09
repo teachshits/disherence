@@ -1,39 +1,61 @@
 $(document).bind('pagecreate',function(){
 	
 	$('.btn_agree, .btn_disagree').live('click', function(){
-		$status = $(this).parent('.op_btns').prev('.op_status')
+		$status_obj = $(this).parent('.op_btns').prev('.op_status')
+		$btn_obj = $(this)
+		$bg_url = "url('images/op_btns.png')"
 		
-		if ($(this).hasClass('btn_agree')) {
-			$status.css('background', "url('images/op_btns.png') 0 -56px")
-		}
-		
-		if ($(this).hasClass('btn_disagree')) {
-			$status.css('background', "url('images/op_btns.png') 0 -112px")
-		}
-		
-		$(this).parent('.op_btns').fadeOut()
-		$status.slideDown()
+		$.getScript(this.href, function(data){
+			if (data[0] == 1) {
+				
+				//buttons animation
+				if ($btn_obj.hasClass('btn_agree')) {$status_obj.css('background', $bg_url + " 0 -56px")}
+				if ($btn_obj.hasClass('btn_disagree')) {$status_obj.css('background', $bg_url + "0 -112px")}
+				$btn_obj.parent('.op_btns').fadeOut()
+				$status_obj.slideDown()
+				
+				//update stats
+				update_feed_stats($status_obj, data.split(','))
+
+			} else {
+				window.location.replace(data.substr(1,data.length))
+			}
+			
+		});
+		return false;
 	})
 	
 	$('.op_status').live('click', function(){
-		$(this).fadeOut()
-		$(this).next('.op_btns').fadeIn()
+		$status_obj = $(this)
+		$.getScript(this.href, function(data){
+			if (data[0] == 1) {
+				update_feed_stats($status_obj, data.split(','))
+			}
+		});	
+		$status_obj.fadeOut()
+		$status_obj.next('.op_btns').fadeIn()
+		return false;
 	})
 	
 	
-	$('.btn_agree_d, .btn_disagree_d').live('click', function(){
-		$status = $(this).parent('.op_btns_d').prev('.op_status_d')
+	$('.btn_agree_d, .btn_disagree_d').live('click', function(){		
+		$status_obj = $(this).parent('.op_btns_d').prev('.op_status_d')
+		$btn_obj = $(this)
+		$bg_url = "url('images/td-choise-buttons.png')"
 		
-		if ($(this).hasClass('btn_agree_d')) {
-			$status.css('background', "url('images/td-choise-buttons.png') 5px -50px")
-		}
-		
-		if ($(this).hasClass('btn_disagree_d')) {
-			$status.css('background', "url('images/td-choise-buttons.png') 5px -100px")
-		}
-		
-		$(this).parent('.op_btns_d').fadeOut()
-		$status.slideDown()
+		$.getScript(this.href, function(data){
+			if (data == 1) {
+				if ($(this).hasClass('btn_agree_d')) {$status.css('background', $bg_url+" 5px -50px")}
+				if ($(this).hasClass('btn_disagree_d')) {$status.css('background', $bg_url+" 5px -100px")}
+				
+				$(this).parent('.op_btns_d').fadeOut()
+				$status.slideDown()
+			} else {
+				window.location.replace(data.substr(1,data.length))
+			}
+			
+		});
+		return false;
 	})
 	
 	$('.op_status_d').live('click', function(){
@@ -77,11 +99,26 @@ $(document).bind('pagecreate',function(){
 		
 		$element = $(this);
 		$div = $(this).prev('.rating')
-		console.log($div)
 		swipe_info($element, $div, 'right')
 	})
 	
 })
+
+function update_feed_stats(element, data) {
+	console.log(element)
+	$rrinfo_stats = element.prev('.urinfo').prev('.rrinfo').children('.stats')
+	$rrinfo_stats.children('.likes').html(data[1])
+	$rrinfo_stats.children('.users').html(data[2])
+	$rrinfo_stats.children('.photos').html(data[3])
+	
+	element.prev('.urinfo').children('.users').children('.num').children('span').html(data[4])
+	element.prev('.urinfo').children('.stats').children('.disagree_count').children('span').html(data[5])
+
+	$more_place_info = element.next('.op_btns').next('.more_place_info').children('.content').children('.info')
+	$more_place_info.children('.like').html(data[1])
+	$more_place_info.children('.dislike').html(data[6])
+	
+}
 
 function swipe_info(element, div, direction) {
 	if (direction == 'left'){
