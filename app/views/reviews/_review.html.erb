@@ -1,0 +1,42 @@
+<div class="review" style="background-image: url('<%= review.photo %>')">
+	<div class="curtain"></div>
+	<div class="rrinfo">
+		<h2><%= review.dish.name.length > 20 ? review.dish.name[0 .. 18] + '...' : review.dish.name %></h2>
+		<a class="place_name" href="/restaurants/show/<%= review.dish.restaurant.id %>"><%= review.dish.restaurant.name %></a>
+		<div class="place_address"><%= review.dish.restaurant.address.length > 33 ? review.dish.restaurant.address[0 .. 30] + '...' : review.dish.restaurant.address  %></div>
+		<div class="hr"></div>
+		<div class="stats">
+			<div class="likes"><%= review.dish.likes %></div>
+			<div class="users"><%= review.dish.likes + review.dish.dislikes %></div>
+			<div class="photos"><%= review.dish.photos %></div>
+		</div>
+	</div>
+	<div class="urinfo">
+		<div class="photo" style="background-image: url('<%= review.user.photo %>')"></div>
+		<div class="stats">
+			<h2 class="name"><%= review.user.name %></h2>
+			<div class="opinion"><%= review.opinion == true ? 'It`s Awesome': 'It`s Awful'%></div>
+			<a href="#" class="disagree_count">#<span><%= review.count_disagree %></span> user(s) disagree</a>
+		</div>
+		<%= users_agreed(session[:user], review) %>	
+	</div>
+	<%= agree_buttons(session[:user],review) %>
+	<div class="more_place_info">
+		<div class="cover"></div>
+		<div class="content">
+			<div class="map_canvas" id="map_canvas<%= review.id %>"></div>
+			<div class="info">
+				<div class="name"><%= review.dish.name %></div>
+				<div class="dislike"><%= review.dish.dislikes %></div>
+				<div class="like"><%= review.dish.likes %></div>
+			</div>
+			<div class="hr"></div>
+			<div class="description"><%= review.comment %></div>
+			<!-- <div class="price">$15</div> -->
+		</div>
+	</div>
+	<!-- <script> 
+	load_map([['<%= review.dish.restaurant.name %>', <%= review.dish.restaurant.lat %>, <%= review.dish.restaurant.lng %>, 1]], 'map_canvas<%= review.id %>')
+	</script> -->
+</div>
+<div class="rhr"></div>

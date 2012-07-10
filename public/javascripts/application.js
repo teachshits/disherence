@@ -3,6 +3,7 @@ $(document).bind('pagecreate',function(){
 	$('#resataurants_button').live('click', function(){
 		
 		link = $(this).attr('href');
+
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		
 		setInterval(function(){

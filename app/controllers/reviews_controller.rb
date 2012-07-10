@@ -1,11 +1,19 @@
 class ReviewsController < ApplicationController
   
-  def index
+  def index      
     @facebook_app_id = Rails.application.config.facebook_app_id
     @redirect_uri = Rails.application.config.redirect_uri
     
-    @reviews = Review.where('photo IS NOT NULL').order('id DESC').limit(10)
+    @reviews = Review.with_photos.order('RAND()').limit(10)
     @reviews = @reviews.where('user_id != ?', session[:user].id) unless session[:user].nil?
+    @reviews.page params[:page]
+    
+    respond_to do |format|
+      format.js
+      format.html # index.html.erb
+      format.xml  { render :xml => @reviews }
+    end
+    
   end
   
   def awesome

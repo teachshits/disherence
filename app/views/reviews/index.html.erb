@@ -5,51 +5,42 @@
 </div><!-- /header -->
 
 <div data-role="content fixed">
-	
 	<a id="resataurants_button" href='/restaurants'><img class="trsp" src="/images/trsp.gif"/></a>
-	
-	<% @reviews.each do |rw|%>
-	<div class="review" style="background-image: url('<%= rw.photo %>')">
-		<div class="curtain"></div>
-		<div class="rrinfo">
-			<h2><%= rw.dish.name.length > 20 ? rw.dish.name[0 .. 18] + '...' : rw.dish.name %></h2>
-			<a class="place_name" href="/restaurants/show/<%= rw.dish.restaurant.id %>"><%= rw.dish.restaurant.name %></a>
-			<div class="place_address"><%= rw.dish.restaurant.address.length > 33 ? rw.dish.restaurant.address[0 .. 30] + '...' : rw.dish.restaurant.address  %></div>
-			<div class="hr"></div>
-			<div class="stats">
-				<div class="likes"><%= rw.dish.likes %></div>
-				<div class="users"><%= rw.dish.likes + rw.dish.dislikes %></div>
-				<div class="photos"><%= rw.dish.photos %></div>
-			</div>
-		</div>
-		<div class="urinfo">
-			<div class="photo" style="background-image: url('<%= rw.user.photo %>')"></div>
-			<div class="stats">
-				<h2 class="name"><%= rw.user.name %></h2>
-				<div class="opinion"><%= rw.opinion == true ? 'It`s Awesome': 'It`s Awful'%></div>
-				<a href="#" class="disagree_count">#<span><%= rw.count_disagree %></span> user(s) disagree</a>
-			</div>
-			<%= users_agreed(session[:user], rw) %>	
-		</div>
-		<%= agree_buttons(session[:user],rw) %>
-		<div class="more_place_info">
-			<div class="cover"></div>
-			<div class="content">
-				<div class="map_canvas" id="map_canvas<%= rw.id %>"></div>
-				<div class="info">
-					<div class="name"><%= rw.dish.name %></div>
-					<div class="dislike"><%= rw.dish.dislikes %></div>
-					<div class="like"><%= rw.dish.likes %></div>
-				</div>
-				<div class="hr"></div>
-				<div class="description"><%= rw.comment %></div>
-				<!-- <div class="price">$15</div> -->
-			</div>
-		</div>
-		<!-- <script> 
-		load_map([['<%= rw.dish.restaurant.name %>', <%= rw.dish.restaurant.lat %>, <%= rw.dish.restaurant.lng %>, 1]], 'map_canvas<%= rw.id %>')
-		</script> -->
+	<div id='reviews'>
+	  <div class='page'>
+	    <%= render @reviews %>
+	  </div>
 	</div>
-	<div class="rhr"></div>
-<% end %>	
 </div><!-- /content -->
+<script type="text/javascript">
+(function() {
+  var page = 1,
+      loading = false;
+
+  function nearBottomOfPage() {
+    return $(window).scrollTop() > $(document).height() - $(window).height() - 200;
+  }
+
+  $(window).scroll(function(){
+    if (loading) {
+      return;
+    }
+
+    if(nearBottomOfPage()) {
+      loading=true;
+      page++;
+      $.ajax({
+        url: '/articles?page=' + page,
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+          $(window).sausage('draw');
+          loading=false;
+        }
+      });
+    }
+  });
+
+  $(window).sausage();
+}());
+</script>
