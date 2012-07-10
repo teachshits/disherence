@@ -5,8 +5,8 @@ namespace :disherence do
       all_users_ids =  User.select(:id).order('id').map { |u| u.id }
       slice_size = (all_users_ids.size * 0.3).to_i
       puts slice_size
-      all_users_ids.each do |user_id|
-        shuffled_slice = (all_users_ids - [user_id]).dup.shuffle[0..slice_size]
+      all_users_ids.shuffle[0..slice_size].each do |user_id|
+        shuffled_slice = (all_users_ids - [user_id]).shuffle[0..slice_size]
         puts "User_id: #{user_id} started!"
         User.find(shuffled_slice).each do |target_user|
           ActiveRecord::Base.transaction do
