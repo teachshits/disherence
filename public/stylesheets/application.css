@@ -295,7 +295,8 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
       margin-right: 10px; }
       #map .restaurant .info .name {
         float: left;
-        font-size: 1.7em; }
+        font-size: 1.7em;
+        width: 160px; }
       #map .restaurant .info .rate {
         float: right; }
         #map .restaurant .info .rate .star {

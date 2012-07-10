@@ -9,7 +9,7 @@
 		<script>
 			load_map([
 			<% @restaurant.each do |r| %>
-				['<%= r.name %>','<%= r.lat %>','<%= r.lng %>',1],
+				['<%= escape_javascript(r.name) %>','<%= r.lat %>','<%= r.lng %>',1],
 			<% end %>
 			], 'restaurants_map_canvas')
 		</script>
@@ -17,7 +17,7 @@
 		<div class="restaurant">
 			<div class="info">
 				<%= remoteness(r,cookies[:lat],cookies[:lng]) %>
-				<a class="name" href="restaurants/show/<%= r.id %>"><%= r.name %></a>
+				<a class="name" href="restaurants/show/<%= r.id %>"><%= r.name.length > 15 ? r.name[0..12] + '...' : r.name %></a>
 				<div class="rate">
 					<div class="star fill"></div>
 					<div class="star fill"></div>
