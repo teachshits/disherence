@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   
-  def index      
+  def index
+          
     @facebook_app_id = Rails.application.config.facebook_app_id
     @redirect_uri = Rails.application.config.redirect_uri
     
