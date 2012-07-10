@@ -3,7 +3,6 @@ $(document).bind('pagecreate',function(){
 	$('#resataurants_button').live('click', function(){
 		
 		link = $(this).attr('href');
-
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		
 		setInterval(function(){
@@ -19,9 +18,11 @@ $(document).bind('pagecreate',function(){
 		$status_obj = $(this).parent('.op_btns').prev('.op_status')
 		$btn_obj = $(this)
 		$bg_url = "url('images/op_btns.png')"
-		
-		$.getScript(this.href, function(data){
-			if (data[0] == 1) {
+		$url = $btn_obj.attr('id').replace(/_/g,'/')
+
+		$.getJSON($url, function(json){
+
+			if (json.result == 1) {
 				
 				//buttons animation
 				if ($btn_obj.hasClass('btn_agree')) {$status_obj.css('background', $bg_url + " 0 -56px")}
@@ -30,10 +31,10 @@ $(document).bind('pagecreate',function(){
 				$status_obj.slideDown()
 				
 				//update stats
-				update_feed_stats($status_obj, data.split(','))
+				update_feed_stats($status_obj, json)
 
 			} else {
-				window.location.replace(data.substr(1,data.length))
+				window.location.href = json.url
 			}
 			
 		});
@@ -42,9 +43,9 @@ $(document).bind('pagecreate',function(){
 	
 	$('.op_status').live('click', function(){
 		$status_obj = $(this)
-		$.getScript(this.href, function(data){
-			if (data[0] == 1) {
-				update_feed_stats($status_obj, data.split(','))
+		$.getJSON(this.href, function(json){
+			if (json.result == 1) {
+				update_feed_stats($status_obj, json)
 			}
 		});	
 		$status_obj.fadeOut()
@@ -58,8 +59,8 @@ $(document).bind('pagecreate',function(){
 		$btn_obj = $(this)
 		$bg_url = "url('/images/td-choise-buttons.png')"
 		
-		$.getScript(this.href, function(data){
-			if (data[0] == 1) {
+		$.getJSON(this.href, function(json){
+			if (json.result == 1) {
 				
 				//buttons animation
 				if ($btn_obj.hasClass('btn_agree_d')) {$status_obj.css('background', $bg_url+" 5px -50px")}
@@ -68,10 +69,10 @@ $(document).bind('pagecreate',function(){
 				$status_obj.slideDown()
 				
 				//update stats
-				update_dish_stats($status_obj, data.split(','))
+				update_dish_stats($status_obj, json)
 				
 			} else {
-				window.location.replace(data.substr(1,data.length))
+				window.location.href = json.url
 			}
 			
 		});
@@ -80,9 +81,9 @@ $(document).bind('pagecreate',function(){
 	
 	$('.op_status_d').live('click', function(){
 		$status_obj = $(this)
-		$.getScript(this.href, function(data){
-			if (data[0] == 1) {
-				update_dish_stats($status_obj, data.split(','))
+		$.getJSON(this.href, function(json){
+			if (json.result == 1) {
+				update_dish_stats($status_obj, json)
 			}
 		});	
 		$status_obj.fadeOut()
@@ -142,26 +143,26 @@ function unknownLocation()
 
 function update_dish_stats(element, data) {
 	$stats = element.prev('.stats')
-	$stats.children('.like').html(data[1])
-	$stats.children('.dislike').html(data[2])
+	$stats.children('.like').html(data.likes)
+	$stats.children('.dislike').html(data.dislikes)
 	
-	element.parent('.dish_info').prev('.rating').children('span').html(data[3])
+	element.parent('.dish_info').prev('.rating').children('span').html(data.rating)
 }
 
 
 function update_feed_stats(element, data) {
 	
 	$rrinfo_stats = element.prev('.urinfo').prev('.rrinfo').children('.stats')
-	$rrinfo_stats.children('.likes').html(data[1])
-	$rrinfo_stats.children('.users').html(data[2])
-	$rrinfo_stats.children('.photos').html(data[3])
+	$rrinfo_stats.children('.likes').html(data.likes)
+	$rrinfo_stats.children('.users').html(data.users)
+	$rrinfo_stats.children('.photos').html(data.photos)
 	
-	element.prev('.urinfo').children('.users').children('.num').children('span').html(data[4])
-	element.prev('.urinfo').children('.stats').children('.disagree_count').children('span').html(data[5])
+	element.prev('.urinfo').children('.users').children('.num').children('span').html(data.agree)
+	element.prev('.urinfo').children('.stats').children('.disagree_count').children('span').html(data.disagree)
 
 	$more_place_info = element.next('.op_btns').next('.more_place_info').children('.content').children('.info')
-	$more_place_info.children('.like').html(data[1])
-	$more_place_info.children('.dislike').html(data[6])
+	$more_place_info.children('.like').html(data.likes)
+	$more_place_info.children('.dislike').html(data.dislikes)
 	
 }
 
@@ -261,4 +262,3 @@ function setMarkers(map, locations) {
   }
 	map.fitBounds(bounds);
 }
-

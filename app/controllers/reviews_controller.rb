@@ -13,14 +13,13 @@ class ReviewsController < ApplicationController
       if user = session[:user]
         r = Review.awesome(dish_id,user.id)        
         
-        stats = [1]
-        stats.push(r.dish.likes)
-        stats.push(r.dish.dislikes)
-        stats.push((r.dish.likes * 100)/r.dish.restaurant.dishes.sum(:likes))
+        likes = r.dish.likes
+        dislikes = r.dish.dislikes
+        rating = (r.dish.likes * 100)/r.dish.restaurant.dishes.sum(:likes)
         
-        return render :text => stats.join(',')
+        return render :json => {:result => 1, :likes => likes, :dislikes => dislikes, :rating => rating}
       else
-        return render :text => "'#{Rails.application.config.fb_auth_url}'"
+        return render :json => {"result" => 0, "url" => Rails.application.config.fb_auth_url}
       end
     end
   end
@@ -30,14 +29,13 @@ class ReviewsController < ApplicationController
       if user = session[:user]
         r = Review.awful(dish_id,user.id)
         
-        stats = [1]
-        stats.push(r.dish.likes)
-        stats.push(r.dish.dislikes)
-        stats.push((r.dish.likes * 100)/r.dish.restaurant.dishes.sum(:likes))
+        likes = r.dish.likes
+        dislikes = r.dish.dislikes
+        rating = (r.dish.likes * 100)/r.dish.restaurant.dishes.sum(:likes)
         
-        return render :text => stats.join(',')
+        return render :json => {"result" => 1, "likes" => likes, :dislikes => dislikes, :rating => rating}
       else
-        return render :text => "'#{Rails.application.config.fb_auth_url}'"
+        return render :json => {"result" => 0, "url" => Rails.application.config.fb_auth_url}
       end
     end
   end
@@ -49,9 +47,18 @@ class ReviewsController < ApplicationController
         
         disagree = r.opinion == true ? r.dish.dislikes : r.dish.likes
         agree = r.opinion == true ? r.dish.likes - 1 : r.dish.dislikes - 1
-        return render :text => "1,#{r.dish.likes},#{r.dish.likes + r.dish.dislikes},#{r.dish.photos},#{agree},#{disagree},#{r.dish.dislikes}"
+        
+        return render :json => {
+          :result => 1,
+          :likes => r.dish.likes, 
+          :dislikes => r.dish.dislikes,
+          :users => r.dish.likes + r.dish.dislikes,
+          :photos => r.dish.photos,
+          :agree => agree,
+          :disagree => disagree,
+        }
       else
-        return render :text => "'#{Rails.application.config.fb_auth_url}'"
+        return render :json => {"result" => 0, "url" => Rails.application.config.fb_auth_url}
       end
     end
   end
@@ -62,10 +69,21 @@ class ReviewsController < ApplicationController
         r = Review.disagree(review_id,user.id)
         disagree = r.opinion == true ? r.dish.dislikes : r.dish.likes
         agree = r.opinion == true ? r.dish.likes - 1 : r.dish.dislikes - 1
-        return render :text => "1,#{r.dish.likes},#{r.dish.likes + r.dish.dislikes},#{r.dish.photos},#{agree},#{disagree},#{r.dish.dislikes}"
+        
+        return render :json => {
+          :result => 1,
+          :likes => r.dish.likes, 
+          :dislikes => r.dish.dislikes,
+          :users => r.dish.likes + r.dish.dislikes,
+          :photos => r.dish.photos,
+          :agree => agree,
+          :disagree => disagree,
+        }
+        
       else
-        return render :text => "'#{Rails.application.config.fb_auth_url}'"
+        return render :json => {"result" => 0, "url" => Rails.application.config.fb_auth_url}
       end
+      
     end
   end
   
@@ -75,33 +93,42 @@ class ReviewsController < ApplicationController
         
         if rd = Review.find_by_dish_id_and_user_id(dish_id,user.id)
           
-          stats = [1]
           if rw = Review.find_by_id(params[:review_id])
             
-            stats.push(rd.dish.likes)
-            stats.push(rd.dish.likes + rd.dish.dislikes - 1)
-            stats.push(rd.dish.photos)
-            stats.push(rw.count_agree)
-            stats.push(rw.count_disagree)
-            stats.push(rd.dish.dislikes)
+            likes = rd.dish.likes
+            dislikes = rd.dish.dislikes
+            users = rd.dish.likes + rd.dish.dislikes - 1
+            photos = rd.dish.photos
+            agree = rw.count_agree
+            disagree = rw.count_disagree
 
-            rw.agree?(user.id) == 1 ? stats[4] -= 1 : stats[5] -= 1
+            rw.agree?(user.id) == 1 ? agree -= 1 : disagree -= 1
+            rd.opinion == true ? likes -= 1 : dislikes -= 1
           else
-            stats.push(rd.dish.likes)
-            stats.push(rd.dish.dislikes)
+            likes = rd.dish.likes
+            dislikes = rd.dish.dislikes
             
             if rd.opinion == true
-              stats.push(((rd.dish.likes - 1) * 100)/(rd.dish.restaurant.dishes.sum(:likes) - 1))
-              stats[1] -= 1
+              rating = ((likes - 1) * 100)/(rd.dish.restaurant.dishes.sum(:likes) - 1)
+              likes -= 1
             else
-              stats.push((rd.dish.likes * 100)/rd.dish.restaurant.dishes.sum(:likes))
-              stats[2] -= 1
+              rating = (likes * 100)/rd.dish.restaurant.dishes.sum(:likes)
+              dislikes -= 1
             end
 
-          end          
-          
+          end
           rd.destroy
-          return render :text => stats.join(',')
+          
+          return render :json => {
+            :result => 1,
+            :likes => likes, 
+            :dislikes => dislikes,
+            :users => users,
+            :photos => photos,
+            :agree => agree,
+            :disagree => disagree,
+            :rating => rating || nil
+          }
           
         end
       end
@@ -109,6 +136,4 @@ class ReviewsController < ApplicationController
     end
   end
   
-  
 end
-

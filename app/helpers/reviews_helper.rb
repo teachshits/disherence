@@ -27,7 +27,7 @@ module ReviewsHelper
     
 		raw "<a class=\"op_status#{status_add_class}\" href=\"/reviews/destroy/#{review.dish_id}/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
 		<div class=\"op_btns#{op_btns_add_class}\">
-			<a class=\"btn_agree\" href=\"/reviews/agree/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
+			<a class=\"btn_agree\" id=\"_reviews_agree_#{review.id}\" href=\"/reviews/agree/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
 			<a class=\"btn_disagree\" href=\"/reviews/disagree/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
 		</div>"
   end
@@ -49,6 +49,5 @@ module ReviewsHelper
 			</div>
 		</div>"
   end
-  
   
 end
