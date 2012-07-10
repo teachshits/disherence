@@ -10,6 +10,8 @@ class Review < ActiveRecord::Base
 
   mount_uploader :photo, ReviewPhotoUploader
 
+  scope :with_photos, where('photo IS NOT NULL')
+
   after_create do |record|
     if record.opinion
       record.dish.update_attributes(:likes => record.dish.likes + 1)
