@@ -18,8 +18,12 @@ class User < ActiveRecord::Base
     access_token_data = get_facebook_access_token_data(code)
     user_data = get_facebook_user_data(access_token_data[:fb_access_token])
 
-    data = access_token_data.merge(user_data)
-    create(data)
+    if user_data && user = User.find_by_facebook_id(user_data[:facebook_id]) 
+      user
+    else
+      data = access_token_data.merge(user_data)
+      create(data)
+    end
   end
   
   def self.get_facebook_access_token_data(code)
