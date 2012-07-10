@@ -27,6 +27,7 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.9'
+  gem 'thin'
 end
 
 gem 'yelp', :path => '../ylp_parser'
