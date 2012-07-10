@@ -39,6 +39,14 @@ namespace :yelp do
           dish.save
         end
 
+        if review.photo.blank?
+          review.remote_photo_url = hightlight.dish_photo_url
+          review.save
+          dish.photos += 1
+          dish.save
+        end
+
+
         puts user.inspect
         puts restaurant.inspect
         puts dish.inspect

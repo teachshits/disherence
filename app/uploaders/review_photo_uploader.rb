@@ -22,7 +22,7 @@ class ReviewPhotoUploader < CarrierWave::Uploader::Base
   end
   
   version :thumb do
-      process :resize_to => [640, 480]
+      process :resize_to_fill => [640, 480]
   end
 
   def resize_to(width, height)
