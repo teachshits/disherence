@@ -7,8 +7,8 @@ class CreateRestaurants < ActiveRecord::Migration
       t.string :cuisine
       t.integer :bill
       t.integer :yelp_reviews_count
-      t.double :lat
-      t.double :lng
+      t.float :lat
+      t.float :lng
       t.timestamps
     end
   end
