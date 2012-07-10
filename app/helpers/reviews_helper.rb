@@ -11,8 +11,8 @@ module ReviewsHelper
     
     raw "<a class=\"op_status_d#{status_add_class}\" href=\"/reviews/destroy/#{dish.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
 		<div class=\"op_btns_d#{op_btns_add_class}\">
-			<a class=\"btn_agree_d\" href=\"/reviews/awesome/#{dish.id}\"></a>
-			<a class=\"btn_disagree_d\" href=\"/reviews/awful/#{dish.id}\"></a>
+			<a class=\"btn_agree_d\" href=\"/reviews/awesome/#{dish.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
+			<a class=\"btn_disagree_d\" href=\"/reviews/awful/#{dish.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
 		</div>"
   end
   
@@ -27,8 +27,8 @@ module ReviewsHelper
     
 		raw "<a class=\"op_status#{status_add_class}\" href=\"/reviews/destroy/#{review.dish_id}/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
 		<div class=\"op_btns#{op_btns_add_class}\">
-			<a class=\"btn_agree\" href=\"/reviews/agree/#{review.id}\"></a>
-			<a class=\"btn_disagree\" href=\"/reviews/disagree/#{review.id}\"></a>
+			<a class=\"btn_agree\" href=\"/reviews/agree/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
+			<a class=\"btn_disagree\" href=\"/reviews/disagree/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
 		</div>"
   end
   

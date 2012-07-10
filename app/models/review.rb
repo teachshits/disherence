@@ -51,14 +51,14 @@ class Review < ActiveRecord::Base
     if rd = find_by_dish_id_and_user_id(dish_id,user_id)
       rd.destroy
     end
-    self.class.create(:dish_id => dish_id, :user_id => user_id, :opinion => true)
+    self.create(:dish_id => dish_id, :user_id => user_id, :opinion => true)
   end
   
   def self.awful(dish_id, user_id)
     if rd = find_by_dish_id_and_user_id(dish_id,user_id)
       rd.destroy
     end
-    self.class.create(:dish_id => dish_id, :user_id => user_id, :opinion => false)
+    self.create(:dish_id => dish_id, :user_id => user_id, :opinion => false)
   end
   
   def self.agree(review_id, user_id)
