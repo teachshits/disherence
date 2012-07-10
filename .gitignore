@@ -18,3 +18,4 @@
 /tmp
 /public/uploads
 .idea
+config/database.yml
