@@ -7,7 +7,7 @@ $(document).bind('pagecreate',function(){
 		
 		setInterval(function(){
 			if ($.cookie("lat") != null && $.cookie("lng") != null){
-				window.location = link + '?lat=' + $.cookie("lat") + '&lng=' + $.cookie("lng")
+				window.location = link
 			}	
 		},3000);
 		

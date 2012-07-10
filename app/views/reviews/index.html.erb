@@ -12,9 +12,9 @@
 	<div class="review" style="background-image: url('<%= rw.photo %>')">
 		<div class="curtain"></div>
 		<div class="rrinfo">
-			<h2><Lazania><%= rw.dish.name %></h2>
+			<h2><%= rw.dish.name.length > 20 ? rw.dish.name[0 .. 18] + '...' : rw.dish.name %></h2>
 			<a class="place_name" href="/restaurants/show/<%= rw.dish.restaurant.id %>"><%= rw.dish.restaurant.name %></a>
-			<div class="place_address"><%= rw.dish.restaurant.address %></div>
+			<div class="place_address"><%= rw.dish.restaurant.address.length > 33 ? rw.dish.restaurant.address[0 .. 30] + '...' : rw.dish.restaurant.address  %></div>
 			<div class="hr"></div>
 			<div class="stats">
 				<div class="likes"><%= rw.dish.likes %></div>

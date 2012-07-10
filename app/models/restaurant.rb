@@ -26,11 +26,13 @@ class Restaurant < ActiveRecord::Base
   
   
   def remoteness(lat_cur,lng_cur)
-    
     lat_cur = lat_cur.to_f
     lng_cur = lng_cur.to_f
     
-    dlng = lng_cur - lng
+    lat = lat.to_f
+    lng = lng.to_f
+    
+    dlng = lng_cur - lng 
     dlat = lat_cur - lat
 
     dlng_rad = dlng * RAD_PER_DEG 

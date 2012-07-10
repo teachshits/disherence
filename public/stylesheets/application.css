@@ -60,7 +60,7 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
 
 .review {
   background: no-repeat;
-  background-size: contain;
+  background-size: cover;
   width: 320px;
   height: 333px;
   float: left;
