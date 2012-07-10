@@ -27,16 +27,17 @@ class ReviewPhotoUploader < CarrierWave::Uploader::Base
 
   def resize_to(width, height)
     manipulate! do |img|
-      if img.width <= img.height
-        k = width/img.width
-        img.resize!(width, (img.height*k).round)
+      if img['width'] <= img['height']
+        k = width/img['width']
+        img.resize("#{width.to_s}x#{(img['height']*k).round}")
       else
-        k = height/img.height
-        img.resize!((img.width*k).round, height)
+        k = height/img['height']
+        img.resize("(#{(img['width']*k).round}x#{height}")
       end
-      img.crop(CenterGravity, width, height)
+      img.crop("#{width}x#{height}")
+      img = yield(img) if block_given?
+      img
     end
-     
   end
    
   # Provide a default URL as a default if there hasn't been a file uploaded:
