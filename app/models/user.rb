@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   def photo
     if !self[:photo].blank?
-      self[:photo]
+      self[:photo].thumb.url
     else
      "http://graph.facebook.com/#{facebook_id}/picture?type=large" unless facebook_id.blank?
     end

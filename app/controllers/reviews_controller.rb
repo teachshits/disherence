@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
     @facebook_app_id = Rails.application.config.facebook_app_id
     @redirect_uri = Rails.application.config.redirect_uri
     
-    @reviews = Review.where('photo IS NOT NULL').order('id DESC').limit(100)
+    @reviews = Review.where('photo IS NOT NULL').order('id DESC').limit(20)
     @reviews = @reviews.where('user_id != ?', session[:user].id) unless session[:user].nil?
   end
   
