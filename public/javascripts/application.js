@@ -2,14 +2,15 @@ $(document).bind('pagecreate',function(){
 	
 	$('#resataurants_button').live('click', function(){
 		
-		link = this.href  
+		link = $(this).attr('href');
+
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		
 		setInterval(function(){
 			if ($.cookie("lat") != null && $.cookie("lng") != null){
-				window.location = link
+				window.location.href = link
 			}	
-		},3000);
+		},300);
 		
 		return false;
 	})
