@@ -50,7 +50,7 @@ namespace :yelp do
         puts user.inspect
         puts restaurant.inspect
         puts dish.inspect
-        puts dish.reviews.all.inspect
+        puts review.inspect
       #rescue Exception => ex
       #  "SKIPPED! Reason: #{ex.message}"
       #end
