@@ -41,8 +41,6 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
   src: url("../fonts/PFDinTextCompPro-Medium.ttf") format("truetype"); }
 
 #loading {
-  width: 220px;
-  height: 10px;
   margin: 5px auto;
   display: block; }
 
