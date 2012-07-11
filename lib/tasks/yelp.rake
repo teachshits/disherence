@@ -4,7 +4,7 @@ namespace :yelp do
     count = Yelp::HighlightDish.where('dish_photo_url IS NOT NULL').count
     current = 0
     Yelp::HighlightDish.where('dish_photo_url IS NOT NULL').find_each(:batch_size => 100) do |hightlight|
-      begin
+      #begin
         current += 1
         puts "#{current} from #{count}"
         user = User.where(:yelp_profile_id => hightlight.profile_id).first
@@ -51,9 +51,9 @@ namespace :yelp do
         puts restaurant.inspect
         puts dish.inspect
         puts dish.reviews.all.inspect
-      rescue Exception => ex
-        "SKIPPED! Reason: #{ex.message}"
-      end
+      #rescue Exception => ex
+      #  "SKIPPED! Reason: #{ex.message}"
+      #end
     end
   end
 end
