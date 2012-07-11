@@ -3,7 +3,7 @@ namespace :yelp do
   task :convert => :environment do
     count = Yelp::HighlightDish.where('dish_photo_url IS NOT NULL').count
     current = 0
-    Yelp::HighlightDish.where('dish_photo_url IS NOT NULL').find_each(:batch_size => 100) do highlight|
+    Yelp::HighlightDish.where('dish_photo_url IS NOT NULL').find_each(:batch_size => 100) do |highlight|
       begin
         current += 1
         puts "#{current} from #{count}"
