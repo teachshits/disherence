@@ -6,6 +6,7 @@ class ReviewPhotoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  MiniMagick.processor = :gm
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
@@ -22,7 +23,7 @@ class ReviewPhotoUploader < CarrierWave::Uploader::Base
   end
   
   version :thumb do
-      process :resize_to_fill => [640, 480]
+      process :resize_to => [640, 570]
   end
 
   def resize_to(width, height)
