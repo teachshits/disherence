@@ -16,8 +16,8 @@ $(document).bind('pagecreate',function(){
 	})
 	
 	$('.btn_agree, .btn_disagree').live('click', function(){
-		$status_obj = $(this).parent('.op_btns').prev('.op_status')
 		$btn_obj = $(this)
+		$status_obj = $(this).parent('.op_btns').prev('.op_status')
 		$bg_url = "url('images/op_btns.png')"
 		$url = $btn_obj.attr('id').replace(/_/g,'/')
 

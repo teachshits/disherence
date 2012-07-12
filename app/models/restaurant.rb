@@ -23,8 +23,6 @@ class Restaurant < ActiveRecord::Base
       COS((#{lng} - lng) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) * 1.609344")
   end
   
-  
-  
   def remoteness(lat_cur,lng_cur)
     lat_cur = lat_cur.to_f
     lng_cur = lng_cur.to_f
@@ -59,6 +57,5 @@ class Restaurant < ActiveRecord::Base
       :m => dMeters
     }
   end
-  
-  
+    
 end
