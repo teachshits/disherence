@@ -70,6 +70,10 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
   float: left;
   position: relative;
   margin-bottom: 15px; }
+  .review .more_info:hover {
+    left: -320px; }
+  .review .more_info {
+    position: relative; }
   .review .curtain {
     position: absolute;
     background: url("/images/curtain.png") no-repeat;
