@@ -33,7 +33,7 @@ class ReviewPhotoUploader < CarrierWave::Uploader::Base
         img.resize("#{width.to_s}x#{(img['height']*k).round}")
       else
         k = height/img['height']
-        img.resize("(#{(img['width']*k).round}x#{height}")
+        img.resize("#{(img['width']*k).round}x#{height}")
       end
       img.crop("#{width}x#{height}")
       img = yield(img) if block_given?
