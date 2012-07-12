@@ -76,8 +76,8 @@ class ReviewsController < ApplicationController
     if review_id = params[:id]
       if user = session[:user]
         r = Review.disagree(review_id,user.id)
-        disagree = r.opinion == true ? r.dish.dislikes : r.dish.likes
-        agree = r.opinion == true ? r.dish.likes - 1 : r.dish.dislikes - 1
+        disagree = r.opinion == false ? r.dish.dislikes : r.dish.likes
+        agree = r.opinion == false ? r.dish.likes - 1 : r.dish.dislikes - 1
         
         return render :json => {
           :result => 1,
