@@ -17,6 +17,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :oauth_token
       t.datetime :fb_valid_to
       t.datetime :remember_me_token_expires_at
+      
       t.timestamps
     end
   end

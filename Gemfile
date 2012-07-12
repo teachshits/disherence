@@ -11,6 +11,9 @@ gem 'carrierwave', '~> 0.6.2'
 gem 'mini_magick', '~> 3.4'
 gem 'kaminari'
 
+gem 'rails_admin'
+gem 'devise'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,7 +37,7 @@ end
 gem 'yelp', :path => '../ylp_parser'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -47,3 +50,6 @@ gem 'yelp', :path => '../ylp_parser'
 
 # To use debugger
 # gem 'debugger'
+
+
+gem "devise"

@@ -1,0 +1,339 @@
+# RailsAdmin config file. Generated on July 12, 2012 15:59
+# See github.com/sferik/rails_admin for more informations
+
+RailsAdmin.config do |config|
+
+  # If your default_local is different from :en, uncomment the following 2 lines and set your default locale here:
+  # require 'i18n'
+  # I18n.default_locale = :de
+
+  config.current_user_method { current_rails_admin_user } # auto-generated
+
+  # If you want to track changes on your models:
+  # config.audit_with :history, RailsAdminUser
+
+  # Or with a PaperTrail: (you need to install it first)
+  # config.audit_with :paper_trail, RailsAdminUser
+
+  # Set the admin name here (optional second array element will appear in a beautiful RailsAdmin red ©)
+  config.main_app_name = ['Disherence', 'Admin']
+  # or for a dynamic name:
+  # config.main_app_name = Proc.new { |controller| [Rails.application.engine_name.titleize, controller.params['action'].titleize] }
+
+
+  #  ==> Global show view settings
+  # Display empty fields in show views
+  # config.compact_show_view = false
+
+  #  ==> Global list view settings
+  # Number of default rows per-page:
+  # config.default_items_per_page = 20
+
+  #  ==> Included models
+  # Add all excluded models here:
+  # config.excluded_models = [Dish, RailsAdminUser, Restaurant, Review, User, Yelp::HighlightDish, Yelp::Restaurant, YelpRestaurant]
+
+  # Add models here if you want to go 'whitelist mode':
+  # config.included_models = [Dish, RailsAdminUser, Restaurant, Review, User, Yelp::HighlightDish, Yelp::Restaurant, YelpRestaurant]
+
+  # Application wide tried label methods for models' instances
+  # config.label_methods << :description # Default is [:name, :title]
+
+  #  ==> Global models configuration
+  # config.models do
+  #   # Configuration here will affect all included models in all scopes, handle with care!
+  #
+  #   list do
+  #     # Configuration here will affect all included models in list sections (same for show, export, edit, update, create)
+  #
+  #     fields_of_type :date do
+  #       # Configuration here will affect all date fields, in the list section, for all included models. See README for a comprehensive type list.
+  #     end
+  #   end
+  # end
+  #
+  #  ==> Model specific configuration
+  # Keep in mind that *all* configuration blocks are optional.
+  # RailsAdmin will try his best to provide the best defaults for each section, for each field.
+  # Try to override as few things as possible, in the most generic way. Try to avoid setting labels for models and attributes, use ActiveRecord I18n API instead.
+  # Less code is better code!
+  # config.model MyModel do
+  #   # Cross-section field configuration
+  #   object_label_method :name     # Name of the method called for pretty printing an *instance* of ModelName
+  #   label 'My model'              # Name of ModelName (smartly defaults to ActiveRecord's I18n API)
+  #   label_plural 'My models'      # Same, plural
+  #   weight -1                     # Navigation priority. Bigger is higher.
+  #   parent OtherModel             # Set parent model for navigation. MyModel will be nested below. OtherModel will be on first position of the dropdown
+  #   navigation_label              # Sets dropdown entry's name in navigation. Only for parents!
+  #   # Section specific configuration:
+  #   list do
+  #     filters [:id, :name]  # Array of field names which filters should be shown by default in the table header
+  #     items_per_page 100    # Override default_items_per_page
+  #     sort_by :id           # Sort column (default is primary key)
+  #     sort_reverse true     # Sort direction (default is true for primary key, last created first)
+  #     # Here goes the fields configuration for the list view
+  #   end
+  # end
+
+  # Your model's configuration, to help you get started:
+
+  # All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible. (visible(true))
+
+  # config.model Dish do
+  #   # Found associations:
+  #     configure :restaurant, :belongs_to_association 
+  #     configure :reviews, :has_many_association   #   # Found columns:
+  #     configure :id, :integer 
+  #     configure :restaurant_id, :integer         # Hidden 
+  #     configure :name, :string 
+  #     configure :photos, :integer 
+  #     configure :likes, :integer 
+  #     configure :dislikes, :integer 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
+  # config.model RailsAdminUser do
+  #   # Found associations:
+  #   # Found columns:
+  #     configure :id, :integer 
+  #     configure :email, :string 
+  #     configure :password, :password         # Hidden 
+  #     configure :password_confirmation, :password         # Hidden 
+  #     configure :reset_password_token, :string         # Hidden 
+  #     configure :reset_password_sent_at, :datetime 
+  #     configure :remember_created_at, :datetime 
+  #     configure :sign_in_count, :integer 
+  #     configure :current_sign_in_at, :datetime 
+  #     configure :last_sign_in_at, :datetime 
+  #     configure :current_sign_in_ip, :string 
+  #     configure :last_sign_in_ip, :string 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
+  # config.model Restaurant do
+  #   # Found associations:
+  #     configure :dishes, :has_many_association   #   # Found columns:
+  #     configure :id, :integer 
+  #     configure :name, :string 
+  #     configure :address, :string 
+  #     configure :phone, :string 
+  #     configure :cuisine, :string 
+  #     configure :bill, :integer 
+  #     configure :yelp_reviews_count, :integer 
+  #     configure :lat, :float 
+  #     configure :lng, :float 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime 
+  #     configure :yelp_restaurant_id, :integer 
+  #     configure :city, :string   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
+  # config.model Review do
+  #   # Found associations:
+  #     configure :user, :belongs_to_association 
+  #     configure :dish, :belongs_to_association   #   # Found columns:
+  #     configure :id, :integer 
+  #     configure :user_id, :integer         # Hidden 
+  #     configure :dish_id, :integer         # Hidden 
+  #     configure :photo, :carrierwave 
+  #     configure :opinion, :boolean 
+  #     configure :comment, :string 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
+  # config.model User do
+  #   # Found associations:
+  #     configure :reviews, :has_many_association   #   # Found columns:
+  #     configure :id, :integer 
+  #     configure :email, :string 
+  #     configure :crypted_password, :string 
+  #     configure :salt, :string 
+  #     configure :remember_me_token, :string 
+  #     configure :photo, :carrierwave 
+  #     configure :name, :string 
+  #     configure :facebook_id, :integer 
+  #     configure :twitter_id, :string 
+  #     configure :vkontakte_id, :string 
+  #     configure :gender, :string 
+  #     configure :current_city, :string 
+  #     configure :fb_access_token, :string 
+  #     configure :oauth_token_secret, :string 
+  #     configure :oauth_token, :string 
+  #     configure :fb_valid_to, :datetime 
+  #     configure :remember_me_token_expires_at, :datetime 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime 
+  #     configure :yelp_profile_id, :string   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
+  # config.model Yelp::HighlightDish do
+  #   # Found associations:
+  #     configure :restaurant, :belongs_to_association   #   # Found columns:
+  #     configure :id, :integer 
+  #     configure :restaraunt_id, :integer         # Hidden 
+  #     configure :quote, :string 
+  #     configure :reviews_count, :integer 
+  #     configure :dish_name, :string 
+  #     configure :dish_photo, :string 
+  #     configure :profile_id, :string 
+  #     configure :profile_name, :string 
+  #     configure :profile_photo, :string 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime 
+  #     configure :sentence_review_id, :string 
+  #     configure :parsed, :boolean 
+  #     configure :dish_photo_url, :string 
+  #     configure :profile_photo_url, :string 
+  #     configure :biz_id, :string   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
+  # config.model Yelp::Restaurant do
+  #   # Found associations:
+  #     configure :highlight_dishes, :has_many_association   #   # Found columns:
+  #     configure :id, :integer 
+  #     configure :name, :string 
+  #     configure :ylp_uri, :string 
+  #     configure :lat, :string 
+  #     configure :lng, :string 
+  #     configure :rating, :string 
+  #     configure :review_count, :string 
+  #     configure :category, :string 
+  #     configure :address, :string 
+  #     configure :phone, :string 
+  #     configure :web, :string 
+  #     configure :transit, :string 
+  #     configure :hours, :string 
+  #     configure :parking, :string 
+  #     configure :cc, :string 
+  #     configure :price, :string 
+  #     configure :attire, :string 
+  #     configure :groups, :string 
+  #     configure :kids, :string 
+  #     configure :reservation, :string 
+  #     configure :delivery, :string 
+  #     configure :takeout, :string 
+  #     configure :table_service, :string 
+  #     configure :outdoor_seating, :string 
+  #     configure :wifi, :string 
+  #     configure :meal, :string 
+  #     configure :alcohol, :string 
+  #     configure :noise, :string 
+  #     configure :ambience, :string 
+  #     configure :tv, :string 
+  #     configure :caters, :string 
+  #     configure :wheelchair_accessible, :string 
+  #     configure :fsq_id, :string 
+  #     configure :fsq_name, :string 
+  #     configure :fsq_address, :string 
+  #     configure :fsq_lat, :string 
+  #     configure :fsq_lng, :string 
+  #     configure :fsq_checkins_count, :string 
+  #     configure :fsq_users_count, :string 
+  #     configure :fsq_tip_count, :string 
+  #     configure :restaurant_categories, :string 
+  #     configure :city, :string 
+  #     configure :has_menu, :boolean 
+  #     configure :db_status, :integer 
+  #     configure :our_network_id, :integer 
+  #     configure :menu_copied, :boolean 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
+  # config.model YelpRestaurant do
+  #   # Found associations:
+  #   # Found columns:
+  #     configure :id, :integer 
+  #     configure :name, :string 
+  #     configure :ylp_uri, :string 
+  #     configure :lat, :string 
+  #     configure :lng, :string 
+  #     configure :rating, :string 
+  #     configure :review_count, :string 
+  #     configure :category, :string 
+  #     configure :address, :string 
+  #     configure :phone, :string 
+  #     configure :web, :string 
+  #     configure :transit, :string 
+  #     configure :hours, :string 
+  #     configure :parking, :string 
+  #     configure :cc, :string 
+  #     configure :price, :string 
+  #     configure :attire, :string 
+  #     configure :groups, :string 
+  #     configure :kids, :string 
+  #     configure :reservation, :string 
+  #     configure :delivery, :string 
+  #     configure :takeout, :string 
+  #     configure :table_service, :string 
+  #     configure :outdoor_seating, :string 
+  #     configure :wifi, :string 
+  #     configure :meal, :string 
+  #     configure :alcohol, :string 
+  #     configure :noise, :string 
+  #     configure :ambience, :string 
+  #     configure :tv, :string 
+  #     configure :caters, :string 
+  #     configure :wheelchair_accessible, :string 
+  #     configure :fsq_id, :string 
+  #     configure :fsq_name, :string 
+  #     configure :fsq_address, :string 
+  #     configure :fsq_lat, :string 
+  #     configure :fsq_lng, :string 
+  #     configure :fsq_checkins_count, :string 
+  #     configure :fsq_users_count, :string 
+  #     configure :fsq_tip_count, :string 
+  #     configure :restaurant_categories, :string 
+  #     configure :city, :string 
+  #     configure :has_menu, :boolean 
+  #     configure :db_status, :integer 
+  #     configure :our_network_id, :integer 
+  #     configure :menu_copied, :boolean 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
+end

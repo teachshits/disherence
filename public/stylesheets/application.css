@@ -253,7 +253,8 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
       background: url("/images/pli-like.png") no-repeat left center;
       background-size: 30px;
       float: right;
-      padding-left: 40px;
+      padding-left: 36px;
+      padding-top: 5px;
       margin-bottom: 5px; }
     .more_place_info .info .dislike {
       background: url("/images/pli-dislike.png") no-repeat 5px center;
@@ -464,7 +465,7 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
         background: url("../images/pli-like.png") no-repeat left center;
         background-size: 25px;
         float: right;
-        padding-left: 35px;
+        padding-left: 30px;
         margin-bottom: 10px;
         color: #d2ffbe;
         text-shadow: none;

@@ -1,4 +1,12 @@
 Disherence::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  devise_for :rails_admin_users
+
+  # namespace :admin do
+  #   resources :puffer_users
+  # end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -46,7 +54,7 @@ Disherence::Application.routes.draw do
   #     resources :products
   #   end
 
-    match 'reviews/destroy/:id(/:review_id)' => 'reviews#destroy'
+  match 'reviews/destroy/:id(/:review_id)' => 'reviews#destroy'
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
