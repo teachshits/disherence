@@ -69,11 +69,8 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
   height: 333px;
   float: left;
   position: relative;
-  margin-bottom: 15px; }
-  .review .more_info:hover {
-    left: -320px; }
-  .review .more_info {
-    position: relative; }
+  margin-bottom: 15px;
+  overflow: hidden; }
   .review .curtain {
     position: absolute;
     background: url("/images/curtain.png") no-repeat;
