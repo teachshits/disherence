@@ -110,7 +110,11 @@ $(document).bind('pagecreate',function(){
 		
 		map_canvas_id = $(this).find(".map_canvas").attr('id')		
 		$.getJSON(map_canvas_id.replace(/_/g,'/'), function(json){
-			if (json != 0) { load_map([[json.place, json.lat, json.lng, json.flag]], map_canvas_id) }
+			if (json != 0) {
+				setTimeout(function(){
+					load_map([[json.place, json.lat, json.lng, json.flag]], map_canvas_id)
+				},1000)
+			}
 		})
 		
 	})
