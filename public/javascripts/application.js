@@ -110,8 +110,8 @@ $(document).bind('pagecreate',function(){
 		info_url = current_div.attr('id').replace(/_/g,'/')		
 		$.getJSON(info_url, function(json){
 			if (json != 0) {
-				$('#map_canvas').show().addClass('visible').appendTo(current_div.find('.map_canvas'))
-				setTimeout ( setMarkers(map, [[json.place, json.lat, json.lng, json.flag]]), 5000 );
+				$('#map_canvas').addClass('visible').appendTo(current_div.find('.map_canvas'))
+				setTimeout(setMarkers(map, [[json.place, json.lat, json.lng, json.flag]]), 5000);
 			}
 		})
 		
