@@ -14,6 +14,9 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
 .hidden {
   display: none; }
 
+.visible {
+  display: block; }
+
 .ui-body-a .ui-link:link, .ui-body-a .ui-link:visited, .ui-body-a .ui-link:hover, .ui-body-a .ui-link:active, a.place_name {
   color: #424242;
   text-decoration: none; }
@@ -39,6 +42,10 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
   font-family: "CompPro_bold";
   src: local("CompPro_bold");
   src: url("../fonts/PFDinTextCompPro-Medium.ttf") format("truetype"); }
+
+#map_canvas {
+  width: 300px;
+  height: 112px; }
 
 #loading {
   margin: 5px auto;

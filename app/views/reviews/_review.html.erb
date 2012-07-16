@@ -1,3 +1,4 @@
+<div id="map_canvas" class=""></div>
 <div class="review" style="background-image: url('<%= review.photo %>')">
 	<div class="curtain"></div>
 	<div class="urinfo">
@@ -10,7 +11,7 @@
 		<%= users_agreed(session[:user], review) %>	
 	</div>
 	<%= agree_buttons(session[:user],review) %>
-	<div class="more_info">
+	<div class="more_info" id="restaurants_info_<%= review.dish.restaurant.id %>">
 		<div class="rrinfo">
 			<h2><%= review.dish.name.length > 20 ? review.dish.name[0 .. 18] + '...' : review.dish.name %></h2>
 			<a class="place_name" href="/restaurants/show/<%= review.dish.restaurant.id %>"><%= review.dish.restaurant.name %></a>
@@ -22,10 +23,10 @@
 				<div class="photos"><%= review.dish.photos %></div>
 			</div>
 		</div>
-		<div class="more_place_info">
+		<div class="more_place_info">			
 			<div class="cover"></div>
 			<div class="content">
-				<div class="map_canvas" id="restaurants_info_<%= review.dish.restaurant.id %>"></div>
+				<div class="map_canvas"></div>
 				<div class="info">
 					<div class="name"><%= review.dish.name %></div>
 					<div class="dislike"><%= review.dish.dislikes %></div>

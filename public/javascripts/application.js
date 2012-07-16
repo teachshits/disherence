@@ -1,9 +1,8 @@
 $(document).bind('pagecreate',function(){
+	var map = load_map('map_canvas')
 	
 	$('#resataurants_button').live('click', function(){
-		
 		link = $(this).attr('href');
-
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		
 		setInterval(function(){
@@ -11,7 +10,6 @@ $(document).bind('pagecreate',function(){
 				window.location.href = '/restaurants'
 			}	
 		},300);
-		
 		return false;
 	})
 	
@@ -22,7 +20,6 @@ $(document).bind('pagecreate',function(){
 		$url = $btn_obj.attr('id').replace(/_/g,'/')
 
 		$.getJSON($url, function(json){
-
 			if (json.result == 1) {
 				
 				//buttons animation
@@ -49,6 +46,7 @@ $(document).bind('pagecreate',function(){
 				update_feed_stats($status_obj, json)
 			}
 		});	
+		
 		$status_obj.fadeOut()
 		$status_obj.next('.op_btns').fadeIn()
 		return false;
@@ -106,14 +104,14 @@ $(document).bind('pagecreate',function(){
 	
 	
 	$('.more_info').live('swipeleft', function(event){
-		$(this).addClass('swipe')
+		current_div = $(this)
+		current_div.addClass('swipe')
 		
-		map_canvas_id = $(this).find(".map_canvas").attr('id')		
-		$.getJSON(map_canvas_id.replace(/_/g,'/'), function(json){
+		info_url = current_div.attr('id').replace(/_/g,'/')		
+		$.getJSON(info_url, function(json){
 			if (json != 0) {
-				setTimeout(function(){
-					load_map([[json.place, json.lat, json.lng, json.flag]], map_canvas_id)
-				},200)
+				$('#map_canvas').show().addClass('visible').appendTo(current_div.find('.map_canvas'))
+				setTimeout ( setMarkers(map, [[json.place, json.lat, json.lng, json.flag]]), 5000 );
 			}
 		})
 		
@@ -126,7 +124,7 @@ $(document).bind('pagecreate',function(){
 	
 	$('.more_place_info').live('swiperight', function(event){
 		$(this).parent('.more_info').removeClass('swipe')
-		$(this).find(".map_canvas").children().remove()		
+		$(this).find("#map_canvas").hide()		
 	})
 	
 	$('.dish .rating').live('swipeleft', function(event){
@@ -215,7 +213,7 @@ function swipe_users(direction, object) {
 	}
 }
 
-function load_map(markers, element_id) {
+function load_map(element_id) {
   var mapOptions = {
 		mapTypeControl: false,
 		streetViewControl: false,
@@ -224,8 +222,8 @@ function load_map(markers, element_id) {
 		center: new google.maps.LatLng(0,0)
   }
   map = new google.maps.Map(document.getElementById(element_id),mapOptions);
-
-	setMarkers(map, markers);
+	return map
+	// setMarkers(map, markers);
 }
 
 // Add markers to the map
