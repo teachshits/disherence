@@ -34,6 +34,7 @@ group :test, :development do
 end
 
 gem 'yelp', :path => '../ylp_parser'
+gem 'unity_storage', :path => '../unitystorage_ruby'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

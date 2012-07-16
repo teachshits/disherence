@@ -1,10 +1,20 @@
 PATH
+  remote: ../unitystorage_ruby
+  specs:
+    unity_storage (0.0.1)
+      httparty (~> 0.8.3)
+      sinatra (~> 1.3.2)
+      thin (~> 1.4.1)
+      yajl-ruby (~> 1.1.0)
+
+PATH
   remote: ../ylp_parser
   specs:
     yelp (0.0.1)
       httparty (~> 0.8.3)
       nokogiri (~> 1.5.5)
       rails (~> 3.2.6)
+      yajl-ruby (~> 1.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -100,6 +110,8 @@ GEM
     rack-pjax (0.5.9)
       hpricot (~> 0.8.6)
       rack (~> 1.3)
+    rack-protection (1.2.0)
+      rack
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.1)
@@ -154,6 +166,10 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    sinatra (1.3.2)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -174,6 +190,7 @@ GEM
       multi_json (~> 1.3)
     warden (1.2.1)
       rack (>= 1.0)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -193,4 +210,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   thin
   uglifier (>= 1.0.3)
+  unity_storage!
   yelp!

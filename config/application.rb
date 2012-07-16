@@ -10,6 +10,7 @@ if defined?(Bundler)
 end
 
 require "yelp"
+require "unity_storage/proxy_app"
 
 module Disherence
   class Application < Rails::Application    

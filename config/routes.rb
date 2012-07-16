@@ -1,5 +1,6 @@
 Disherence::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount UnityStorage::ProxyApp => '/unitystorage/proxy'
 
   devise_for :rails_admin_users
 
