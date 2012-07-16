@@ -8,9 +8,4 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find_by_id(params[:id])
   end
-
-  def url_fetch
-    render :text => request.env.inspect
-  end
-  
 end
