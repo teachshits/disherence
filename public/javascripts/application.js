@@ -113,7 +113,7 @@ $(document).bind('pagecreate',function(){
 			if (json != 0) {
 				setTimeout(function(){
 					load_map([[json.place, json.lat, json.lng, json.flag]], map_canvas_id)
-				},100)
+				},200)
 			}
 		})
 		
