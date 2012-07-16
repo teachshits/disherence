@@ -104,16 +104,18 @@ $(document).bind('pagecreate',function(){
 		swipe_users('right',$(this))
 	})
 	
-	$('.rrinfo').live('swipeleft', function(event){
-		$element = $(this);
-		$div = $(this).parent('.review').children('.more_place_info')
-		swipe_info($element, $div, 'left')
+	
+	$('.more_info').live('swipeleft', function(event){
+		$(this).addClass('swipe')
+	})
+	
+	$('.map_canvas').live('swiperight', function(event){
+		event.preventDefault();
+		event.stopPropagation();
 	})
 	
 	$('.more_place_info').live('swiperight', function(event){
-		$element = $(this);
-		$div = $(this).parent('.review').children('.rrinfo')
-		swipe_info($element, $div, 'right')
+		$(this).parent('.more_info').removeClass('swipe')
 	})
 	
 	$('.dish .rating').live('swipeleft', function(event){
