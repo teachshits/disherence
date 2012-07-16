@@ -8,7 +8,7 @@ $(document).bind('pagecreate',function(){
 		
 		setInterval(function(){
 			if ($.cookie("lat") != null && $.cookie("lng") != null){
-				window.location.href = link
+				window.location.href = '/restaurants'
 			}	
 		},300);
 		
