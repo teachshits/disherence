@@ -25,7 +25,7 @@
 		<div class="more_place_info">
 			<div class="cover"></div>
 			<div class="content">
-				<div class="map_canvas" id="map_canvas<%= review.id %>"></div>
+				<div class="map_canvas" id="restaurants_info_<%= review.dish.restaurant.id %>"></div>
 				<div class="info">
 					<div class="name"><%= review.dish.name %></div>
 					<div class="dislike"><%= review.dish.dislikes %></div>
@@ -37,8 +37,5 @@
 			</div>
 		</div>
 	</div>
-	<script> 
-	load_map([['<%= review.dish.restaurant.name %>', <%= review.dish.restaurant.lat %>, <%= review.dish.restaurant.lng %>, 1]], 'map_canvas<%= review.id %>')
-	</script>
 </div>
 <div class="rhr"></div>

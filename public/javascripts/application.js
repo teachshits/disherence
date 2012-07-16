@@ -106,7 +106,17 @@ $(document).bind('pagecreate',function(){
 	
 	
 	$('.more_info').live('swipeleft', function(event){
+		
 		$(this).addClass('swipe')
+		map_canvas = $(this).find(".map_canvas")
+				
+		$.getJSON(map_canvas.attr('id').replace(/_/g,'/'), function(json){
+			if (json != 0) {
+				map_canvas.addClass('fadeIn')
+				load_map([[json.place, json.lat, json.lng, json.flag]], map_canvas.attr('id'))
+			}
+		})
+		
 	})
 	
 	$('.map_canvas').live('swiperight', function(event){
@@ -116,6 +126,10 @@ $(document).bind('pagecreate',function(){
 	
 	$('.more_place_info').live('swiperight', function(event){
 		$(this).parent('.more_info').removeClass('swipe')
+		map_canvas = $(this).find(".map_canvas")
+		map_canvas.addClass('fadeOut')
+		map_canvas.children().remove()
+		
 	})
 	
 	$('.dish .rating').live('swipeleft', function(event){
@@ -184,7 +198,6 @@ function swipe_info(element, div, direction) {
 	}
 }
 
-
 function swipe_users(direction, object) {
 	if (direction == 'left') {
 		object.children('.num').fadeOut()
@@ -214,6 +227,7 @@ function load_map(markers, element_id) {
 		center: new google.maps.LatLng(0,0)
   }
   map = new google.maps.Map(document.getElementById(element_id),mapOptions);
+
 	setMarkers(map, markers);
 }
 
