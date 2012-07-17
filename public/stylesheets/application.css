@@ -70,8 +70,9 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
   margin-top: 2px;
   margin-bottom: 2px; }
 
-.reviews {
-  overflow-x: hidden; }
+#reviews {
+  overflow-x: hidden;
+  width: 320px; }
 
 .review {
   background: no-repeat;
