@@ -1,532 +1,75 @@
-.body {
-  overflow: hidden; }
+/*
+Syntax error: Invalid CSS after "margin:": expected pseudoclass or pseudoelement, was "-112px 0 0 320px"
+        on line 4 of app/sass/_feed.sass
+        from line 51 of app/sass/application.sass
 
-body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-body-a button {
-  font-family: CompPro; }
+1: $review_w: 320px
+2: $rrinfo_w: 180px
+3: $rrinfo_lh: 2px
+4: $rhr_lrm: 20px
+5: $rhr_tbm: 15px
+6: 
+7: $place_name_fs: 0.9em
+8: $place_name_pl: 20px
+9: 
 
-.ui-content {
-  padding: 0; }
-
-.trsp {
-  width: 100%;
-  height: 100%; }
-
-.hidden {
-  display: none; }
-
-.visible {
-  display: block; }
-
-.ui-body-a .ui-link:link, .ui-body-a .ui-link:visited, .ui-body-a .ui-link:hover, .ui-body-a .ui-link:active, a.place_name {
-  color: #424242;
-  text-decoration: none; }
-
-.user_img {
-  background: no-repeat center center;
-  background-size: cover;
-  float: left;
-  width: 25px;
-  height: 25px;
-  border: 5px;
-  border: 3px solid white;
-  box-shadow: 0 1px 2px #666666;
-  margin: 3px 10px;
-  clear: both; }
-
-@font-face {
-  font-family: "CompPro";
-  src: local("CompPro");
-  src: url("../fonts/PFDinTextCompPro-Regular.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "CompPro_bold";
-  src: local("CompPro_bold");
-  src: url("../fonts/PFDinTextCompPro-Medium.ttf") format("truetype"); }
-
-#map_canvas {
-  width: 300px;
-  height: 112px;
-  margin-left: 320px;
-  margin-left: -110px; }
-
-#loading {
-  margin: 5px auto;
-  display: block; }
-
-#resataurants_button {
-  background: url("/images/plate.png") no-repeat;
-  background-size: 53px;
-  height: 53px;
-  width: 53px;
-  bottom: 10px;
-  right: 20px;
-  display: block;
-  position: fixed;
-  z-index: 1; }
-
-#logo {
-  background: url("/images/logo.png") no-repeat;
-  background-size: contain;
-  height: 36px;
-  margin-top: 2px;
-  margin-bottom: 2px; }
-
-#reviews {
-  overflow-x: hidden;
-  width: 320px; }
-
-.review {
-  background: no-repeat;
-  background-size: cover;
-  width: 320px;
-  height: 333px;
-  float: left;
-  position: relative;
-  margin-bottom: 15px;
-  overflow: hidden; }
-  .review .swipe {
-    left: -320px; }
-  .review .more_info {
-    -webkit-transition: left 0.3s ease-in-out;
-    position: relative; }
-  .review .curtain {
-    position: absolute;
-    background: url("/images/curtain.png") no-repeat;
-    background-size: contain;
-    width: 320px;
-    height: 135px; }
-  .review .op_status {
-    height: 48px;
-    width: 320px;
-    background-size: 320px;
-    display: none;
-    top: 285px;
-    display: block;
-    position: absolute; }
-  .review .agree {
-    background: url("/images/op_btns.png") 0 -56px; }
-  .review .disagree {
-    background: url("/images/op_btns.png") 0 -112px; }
-  .review .op_btns {
-    position: absolute;
-    top: 285px; }
-    .review .op_btns .btn_agree, .review .op_btns .btn_disagree {
-      background: url("/images/op_btns.png") no-repeat;
-      background-size: 320px;
-      height: 48px;
-      width: 160px;
-      float: left; }
-    .review .op_btns .btn_disagree {
-      background: url("/images/op_btns.png") no-repeat -160px 0;
-      left: 160px; }
-
-.rrinfo {
-  position: absolute;
-  background: url("/images/rr-info.png") no-repeat;
-  background-size: 195px;
-  margin-top: 58px;
-  width: 152.308px;
-  height: 90px;
-  padding-left: 27.692px;
-  top: 2px;
-  right: 0;
-  line-height: 1em;
-  padding-top: 11px; }
-  .rrinfo div {
-    margin: 2px 0; }
-  .rrinfo h2 {
-    font-size: 1.4em;
-    margin: 0;
-    padding: 0; }
-  .rrinfo .place_name {
-    background: url("/images/rr-marker.png") no-repeat left center;
-    background-size: contain;
-    font-size: 0.9em;
-    padding-left: 20px;
-    font-family: CompPro_bold; }
-  .rrinfo .place_address {
-    font-size: 0.81em; }
-  .rrinfo .hr {
-    height: 1px;
-    border-top: 1px solid #d9d0ce;
-    background-color: #c5c1be;
-    width: 100px; }
-  .rrinfo .stats {
-    font-size: 1em; }
-    .rrinfo .stats .likes {
-      background: url("/images/rr-likes.png") no-repeat;
-      background-size: contain;
-      padding: 0 20px;
-      float: left; }
-    .rrinfo .stats .users {
-      background: url("/images/rr-users.png") no-repeat;
-      background-size: contain;
-      padding: 0 15px;
-      float: left; }
-    .rrinfo .stats .photos {
-      background: url("/images/rr-photo.png") no-repeat;
-      background-size: contain;
-      padding: 0 0 0 22px;
-      float: left; }
-
-.urinfo {
-  background: rgba(255, 255, 255, 0.6);
-  height: 64px;
-  width: 320px;
-  float: left;
-  line-height: 1.4em;
-  margin-top: 221px; }
-  .urinfo .photo {
-    width: 48px;
-    height: 48px;
-    margin: 5px;
-    border: 2px solid white;
-    box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.85);
-    float: left;
-    background: no-repeat;
-    background-size: cover; }
-  .urinfo .stats {
-    margin: 5px 0;
-    line-height: 1.2em;
-    float: left; }
-    .urinfo .stats .name {
-      font-size: 1.3em;
-      margin: 0; }
-    .urinfo .stats .opinion {
-      color: #f03a2c;
-      font-size: 1em; }
-    .urinfo .stats .disagree_count {
-      font-size: 0.9em;
-      font-weight: normal; }
-  .urinfo .users {
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    height: 64px;
-    width: 86px;
-    background: url("/images/ru-count.png") no-repeat;
-    background-size: auto 64px; }
-    .urinfo .users .profiles {
-      width: 2000px;
-      padding-left: 45px;
-      display: none; }
-    .urinfo .users .profile {
-      width: 38.4px;
-      height: 38.4px;
-      margin: 2px;
-      border: 2px solid white;
-      box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.85);
-      float: left;
-      background: no-repeat;
-      background-size: cover;
-      margin-top: 12px; }
-    .urinfo .users .num {
-      margin: 20px 0 0 45px;
-      font-size: 1.5em; }
-    .urinfo .users .text {
-      margin-left: 20px;
-      font-size: 0.9em;
-      text-transform: uppercase;
-      color: #808388; }
-
-.rhr {
-  height: 1px;
-  width: 280px;
-  background-color: #acada0;
-  border-bottom: 1px solid white;
-  clear: both;
-  display: block;
-  margin: 0 20px 15px 20px; }
-
-.more_place_info {
-  background: #414143 url("/images/pli-bg.png") repeat-y;
-  position: absolute;
-  left: 320px;
-  width: 300px;
-  height: 265px;
-  padding: 10px;
-  text-shadow: none; }
-  .more_place_info .cover {
-    height: 110px;
-    width: 19px;
-    position: absolute;
-    z-index: 1;
-    background: url("/images/pli-cover.png") no-repeat;
-    background-size: contain;
-    margin-top: 50px;
-    margin-left: -10px; }
-  .more_place_info .map_canvas {
-    width: 300px;
-    height: 112px; }
-  .more_place_info .info {
-    color: white;
-    font-size: 1.7em;
-    margin: 10px 10px 0 10px; }
-    .more_place_info .info .name {
-      float: left;
-      line-height: 0.9em;
-      padding: 5px 0 5px 10px;
-      width: 155px; }
-    .more_place_info .info .like, .more_place_info .info .dislike {
-      background: url("/images/pli-like.png") no-repeat left center;
-      background-size: 30px;
-      float: right;
-      padding-left: 36px;
-      padding-top: 5px;
-      margin-bottom: 5px; }
-    .more_place_info .info .dislike {
-      background: url("/images/pli-dislike.png") no-repeat 5px center;
-      border-left: 1px solid white;
-      margin-left: 10px; }
-  .more_place_info .description {
-    font-size: 0.9em;
-    line-height: 1.4em;
-    color: white;
-    font-family: Helvetica;
-    margin: 0 10px; }
-  .more_place_info .hr {
-    clear: both;
-    height: 1px;
-    background: white;
-    width: 280px;
-    margin: 0 10px; }
-  .more_place_info .price {
-    color: white;
-    font-size: 1.6em;
-    position: absolute;
-    text-align: right;
-    right: 10px;
-    bottom: 5px; }
-
-#map {
-  width: 320px; }
-  #map .search_map_canvas {
-    height: 160px; }
-  #map .restaurant {
-    margin-top: 10px;
-    color: #414143;
-    background: #dfdfc5; }
-    #map .restaurant .distance {
-      color: #6c6053;
-      height: 60px;
-      width: 53.333px;
-      float: left;
-      display: block;
-      text-align: right;
-      padding: 9px 10px 0 0; }
-    #map .restaurant .info {
-      margin-right: 10px; }
-      #map .restaurant .info .name {
-        float: left;
-        font-size: 1.7em;
-        width: 160px; }
-      #map .restaurant .info .rate {
-        float: right; }
-        #map .restaurant .info .rate .star {
-          float: left;
-          margin-left: 3px;
-          width: 14px;
-          height: 14px;
-          background-size: 14px; }
-        #map .restaurant .info .rate .fill {
-          background: url("../images/fill.png") no-repeat; }
-        #map .restaurant .info .rate .half {
-          background: url("../images/half.png") no-repeat; }
-        #map .restaurant .info .rate .empty {
-          background: url("../images/empty.png") no-repeat; }
-      #map .restaurant .info .rating {
-        clear: both;
-        font-size: 0.8em;
-        color: #808086;
-        text-shadow: none;
-        float: right; }
-      #map .restaurant .info .ico {
-        float: left;
-        width: 12px;
-        height: 14px;
-        background: url("../images/rr-users.png") no-repeat 0 center;
-        background-size: 10px; }
-    #map .restaurant .address {
-      float: left;
-      background: url("../images/rr-marker.png") no-repeat;
-      background-size: 12px;
-      padding-left: 20px; }
-    #map .restaurant .stats {
-      text-shadow: none;
-      float: left;
-      font-family: CompPro_bold;
-      width: 250px; }
-  #map .hr {
-    margin-left: 64px;
-    margin-right: 10px;
-    clear: both;
-    height: 1px;
-    border-top: #9fa198 1px solid;
-    background: white; }
-
-#top_dishes {
-  width: 320px; }
-  #top_dishes .restaurant {
-    margin: 10px 0 10px 10px;
-    color: #414143;
-    background: #dfdfc5; }
-    #top_dishes .restaurant #menu_button {
-      width: 57px;
-      height: 24px;
-      margin: -15px 10px 0 0;
-      background: url("../images/td-menu-button.png") no-repeat;
-      background-size: 57px;
-      display: block;
-      float: right; }
-    #top_dishes .restaurant .info {
-      margin-right: 10px; }
-      #top_dishes .restaurant .info .name {
-        float: left;
-        font-size: 1.7em; }
-      #top_dishes .restaurant .info .rate {
-        float: right; }
-        #top_dishes .restaurant .info .rate .star {
-          float: left;
-          margin-left: 3px;
-          width: 14px;
-          height: 14px;
-          background-size: 14px; }
-        #top_dishes .restaurant .info .rate .fill {
-          background: url("../images/fill.png") no-repeat; }
-        #top_dishes .restaurant .info .rate .half {
-          background: url("../images/half.png") no-repeat; }
-        #top_dishes .restaurant .info .rate .empty {
-          background: url("../images/empty.png") no-repeat; }
-      #top_dishes .restaurant .info .rating {
-        clear: both;
-        font-size: 0.8em;
-        color: #808086;
-        text-shadow: none;
-        float: right; }
-      #top_dishes .restaurant .info .ico {
-        float: left;
-        width: 12px;
-        height: 14px;
-        background: url("../images/rr-users.png") no-repeat 0 center;
-        background-size: 10px; }
-    #top_dishes .restaurant .address {
-      clear: both;
-      float: left;
-      background: url("../images/rr-marker.png") no-repeat;
-      background-size: 12px;
-      padding-left: 20px; }
-    #top_dishes .restaurant .stats {
-      clear: both;
-      text-shadow: none;
-      float: left;
-      font-family: CompPro_bold; }
-  #top_dishes .hr {
-    clear: both;
-    height: 1px;
-    border-top: #9fa198 1px solid;
-    background: white;
-    margin: 0 10px; }
-  #top_dishes #banner {
-    height: 30px;
-    width: 301px;
-    margin: 0 auto;
-    background: url("../images/td-banner.png") no-repeat 0 center;
-    background-size: 301px;
-    color: #726658;
-    text-shadow: none;
-    font-size: 0.9em;
-    text-align: center;
-    padding-top: 45px; }
-  #top_dishes .dish {
-    height: 110px;
-    background: left center;
-    background-size: 320px;
-    position: relative;
-    overflow: hidden; }
-    #top_dishes .dish .name {
-      float: left;
-      font-family: CompPro_bold;
-      font-size: 2em;
-      padding: 5px 0 0 10px;
-      color: #d5ffbf;
-      text-shadow: 0 1px 2px #666666; }
-    #top_dishes .dish .rating {
-      font-family: CompPro_bold;
-      background: url("../images/td-rate-flag.png") no-repeat 0 center;
-      background-size: 120px;
-      font-size: 2em;
-      color: #d2ffbe;
-      right: 0;
-      padding: 5px 7px 15px 38px;
-      top: 5px;
-      text-shadow: 0 2px 2px #999999;
-      position: absolute; }
-    #top_dishes .dish .user_img {
-      margin: 20px 5px 0 10px; }
-    #top_dishes .dish .comment {
-      float: left;
-      color: white;
-      margin-top: 30px;
-      text-shadow: none; }
-  #top_dishes .dish_info {
-    height: 110px;
-    background: left center;
-    background-size: 320px;
-    position: absolute;
-    left: 320px;
-    width: 320px;
-    background: url("../images/pli-bg.png"); }
-    #top_dishes .dish_info .stats {
-      font-size: 1.7em;
-      margin: 10px 10px 0 10px; }
-      #top_dishes .dish_info .stats .like, #top_dishes .dish_info .stats .dislike {
-        background: url("../images/pli-like.png") no-repeat left center;
-        background-size: 25px;
-        float: right;
-        padding-left: 30px;
-        margin-bottom: 10px;
-        color: #d2ffbe;
-        text-shadow: none;
-        height: 25px; }
-      #top_dishes .dish_info .stats .dislike {
-        background: url("../images/pli-dislike.png") no-repeat 5px center;
-        border-left: 1px solid #cbcbcd;
-        margin-left: 10px;
-        color: #e0b355; }
-    #top_dishes .dish_info .cover {
-      background: url("../images/td-rate-flag-tail.png") no-repeat -5px center;
-      background-size: contain;
-      float: left;
-      height: 48px;
-      padding: 5px 7px 12px 20px;
-      margin-top: 1px;
-      text-shadow: 0 2px 2px #999999; }
-    #top_dishes .dish_info .name {
-      line-height: 0.8em;
-      padding: 10px 0 0 10px;
-      width: 170px; }
-    #top_dishes .dish_info .op_status_d {
-      height: 48px;
-      width: 290px;
-      background-size: 285px;
-      top: 60px;
-      left: 20px;
-      display: block;
-      position: absolute; }
-    #top_dishes .dish_info .like {
-      background: url("/images/td-choise-buttons.png") 0 -50px; }
-    #top_dishes .dish_info .dislike {
-      background: url("/images/td-choise-buttons.png") 0 -100px; }
-    #top_dishes .dish_info .op_btns_d {
-      position: absolute;
-      top: 60px;
-      left: 25px; }
-      #top_dishes .dish_info .op_btns_d .btn_agree_d, #top_dishes .dish_info .op_btns_d .btn_disagree_d {
-        float: left;
-        background: url("../images/td-choise-buttons.png") no-repeat;
-        background-size: 280px;
-        height: 48px;
-        width: 140px; }
-      #top_dishes .dish_info .op_btns_d .btn_disagree_d {
-        background: url("../images/td-choise-buttons.png") no-repeat -140px 0;
-        margin-left: 7px; }
+Backtrace:
+app/sass/_feed.sass:4
+app/sass/application.sass:51
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/scss/parser.rb:1010:in `expected'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/scss/parser.rb:956:in `expected'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/scss/parser.rb:938:in `expr!'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/scss/parser.rb:701:in `pseudo'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/scss/parser.rb:591:in `simple_selector_sequence'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/scss/parser.rb:567:in `_selector'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/scss/parser.rb:551:in `selector_comma_sequence'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/scss/parser.rb:937:in `expr!'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/scss/static_parser.rb:18:in `parse_selector'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:232:in `visit_rule'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:146:in `block in visit_import'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:146:in `map'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:146:in `visit_import'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/tree/root_node.rb:20:in `render'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/engine.rb:300:in `_render'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/engine.rb:247:in `render'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/lib/sass/plugin/compiler.rb:298:in `block in watch'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/vendor/listen/lib/listen/multi_listener.rb:86:in `call'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/vendor/listen/lib/listen/multi_listener.rb:86:in `on_change'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/vendor/listen/lib/listen/multi_listener.rb:95:in `block in initialize_adapter'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/vendor/listen/lib/listen/adapters/polling.rb:55:in `call'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/vendor/listen/lib/listen/adapters/polling.rb:55:in `poll'
+/Users/mac/.rvm/gems/ruby-1.9.3-p194@disherence/gems/sass-3.1.20/vendor/listen/lib/listen/adapters/polling.rb:31:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"margin:\": expected pseudoclass or pseudoelement, was \"-112px 0 0 320px\"\A         on line 4 of app/sass/_feed.sass\A         from line 51 of app/sass/application.sass\A \A 1: $review_w: 320px\A 2: $rrinfo_w: 180px\A 3: $rrinfo_lh: 2px\A 4: $rhr_lrm: 20px\A 5: $rhr_tbm: 15px\A 6: \A 7: $place_name_fs: 0.9em\A 8: $place_name_pl: 20px\A 9: "; }
