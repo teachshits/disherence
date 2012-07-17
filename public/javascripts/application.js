@@ -114,9 +114,8 @@ $(document).bind('pagecreate',function(){
 				id = current_div.attr('id')	
 
 				$('#map_canvas').appendTo(current_div.find('.map_canvas'))
-				// console.log(r_info[id]['name'])
 				setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
-				$('#map_canvas').show()
+				$('#map_canvas').css('margin', '0').show()
 
 		}, 300);
 		
