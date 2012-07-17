@@ -25,7 +25,7 @@ module ReviewsHelper
       status_add_class = agree == 1 ? ' agree' :  ' disagree'
     end
     
-		raw "<a class=\"op_status#{status_add_class}\" id=\"_reviews_disagree_#{review.dish_id}_#{review.id}\" href=\"/reviews/destroy/#{review.dish_id}/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
+		raw "<a class=\"op_status#{status_add_class}\" id=\"_reviews_destroy_#{review.dish_id}_#{review.id}\" href=\"/reviews/destroy/#{review.dish_id}/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
 		<div class=\"op_btns#{op_btns_add_class}\">
 			<a class=\"btn_agree\" id=\"_reviews_agree_#{review.id}\" href=\"/reviews/agree/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
 			<a class=\"btn_disagree\" id=\"_reviews_disagree_#{review.id}\" href=\"/reviews/disagree/#{review.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></a>
