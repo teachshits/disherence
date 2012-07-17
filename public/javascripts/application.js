@@ -42,7 +42,8 @@ $(document).bind('pagecreate',function(){
 	
 	$('.op_status').live('click', function(){
 		$status_obj = $(this)
-		$.getJSON(this.href, function(json){
+		$url = $status_obj.attr('id').replace(/_/g,'/')
+		$.getJSON($url, function(json){
 			if (json.result == 1) {
 				update_feed_stats($status_obj, json)
 			}
@@ -143,7 +144,6 @@ $(document).bind('pagecreate',function(){
 	})
 	
 })
-
 
 function getLocation(pos)
 {
