@@ -1,6 +1,7 @@
 $(document).bind('pagecreate',function(){
-	var map = load_map('map_canvas')
-	
+	var map = load_map('map_canvas');
+	markerList = [];
+		
 	$('#resataurants_button').live('click', function(){
 		link = $(this).attr('href');
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
@@ -104,16 +105,20 @@ $(document).bind('pagecreate',function(){
 	
 	
 	$('.more_info').live('swipeleft', function(event){
+		$('.swipe').removeClass('swipe')
 		current_div = $(this)
 		current_div.addClass('swipe')
 		
-		info_url = current_div.attr('id').replace(/_/g,'/')		
-		$.getJSON(info_url, function(json){
-			if (json != 0) {
-				$('#map_canvas').addClass('visible').appendTo(current_div.find('.map_canvas'))
-				setTimeout(setMarkers(map, [[json.place, json.lat, json.lng, json.flag]]), 5000);
-			}
-		})
+		setTimeout(
+			function(){
+				id = current_div.attr('id')	
+
+				$('#map_canvas').appendTo(current_div.find('.map_canvas'))
+				// console.log(r_info[id]['name'])
+				setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
+				$('#map_canvas').show()
+
+		}, 300);
 		
 	})
 	
@@ -226,8 +231,17 @@ function load_map(element_id) {
 	// setMarkers(map, markers);
 }
 
+//Clear all markers
+function clearMarkers() {
+	for (var i=0; i< markerList.length; i++) {
+		markerList[i].setMap(null);
+	}
+	markerList = [];
+}
+
 // Add markers to the map
 function setMarkers(map, locations) {
+	if (typeof markerList != 'undefined') {clearMarkers()}
   // Add markers to the map
   // Marker sizes are expressed as a Size of X,Y
   // where the origin of the image (0,0) is located
@@ -243,7 +257,7 @@ function setMarkers(map, locations) {
       new google.maps.Point(0,0),
       // The anchor for this image is the base of the flagpole at 0,32.
       new google.maps.Point(0, 42));
-  // var shadow = new google.maps.MarkerImage('http://code.google.com/intl/ru-RU/apis/maps/documentation/javascript/examples/images/beachflag_shadow.png',
+  // var shadow = new google.maps.MarkerImage('http://code.google.com/intl/ru-RU/apis/maps/documentation/javascript/examples/images/placeflag_shadow.png',
       // The shadow image is larger in the horizontal dimension
       // while the position and offset are the same as for the main image.
       // new google.maps.Size(37, 32),
@@ -260,17 +274,20 @@ function setMarkers(map, locations) {
   };
 	var bounds = new google.maps.LatLngBounds();
   for (var i = 0; i < locations.length; i++) {
-    var beach = locations[i];
-    var myLatLng = new google.maps.LatLng(beach[1], beach[2]);
+    var place = locations[i];
+    var myLatLng = new google.maps.LatLng(place[1], place[2]);
     var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
         icon: image,
         shape: shape,
-        title: beach[0],
-        zIndex: beach[3]
+        title: place[0],
+        zIndex: place[3]
     });
+		markerList.push(marker);
 		bounds.extend(myLatLng);
   }
+	map_center = bounds.getCenter();
+	map.setCenter(map_center);
 	map.fitBounds(bounds);
 }

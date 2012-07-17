@@ -1,4 +1,5 @@
 <div class="review" style="background-image: url('<%= review.photo %>')">
+	<script><%= raw @restaurants_info %></script>
 	<div class="curtain"></div>
 	<div class="urinfo">
 		<div class="photo" style="background-image: url('<%= review.user.photo %>')"></div>
@@ -10,7 +11,7 @@
 		<%= users_agreed(session[:user], review) %>	
 	</div>
 	<%= agree_buttons(session[:user],review) %>
-	<div class="more_info" id="restaurants_info_<%= review.dish.restaurant.id %>">
+	<div class="more_info" id="r_<%= review.dish.restaurant.id %>">
 		<div class="rrinfo">
 			<h2><%= review.dish.name.length > 20 ? review.dish.name[0 .. 18] + '...' : review.dish.name %></h2>
 			<a class="place_name" href="/restaurants/show/<%= review.dish.restaurant.id %>"><%= review.dish.restaurant.name %></a>
