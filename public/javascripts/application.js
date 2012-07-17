@@ -42,7 +42,6 @@ $(document).bind('pagecreate',function(){
 	
 	$('.op_status').live('click', function(){
 		$status_obj = $(this)
-		alert($url)
 		$url = $status_obj.attr('id').replace(/_/g,'/')
 		$.getJSON($url, function(json){
 			if (json.result == 1) {
