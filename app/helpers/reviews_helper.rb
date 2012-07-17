@@ -32,11 +32,11 @@ module ReviewsHelper
 		</div>"
   end
   
-  def users_agreed(user_id, review)
+  def users_agreed(user, review)
     
     profiles = []
-    Review.where('dish_id = ? AND user_id != ?',review.dish_id,review.user_id).each do |rw|
-      profiles.push("<a href= \"#\" class=\"profile\" style=\"background-image: url('#{rw.user.photo}')\"></a>") if rw.agree?(user_id) == 1
+    Review.where('dish_id = ? AND user_id != ? AND opinion = ?', review.dish_id, review.user_id, review.opinion).each do |rw|
+      profiles.push("<a href= \"#\" class=\"profile\" style=\"background-image: url('#{rw.user.photo}')\"></a>")
     end
     
     add_class_hidden = !profiles.any? ? ' hidden' : ''

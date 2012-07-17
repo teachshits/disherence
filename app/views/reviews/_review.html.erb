@@ -14,12 +14,12 @@
 	<div class="more_info" id="r_<%= review.dish.restaurant.id %>">
 		<div class="rrinfo">
 			<h2><%= review.dish.name.length > 20 ? review.dish.name[0 .. 18] + '...' : review.dish.name %></h2>
-			<a class="place_name" href="/restaurants/show/<%= review.dish.restaurant.id %>"><%= review.dish.restaurant.name %></a>
+			<a class="place_name" href="/restaurants/show/<%= review.dish.restaurant.id %>"><%= review.dish.restaurant.name.length > 22 ? review.dish.restaurant.name[0 .. 20] + '...' : review.dish.restaurant.name %></a>
 			<div class="place_address"><%= review.dish.restaurant.address.length > 33 ? review.dish.restaurant.address[0 .. 30] + '...' : review.dish.restaurant.address  %></div>
 			<div class="hr"></div>
 			<div class="stats">
 				<div class="likes"><%= review.dish.likes %></div>
-				<div class="users"><%= review.dish.likes + review.dish.dislikes %></div>
+				<div class="profiles"><%= review.dish.likes + review.dish.dislikes %></div>
 				<div class="photos"><%= review.dish.photos %></div>
 			</div>
 		</div>

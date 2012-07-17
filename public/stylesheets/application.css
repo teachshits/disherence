@@ -157,7 +157,7 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
       background-size: contain;
       padding: 0 20px;
       float: left; }
-    .rrinfo .stats .users {
+    .rrinfo .stats .profiles {
       background: url("/images/rr-users.png") no-repeat;
       background-size: contain;
       padding: 0 15px;
@@ -265,18 +265,19 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
       float: left;
       line-height: 0.9em;
       padding: 5px 0 5px 10px;
-      width: 155px; }
+      max-width: 140px; }
     .more_place_info .info .like, .more_place_info .info .dislike {
       background: url("/images/pli-like.png") no-repeat left center;
       background-size: 30px;
       float: right;
-      padding-left: 36px;
+      padding-left: 30px;
       padding-top: 5px;
       margin-bottom: 5px; }
     .more_place_info .info .dislike {
-      background: url("/images/pli-dislike.png") no-repeat 5px center;
+      background: url("/images/pli-dislike.png") no-repeat 3px center;
       border-left: 1px solid white;
-      margin-left: 10px; }
+      margin-left: 5px;
+      padding-left: 34px; }
   .more_place_info .description {
     font-size: 0.9em;
     line-height: 1.4em;
