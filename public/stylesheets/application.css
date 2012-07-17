@@ -46,7 +46,8 @@ body, .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-
 #map_canvas {
   width: 300px;
   height: 112px;
-  margin-left: 320px; }
+  margin-left: 320px;
+  margin-left: -110px; }
 
 #loading {
   margin: 5px auto;
