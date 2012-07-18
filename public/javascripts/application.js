@@ -7,6 +7,11 @@ $(document).bind('pagecreate',function(){
 		$(this).toggleClass('expand')
 	})
 	
+	$('.dish').live('swiperight', function(event){
+		event.preventDefault();
+		event.stopPropagation();
+	})
+	
 	$('#resataurants_button').live('touchstart', function(){
 		link = $(this).attr('href');
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
@@ -165,6 +170,7 @@ $(document).bind('pagecreate',function(){
 	})
 	
 	$('.dish .rating').live('swipeleft', function(event){
+		event.stopPropagation();
 		$element = $(this);
 		$div = $(this).next('.dish_info')		
 		swipe_info($element, $div, 'left')
