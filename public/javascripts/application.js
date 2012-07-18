@@ -18,7 +18,6 @@ $(document).bind('pagecreate',function(){
 		$btn_obj = $(this)
 		$status_obj = $(this).parent('.op_btns').prev('.op_status')
 		opinion_popup = $status_obj.prevAll(".opinion_popup:first")
-		opinion_popup_text = opinion_popup.text()
 		$bg_url = "url('images/op_btns.png')"
 		$url = $btn_obj.attr('id').replace(/_/g,'/')
 
@@ -27,13 +26,15 @@ $(document).bind('pagecreate',function(){
 				//buttons animation
 				if ($btn_obj.hasClass('btn_agree')) {
 					$status_obj.css('background', $bg_url + " 0 -56px")
-					class_name = opinion_popup_text == 'awesome' ? 'opinion_awesome' : 'opinion_awful'
-					opinion_popup.addClass(class_name).text('You agreed it`s ' + opinion_popup_text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).text(opinion_popup_text).removeClass(class_name)})
+					class_name = opinion_popup.text() == 'awesome' ? 'opinion_awesome' : 'opinion_awful'
+					text = opinion_popup.text().indexOf('awesome') >= 0 ? 'You agreed it`s awesome' : 'You agreed it`s awful'
+					opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).text(opinion_popup_text).removeClass(class_name)})
 				}
 				if ($btn_obj.hasClass('btn_disagree')) {
 					$status_obj.css('background', $bg_url + "0 -112px")
-					class_name = opinion_popup_text == 'awful' ? 'opinion_awesome' : 'opinion_awful'
-					opinion_popup.addClass(class_name).text('You disagreed it`s ' + opinion_popup_text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).text(opinion_popup_text).removeClass(class_name)})
+					class_name = opinion_popup.text() == 'awful' ? 'opinion_awesome' : 'opinion_awful'
+					text = opinion_popup.text().indexOf('awesome') >= 0 ? 'You disagreed it`s awesome' : 'You disagreed it`s awful'
+					opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).text(opinion_popup_text).removeClass(class_name)})
 				}
 					
 				$btn_obj.parent('.op_btns').fadeOut()
