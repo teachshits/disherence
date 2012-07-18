@@ -28,13 +28,13 @@ $(document).bind('pagecreate',function(){
 					$status_obj.css('background', $bg_url + " 0 -56px")
 					class_name = opinion_popup.text() == 'awesome' ? 'opinion_awesome' : 'opinion_awful'
 					text = opinion_popup.text().indexOf('awesome') >= 0 ? 'You agreed it`s awesome' : 'You agreed it`s awful'
-					opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).text(opinion_popup_text).removeClass(class_name)})
+					opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).removeClass(class_name)})
 				}
 				if ($btn_obj.hasClass('btn_disagree')) {
 					$status_obj.css('background', $bg_url + "0 -112px")
 					class_name = opinion_popup.text() == 'awful' ? 'opinion_awesome' : 'opinion_awful'
 					text = opinion_popup.text().indexOf('awesome') >= 0 ? 'You disagreed it`s awesome' : 'You disagreed it`s awful'
-					opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).text(opinion_popup_text).removeClass(class_name)})
+					opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).removeClass(class_name)})
 				}
 					
 				$btn_obj.parent('.op_btns').fadeOut()
