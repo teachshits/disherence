@@ -465,7 +465,6 @@ a.disagree_count:link, a.disagree_count:visited, a.disagree_count:hover, a.disag
   #top_dishes .expand {
     height: 320px; }
   #top_dishes .dish {
-    height: 110px;
     background: left center;
     background-size: 320px;
     position: relative;
