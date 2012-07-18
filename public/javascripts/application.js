@@ -2,12 +2,10 @@ $(document).bind('pagecreate',function(){
 	var map = load_map('map_canvas');
 	markerList = [];
 	
-	$('.dish').live('click', function(){
-		if ($(this).hasClass('dish_110')) {
-			$(this).removeClass('dish_110').addClass('expand')
-		} else {
-			$(this).removeClass('expand').addClass('dish_110')
-		}
+	$('.dish').on('touchstart mousedown', function(){
+		console.log(this.className)
+		$(this).toggleClass('expand')
+		console.log(this.className)
 	})
 	
 	$('#resataurants_button').live('click', function(){
