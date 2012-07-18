@@ -17,39 +17,43 @@ $(document).bind('pagecreate',function(){
 	$('.btn_agree, .btn_disagree').live('click', function(){
 		$btn_obj = $(this)
 		$status_obj = $(this).parent('.op_btns').prev('.op_status')
-		opinion_popup = $status_obj.prevAll(".opinion_popup:first")
+		$opinion_popup = $status_obj.prevAll(".opinion_popup:first")
 		$bg_url = "url('images/op_btns.png')"
 		$url = $btn_obj.attr('id').replace(/_/g,'/')
 
 		$.getJSON($url, function(json){
 			if (json.result == 1) {
+				
 				//buttons animation
 				if ($btn_obj.hasClass('btn_agree')) {
+					
 					$status_obj.css('background', $bg_url + " 0 -56px")
-					if (opinion_popup.text().indexOf('awesome') >= 0){
+					if ($opinion_popup.text().indexOf('awesome') >= 0){
 						text = 'You agreed it`s awesome'
 						class_name = 'opinion_awesome'
-						opinion_popup.removeClass('opinion_awful')
+						$opinion_popup.removeClass('opinion_awful')
 					} else {
 						text = 'You agreed it`s awful'
 						class_name = 'opinion_awful'
-						opinion_popup.removeClass('opinion_awesome')
+						$opinion_popup.removeClass('opinion_awesome')
 					}
-					opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500)
 				}
+				
 				if ($btn_obj.hasClass('btn_disagree')) {
+					
 					$status_obj.css('background', $bg_url + "0 -112px")
-					if (opinion_popup.text().indexOf('awesome') >= 0){
+					if ($opinion_popup.text().indexOf('awesome') >= 0){
 						text = 'You disagreed it`s awesome'
 						class_name = 'opinion_awful'
-						opinion_popup.removeClass('opinion_awesome')
+						$opinion_popup.removeClass('opinion_awesome')
 					} else {
 						text = 'You disagreed it`s awful'
 						class_name = 'opinion_awesome'
-						opinion_popup.removeClass('opinion_awful')
+						$opinion_popup.removeClass('opinion_awful')
 					}
-					opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500)
 				}
+				
+				$opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500)
 					
 				$btn_obj.parent('.op_btns').fadeOut()
 				$status_obj.slideDown()
