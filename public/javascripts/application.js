@@ -27,10 +27,20 @@ $(document).bind('pagecreate',function(){
 				//buttons animation
 				if ($btn_obj.hasClass('btn_agree')) {
 					$status_obj.css('background', $bg_url + " 0 -56px")
+					if (opinion_popup_text == 'awesome'){
+						opinion_popup.addClass('opinion_awesome')
+					} else {
+						opinion_popup.addClass('opinion_awful')
+					}
 					opinion_popup.text('You agreed it`s ' + opinion_popup_text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).text(opinion_popup_text)})
 				}
 				if ($btn_obj.hasClass('btn_disagree')) {
 					$status_obj.css('background', $bg_url + "0 -112px")
+					if (opinion_popup_text == 'awful'){
+						opinion_popup.addClass('opinion_awesome')
+					} else {
+						opinion_popup.addClass('opinion_awful')
+					}
 					opinion_popup.text('You disagreed it`s ' + opinion_popup_text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).text(opinion_popup_text)})
 				}
 					
