@@ -38,10 +38,10 @@ $(document).bind('pagecreate',function(){
 				if ($btn_obj.hasClass('btn_disagree')) {
 					$status_obj.css('background', $bg_url + "0 -112px")
 					if (opinion_popup.text().indexOf('awful') >= 0){
-						text = 'You agreed it`s awesome'
+						text = 'You disagreed it`s awesome'
 						class_name = 'opinion_awesome'
 					} else {
-						text = 'You agreed it`s awful'
+						text = 'You disagreed it`s awful'
 						class_name = 'opinion_awful'
 					}
 					opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).removeClass(class_name)})
