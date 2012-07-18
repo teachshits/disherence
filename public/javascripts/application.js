@@ -1,6 +1,11 @@
 $(document).bind('pagecreate',function(){
 	var map = load_map('map_canvas');
 	markerList = [];
+	
+	$('.dish').live('click', function(){
+		$(this).addClass('expand')
+	})
+	
 		
 	$('#resataurants_button').live('click', function(){
 		link = $(this).attr('href');

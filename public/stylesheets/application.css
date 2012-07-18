@@ -462,12 +462,15 @@ a.disagree_count:link, a.disagree_count:visited, a.disagree_count:hover, a.disag
     font-size: 0.9em;
     text-align: center;
     padding-top: 45px; }
+  #top_dishes .expand {
+    height: 320px; }
   #top_dishes .dish {
     height: 110px;
     background: left center;
     background-size: 320px;
     position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    -webkit-transition: height 0.3s ease-in-out; }
     #top_dishes .dish .name {
       float: left;
       font-family: CompPro_bold;
