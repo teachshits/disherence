@@ -1,14 +1,13 @@
 $(document).bind('pagecreate',function(){
 	var map = load_map('map_canvas');
 	markerList = [];
-	
-	$('.dish').on('touchstart mousedown', function(){
-		$('.dish').removeClass('expand')
-		$(this).addClass('expand')
 
+	$('.dish').on('touchstart mousedown', function(){
+		$('.dish').not(this).removeClass('expand')
+		$(this).toggleClass('expand')
 	})
 	
-	$('#resataurants_button').live('click', function(){
+	$('#resataurants_button').live('touchstart mousedown', function(){
 		link = $(this).attr('href');
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		
@@ -20,7 +19,7 @@ $(document).bind('pagecreate',function(){
 		return false;
 	})
 	
-	$('.btn_agree, .btn_disagree').live('click', function(){
+	$('.btn_agree, .btn_disagree').live('touchstart mousedown', function(){
 		$btn_obj = $(this)
 		$status_obj = $(this).parent('.op_btns').prev('.op_status')
 		$opinion_popup = $status_obj.prevAll(".opinion_popup:first")
@@ -75,7 +74,7 @@ $(document).bind('pagecreate',function(){
 		return false;
 	})
 	
-	$('.op_status').live('click', function(){
+	$('.op_status').live('touchstart mousedown', function(){
 		$status_obj = $(this)
 		$url = $status_obj.attr('id').replace(/_/g,'/')
 		$.getJSON($url, function(json){
@@ -90,7 +89,7 @@ $(document).bind('pagecreate',function(){
 	})
 	
 	
-	$('.btn_agree_d, .btn_disagree_d').live('click', function(){		
+	$('.btn_agree_d, .btn_disagree_d').live('touchstart mousedown', function(){		
 		$status_obj = $(this).parent('.op_btns_d').prev('.op_status_d')
 		$btn_obj = $(this)
 		$bg_url = "url('/images/td-choise-buttons.png')"
@@ -115,7 +114,7 @@ $(document).bind('pagecreate',function(){
 		return false;
 	})
 	
-	$('.op_status_d').live('click', function(){
+	$('.op_status_d').live('touchstart mousedown', function(){
 		$status_obj = $(this)
 		$.getJSON(this.href, function(json){
 			if (json.result == 1) {
