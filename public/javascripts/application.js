@@ -3,9 +3,9 @@ $(document).bind('pagecreate',function(){
 	markerList = [];
 	
 	$('.dish').on('touchstart mousedown', function(){
-		console.log(this.className)
-		$(this).toggleClass('expand')
-		console.log(this.className)
+		$('.dish').removeClass('expand')
+		$(this).addClass('expand')
+
 	})
 	
 	$('#resataurants_button').live('click', function(){
