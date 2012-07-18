@@ -7,11 +7,6 @@ $(document).bind('pagecreate',function(){
 		$(this).toggleClass('expand')
 	})
 	
-	$('.dish').live('swiperight', function(event){
-		event.preventDefault();
-		event.stopPropagation();
-	})
-	
 	$('#resataurants_button').live('touchstart', function(){
 		link = $(this).attr('href');
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
@@ -169,18 +164,22 @@ $(document).bind('pagecreate',function(){
 		$(this).find("#map_canvas").hide()		
 	})
 	
-	$('.dish .rating').live('swipeleft', function(event){
+	$('.dish .rating, .more_place_info').on('touchstart', function(event){
+		event.preventDefault();
 		event.stopPropagation();
-		$element = $(this);
-		$div = $(this).next('.dish_info')		
-		swipe_info($element, $div, 'left')
-	})
-	
-	$('.dish_info').live('swiperight', function(event){
 		
-		$element = $(this);
-		$div = $(this).prev('.rating')
-		swipe_info($element, $div, 'right')
+		$(this).on('swipeleft', function(event){
+			$element = $(this);
+			$div = $(this).next('.dish_info')		
+			swipe_info($element, $div, 'left')
+		})
+		
+		$('.dish_info').on('swiperight', function(event){
+			$element = $(this);
+			$div = $(this).prev('.rating')
+			swipe_info($element, $div, 'right')
+		})
+		
 	})
 	
 })
