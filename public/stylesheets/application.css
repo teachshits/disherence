@@ -49,7 +49,7 @@ a.disagree_count:link, a.disagree_count:visited, a.disagree_count:hover, a.disag
   width: 200px;
   height: 100px;
   left: 55px;
-  top: 60px;
+  top: 40px;
   background: rgba(0, 0, 0, 0.8) url("/images/pli-like.png") no-repeat;
   background-position: 98px 98px;
   z-index: 1;

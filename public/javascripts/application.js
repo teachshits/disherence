@@ -17,18 +17,23 @@ $(document).bind('pagecreate',function(){
 	$('.btn_agree, .btn_disagree').live('click', function(){
 		$btn_obj = $(this)
 		$status_obj = $(this).parent('.op_btns').prev('.op_status')
+		opinion_popup = $status_obj.prevAll(".opinion_popup:first")
+		opinion_popup_text = opinion_popup.text()
 		$bg_url = "url('images/op_btns.png')"
 		$url = $btn_obj.attr('id').replace(/_/g,'/')
 
 		$.getJSON($url, function(json){
 			if (json.result == 1) {
-				
 				//buttons animation
 				if ($btn_obj.hasClass('btn_agree')) {
 					$status_obj.css('background', $bg_url + " 0 -56px")
-					$status_obj.prevAll(".opinion_popup:first").show();
-					}
-				if ($btn_obj.hasClass('btn_disagree')) {$status_obj.css('background', $bg_url + "0 -112px")}
+					opinion_popup.text('You agreed it`s ' + opinion_popup_text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).text(opinion_popup_text)})
+				}
+				if ($btn_obj.hasClass('btn_disagree')) {
+					$status_obj.css('background', $bg_url + "0 -112px")
+					opinion_popup.text('You disagreed it`s ' + opinion_popup_text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).text(opinion_popup_text)})
+				}
+					
 				$btn_obj.parent('.op_btns').fadeOut()
 				$status_obj.slideDown()
 				
