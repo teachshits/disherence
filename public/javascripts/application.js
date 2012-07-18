@@ -3,10 +3,13 @@ $(document).bind('pagecreate',function(){
 	markerList = [];
 	
 	$('.dish').live('click', function(){
-		$(this).toggleClass('dish_110','expand')
+		if ($(this).hasClass('dish_110')) {
+			$(this).removeClass('dish_110').addClass('expand')
+		} else {
+			$(this).removeClass('expand').addClass('dish_110')
+		}
 	})
 	
-		
 	$('#resataurants_button').live('click', function(){
 		link = $(this).attr('href');
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
