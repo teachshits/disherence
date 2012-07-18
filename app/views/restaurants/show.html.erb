@@ -27,7 +27,7 @@
 			Based on <%= @restaurant.yelp_reviews_count %> reviews on Yelp, Zagat, Foursquare
 		</div>
 		<% @restaurant.dishes.order('likes DESC').each do |d| %>
-			<div class="dish" style="height: 110px; background-image: url('<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.photo %>')">
+			<div class="dish dish_110" style="background-image: url('<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.photo %>')">
 				<div class="name"><%= d.name %></div>
 				<div class="rating"><span><%= (d.likes * 100)/@restaurant.dishes.sum(:likes) %></span>%</div>
 				<div class="dish_info">

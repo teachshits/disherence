@@ -3,7 +3,7 @@ $(document).bind('pagecreate',function(){
 	markerList = [];
 	
 	$('.dish').live('click', function(){
-		$(this).attr('height', '').addClass('expand')
+		$(this).removeClass('dish_110').addClass('expand')
 	})
 	
 		
