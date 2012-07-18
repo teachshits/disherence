@@ -8,24 +8,24 @@ $(document).bind('pagecreate',function(){
 	})
 	
 	$('#resataurants_button').live('touchstart', function(){
-		link = $(this).attr('href');
-		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
-		
+		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);		
 		setInterval(function(){
 			if ($.cookie("lat") != null && $.cookie("lng") != null){
 				window.location.href = '/restaurants'
 			}	
-		},300);
+		},200);
 		return false;
 	})
 	
-	$('.btn_agree, .btn_disagree').live('touchstart', function(){
+	$('.btn_agree, .btn_disagree').live('tap', function(){
+		
 		$btn_obj = $(this)
 		$status_obj = $(this).parent('.op_btns').prev('.op_status')
 		$opinion_popup = $status_obj.prevAll(".opinion_popup:first")
 		$bg_url = "url('images/op_btns.png')"
 		$url = $btn_obj.attr('id').replace(/_/g,'/')
-
+		
+		
 		$.getJSON($url, function(json){
 			if (json.result == 1) {
 				
@@ -87,7 +87,6 @@ $(document).bind('pagecreate',function(){
 		$status_obj.next('.op_btns').fadeIn()
 		return false;
 	})
-	
 	
 	$('.btn_agree_d, .btn_disagree_d').live('touchstart', function(){		
 		$status_obj = $(this).parent('.op_btns_d').prev('.op_status_d')
@@ -179,7 +178,6 @@ $(document).bind('pagecreate',function(){
 			$div = $(this).prev('.rating')
 			swipe_info($element, $div, 'right')
 		})
-		
 	})
 	
 })
@@ -204,10 +202,10 @@ function update_dish_stats(element, data) {
 
 
 function update_feed_stats(element, data) {
-	
-	$rrinfo_stats = element.prev('.urinfo').prev('.rrinfo').children('.stats')
+		
+	$rrinfo_stats = element.nextAll('.more_info:first').find('.stats')
 	$rrinfo_stats.children('.likes').html(data.likes)
-	$rrinfo_stats.children('.users').html(data.users)
+	$rrinfo_stats.children('.profiles').html(data.users)
 	$rrinfo_stats.children('.photos').html(data.photos)
 	
 	element.prev('.urinfo').children('.users').children('.num').children('span').html(data.agree)
