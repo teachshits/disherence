@@ -24,7 +24,10 @@ $(document).bind('pagecreate',function(){
 			if (json.result == 1) {
 				
 				//buttons animation
-				if ($btn_obj.hasClass('btn_agree')) {$status_obj.css('background', $bg_url + " 0 -56px")}
+				if ($btn_obj.hasClass('btn_agree')) {
+					$status_obj.css('background', $bg_url + " 0 -56px")
+					$status_obj.prevAll(".opinion_popup:first").show();
+					}
 				if ($btn_obj.hasClass('btn_disagree')) {$status_obj.css('background', $bg_url + "0 -112px")}
 				$btn_obj.parent('.op_btns').fadeOut()
 				$status_obj.slideDown()
