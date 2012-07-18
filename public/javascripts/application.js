@@ -37,12 +37,12 @@ $(document).bind('pagecreate',function(){
 				}
 				if ($btn_obj.hasClass('btn_disagree')) {
 					$status_obj.css('background', $bg_url + "0 -112px")
-					if (opinion_popup.text().indexOf('awful') >= 0){
+					if (opinion_popup.text().indexOf('awesome') >= 0){
 						text = 'You disagreed it`s awesome'
-						class_name = 'opinion_awesome'
+						class_name = 'opinion_awful'
 					} else {
 						text = 'You disagreed it`s awful'
-						class_name = 'opinion_awful'
+						class_name = 'opinion_awesome'
 					}
 					opinion_popup.addClass(class_name).text(text).fadeIn(800).delay(800).fadeOut(500, function(){$(this).removeClass(class_name)})
 				}
