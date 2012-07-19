@@ -5,8 +5,8 @@
 <div data-role="content fixed">
 	<div id="map">
 
-		<div id="map_canvas"></div>
-		<script><%= raw @restaurants_info %></script>
+		<div id="search_map_canvas"></div>
+		<script>map = load_map('search_map_canvas');</script>
 	<% @restaurants.each do |r| %>
 		<div class="restaurant">
 			<div class="info">

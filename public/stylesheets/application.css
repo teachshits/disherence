@@ -326,7 +326,8 @@ a.disagree_count:link, a.disagree_count:visited, a.disagree_count:hover, a.disag
 #map {
   width: 320px; }
   #map #search_map_canvas {
-    height: 160px; }
+    height: 160px;
+    width: 320px; }
   #map .restaurant {
     margin-top: 10px;
     color: #414143;
