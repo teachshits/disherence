@@ -5,15 +5,9 @@
 <div data-role="content fixed">
 	<div id="map">
 
-		<div class="search_map_canvas" id="restaurants_map_canvas"></div>
-		<script>
-			load_map([
-			<% @restaurant.each do |r| %>
-				['<%= escape_javascript(r.name) %>','<%= r.lat %>','<%= r.lng %>',1],
-			<% end %>
-			], 'restaurants_map_canvas')
-		</script>
-	<% @restaurant.each do |r| %>
+		<div class="map_canvas" id="map_canvas"></div>
+		<script><%= raw @restaurants_info %></script>
+	<% @restaurants.each do |r| %>
 		<div class="restaurant">
 			<div class="info">
 				<%= remoteness(r,cookies[:lat],cookies[:lng]) %>
