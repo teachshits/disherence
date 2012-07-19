@@ -1,5 +1,4 @@
 $(document).bind('pagecreate',function(){
-	var map = load_map('map_canvas');
 	markerList = [];
 
 	$('.dish').on('touchstart', function(){
