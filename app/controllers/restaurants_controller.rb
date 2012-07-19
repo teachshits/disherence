@@ -6,9 +6,9 @@ class RestaurantsController < ApplicationController
     
     @restaurants_info = {}
     @restaurants.each do |r|
-      @restaurants_info["r_#{r.id}".to_sym][:name] => r.name.gsub(/'/, "\\\\'")
-      @restaurants_info["r_#{r.id}".to_sym][:lat] => r.lat
-      @restaurants_info["r_#{r.id}".to_sym][:lng] => r.lon
+      @restaurants_info["r_#{r.id}".to_sym][:name] = r.name.gsub(/'/, "\\\\'")
+      @restaurants_info["r_#{r.id}".to_sym][:lat] = r.lat
+      @restaurants_info["r_#{r.id}".to_sym][:lng] = r.lon
     end
   end
   
