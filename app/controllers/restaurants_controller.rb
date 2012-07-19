@@ -5,15 +5,17 @@ class RestaurantsController < ApplicationController
     @restaurants = @restaurants.by_distance(cookies[:lat], cookies[:lng]) if cookies[:lat] && cookies[:lng]
     
     @restaurants_info = ""
+    i = 0
     @restaurants.each do |r|
       id = r.id
       name = r.name.gsub(/'/, "\\\\'")
       lat = r.lat
       lng = r.lng 
-      @restaurants_info += "r_info['r_#{id}'] = {};"
-      @restaurants_info += "r_info['r_#{id}']['name'] = '#{name}';"
-      @restaurants_info += "r_info['r_#{id}']['lat'] = '#{lat}';"
-      @restaurants_info += "r_info['r_#{id}']['lng'] = '#{lng}';"
+      @restaurants_info += "r_info = [];"
+      @restaurants_info += "r_info[#{i}][1] = '#{name}';"
+      @restaurants_info += "r_info[#{i}][2] = '#{lat}';"
+      @restaurants_info += "r_info[#{i}][3] = '#{lng}';"
+      i += 1
     end
   end
   

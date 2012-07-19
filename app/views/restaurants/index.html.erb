@@ -6,7 +6,17 @@
 	<div id="map">
 
 		<div id="search_map_canvas"></div>
-		<script>map = load_map('search_map_canvas');</script>
+		<script>
+			map = load_map('search_map_canvas');
+			markerList = [];
+			<%= @restaurants_info %>
+			// setMarkers(map, [r_info])
+			console.log(r_info[1])
+			for (var i = 0; i < r_info.length; i++) {
+		    var place = r_info[i];
+				console.log(place)
+			}
+		</script>
 	<% @restaurants.each do |r| %>
 		<div class="restaurant">
 			<div class="info">
