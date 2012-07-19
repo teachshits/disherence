@@ -6,10 +6,10 @@ class RestaurantsController < ApplicationController
     
     @restaurants_info = ""
     @restaurants.each do |r|
-      id = r.dish.restaurant.id
-      name = r.dish.restaurant.name.gsub(/'/, "\\\\'")
-      lat = r.dish.restaurant.lat
-      lng = r.dish.restaurant.lng 
+      id = r.restaurant.id
+      name = r.name.gsub(/'/, "\\\\'")
+      lat = r.lat
+      lng = r.lng 
       @restaurants_info += "r_info['r_#{id}'] = {};"
       @restaurants_info += "r_info['r_#{id}']['name'] = '#{name}';"
       @restaurants_info += "r_info['r_#{id}']['lat'] = '#{lat}';"
