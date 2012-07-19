@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
     
     @restaurants_info = ""
     @restaurants.each do |r|
-      id = r.restaurant.id
+      id = r.id
       name = r.name.gsub(/'/, "\\\\'")
       lat = r.lat
       lng = r.lng 
