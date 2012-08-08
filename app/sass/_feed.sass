@@ -1,303 +1,102 @@
-.opinion_popup
-	position: absolute
-	width: 200px
-	height: 100px
-	left: 55px
-	top: 40px
-	background: rgba(0,0,0,0.8) no-repeat
-	background-position: 98px 98px
-	z-index: 1
-	border-radius: 10px
-	padding: 20px 10px
-	font-size: 2em
-	text-align: center
-	color: #D2FFBE
-	text-shadow: none
-	text-transform: uppercase
-	display: none
-	
-.opinion_awesome
-	background-image: url('/images/pli-like.png')
-.opinion_awful
-	background-image: url('/images/pli-dislike.png')
-	
-#map_canvas
-	width: $review_w - 20px
-	height: $review_w - $review_w * 0.65
-	margin: -112px 0 0 320px
-	
-#loading
-	margin: 5px auto
-	display: block
-	
 #resataurants_button
 	background: url('/images/plate.png') no-repeat
 	background-size: 53px
 	height: 53px
 	width: 53px
 	bottom: 10px
-	right: 20px
-	display: block
+	right: 10px
 	position: fixed
+	z-index: 999
+	
+#wrapper
+	position: absolute
 	z-index: 1
+	top: 46px
+	bottom: 0
+	left: 0
+	width: 100%
+	overflow: auto
 
-#logo
-	background: url('/images/logo.png') no-repeat
-	background-size: contain
-	height: 36px
-	margin-top: 2px
-	margin-bottom: 2px
+.img_review, .cover, .trsp_status, .trsp_btn
+	width: 100%
+	display: block
 
-#reviews
-	overflow-x: hidden
-	width: 320px
-
-.review 
-	background: no-repeat
-	background-size: cover
-	width: $review_w
-	height: 333px
-	float: left
+.rhr	
+	height: 1px
+	width: 90%
+	background-color: #ACADA0
+	border-bottom: 1px solid white
 	position: relative
-	margin-bottom: $rhr_tbm
+	margin: 23% 5% 5% 5%
+		
+.review
+	position: relative
+	clear: both
 	overflow: hidden
 	
-	.swipe
-		left: -320px
-		
-	.more_info
-		-webkit-transition: left 0.3s ease-in-out
-		position: relative
-	
-	.curtain
+	.opinion_popup
 		position: absolute
-		background: url('/images/curtain.png') no-repeat
-		background-size: contain
-		width: $review_w
-		height: $review_h / 2
-		
-	.op_status
-		height: $review_w * 0.15
-		width: $review_w
-		background-size: $review_w
-		display: none
-		top: 285px
-		display: block
-		position: absolute
-		
-	.agree 
-		background: url('/images/op_btns.png') 0 -56px
-		
-	.disagree 
-		background: url('/images/op_btns.png') 0 -112px		
-		
-	.op_btns
-		position: absolute
-		top: 285px
-		.btn_agree, .btn_disagree
-			background: url('/images/op_btns.png') no-repeat
-			background-size: $review_w
-			height: $review_w * 0.15
-			width: $review_w / 2
-			float: left
-
-		.btn_disagree
-			background: url('/images/op_btns.png') no-repeat -160px 0
-			left: $review_w / 2
-
-.rrinfo
-	position: absolute
-	background: url('/images/rr-info.png') no-repeat
-	background-size: 195px
-	margin-top: ($review_h - $urinfo_h - $rrinfo_h)/2
-	width: $rrinfo_w - $rrinfo_pl
-	height: $rrinfo_h
-	padding-left: $rrinfo_pl
-	top: $rrinfo_lh
-	right: 0
-	line-height: 1em
-	padding-top: 11px
-	
-	div
-		margin: $rrinfo_lh 0
-
-	h2 
-		font-size: 1.4em
-		margin: 0
-		padding: 0
-		
-	.place_name 
-		background: url('/images/rr-marker.png') no-repeat left center
-		background-size: contain
-		font-size: $place_name_fs
-		padding-left: $place_name_pl
-		font-family: CompPro_bold
-
-	.place_address 
-		font-size: $place_name_fs * 0.9
-
-	.hr 
-		height: 1px
-		border-top: 1px solid #d9d0ce
-		background-color: #c5c1be
-		width: $rrinfo_w / 1.8
-
-	.stats
-		font-size: 1em
-		.likes
-			background: url('/images/rr-likes.png') no-repeat
-			background-size: contain
-			padding: 0 20px
-			float: left
-		.profiles
-			background: url('/images/rr-users.png') no-repeat
-			background-size: contain
-			padding: 0 15px
-			float: left
-		.photos
-			background: url('/images/rr-photo.png') no-repeat
-			background-size: contain
-			padding: 0 0 0 22px
-			float: left
-
-.urinfo 
-	background: rgba(255,255,255, 0.6)
-	height: $urinfo_h
-	width: $review_w
-	float: left
-	line-height: 1.4em
-	margin-top: 221px
-
-	.photo
-		width: $urinfo_h * 0.75
-		height: $urinfo_h * 0.75
-		margin: 5px
-		border: 2px solid #ffffff
-		box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.85)
-		float: left
-		background: no-repeat
-		background-size: cover
-
-	.stats 
-		margin: 5px 0
-		line-height: 1.2em
-		float: left
-		
-		.name 
-			font-size: 1.3em
-			margin: 0
-
-		.opinion 
-			color: #f03a2c
-			font-size: 1em
-
-		.disagree_count 
-			font-size: 0.9em
-			font-weight: normal
-
-	.users
-		overflow: hidden
-		position: absolute
-		right: 0
-		height: $urinfo_h
-		width:  $review_w * 0.26875
-		background: url('/images/ru-count.png') no-repeat
-		background-size: auto  $urinfo_h
-		
-		.profiles
-			width: 2000px
-			padding-left: 45px
-			display: none
-		
-		.profile
-			width: $urinfo_h * 0.6
-			height: $urinfo_h * 0.6
-			margin: 2px
-			border: 2px solid #ffffff
-			box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.85)
-			float: left
-			background: no-repeat
-			background-size: cover
-			margin-top: 12px
-	
-		.num
-			margin: 20px 0 0 45px
-			font-size: 1.5em
-
-		.text
-			margin-left: 20px 
-			font-size: 0.9em
-			text-transform: uppercase
-			color: #808388
-.rhr 
-	height: 1px
-	width: $review_w - $rhr_lrm * 2
-	background-color: #acada0
-	border-bottom: 1px solid #ffffff
-	clear: both
-	display: block
-	margin: 0 $rhr_lrm $rhr_tbm $rhr_lrm
-	
-.more_place_info
-	background: #414143 url('/images/pli-bg.png') repeat-y
-	position: absolute
-	left: $review_w
-	width: $review_w - 20px
-	height: 265px
-	padding: 10px
-	text-shadow: none
-	
-	.cover
-		height: 110px
-		width: 19px
-		position: absolute
+		width: 200px
+		height: 100px
+		left: 55px
+		top: 40px
+		background: rgba(0,0,0,0.8) no-repeat
+		background-position: 98px 98px
 		z-index: 1
-		background: url('/images/pli-cover.png') no-repeat
-		background-size: contain
-		margin-top: ($review_h - $urinfo_h - $rrinfo_h)/2 - 8px
-		margin-left: -10px
-	
-	.map_canvas
-		width: $review_w - 20px
-		height: $review_w - $review_w * 0.65
-	.info
-		color: #fff
-		font-size: 1.7em
-		margin: 10px 10px 0 10px
-		.name
-			float: left
-			line-height: 0.9em
-			padding: 5px 0 5px 10px
-			max-width: 140px
-		.like, .dislike
-			background: url('/images/pli-like.png') no-repeat left center
-			background-size: 30px
-			float: right			
-			padding-left: 30px
-			padding-top: 5px
-			margin-bottom: 5px
-		.dislike
-			background: url('/images/pli-dislike.png') no-repeat 3px center
-			border-left: 1px solid #fff
-			margin-left: 5px
-			padding-left: 34px
-	.description
-		font-size: 0.9em
-		line-height: 1.4em
-		color: #fff
-		font-family: Helvetica
-		margin: 0 10px
-	.hr
-		clear: both
-		height: 1px
-		background: #fff
-		width: $review_w - 40px
-		margin: 0 10px
-	.price
-		color: #fff
-		font-size: 1.6em
+		border-radius: 10px
+		padding: 20px 10px
+		font-size: 2em
+		text-align: center
+		text-shadow: none
+		text-transform: uppercase
+		opacity: 0		
+		-webkit-transition: opacity 0.5s ease-in
+
+	.opinion_awesome
+		color: #D2FFBE
+		background-image: url('/images/pli-like.png')
+		opacity: 1
+		z-index: 2
+		-webkit-transition: opacity 0.3s ease
+		
+	.opinion_awful
+		color: #E1B356
+		background-image: url('/images/pli-dislike.png')
+		opacity: 1
+		z-index: 2
+		-webkit-transition: opacity 0.3s ease
+				
+	.cover
 		position: absolute
-		text-align: right
-		right: 10px
-		bottom: 5px
-			
+	
+	@import "user_info"			
+	@import "dish_info"
+
+.status.opacity_zero
+	opacity: 0
+
+.status
+	position: absolute
+	width: 100%
+	visibility: hidden
+	opacity: 0
+	z-index: 0
+	background: url('/images/op_btns.png')
+	background-size: 100% auto
+	-webkit-transition: opacity 0.4s ease
+	
+.set_agree, .set_disagree
+	visibility: visible
+	opacity: 1
+	background-position: 0 50%
+
+.set_disagree
+	background-position: 0 100%
+	 
+.btn_agree, .btn_disagree
+	width: 50%
+	background-size: 200% auto
+	float: left
+	background: url('/images/op_btns.png') 0 0
+.btn_disagree
+	background: url('/images/op_btns.png') 100% 0

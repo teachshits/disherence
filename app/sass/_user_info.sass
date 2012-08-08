@@ -1,0 +1,122 @@
+.user_info
+	background: rgba(255,255,255, 0.6)
+	line-height: 1.4em
+	position: absolute
+	bottom: 0
+	height: 67px
+	width: 100%
+	overflow: hidden
+	
+	.user_photo
+		width: 66px
+		height: 66px
+		overflow: hidden
+		float: left
+		-webkit-transform: translate(0px, 0px) translateZ(0px)
+		
+	.photo_like.slide_down
+		margin-top: 75px
+		-webkit-transform: translate(0px, 0px) translateZ(0px)
+
+	.photo_like, .photo_dislike
+		width: 52px
+		height: 52px
+		margin: 5px
+		border: 2px solid #ffffff
+		box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.85)
+		background: no-repeat
+		background-size: cover
+		
+	.photo_like
+		-webkit-transition: all 0.5s linear
+		
+	.photo_dislike
+		margin-top: -130px
+		
+	.stats.opacity_zero
+		opacity: 0
+			
+	.stats 
+		opacity: 1
+		margin: 5px 0
+		line-height: 1.2em
+		-webkit-transition: opacity 0.2s ease
+		-webkit-transform: translate(0px, 0px) translateZ(0px)
+		
+		.name 
+			font-size: 1.3em
+			
+		.opinion 
+			color: #f03a2c
+			font-size: 1em
+
+	.users.slide
+		width: 79%
+		
+	.users.like
+		background-image: url('/images/ru-like.png')
+	.users.dislike
+		background-image: url('/images/ru-like.png')
+		background-position: 0 100%
+		
+	.users
+		right: 0
+		top: 0
+		position: absolute
+		background: no-repeat
+		background-size: auto 200%
+		-webkit-transition: width 0.4s ease
+		-webkit-transform: translate(0px, 0px) translateZ(0px)
+		width: 26%
+		height: 100%
+		
+		.profiles
+			overflow-x: auto
+			margin-top: 8px
+			overflow-y: none
+			overflow-x: scroll
+			white-space: nowrap
+			-webkit-overflow-scrolling: touch
+			
+		
+		// .profiles::-webkit-scrollbar
+		// 	height: 4px
+		// 	
+		// .profiles::-webkit-scrollbar-track
+		// 	box-shadow: inset 0 0 6px rgba(0,0,0,0.15)
+		// 	border-radius: 4px
+		// 	
+		// .profiles::-webkit-scrollbar-thumb
+		// 	border-radius: 10px
+		// 	background: rgba(255,0,0,0.75)			
+			
+		.profiles_container
+			float: left
+			margin-left: 10px
+				
+		.profile
+			width: 42px
+			height: 42px
+			margin: 2px
+			border: 2px solid #ffffff
+			box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.85)
+			float: left
+			background: no-repeat
+			background-size: cover
+			-webkit-transform: translate(0px, 0px) translateZ(0px)
+		
+		.think_so
+			float: left
+			display: block
+			width: 83px
+		.num
+			margin: 26px 5px 0 43px
+			font-size: 1.5em
+			float: left
+			padding-right: 5px
+
+		.text
+			margin-left: 29px 
+			font-size: 0.9em
+			text-transform: uppercase
+			color: #808388

@@ -6,6 +6,8 @@ module RestaurantsHelper
       rem = restaurant.remoteness(lat_cur,lng_cur)
       rem = rem[:m] < 1000 ? "#{rem[:m].round} m" : "#{rem[:km].round} Km"
       raw "<div class=\"distance\">#{rem}</div>"
+    else
+      raw "<div class=\"distance\">Unknown</div>"
     end
   end
   

@@ -4,11 +4,11 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.limit(20)
     @restaurants = @restaurants.by_distance(cookies[:lat], cookies[:lng]) if cookies[:lat] && cookies[:lng]
     
-    @restaurants_info = []
+    @restaurants_info = Hash.new { |h, k| h[k] = {} }
     @restaurants.each do |r|
       @restaurants_info[r.id][:name] = r.name.gsub(/'/, "\\\\'")
       @restaurants_info[r.id][:lat] = r.lat
-      @restaurants_info[r.id][:lng] = r.lon
+      @restaurants_info[r.id][:lng] = r.lng
     end
   end
   

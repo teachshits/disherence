@@ -1,49 +1,12 @@
 <script>window.location.hash = ''</script>
-<div data-role="header">
-	<%= user_picture%>
-	<h1 id="logo"></h1>
-</div><!-- /header -->
-
-<div data-role="content fixed">
-	<a id="resataurants_button" href="/restaurants"><img class="trsp" src="/images/trsp.gif"/></a>
-	<div id="reviews">
-		<div id="map_canvas"></div>
-		<script>map = load_map('map_canvas');</script>
-	  <div class="page">
-	    <%= render @reviews %>
-	  </div>
+<div id="header"></div> 
+<div id="content">
+	<div id="wrapper"> 
+		<div id="scroller"> 
+			<ul id="thelist">
+				<%= render @reviews %>
+			</ul> 
+		</div>		 
 	</div>
-	<img id="loading" src="/images/loader.gif"/> 
-</div><!-- /content -->
-<script type="text/javascript">
-(function() {
-  var page = 1,
-      loading = false;
-
-  function nearBottomOfPage() {
-    return $(window).scrollTop() > $(document).height() - $(window).height() - 200;
-  }
-
-  $(window).scroll(function(){
-    if (loading) {
-      return;
-			$("#loading").addClass('show')
-    }
-
-    if(nearBottomOfPage()) {
-      loading=true;
-      page++;
-      $.ajax({
-        url: '/reviews?page=' + page,
-        type: 'get',
-        dataType: 'script',
-        success: function() {
-          $(window).sausage('draw');
-          loading=false;
-        }
-      });
-    }
-  });
-  $(window).sausage();
-}());
-</script>
+</div>
+<a href="/restaurants" id="resataurants_button"><img class="trsp" src="/images/trsp.gif" /></a>

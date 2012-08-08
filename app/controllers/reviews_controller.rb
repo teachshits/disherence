@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     
     @reviews = Review.with_photos.order('RAND()').limit(10)
     @reviews = @reviews.where('user_id != ?', session[:user].id) unless session[:user].nil?
-    @reviews.page params[:page]
+    # @reviews.page params[:page]
     
     @restaurants_info = ""
     @reviews.each do |rw|

@@ -1,26 +1,21 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>Disherence</title> 
-	<meta name="viewport" content="width=device-width, target-densitydpi=high-dpi">
-	<link rel="stylesheet" href="/themes/Disherence.min.css" />
-	<link rel="stylesheet" href="/stylesheets/jquery.mobile.structure-1.1.0.min.css" />
-	<link rel="stylesheet" href="/stylesheets/jquery.mobile.scrollview.css" />
-	<link rel="stylesheet" href="/stylesheets/application.css" />
-	<script src="/javascripts/jquery-1.7.1.min.js"></script>
-	<script src="/javascripts/jquery.mobile-1.1.0.min.js"></script>
-	<script src="/javascripts/jquery.easing.1.3.js"></script>
-	<script src="/javascripts/jquery.mobile.scrollview.js"></script>
-	<script src="/javascripts/scrollview.js"></script>
-	<script src="/javascripts/jquery.cookie.js"></script>
-	<script src="/javascripts/jquery.sausage.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAuEnV8Q2S5-Q284dxPFLHohCE37L0gPlo&sensor=false" type="text/javascript"></script>
-	<script type='text/javascript'>r_info = {};</script>
-	<script src="/javascripts/application.js"></script>
-</head>
+		<title>Disherence</title> 
+		<meta name="viewport" content="width=device-width, user-scalable=no"/>
+		<!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
+		<link rel="stylesheet" href="/stylesheets/application.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/scrollbar.css"> 
+		<script src="/javascripts/jquery-1.7.2.min.js"></script>
+		<script src="/javascripts/jquery.mobile.custom.min.js"></script>
+		<script src="/javascripts/iscroll.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAuEnV8Q2S5-Q284dxPFLHohCE37L0gPlo&sensor=false" type="text/javascript"></script>
+		<script src="/javascripts/jquery.sausage.js"></script> 
+		<script src="/javascripts/application.js"></script>
+	</head>
 <body>
-	<div data-role="page" data-theme="a">
+	<div id="container">
 		<%= yield %>
-	</div><!-- /page -->
+	</div>
 </body>
 </html>
