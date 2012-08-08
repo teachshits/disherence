@@ -91,7 +91,7 @@ $(document).ready(function() {
 		setTimeout(
 			function(){
 				id = current_div.attr('id')	
-				
+				console.log(current_div.attr('id'))
 				$('#map_canvas').appendTo(current_div.find('.map_canvas')).css('margin', '0px 0px 0px 0px').show()
 				setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
 		}, 350);
