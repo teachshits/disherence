@@ -39,21 +39,12 @@ module ReviewsHelper
   end
   
   def users_agreed(user, review)
-    
     profiles = []
     Review.where('dish_id = ? AND user_id != ? AND opinion = ?', review.dish_id, review.user_id, review.opinion).each do |rw|
       profiles.push("<a href= \"#\" class=\"profile\" style=\"background-image: url('#{rw.user.photo}')\"></a>")
-    end
+    end    
     
-    add_class_hidden = !profiles.any? ? ' hidden' : ''
-    
-    raw "<div class=\"users#{add_class_hidden}\">
-			<div class=\"num\">+<span>#{review.count_agree}</span></div>
-			<div class=\"text\">think so</div>
-			<div data-scroll=\"x\" class=\"profiles\">
-					#{profiles.join("\n")}				
-			</div>
-		</div>"
+    raw "#{profiles}"
   end
   
 end
