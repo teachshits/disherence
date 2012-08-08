@@ -57,6 +57,9 @@ li {
 
 #top_dishes {
   width: 320px; }
+  #top_dishes .hrw {
+    clear: both;
+    width: 100%; }
   #top_dishes .restaurant {
     margin: 10px 0 10px 10px;
     color: #414143;
@@ -148,7 +151,11 @@ li {
     overflow: hidden;
     -webkit-transition: height 0.2s ease-in; }
     #top_dishes .dish .user_img {
-      margin: 20px 5px 0 10px; }
+      margin: 0 5px 0 10px;
+      width: 30px;
+      height: 30px;
+      float: left;
+      border: 3px solid white; }
     #top_dishes .dish .comment {
       position: absolute;
       color: white;
@@ -269,6 +276,8 @@ li {
   position: relative;
   clear: both;
   overflow: hidden; }
+  .review .img_review_wrapper {
+    background-size: 100%; }
   .review .opinion_popup {
     position: absolute;
     width: 200px;

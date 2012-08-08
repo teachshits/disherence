@@ -9,7 +9,6 @@ $(document).ready(function() {
 			}
 		},200);
 		return false;
-		
 	})
 	
 		
@@ -17,7 +16,6 @@ $(document).ready(function() {
 	$('.dish_info .rating').live('swipeleft tap', function(event){
 		$(this).parent().addClass('slideLeft')
 	})
-	
 	$('.dish_info').live('swiperight', function(event){
 		$(this).removeClass('slideLeft')
 	})
