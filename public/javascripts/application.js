@@ -81,8 +81,20 @@ $(document).ready(function() {
 	}
 	
 	$('.flag_content').live('swipeleft', function(){
+		
 		$('.dish_info').removeClass('swipe')
 		$(this).closest('.dish_info').addClass('swipe')
+		
+		current_div = $(this)
+		
+		setTimeout(
+			function(){
+				id = current_div.attr('id')	
+				
+				$('#map_canvas').appendTo(current_div.find('.map_canvas')).css('margin', '0px 0px 0px 0px').show()
+				setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
+		}, 350);
+		
 	})
 	
 
@@ -247,4 +259,65 @@ function load_map(element_id) {
   map = new google.maps.Map(document.getElementById(element_id),mapOptions);
 	return map
 	// setMarkers(map, markers);
+}
+
+//Clear all markers
+function clearMarkers() {
+	for (var i=0; i< markerList.length; i++) {
+		markerList[i].setMap(null);
+	}
+	markerList = [];
+}
+
+// Add markers to the map
+function setMarkers(map, locations) {
+	if (typeof markerList != 'undefined') {clearMarkers()}
+  // Add markers to the map
+  // Marker sizes are expressed as a Size of X,Y
+  // where the origin of the image (0,0) is located
+  // in the top left of the image.
+
+  // Origins, anchor positions and coordinates of the marker
+  // increase in the X direction to the right and in
+  // the Y direction down.
+  var image = new google.maps.MarkerImage('http://dish.fm/images/mapPointer.png',
+      // This marker is 20 pixels wide by 32 pixels tall.
+      new google.maps.Size(26, 42),
+      // The origin for this image is 0,0.
+      new google.maps.Point(0,0),
+      // The anchor for this image is the base of the flagpole at 0,32.
+      new google.maps.Point(0, 42));
+  // var shadow = new google.maps.MarkerImage('http://code.google.com/intl/ru-RU/apis/maps/documentation/javascript/examples/images/placeflag_shadow.png',
+      // The shadow image is larger in the horizontal dimension
+      // while the position and offset are the same as for the main image.
+      // new google.maps.Size(37, 32),
+      // new google.maps.Point(0,0),
+      // new google.maps.Point(0, 32));
+      // Shapes define the clickable region of the icon.
+      // The type defines an HTML <area> element 'poly' which
+      // traces out a polygon as a series of X,Y points. The final
+      // coordinate closes the poly by connecting to the first
+      // coordinate.
+  var shape = {
+      coord: [1, 1, 1, 26, 21, 26, 21, 1],
+      type: 'poly'
+  };
+	var bounds = new google.maps.LatLngBounds();
+  for (var i = 0; i < locations.length; i++) {
+    var place = locations[i];
+    var myLatLng = new google.maps.LatLng(place[1], place[2]);
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        icon: image,
+        shape: shape,
+        title: place[0],
+        zIndex: place[3]
+    });
+		markerList.push(marker);
+		bounds.extend(myLatLng);
+  }
+	map_center = bounds.getCenter();
+	map.setCenter(map_center);
+	map.fitBounds(bounds);
 }
