@@ -1,6 +1,5 @@
+r_info = []
 $(document).ready(function() {
-	
-	r_info = [];
 	
 	// Restauants button
 	$('#resataurants_button').live('tap', function(){
