@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	
+	r_info = [];
+	
 	// Restauants button
 	$('#resataurants_button').live('tap', function(){
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
