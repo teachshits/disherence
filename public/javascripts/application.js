@@ -2,6 +2,11 @@ r_info = []
 markerList = []
 $(document).ready(function() {
 	
+	$('.map_canvas').live('swiperight', function(event){
+		event.preventDefault();
+		event.stopPropagation();
+	})
+	
 	// Restauants button
 	$('#resataurants_button').live('tap', function(){
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
