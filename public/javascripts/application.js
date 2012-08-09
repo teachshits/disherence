@@ -18,7 +18,6 @@ $(document).ready(function() {
 		return false;
 	})
 	
-		
 	// Restaurant Dish Info slide	
 	$('.dish_info .rating').live('swipeleft tap', function(event){
 		$(this).parent().addClass('slideLeft')
@@ -26,7 +25,6 @@ $(document).ready(function() {
 	$('.dish_info').live('swiperight', function(event){
 		$(this).removeClass('slideLeft')
 	})
-
 	
 	// Restaurant info dish expand
 	$('.dish').live('tap', function(){
@@ -87,7 +85,7 @@ $(document).ready(function() {
 		})		
 	}
 	
-	$('.flag_content').live('swipeleft', function(){
+	$('.flag_content').on('swipeleft', function(){
 		
 		$('.dish_info').removeClass('swipe')
 		$(this).closest('.dish_info').addClass('swipe')
