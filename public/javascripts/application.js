@@ -2,6 +2,11 @@ r_info = []
 markerList = []
 $(document).ready(function() {
 	
+	$('.restaurant name').live('tap', function(event){
+		event.preventDefault();
+		event.stopPropagation();
+	})
+	
 	$('.map_canvas').live('swiperight', function(event){
 		event.preventDefault();
 		event.stopPropagation();
@@ -36,7 +41,7 @@ $(document).ready(function() {
 	})
 	
 	// Restaurant info data
-	$(".place_name").live('click', function(){
+	$(".place_name, .restaurant .name").live('click', function(){
 		event.preventDefault()		
 		$.ajax({
         url: $(this).attr('href'),
@@ -166,16 +171,7 @@ $(document).ready(function() {
 		$(this).fadeOut()
 		$(this).next('.op_btns_d').fadeIn()
 		return false;
-	})
-	
-	// function update_dish_stats(element, data) {
-	// 	$stats = element.prev('.stats')
-	// 	$stats.children('.like').html(data.likes)
-	// 	$stats.children('.dislike').html(data.dislikes)
-	// 
-	// 	element.parent('.dish_info').prev('.rating').children('span').html(data.rating)
-	// }
-	
+	})	
 	
 	// Agree && Disagree Buttons
 	$('.btn_agree, .btn_disagree').live('tap', function(){
