@@ -14,11 +14,11 @@ class RestaurantsController < ApplicationController
     @restaurants_info = ""
     i = 0
     @restaurants.each do |r|
-      i += 1
       @restaurants_info += "r_info[#{i}] = {};\n"
       @restaurants_info += "r_info[#{i}]['name'] = '#{r.name.gsub(/'/, "\\\\'")}';\n"
       @restaurants_info += "r_info[#{i}]['lat'] = '#{r.lat}';\n"
       @restaurants_info += "r_info[#{i}]['lng'] = '#{r.lng}';\n"
+      i += 1
     end  
   end
   
