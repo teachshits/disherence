@@ -7,7 +7,7 @@ $(document).ready(function() {
 		event.stopPropagation();
 	})
 	
-	$('.map_canvas').live('swipe tap', function(event){
+	$('.map_canvas, .search_map_canvas').live('swipe tap', function(event){
 		event.preventDefault();
 		event.stopPropagation();
 	})
@@ -17,8 +17,19 @@ $(document).ready(function() {
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		setInterval(function(){
 			if ($.cookie("lat") != null && $.cookie("lng") != null){
+			// 	$.ajax({
+			// 		        url: '/restaurants',
+			// 		        type: 'get',
+			// 		        dataType: 'script',
+			// 		        success: function() {
+			// 		          loading=false;
+			// 				setTimeout(function () {
+			// 						myScroll.refresh();
+			// 						flag = true;
+			// 				}, 0);
+			// 		        }
+			// 		    })
 				window.location.href = '/restaurants'
-				myScroll.refresh();
 			}
 		},200);
 		return false;
