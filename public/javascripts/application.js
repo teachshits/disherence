@@ -102,8 +102,8 @@ $(document).ready(function() {
 			function(){
 				id = current_div.attr('id')	
 				console.log(current_div.attr('id'))
-				$('#map_canvas').appendTo(current_div.closest('.dish_info').find('.map_canvas')).css('margin', '0px 0px 0px 0px').show()
 				setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
+				$('#map_canvas').appendTo(current_div.closest('.dish_info').find('.map_canvas')).css('margin', '0px 0px 0px 0px').show()
 		}, 350);
 		
 	})

@@ -9,11 +9,16 @@
 					<script>
 						map = load_map('search_map_canvas');
 						<%= raw @restaurants_info %>
-						setMarkers(map, r_info)
+						var places = []
 						for (var i = 0; i < r_info.length; i++) {
-					    var place = r_info[i];
-							console.log(place)
+					    place = []
+							place[0] = r_info[i]['name'];
+							place[1] = r_info[i]['lat'];
+							place[2] = r_info[i]['lng'];
+							place[3] = 1;
+							places.push(place)
 						}
+						setMarkers(map, places)
 					</script>
 					<% @restaurants.each do |r| %>
 						<div class="restaurant">
