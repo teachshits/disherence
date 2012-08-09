@@ -343,7 +343,7 @@ function setMarkers(map, locations) {
   }
 	map.fitBounds(bounds);
 	map_center = bounds.getCenter();
-	map_center.Ya = map_center.Ya + 0.0008
+	map_center.Ya = map_center.Ya + 0.0009
 	map_center.Xa = map_center.Xa + 0.0022
 	map.setCenter(map_center);	
 	console.log(map_center.Ya - 0.05)
