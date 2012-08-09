@@ -72,7 +72,7 @@ $(document).ready(function() {
 		document.ontouchmove = function(e) {e.preventDefault()}
 		$('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
 		
-		myScroll
+		console.log(1)
 		var flag = true
 		var page = 1
 		v_height = document.getElementById('wrapper').scrollHeight
