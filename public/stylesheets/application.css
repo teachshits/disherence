@@ -323,6 +323,8 @@ li {
       overflow: hidden;
       float: left;
       -webkit-transform: translate(0px, 0px) translateZ(0px); }
+    .review .user_info .photo_dislike {
+      -webkit-transform: rotate(180deg); }
     .review .user_info .photo_like.slide_down {
       margin-top: 75px;
       -webkit-transform: translate(0px, 0px) translateZ(0px); }
