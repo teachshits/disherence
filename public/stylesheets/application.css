@@ -408,8 +408,7 @@ li {
     position: absolute;
     left: 100%;
     z-index: 1;
-    -webkit-transition: left 0.3s ease-in-out;
-    -webkit-transform: translate3d(0, 0, 0); }
+    -webkit-transition: left 0.3s ease-in-out; }
     .review .dish_info .flag {
       width: 70%;
       height: auto;

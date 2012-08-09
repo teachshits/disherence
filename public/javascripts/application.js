@@ -85,7 +85,7 @@ $(document).ready(function() {
 		})		
 	}
 	
-	$('.flag_content').on('swipeleft', function(){
+	$('.flag_content').live('swipeleft', function(){
 		
 		$('.dish_info').removeClass('swipe')
 		$(this).closest('.dish_info').addClass('swipe')
