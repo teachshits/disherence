@@ -284,7 +284,6 @@ function clearMarkers() {
 
 // Add markers to the map
 function setMarkers(map, locations) {
-	clearMarkers()
 	if (typeof markerList != 'undefined') {clearMarkers()}
   // Add markers to the map
   // Marker sizes are expressed as a Size of X,Y

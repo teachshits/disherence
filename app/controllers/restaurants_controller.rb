@@ -12,11 +12,13 @@ class RestaurantsController < ApplicationController
     # end
     
     @restaurants_info = ""
+    i = 0
     @restaurants.each do |r|
-      @restaurants_info += "r_info['#{r.id}'] = {};\n"
-      @restaurants_info += "r_info['#{r.id}']['name'] = '#{r.name}';\n"
-      @restaurants_info += "r_info['#{r.id}']['lat'] = '#{r.lat}';\n"
-      @restaurants_info += "r_info['#{r.id}']['lng'] = '#{r.lng}';\n"
+      i += 1
+      @restaurants_info += "r_info[#{i}] = {};\n"
+      @restaurants_info += "r_info[#{i}]['name'] = '#{r.name}';\n"
+      @restaurants_info += "r_info[#{i}]['lat'] = '#{r.lat}';\n"
+      @restaurants_info += "r_info[#{i}]['lng'] = '#{r.lng}';\n"
     end  
   end
   
