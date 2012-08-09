@@ -114,7 +114,7 @@ $(document).ready(function() {
 				id = current_div.attr('id')	
 				console.log(current_div.attr('id'))
 				setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
-				$('#map_canvas').appendTo(current_div.closest('.dish_info').find('.map_canvas')).css('margin', '0px 0px 0px 0px').show()
+				$('#map_canvas').appendTo(current_div.closest('.dish_info').find('.map_canvas')).show()
 		}, 350);
 		
 	})
@@ -341,7 +341,10 @@ function setMarkers(map, locations) {
 		markerList.push(marker);
 		bounds.extend(myLatLng);
   }
-	map_center = bounds.getCenter();
-	map.setCenter(map_center);
 	map.fitBounds(bounds);
+	map_center = bounds.getCenter();
+	map_center.Ya = map_center.Ya + 0.0008
+	map_center.Xa = map_center.Xa + 0.0022
+	map.setCenter(map_center);	
+	console.log(map_center.Ya - 0.05)
 }
