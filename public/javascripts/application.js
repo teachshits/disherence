@@ -1,4 +1,5 @@
 r_info = []
+markerList = []
 $(document).ready(function() {
 	
 	// Restauants button
@@ -87,12 +88,13 @@ $(document).ready(function() {
 		$(this).closest('.dish_info').addClass('swipe')
 		
 		current_div = $(this)
+		console.log(current_div.closest('.dish_info').find('.map_canvas'))
 		
 		setTimeout(
 			function(){
 				id = current_div.attr('id')	
 				console.log(current_div.attr('id'))
-				$('#map_canvas').appendTo(current_div.find('.map_canvas')).css('margin', '0px 0px 0px 0px').show()
+				$('#map_canvas').appendTo(current_div.closest('.dish_info').find('.map_canvas')).css('margin', '0px 0px 0px 0px').show()
 				setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
 		}, 350);
 		
@@ -272,6 +274,7 @@ function clearMarkers() {
 
 // Add markers to the map
 function setMarkers(map, locations) {
+	clearMarkers()
 	if (typeof markerList != 'undefined') {clearMarkers()}
   // Add markers to the map
   // Marker sizes are expressed as a Size of X,Y

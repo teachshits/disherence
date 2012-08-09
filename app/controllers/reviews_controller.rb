@@ -11,14 +11,13 @@ class ReviewsController < ApplicationController
     
     @restaurants_info = ""
     @reviews.each do |rw|
-      id = rw.dish.restaurant.id
       name = rw.dish.restaurant.name.gsub(/'/, "\\\\'")
       lat = rw.dish.restaurant.lat
       lng = rw.dish.restaurant.lng 
-      @restaurants_info += "r_info['r_#{id}'] = {};"
-      @restaurants_info += "r_info['r_#{id}']['name'] = '#{name}';"
-      @restaurants_info += "r_info['r_#{id}']['lat'] = '#{lat}';"
-      @restaurants_info += "r_info['r_#{id}']['lng'] = '#{lng}';"
+      @restaurants_info += "r_info['r_#{rw.id}'] = {};"
+      @restaurants_info += "r_info['r_#{rw.id}']['name'] = '#{name}';"
+      @restaurants_info += "r_info['r_#{rw.id}']['lat'] = '#{lat}';"
+      @restaurants_info += "r_info['r_#{rw.id}']['lng'] = '#{lng}';"
     end
     
     respond_to do |format|
