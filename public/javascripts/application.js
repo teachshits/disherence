@@ -18,6 +18,7 @@ $(document).ready(function() {
 		setInterval(function(){
 			if ($.cookie("lat") != null && $.cookie("lng") != null){
 				window.location.href = '/restaurants'
+				myScroll.refresh();
 			}
 		},200);
 		return false;
