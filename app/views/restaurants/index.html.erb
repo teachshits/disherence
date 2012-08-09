@@ -8,10 +8,8 @@
 					<div id="search_map_canvas"></div>
 					<script>
 						map = load_map('search_map_canvas');
-						markerList = [];
 						<%= raw @restaurants_info %>
-						// setMarkers(map, [r_info])
-						console.log(r_info[1])
+						setMarkers(map, r_info)
 						for (var i = 0; i < r_info.length; i++) {
 					    var place = r_info[i];
 							console.log(place)

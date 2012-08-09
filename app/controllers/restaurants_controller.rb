@@ -4,19 +4,19 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.limit(20)
     @restaurants = @restaurants.by_distance(cookies[:lat], cookies[:lng]) if cookies[:lat] && cookies[:lng]
     
-    @restaurants_info = Hash.new { |h, k| h[k] = {} }
-    @restaurants.each do |r|
-      @restaurants_info[r.id][:name] = r.name.gsub(/'/, "\\\\'")
-      @restaurants_info[r.id][:lat] = r.lat
-      @restaurants_info[r.id][:lng] = r.lng
-    end
+    # @restaurants_info = Hash.new { |h, k| h[k] = {} }
+    # @restaurants.each do |r|
+    #   @restaurants_info[r.id][:name] = r.name.gsub(/'/, "\\\\'")
+    #   @restaurants_info[r.id][:lat] = r.lat
+    #   @restaurants_info[r.id][:lng] = r.lng
+    # end
     
     @restaurants_info = ""
     @restaurants.each do |r|
-      @restaurants_info += "r_info['r_#{r.id}'] = {};"
-      @restaurants_info += "r_info['r_#{r.id}']['name'] = '#{r.name}';"
-      @restaurants_info += "r_info['r_#{r.id}']['lat'] = '#{r.lat}';"
-      @restaurants_info += "r_info['r_#{r.id}']['lng'] = '#{r.lng}';"
+      @restaurants_info += "r_info['r_#{r.id}'] = {};\n"
+      @restaurants_info += "r_info['r_#{r.id}']['name'] = '#{r.name}';\n"
+      @restaurants_info += "r_info['r_#{r.id}']['lat'] = '#{r.lat}';\n"
+      @restaurants_info += "r_info['r_#{r.id}']['lng'] = '#{r.lng}';\n"
     end  
   end
   

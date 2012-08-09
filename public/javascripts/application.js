@@ -7,7 +7,7 @@ $(document).ready(function() {
 		event.stopPropagation();
 	})
 	
-	$('.map_canvas').live('swiperight', function(event){
+	$('.map_canvas').live('swipe tap', function(event){
 		event.preventDefault();
 		event.stopPropagation();
 	})
@@ -249,6 +249,17 @@ $(document).ready(function() {
 	})
 
 });
+
+function getLocation(pos)
+{
+	$.cookie("lat", pos.coords.latitude);
+	$.cookie("lng", pos.coords.longitude);
+}
+
+function unknownLocation()
+{
+  console.log('Could not find location');
+}
 
 function load_map(element_id) {
   var mapOptions = {
