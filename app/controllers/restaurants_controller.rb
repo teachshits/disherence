@@ -10,6 +10,14 @@ class RestaurantsController < ApplicationController
       @restaurants_info[r.id][:lat] = r.lat
       @restaurants_info[r.id][:lng] = r.lng
     end
+    
+    @restaurants_info = ""
+    @restaurants.each do |r|
+      @restaurants_info += "r_info['r_#{r.id}'] = {};"
+      @restaurants_info += "r_info['r_#{r.id}']['name'] = '#{r.name}';"
+      @restaurants_info += "r_info['r_#{r.id}']['lat'] = '#{r.lat}';"
+      @restaurants_info += "r_info['r_#{r.id}']['lng'] = '#{r.lng}';"
+    end  
   end
   
   def show
