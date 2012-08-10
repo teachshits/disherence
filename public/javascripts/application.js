@@ -1,7 +1,11 @@
 r_info = []
 markerList = []
 $(document).ready(function() {
-	if ($("#map_canvas").length > 0){map = load_map('map_canvas')}
+	if ($("#map_canvas").length > 0){
+		map = load_map('map_canvas')
+		id = $('.flag_content:first').attr('id')	
+		setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
+	}
 	
 	$('.restaurant name').live('tap', function(event){
 		event.preventDefault();
@@ -96,6 +100,7 @@ $(document).ready(function() {
 		          loading=false;
 							setTimeout(function () {
 									myScroll.refresh();
+									myScroll.scrollTo(0,0,0)
 									flag = true;
 							}, 0);
 		        }
@@ -113,7 +118,6 @@ $(document).ready(function() {
 		setTimeout(
 			function(){
 				id = current_div.attr('id')	
-				console.log(current_div.attr('id'))
 				setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
 				$('#map_canvas').appendTo(current_div.closest('.dish_info').find('.map_canvas')).show()
 		}, 350);
