@@ -1,1 +1,1 @@
-$("#thelist").append("<%= escape_javascript(render(@reviews))%>");
+$("#thelist").replaceWith("<%= escape_javascript(render(@reviews))%>");

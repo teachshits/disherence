@@ -1,6 +1,7 @@
 r_info = []
 markerList = []
 $(document).ready(function() {
+	if ($("#map_canvas").length > 0){map = load_map('map_canvas')}
 	
 	$('.restaurant name').live('tap', function(event){
 		event.preventDefault();
@@ -53,10 +54,11 @@ $(document).ready(function() {
 	})
 	
 	// Restaurant info data
-	$(".place_name, .restaurant .name").live('click', function(){
-		event.preventDefault()		
+	$(".place_name, .restaurant .name").live('tap', function(){
+		event.preventDefault()
+		href = $(this).attr('href')		
 		$.ajax({
-        url: $(this).attr('href'),
+        url: href,
         type: 'get',
         dataType: 'script',
         success: function() {
@@ -66,7 +68,7 @@ $(document).ready(function() {
 							myScroll.scrollTo(0,0,0)
 						}, 0);
         }
-      })
+    })
 	})
 	
 	if ($("#wrapper").length > 0){
@@ -105,10 +107,8 @@ $(document).ready(function() {
 	$('.flag_content').live('swipeleft', function(){
 		
 		$('.dish_info').removeClass('swipe')
-		$(this).closest('.dish_info').addClass('swipe')
-		
+		$(this).closest('.dish_info').addClass('swipe')		
 		current_div = $(this)
-		console.log(current_div.closest('.dish_info').find('.map_canvas'))
 		
 		setTimeout(
 			function(){
