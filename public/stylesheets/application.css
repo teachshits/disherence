@@ -323,12 +323,13 @@ li {
       overflow: hidden;
       float: left;
       -webkit-transform: translate(0px, 0px) translateZ(0px); }
-    .review .user_info .photo_dislike {
-      -webkit-transform: rotate(180deg); }
-    .review .user_info .photo_like.slide_down {
+    .review .user_info .photo_disagree {
+      -webkit-transform: rotate(180deg);
+      margin-top: -130px; }
+    .review .user_info .photo.slide_down {
       margin-top: 75px;
       -webkit-transform: translate(0px, 0px) translateZ(0px); }
-    .review .user_info .photo_like, .review .user_info .photo_dislike {
+    .review .user_info .photo, .review .user_info .photo_disagree {
       width: 52px;
       height: 52px;
       margin: 5px;
@@ -336,10 +337,8 @@ li {
       box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.85);
       background: no-repeat;
       background-size: cover; }
-    .review .user_info .photo_like {
+    .review .user_info .photo {
       -webkit-transition: all 0.5s linear; }
-    .review .user_info .photo_dislike {
-      margin-top: -130px; }
     .review .user_info .stats.opacity_zero {
       opacity: 0; }
     .review .user_info .stats {

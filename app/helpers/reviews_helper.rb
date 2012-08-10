@@ -46,9 +46,11 @@ module ReviewsHelper
     raw "#{profiles.join("\n")}"
   end
   
-  def review_disagree_user_photo(review_id)
-    if r = Review.where('id = ? AND opinion =0', review_id).order('created_at DESC').first
+  def review_disagree_user_photo(review)
+    if r = Review.where('id = ? AND opinion = 0', review.id).order('created_at DESC').first
       r.user.photo
+    else
+      review.user.photo
     end
   end
   

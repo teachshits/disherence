@@ -132,7 +132,7 @@ $(document).ready(function() {
 		stat = $(this).children('.opinion').text().indexOf('Awesome') != -1 ? 'Awful' : 'Awesome'
 		$(this).children('.opinion').text('It`s ' + stat)
 		
-		$(this).prev('.user_photo').find('.photo_like').toggleClass('slide_down')
+		$(this).prev('.user_photo').find('.photo').toggleClass('slide_down')
 		$(this).next().find('.profile').toggleClass('hidden')
 		
 		event.stopPropagation()
