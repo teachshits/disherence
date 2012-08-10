@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     @facebook_app_id = Rails.application.config.facebook_app_id
     @redirect_uri = Rails.application.config.redirect_uri
     
-    @reviews = Review.with_photos.order('RAND()').limit(10)
+    @reviews = Review.with_photos.where(:opinion => 1).order('RAND()').limit(10)
     @reviews = @reviews.where('user_id != ?', session[:user].id) unless session[:user].nil?
     # @reviews.page params[:page]
     
