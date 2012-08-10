@@ -323,9 +323,6 @@ li {
       overflow: hidden;
       float: left;
       -webkit-transform: translate(0px, 0px) translateZ(0px); }
-    .review .user_info .photo_disagree {
-      -webkit-transform: rotate(180deg);
-      margin-top: -130px; }
     .review .user_info .photo.slide_down {
       margin-top: 75px;
       -webkit-transform: translate(0px, 0px) translateZ(0px); }
@@ -339,6 +336,8 @@ li {
       background-size: cover; }
     .review .user_info .photo {
       -webkit-transition: all 0.5s linear; }
+    .review .user_info .photo_disagree {
+      margin-top: -130px; }
     .review .user_info .stats.opacity_zero {
       opacity: 0; }
     .review .user_info .stats {
@@ -347,8 +346,11 @@ li {
       line-height: 1.2em;
       -webkit-transition: opacity 0.2s ease;
       -webkit-transform: translate(0px, 0px) translateZ(0px); }
-      .review .user_info .stats .name {
+      .review .user_info .stats .name, .review .user_info .stats .name_disagree {
         font-size: 1.3em; }
+      .review .user_info .stats .name_disagree {
+        opacity: 0;
+        float: left; }
       .review .user_info .stats .opinion {
         color: #f03a2c;
         font-size: 1em; }

@@ -14,10 +14,6 @@
 		float: left
 		-webkit-transform: translate(0px, 0px) translateZ(0px)
 		
-	.photo_disagree
-		-webkit-transform: rotate(180deg)
-		margin-top: -130px
-		
 	.photo.slide_down
 		margin-top: 75px
 		-webkit-transform: translate(0px, 0px) translateZ(0px)
@@ -34,6 +30,10 @@
 	.photo
 		-webkit-transition: all 0.5s linear
 		
+	.photo_disagree
+		margin-top: -130px
+		
+		
 	.stats.opacity_zero
 		opacity: 0
 			
@@ -44,8 +44,12 @@
 		-webkit-transition: opacity 0.2s ease
 		-webkit-transform: translate(0px, 0px) translateZ(0px)
 		
-		.name 
+		.name, .name_disagree
 			font-size: 1.3em
+		
+		.name_disagree
+			opacity: 0
+			float: left
 			
 		.opinion 
 			color: #f03a2c
