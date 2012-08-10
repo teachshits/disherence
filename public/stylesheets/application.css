@@ -159,7 +159,7 @@ li {
     #top_dishes .dish .comment {
       position: absolute;
       color: white;
-      bottom: 15px;
+      bottom: 10px;
       text-shadow: none; }
   #top_dishes .dish.expand {
     height: 320px; }
