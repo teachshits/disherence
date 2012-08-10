@@ -45,12 +45,12 @@
 				
 				<div class="user_photo">
 					<div class="photo" style="background-image: url('<%= review.user.photo %>')"></div>
-					<div class="photo_disagree" style="background-image: url('<%= review_disagree_user_photo(review) %>')"></div>
+					<div class="photo_disagree" style="background-image: url('<%= review_opposite(review)[:photo] %>')"></div>
 				</div>
 				
 				<div class="stats">
 					<div class="name"><%= review.user.name.length > 28 ? review.user.name[0 .. 26] + '...' : review.user.name %></div>
-					<div class="name_disagree"><%= review.user.name.length > 28 ? review.user.name[0 .. 26] + '...' : review.user.name %></div>
+					<div class="name_disagree opacity_zero"><%= review_opposite(review)[:name].length > 28 ? review_opposite(review)[:name][0 .. 26] + '...' : review_opposite(review)[:name] %></div>
 					<div class="opinion"><%= review.opinion == true ? 'It`s Awesome': 'It`s Awful'%></div>
 					<% if review.count_disagree > 0 %>
 					<a href="#" class="disagree"><%= review.count_disagree %> user(s) disagree</a>

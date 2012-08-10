@@ -63,6 +63,7 @@ $(document).ready(function() {
           loading=false;
 					setTimeout(function () {
 							myScroll.refresh();
+							myScroll.scrollTo(0,0,0)
 						}, 0);
         }
       })
@@ -134,6 +135,9 @@ $(document).ready(function() {
 		
 		$(this).prev('.user_photo').find('.photo').toggleClass('slide_down')
 		$(this).next().find('.profile').toggleClass('hidden')
+		
+		$(this).children('.name').toggleClass('opacity_zero')
+		$(this).children('.name_disagree').toggleClass('opacity_zero')
 		
 		event.stopPropagation()
 		event.preventDefault()

@@ -46,13 +46,16 @@ module ReviewsHelper
     raw "#{profiles.join("\n")}"
   end
   
-  def review_disagree_user_photo(review)
+  def review_opposite(review)
+    info = {}
     if r = Review.where('id = ? AND opinion = 0', review.id).order('created_at DESC').first
-      r.user.photo
+      info[:photo] = r.user.photo
+      info[:name] = r.user.name
     else
-      review.user.photo
+      info[:photo] = review.user.photo
+      info[:name] = review.user.name
     end
-  end
-  
+    info
+  end  
   
 end

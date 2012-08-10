@@ -347,11 +347,14 @@ li {
       -webkit-transition: opacity 0.2s ease;
       -webkit-transform: translate(0px, 0px) translateZ(0px); }
       .review .user_info .stats .name, .review .user_info .stats .name_disagree {
-        font-size: 1.3em; }
-      .review .user_info .stats .name_disagree {
-        opacity: 0;
-        float: left; }
+        top: -20px;
+        left: 65px;
+        font-size: 1.3em;
+        position: absolute; }
+      .review .user_info .stats .name.opacity_zero, .review .user_info .stats .name_disagree.opacity_zero {
+        opacity: 0; }
       .review .user_info .stats .opinion {
+        margin-top: 25px;
         color: #f03a2c;
         font-size: 1em; }
     .review .user_info .users.slide {
