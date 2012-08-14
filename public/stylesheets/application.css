@@ -558,6 +558,9 @@ li {
 .btn_disagree {
   background: url("/images/op_btns.png") 100% 0; }
 
+#container #scroller #map ul li {
+  height: auto; }
+
 #map {
   width: 320px; }
   #map #search_map_canvas {

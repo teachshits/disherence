@@ -2,43 +2,45 @@
 <div id="content">
 	<div id="wrapper"> 
 		<div id="scroller"> 
-			<ul id="thelist">
-				<li><div id="map">
-
-					<div id="search_map_canvas"></div>
-					<script>
-						map = load_map('search_map_canvas');
-						<%= raw @restaurants_info %>
-						var places = []
-						for (var i = 0; i < r_info.length; i++) {
-					    place = []
-							place[0] = r_info[i]['name'];
-							place[1] = r_info[i]['lat'];
-							place[2] = r_info[i]['lng'];
-							place[3] = 1;
-							places.push(place)
-						}
-						setMarkers(map, places)
-					</script>
+				<div id="map">
+					<ul id="thelist">
+					<li>
+						<div id="search_map_canvas"></div>
+						<script>
+							map = load_map('search_map_canvas');
+							<%= raw @restaurants_info %>
+							var places = []
+							for (var i = 0; i < r_info.length; i++) {
+						    place = []
+								place[0] = r_info[i]['name'];
+								place[1] = r_info[i]['lat'];
+								place[2] = r_info[i]['lng'];
+								place[3] = 1;
+								places.push(place)
+							}
+							setMarkers(map, places)
+						</script>
+					</li>
 					<% @restaurants.each do |r| %>
-						<div class="restaurant">
-							<div class="info">
-								<%= remoteness(r,cookies[:lat],cookies[:lng]) %>
-								<a class="name" href="restaurants/show/<%= r.id %>"><%= r.name.length > 15 ? r.name[0..12] + '...' : r.name %></a>
-								<div class="rate">
-									<div class="star fill"></div>
-									<div class="star fill"></div>
-									<div class="star fill"></div>
-									<div class="star half"></div>
-									<div class="star empty"></div>
-									<div class="rating"><div class="ico"></div><%= r.yelp_reviews_count %> on Yelp</div>
-								</div>
+					<li>
+					<div class="restaurant">
+						<div class="info">
+							<%= remoteness(r,cookies[:lat],cookies[:lng]) %>
+							<a class="name" href="restaurants/show/<%= r.id %>"><%= r.name.length > 15 ? r.name[0..12] + '...' : r.name %></a>
+							<div class="rate">
+								<div class="star fill"></div>
+								<div class="star fill"></div>
+								<div class="star fill"></div>
+								<div class="star half"></div>
+								<div class="star empty"></div>
+								<div class="rating"><div class="ico"></div><%= r.yelp_reviews_count %> on Yelp</div>
 							</div>
-							<div class="address"><%= r.address %></div>
-							<div class="stats"><%= r.cuisine %> | <% r.bill.times do %>$<% end %></div>	
 						</div>
-						<div class="hr"></div>
+						<div class="address"><%= r.address %></div>
+						<div class="stats"><%= r.cuisine %> | <% r.bill.times do %>$<% end %></div>	
+					</div>
+					<div class="hr"></div>
+					</li>
 					<% end %>
-				</li>
-			</ul>
-			<script>myScroll.refresh();</script>
+				</ul>
+			</div>
