@@ -5,7 +5,18 @@ $(document).ready(function() {
 	navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 	setInterval(function(){
 		if ($.cookie("lat") != null && $.cookie("lng") != null){
-			window.location.href = '/restaurants'
+			$.ajax({
+	        url: '/',
+	        type: 'get',
+	        dataType: 'script',
+	        success: function() {
+	          loading=false;
+						setTimeout(function () {
+								myScroll.refresh();
+								myScroll.scrollTo(0,0,0)
+							}, 0);
+	        }
+	    })
 		}
 	},200);
 	
