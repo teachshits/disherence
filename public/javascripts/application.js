@@ -12,7 +12,7 @@ $(document).ready(function() {
 		event.stopPropagation();
 	})
 	
-	$('.map_canvas, .search_map_canvas').live('swipe tap', function(event){
+	$('.map_canvas, .search_map_canvas').live('swipe tap scroll', function(event){
 		event.preventDefault();
 		event.stopPropagation();
 	})
