@@ -1,7 +1,15 @@
 r_info = []
 markerList = []
 $(document).ready(function() {
+	if ($("#map").length > 0){
 	navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
+	setInterval(function(){
+		if ($.cookie("lat") != null && $.cookie("lng") != null){
+			window.location.href = '/restaurants'
+		}
+	},200);
+	
+	}
 	
 	if ($("#map_canvas").length > 0){
 		map = load_map('map_canvas')
