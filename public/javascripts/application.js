@@ -87,27 +87,27 @@ $(document).ready(function() {
 
 		myScroll = new iScroll('wrapper', { 
 			scrollbarClass: 'myScrollbar', 
-			onBeforeScrollStart: null,
-			onScrollMove:  function() {
-
-				if (v_height * page + myScroll.y < 700 && flag == true) {
-				flag = false; 
-				console.log(page)
-				page++;
-				$.ajax({
-		        url: '/reviews?page=' + page,
-		        type: 'get',
-		        dataType: 'script',
-		        success: function() {
-		          loading=false;
-							setTimeout(function () {
-									myScroll.refresh();
-									myScroll.scrollTo(0,0,0)
-									flag = true;
-							}, 0);
-		        }
-		    })
-			}}
+			onBeforeScrollStart: null// ,
+			// 			onScrollMove:  function() {
+			// 
+			// 				if (v_height * page + myScroll.y < 700 && flag == true) {
+			// 				flag = false; 
+			// 				console.log(page)
+			// 				page++;
+			// 				$.ajax({
+			// 		        url: '/reviews?page=' + page,
+			// 		        type: 'get',
+			// 		        dataType: 'script',
+			// 		        success: function() {
+			// 		          loading=false;
+			// 							setTimeout(function () {
+			// 									myScroll.refresh();
+			// 									myScroll.scrollTo(0,0,0)
+			// 									flag = true;
+			// 							}, 0);
+			// 		        }
+			// 		    })
+			// 			}}
 		})		
 	}
 	
