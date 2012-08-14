@@ -1,6 +1,8 @@
 r_info = []
 markerList = []
 $(document).ready(function() {
+	navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
+	
 	if ($("#map_canvas").length > 0){
 		map = load_map('map_canvas')
 		id = $('.flag_content:first').attr('id')	
