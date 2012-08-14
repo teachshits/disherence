@@ -3,7 +3,7 @@ markerList = []
 $(document).ready(function() {
 	if ($("#map").length > 0){
 	navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
-	setInterval(function(){
+	setTimeout(function(){
 		if ($.cookie("lat") != null && $.cookie("lng") != null){
 			$.ajax({
 	        url: '/',
