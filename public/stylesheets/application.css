@@ -572,7 +572,7 @@ li {
     color: white;
     font-size: 15px;
     line-height: 20px;
-    padding: 0 5px;
+    padding: 0;
     height: 19px; }
   #map #search_map_canvas {
     height: 160px;
