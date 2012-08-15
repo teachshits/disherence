@@ -396,7 +396,7 @@ function setMarkers(map, locations) {
         infoBubble = new InfoBubble({
           map: map,
           content: '<div class="phoneytext"><a class="map_link" href="/restaurants/show/'+locations[i][4]+'">'+locations[i][0]+'</a></div>',
-          position: new google.maps.LatLng(parseFloat(locations[i][1]) + 0.012, locations[i][2]),
+          position: new google.maps.LatLng(parseFloat(locations[i][1]) + 0.0009, locations[i][2] + 0.0022),
           shadowStyle: 1,
           padding: 0,
           backgroundColor: 'rgb(57,57,57)',
