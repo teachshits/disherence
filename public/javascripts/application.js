@@ -385,7 +385,7 @@ function setMarkers(map, locations) {
         zIndex: place[3]
     });
 	
-		google.maps.event.addListener(marker, 'touchstart', (function(marker, i) {
+		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 	    return function() {
 				console.log(locations[i][1])
 				console.log(parseFloat(locations[i][1]) + 0.001)
