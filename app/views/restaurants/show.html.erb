@@ -8,7 +8,7 @@
 						<div class="restaurant">
 
 							<div class="info">
-								<%= remoteness(r,cookies[:lat],cookies[:lng]) %>		
+								<%= remoteness(@restaurant,cookies[:lat],cookies[:lng]) %>		
 								<div class="name"><%= @restaurant.name %></div>
 								<div class="rate">
 									<div class="star fill"></div>

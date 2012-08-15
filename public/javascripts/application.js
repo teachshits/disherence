@@ -1,26 +1,37 @@
 r_info = []
 markerList = []
+
 $(document).ready(function() {
 	if ($("#map").length > 0){
-	navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
-	setTimeout(function(){
-		if ($.cookie("lat") != null && $.cookie("lng") != null){
-			$.ajax({
-	        url: '/',
-	        type: 'get',
-	        dataType: 'script',
-	        success: function() {
-	          loading=false;
-						setTimeout(function () {
-								myScroll.refresh();
-								myScroll.scrollTo(0,0,0)
-							}, 0);
-	        }
-	    })
-		}
-	},200);
-	
+		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
+		setTimeout(function(){
+			if ($.cookie("lat") != null && $.cookie("lng") != null){
+				$.ajax({
+		        url: '/',
+		        type: 'get',
+		        dataType: 'script',
+		        success: function() {
+		          loading=false;
+							setTimeout(function () {
+									myScroll.refresh();
+									myScroll.scrollTo(0,0,0)
+								}, 0);
+		        }
+		    })
+			}
+		},200);
 	}
+	
+	$(".map_link").live('tap', function(event){
+		event.preventDefault();
+		console.log($(this).attr('href'))
+	})
+	
+	
+	$("#logo").live('tap', function(event){
+		event.preventDefault();
+		$('#search_map_canvas').removeClass('expand_search_map_canvas')
+	})
 	
 	if ($("#map_canvas").length > 0){
 		map = load_map('map_canvas')
@@ -33,7 +44,8 @@ $(document).ready(function() {
 		event.stopPropagation();
 	})
 	
-	$('.map_canvas, .search_map_canvas').live('swipe tap scroll', function(event){
+	$('#search_map_canvas').live('tap', function(event){
+		$(this).addClass('expand_search_map_canvas')
 		event.preventDefault();
 		event.stopPropagation();
 	})
@@ -106,7 +118,7 @@ $(document).ready(function() {
 
 		myScroll = new iScroll('wrapper', { 
 			scrollbarClass: 'myScrollbar', 
-			onBeforeScrollStart: null// ,
+			onBeforeScrollStart: function() {} ,
 			// 			onScrollMove:  function() {
 			// 
 			// 				if (v_height * page + myScroll.y < 700 && flag == true) {
@@ -356,6 +368,11 @@ function setMarkers(map, locations) {
       type: 'poly'
   };
 	var bounds = new google.maps.LatLngBounds();
+	
+	var infowindow = new google.maps.InfoWindow();
+
+	var marker, i;
+	
   for (var i = 0; i < locations.length; i++) {
     var place = locations[i];
     var myLatLng = new google.maps.LatLng(place[1], place[2]);
@@ -367,6 +384,33 @@ function setMarkers(map, locations) {
         title: place[0],
         zIndex: place[3]
     });
+	
+		google.maps.event.addListener(marker, 'click', (function(marker, i) {
+	    return function() {
+				console.log(locations[i][1])
+				console.log(parseFloat(locations[i][1]) + 0.001)
+        infoBubble = new InfoBubble({
+          map: map,
+          content: '<div class="phoneytext"><a class="map_link" href="/restaurants/show/'+locations[i][4]+'">'+locations[i][0]+'</a></div>',
+          position: new google.maps.LatLng(parseFloat(locations[i][1]) + 0.012, locations[i][2]),
+          shadowStyle: 1,
+          padding: 0,
+          backgroundColor: 'rgb(57,57,57)',
+          borderRadius: 4,
+          arrowSize: 0,
+          borderWidth: 1,
+          borderColor: '#2c2c2c',
+          disableAutoPan: true,
+          hideCloseButton: true,
+          arrowPosition: 30,
+          backgroundClassName: 'phoney',
+          arrowStyle: 2
+        });
+
+				infoBubble.open();
+	    }
+	  })(marker, i));
+	
 		markerList.push(marker);
 		bounds.extend(myLatLng);
   }
@@ -375,5 +419,5 @@ function setMarkers(map, locations) {
 	map_center.Ya = map_center.Ya + 0.0009
 	map_center.Xa = map_center.Xa + 0.0022
 	map.setCenter(map_center);	
-	console.log(map_center.Ya - 0.05)
+	
 }

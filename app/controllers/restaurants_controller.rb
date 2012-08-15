@@ -15,6 +15,7 @@ class RestaurantsController < ApplicationController
     i = 0
     @restaurants.each do |r|
       @restaurants_info += "r_info[#{i}] = {};\n"
+      @restaurants_info += "r_info[#{i}]['id'] = '#{r.id}';\n"
       @restaurants_info += "r_info[#{i}]['name'] = '#{r.name.gsub(/'/, "\\\\'")}';\n"
       @restaurants_info += "r_info[#{i}]['lat'] = '#{r.lat}';\n"
       @restaurants_info += "r_info[#{i}]['lng'] = '#{r.lng}';\n"

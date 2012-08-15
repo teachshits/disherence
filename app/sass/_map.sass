@@ -1,10 +1,27 @@
 #container #scroller #map ul li
 	height: auto
 #map
+
+	.phoney
+		background: -webkit-gradient(linear,left top,left bottom,color-stop(0, rgb(112,112,112)),color-stop(0.51, rgb(94,94,94)),color-stop(0.52, rgb(57,57,57)))
+		overflow: hidden
+		height: 19px
+
+	.phoneytext a
+		text-shadow: 0 -1px 0 #000
+		color: #fff
+		font-size: 16px
+		line-height: 20px
+		padding: 10px 45px 10px 15px
+		height: 19px
+		
 	width: $review_w
 	#search_map_canvas
 		height: $review_w - $review_w * 0.5
 		width: $review_w
+		-webkit-transition: height 0.3s ease
+	#search_map_canvas.expand_search_map_canvas
+		height: 330px
 	.restaurant
 		margin-top: 10px
 		color: #414143

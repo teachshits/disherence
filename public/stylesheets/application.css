@@ -563,9 +563,23 @@ li {
 
 #map {
   width: 320px; }
+  #map .phoney {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #707070), color-stop(0.51, #5e5e5e), color-stop(0.52, #393939));
+    overflow: hidden;
+    height: 19px; }
+  #map .phoneytext a {
+    text-shadow: 0 -1px 0 black;
+    color: white;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px 45px 10px 15px;
+    height: 19px; }
   #map #search_map_canvas {
     height: 160px;
-    width: 320px; }
+    width: 320px;
+    -webkit-transition: height 0.3s ease; }
+  #map #search_map_canvas.expand_search_map_canvas {
+    height: 330px; }
   #map .restaurant {
     margin-top: 10px;
     color: #414143;
