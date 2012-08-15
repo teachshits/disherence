@@ -1,5 +1,6 @@
 r_info = []
 markerList = []
+infoBubbleList = []
 
 $(document).ready(function() {
 	if ($("#map").length > 0){
@@ -371,7 +372,7 @@ function setMarkers(map, locations) {
 	
 	var infowindow = new google.maps.InfoWindow();
 
-	var marker, i;
+	var marker, i, b;
 	
   for (var i = 0; i < locations.length; i++) {
     var place = locations[i];
@@ -384,11 +385,14 @@ function setMarkers(map, locations) {
         title: place[0],
         zIndex: place[3]
     });
-	
+			
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 	    return function() {
-				console.log(locations[i][1])
-				console.log(parseFloat(locations[i][1]) + 0.001)
+
+				if (typeof infoBubble != 'undefined') {
+					infoBubble.close();
+				}
+
         infoBubble = new InfoBubble({
           map: map,
           content: '<div class="phoneytext"><a class="map_link" href="/restaurants/show/'+locations[i][4]+'">'+locations[i][0]+'</a></div>',
@@ -406,8 +410,11 @@ function setMarkers(map, locations) {
           backgroundClassName: 'phoney',
           arrowStyle: 2
         });
-
 				infoBubble.open();
+				
+				google.maps.event.addListener(map, "click", function(){
+				  infoBubble.close();
+				});
 	    }
 	  })(marker, i));
 	
