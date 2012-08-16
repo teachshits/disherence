@@ -4,42 +4,42 @@ infoBubbleList = []
 
 $(document).ready(function() {
 	
-	$(".restaurant_link").live('tap', function(event){
-		event.preventDefault();
-		href = $(this).attr('href')
-		$.ajax({
-        url: href,
-        type: 'get',
-        dataType: 'script',
-        success: function() {
-          loading=false;
-					setTimeout(function () {
-							myScroll.refresh();
-							myScroll.scrollTo(0,0,0)
-						}, 0);
-        }
-    })
-	})
+	// $(".restaurant_link").live('tap', function(event){
+	// 	event.preventDefault();
+	// 	href = $(this).attr('href')
+	// 	$.ajax({
+	//         url: href,
+	//         type: 'get',
+	//         dataType: 'script',
+	//         success: function() {
+	//           loading=false;
+	// 				setTimeout(function () {
+	// 						myScroll.refresh();
+	// 						myScroll.scrollTo(0,0,0)
+	// 					}, 0);
+	//         }
+	//     })
+	// })
 	
-	if ($("#search_map_canvas").length > 0){
+	// if ($("#search_map_canvas").length > 0){
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
-		setInterval(function(){
-			if ($.cookie("lat") != null && $.cookie("lng") != null){
-				$.ajax({
-		        url: '/restaurants/index',
-		        type: 'get',
-		        dataType: 'script',
-		        success: function() {
-		          loading=false;
-							setTimeout(function () {
-									myScroll.refresh();
-									myScroll.scrollTo(0,0,0)
-								}, 0);
-		        }
-		    })
-			}
-		},200);
-	}
+	// 	setInterval(function(){
+	// 		if ($.cookie("lat") != null && $.cookie("lng") != null){
+	// 			$.ajax({
+	// 	        url: '/restaurants/index',
+	// 	        type: 'get',
+	// 	        dataType: 'script',
+	// 	        success: function() {
+	// 	          loading=false;
+	// 						setTimeout(function () {
+	// 								myScroll.refresh();
+	// 								myScroll.scrollTo(0,0,0)
+	// 							}, 0);
+	// 	        }
+	// 	    })
+	// 		}
+	// 	},200);
+	// }
 	
 	$(".map_link").live('tap', function(event){
 		event.preventDefault();

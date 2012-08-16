@@ -245,8 +245,8 @@ li {
         visibility: visible;
         opacity: 1;
         background-position: 0 50%; }
-      #top_dishes .dish_info_container .dish_info .set_disagree_aw {
-        background-position: 0 100%; }
+      #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
+        background-position: 0 98%; }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw, #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
         margin-top: 10px;
         width: 45%;
