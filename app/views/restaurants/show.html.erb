@@ -2,38 +2,39 @@
 	<div id="header"></div> 
 	<div id="content">
 		<div id="wrapper"> 
-			<div id="scroller"> 
-				<ul id="thelist">
-					<li><div id="top_dishes">
-						<div class="restaurant">
+			<div id="scroller">
+				<div id="top_dishes"> 
+					<ul id="thelist">
+						<li>
+							<div class="restaurant">
+								<div class="info">
+									<div class="name"><%= @restaurant.name %></div>
 
-							<div class="info">
-								<div class="name"><%= @restaurant.name %></div>
-								<div class="rate">
-									<div class="star fill"></div>
-									<div class="star fill"></div>
-									<div class="star fill"></div>
-									<div class="star half"></div>
-									<div class="star empty"></div>
-									<div class="rating"><div class="ico"></div><%= @restaurant.yelp_reviews_count %> on Yelp</div>
+									<div class="rate">
+										<div class="star fill"></div>
+										<div class="star fill"></div>
+										<div class="star fill"></div>
+										<div class="star half"></div>
+										<div class="star empty"></div>
+										<div class="rating"><div class="ico"></div><%= @restaurant.yelp_reviews_count %> on Yelp</div>
+									</div>
+									<a id="menu_button" href="#"></a>
 								</div>
-								<a id="menu_button" href="#"></a>
+								
+								<div class="address"><%= @restaurant.address %></div>
+								<div class="stats"><%= @restaurant.cuisine %> | <% @restaurant.bill.times do%>$<% end %></div>	
 							</div>
-							<div class="address"><%= @restaurant.address %></div>
-							<div class="stats"><%= @restaurant.cuisine %> | <% @restaurant.bill.times do%>$<% end %></div>	
-						</div>
-
-						<div class="hr"></div>
-
-						<div id="banner">
-							Based on <%= @restaurant.yelp_reviews_count %> reviews on Yelp, Zagat, Foursquare
-						</div>
-
+							<div class="hr"></div>
+							<div id="banner">
+								Based on <%= @restaurant.yelp_reviews_count %> reviews on Yelp, Zagat, Foursquare
+							</div>
+						</li>
+						
 						<% @restaurant.dishes.order('likes DESC').each do |d| %>
+						<li>
 							<div class="dish" style="background-image: url('<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.photo %>')">
-								
 								<div class="name"><%= d.name %></div>
-								
+							
 								<div class="dish_info_container">				
 									<div class="rating"><span><%= @restaurant.dishes.sum(:likes) %></span></div>
 									<div class="dish_info">
@@ -46,16 +47,17 @@
 										<%= awesome_buttons(session[:user],d) %>	
 									</div>
 								</div>
-								
+							
 								<div class="comment">
 									<div class="user_img" style="background: url('<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.user.photo %>') left center"></div>
 									<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.comment.to_s[0..50] %>
 								</div>					
-								
+							
 							</div>
+						</li>
 						<% end %>
 					
-					</div></li>
+					</div>
 				</ul> 
 			</div>		 
 </div>

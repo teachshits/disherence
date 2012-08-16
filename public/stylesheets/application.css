@@ -61,6 +61,9 @@ li {
   src: local("CompPro_bold");
   src: url("../fonts/PFDinTextCompPro-Medium.ttf") format("truetype"); }
 
+#container #scroller #top_dishes ul li {
+  height: auto; }
+
 #top_dishes {
   width: 320px; }
   #top_dishes .hrw {
@@ -178,7 +181,7 @@ li {
       background-size: 100%;
       font-size: 2em;
       color: #d2ffbe;
-      left: 215px;
+      left: 240px;
       padding: 15px 35px 25px 40px;
       top: 5px;
       text-shadow: 0 2px 2px #999999;
