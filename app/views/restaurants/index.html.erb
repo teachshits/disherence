@@ -1,4 +1,6 @@
-<div id="header"><a id="logo" href="/"><img id="logo_img" src="/images/trsp.gif" /></a></div> 
+<div id="header">
+	<div class="close_map hidden">Close</div>
+	<a id="logo" href="/"><img id="logo_img" src="/images/trsp.gif" /></a></div> 
 <div id="content">
 	<div id="wrapper"> 
 		<div id="scroller"> 
@@ -31,6 +33,26 @@
 							setMarkers(map, places)
 						</script>
 					</li>
-				<%= render @restaurants %>
+				<% @restaurants.each do |restaurant| %>
+					<li>
+					<div class="restaurant">
+						<div class="info">
+							<%= remoteness(restaurant, cookies[:lat],cookies[:lng]) %>
+							<a class="restaurant_link name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
+							<div class="rate">
+								<div class="star fill"></div>
+								<div class="star fill"></div>
+								<div class="star fill"></div>
+								<div class="star half"></div>
+								<div class="star empty"></div>
+								<div class="rating"><div class="ico"></div><%= restaurant.yelp_reviews_count %> on Yelp</div>
+							</div>
+						</div>
+						<div class="address"><%= restaurant.address %></div>
+						<div class="stats"><%= restaurant.cuisine %> | <% restaurant.bill.times do %>$<% end %></div>	
+					</div>
+					<div class="hr"></div>
+					</li>
+				<% end %>
 				</ul>
 			</div>

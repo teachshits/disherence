@@ -92,16 +92,7 @@ $urinfo_h: $review_w / 5
 		text-shadow: none
 		font-size: 0.9em
 		text-align: center
-		padding-top: 45px
-	.dish_container
-		position: relative		
-		.name
-			float: left
-			font-family: CompPro_bold
-			font-size: 2em
-			padding: 5px 0 0 10px
-			color: #d5ffbf
-			text-shadow: 0 1px 2px #666
+		padding-top: 45px		
 	.dish
 		height: 110px
 		background: center
@@ -109,31 +100,34 @@ $urinfo_h: $review_w / 5
 		position: relative
 		overflow: hidden
 		-webkit-transition: height 0.2s ease-in
-		.user_img
-			margin: 0 5px 0 10px
-			width: 30px
-			height: 30px
+		.name
 			float: left
-			border: 3px solid #fff
+			font-family: CompPro_bold
+			font-size: 2em
+			padding: 5px 0 0 10px
+			color: #d5ffbf
+			text-shadow: 0 1px 2px #666
 		.comment
 			position: absolute
 			color: #fff
 			bottom: 10px
 			text-shadow: none
+			
+			.user_img
+				margin: 0 5px 0 10px
+				width: 30px
+				height: 30px
+				float: left
+				border: 3px solid #fff
 	.dish.expand
 		height: 320px
-	.dish_info.slideLeft
-		left: 0
-	.dish_info
-		z-index: 99
-		height: 110px
-		background: left center
-		background-size: 320px
-		position: absolute
-		left: $review_w
-		width: $review_w
-		background: url('../images/pli-bg.png')
+	
+	.dish_info_container.slideLeft
+		left: -320px
+		
+	.dish_info_container
 		-webkit-transition: left 0.3s ease
+		position: relative
 		
 		.rating
 			font-family: CompPro_bold
@@ -141,72 +135,89 @@ $urinfo_h: $review_w / 5
 			background-size: 100%
 			font-size: 2em
 			color: #d2ffbe
-			left: -90px
+			left: 215px
 			padding: 15px 35px 25px 40px
 			top: 5px
 			text-shadow: 0 2px 2px #999
 			position: absolute
-			
-		.stats			
-			font-size: 1.7em
-			margin: 10px 10px 0 10px
-			.like, .dislike
-				background: url('../images/pli-like.png') no-repeat left center
-				background-size: 25px
-				float: right			
-				padding-left: 30px 
-				margin-bottom: 10px
-				color: #d2ffbe
-				text-shadow: none
-				height: 25px
-			.dislike
-				background: url('../images/pli-dislike.png') no-repeat 5px center
-				border-left: 1px solid #cbcbcd
-				margin-left: 5px
-				color: #e0b355
-		.cover
-			background: url('../images/td-rate-flag-tail.png') no-repeat -5px center
-			background-size: contain
-			float: left
-			height: 48px
-			padding: 5px 7px 12px 20px
-			margin-top: 1px
-			text-shadow: 0 2px 2px #999
-		.name
-			line-height: 0.8em
-			padding: 10px 0 0 30px
-			width: 150px
-			
-			
-		.status_aw.opacity_zero
-			opacity: 0
-
-		.status_aw
+			z-index: 99
+		.dish_info
+			z-index: 98
+			height: 110px
+			background: left center
+			background-size: 320px
 			position: absolute
-			width: 100%
-			visibility: hidden
-			opacity: 0
-			z-index: 0
-			background: url('/images/td-choise-buttons.png')
-			background-size: 100% auto
-			-webkit-transition: opacity 0.4s ease
+			left: $review_w
+			width: $review_w
+			background: url('../images/pli-bg.png')
+			
+			.hr_b
+				clear: both
+				height: 1px
+				margin: 0
+			
+			.stats			
+				font-size: 1.7em
+				margin: 10px 10px 0 10px
+				.like, .dislike
+					background: url('../images/pli-like.png') no-repeat left center
+					background-size: 25px
+					float: right			
+					padding-left: 30px 
+					margin-bottom: 10px
+					color: #d2ffbe
+					text-shadow: none
+					height: 25px
+				.dislike
+					background: url('../images/pli-dislike.png') no-repeat 5px center
+					border-left: 1px solid #cbcbcd
+					margin-left: 5px
+					color: #e0b355
+			.cover
+				background: url('../images/td-rate-flag-tail.png') no-repeat -5px center
+				background-size: contain
+				float: left
+				height: 48px
+				padding: 5px 7px 12px 20px
+				margin-top: 1px
+				text-shadow: 0 2px 2px #999
+			.name
+				line-height: 0.8em
+				padding: 10px 0 0 30px
+				width: 150px
+			
+			
+			.status_aw.opacity_zero
+				opacity: 0
 
-		.set_agree_aw, .set_disagree_aw
-			visibility: visible
-			opacity: 1
-			background-position: 0 50%
+			.status_aw
+				position: absolute
+				width: 92%
+				visibility: hidden
+				opacity: 0
+				z-index: 0
+				background: url('/images/td-choise-buttons.png')
+				background-size: 100% auto
+				-webkit-transition: opacity 0.4s ease
+				margin: 12px 0 0 18px
 
-		.set_disagree_aw
-			background-position: 0 100%
+			.status_aw.set_agree_aw, .status_aw.set_disagree_aw
+				visibility: visible
+				opacity: 1
+				background-position: 0 50%
 
-		.btn_agree_aw, .btn_disagree_aw
-			width: 50%
-			float: left
-			margin-top: 10px
-			background-size: 200% auto
-			background: url('/images/td-choise-buttons.png') 0 0
-		.btn_disagree_aw
-			background: url('/images/td-choise-buttons.png') 100% 0
+			.set_disagree_aw
+				background-position: 0 100%
+			.btn_agree_aw, .btn_disagree_aw
+				margin-top: 10px
+				width: 45%
+				float: left
+				background-size: 200% auto
+				background: url('/images/td-choise-buttons.png') 0 0
+			.btn_agree_aw
+				margin-left: 20px
+			.btn_disagree_aw
+				background: url('/images/td-choise-buttons.png') 100% 0
 			
 		// .op_status_d
 		// 	height: 48px

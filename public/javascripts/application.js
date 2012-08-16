@@ -3,12 +3,30 @@ markerList = []
 infoBubbleList = []
 
 $(document).ready(function() {
-	if ($("#map").length > 0){
+	
+	$(".restaurant_link").live('tap', function(event){
+		event.preventDefault();
+		href = $(this).attr('href')
+		$.ajax({
+        url: href,
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+          loading=false;
+					setTimeout(function () {
+							myScroll.refresh();
+							myScroll.scrollTo(0,0,0)
+						}, 0);
+        }
+    })
+	})
+	
+	if ($("#search_map_canvas").length > 0){
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
-		setTimeout(function(){
+		setInterval(function(){
 			if ($.cookie("lat") != null && $.cookie("lng") != null){
 				$.ajax({
-		        url: '/',
+		        url: '/restaurants/index',
 		        type: 'get',
 		        dataType: 'script',
 		        success: function() {
@@ -29,9 +47,10 @@ $(document).ready(function() {
 	})
 	
 	
-	$("#logo").live('tap', function(event){
+	$(".close_map").live('tap', function(event){
 		event.preventDefault();
 		$('#search_map_canvas').removeClass('expand_search_map_canvas')
+		$(this).addClass('hidden')
 	})
 	
 	if ($("#map_canvas").length > 0){
@@ -47,6 +66,7 @@ $(document).ready(function() {
 	
 	$('#search_map_canvas').live('tap', function(event){
 		$(this).addClass('expand_search_map_canvas')
+		$('.close_map').removeClass('hidden')
 		event.preventDefault();
 		event.stopPropagation();
 	})
@@ -75,11 +95,14 @@ $(document).ready(function() {
 	})
 	
 	// Restaurant Dish Info slide	
-	$('.dish_info .rating').live('swipeleft tap', function(event){
+	$('.dish_info_container .rating').live('swipeleft tap', function(event){
 		$(this).parent().addClass('slideLeft')
 	})
-	$('.dish_info').live('swiperight', function(event){
+	$('.dish_info_container').live('swiperight', function(event){
 		$(this).removeClass('slideLeft')
+	})
+	$('.dish_info_container').live('tap', function(event){
+		event.stopPropagation();
 	})
 	
 	// Restaurant info dish expand
@@ -226,50 +249,34 @@ $(document).ready(function() {
 		return false;
 	})	
 	
-	// Agree && Disagree Buttons
-	$('.btn_agree, .btn_disagree').live('tap', function(){
+	// Awesome && Awfull Buttons
+	$('.btn_agree_aw, .btn_disagree_aw').live('tap', function(){
 		event.preventDefault()
 		event.stopPropagation()
 		
-		if (this.className == 'btn_agree') {
-			
-			$(this).prev('.status').addClass('set_agree')
+		if (this.className == 'btn_agree_aw') {
+			$(this).prev('.status_aw').addClass('set_agree_aw')
 			el = $(this).prev().prev('.review')
-			$opinion_popup = el.children('.opinion_popup')
-			
 			el.find('.users .num').text('+' + (parseInt(el.find('.users .num').text()) + 1))
 			
 			if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {
 				el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
-				$opinion_popup.text('You think it`s awesome').addClass('opinion_awesome')
-				setTimeout("$opinion_popup.removeClass('opinion_awesome')",1500);	
-			} else {
-				$opinion_popup.text('You think it`s awful').addClass('opinion_awful')
-				setTimeout("$opinion_popup.removeClass('opinion_awful')",1500);	
 			}
 			
 		} else {
-
-			$(this).prev().prev('.status').addClass('set_disagree')
+			$(this).prev().prev('.status_aw').addClass('set_disagree_aw')
 			el = $(this).prev().prev().prev('.review')
-			$opinion_popup = el.children('.opinion_popup')
-			
 			el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) + 1) + ' user(s) disagree')
 			
 			if (el.find('.user_info .opinion').text().indexOf('Awful') != -1) {
 				el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
-				$opinion_popup.text('You think it`s awesome').addClass('opinion_awesome')
-				setTimeout("$opinion_popup.removeClass('opinion_awesome')",1500);	
-			} else {
-				$opinion_popup.text('You think it`s awful').addClass('opinion_awful')
-				setTimeout("$opinion_popup.removeClass('opinion_awful')",1500);	
 			}
 		}
 		
 		el.find('.dish_info .profiles').text(parseInt(el.find('.dish_info .profiles').text()) + 1)
 	})
 	
-	$('.status').live('tap', function(event){
+	$('.status_aw').live('tap', function(event){
 		event.preventDefault()
 		event.stopPropagation()
 		
@@ -277,7 +284,7 @@ $(document).ready(function() {
 		el = $(this).prev('.review')
 
 		
-		if (this.className.indexOf('set_agree') != -1) {
+		if (this.className.indexOf('set_agree_aw') != -1) {
 			el.find('.users .num').text('+' + (parseInt(el.find('.users .num').text()) - 1))
 
 			if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {		
@@ -285,7 +292,7 @@ $(document).ready(function() {
 			}
 		
 			fade = $(this)
-			setTimeout(function(){fade.removeClass('set_agree').removeClass('opacity_zero')}, 400)
+			setTimeout(function(){fade.removeClass('set_agree_aw').removeClass('opacity_zero')}, 400)
 			
 		} else {
 			el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) - 1) + ' user(s) disagree')
@@ -295,13 +302,89 @@ $(document).ready(function() {
 			}
 
 			fade = $(this)
-			setTimeout(function(){fade.removeClass('set_disagree').removeClass('opacity_zero')}, 400)
+			setTimeout(function(){fade.removeClass('set_disagree_aw').removeClass('opacity_zero')}, 400)
 			
 		}
 		el.find('.dish_info .profiles').text(parseInt(el.find('.dish_info .profiles').text()) - 1)
 	})
+	
+// Agree && Disagree Buttons
+$('.btn_agree, .btn_disagree').live('tap', function(){
+	event.preventDefault()
+	event.stopPropagation()
+	
+	if (this.className == 'btn_agree') {
+		
+		$(this).prev('.status').addClass('set_agree')
+		el = $(this).prev().prev('.review')
+		$opinion_popup = el.children('.opinion_popup')
+		
+		el.find('.users .num').text('+' + (parseInt(el.find('.users .num').text()) + 1))
+		
+		if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {
+			el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
+			$opinion_popup.text('You think it`s awesome').addClass('opinionesome')
+			setTimeout("$opinion_popup.removeClass('opinionesome')",1500);	
+		} else {
+			$opinion_popup.text('You think it`s awful').addClass('opinionful')
+			setTimeout("$opinion_popup.removeClass('opinionful')",1500);	
+		}
+		
+	} else {
+
+		$(this).prev().prev('.status').addClass('set_disagree')
+		el = $(this).prev().prev().prev('.review')
+		$opinion_popup = el.children('.opinion_popup')
+		
+		el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) + 1) + ' user(s) disagree')
+		
+		if (el.find('.user_info .opinion').text().indexOf('Awful') != -1) {
+			el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
+			$opinion_popup.text('You think it`s awesome').addClass('opinionesome')
+			setTimeout("$opinion_popup.removeClass('opinionesome')",1500);	
+		} else {
+			$opinion_popup.text('You think it`s awful').addClass('opinionful')
+			setTimeout("$opinion_popup.removeClass('opinionful')",1500);	
+		}
+	}
+	
+	el.find('.dish_info .profiles').text(parseInt(el.find('.dish_info .profiles').text()) + 1)
+})
+
+$('.status').live('tap', function(event){
+	event.preventDefault()
+	event.stopPropagation()
+	
+	$(this).addClass('opacity_zero')
+	el = $(this).prev('.review')
+
+	
+	if (this.className.indexOf('set_agree') != -1) {
+		el.find('.users .num').text('+' + (parseInt(el.find('.users .num').text()) - 1))
+
+		if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {		
+			el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) - 1)
+		}
+	
+		fade = $(this)
+		setTimeout(function(){fade.removeClass('set_agree').removeClass('opacity_zero')}, 400)
+		
+	} else {
+		el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) - 1) + ' user(s) disagree')
+		
+		if (el.find('.user_info .opinion').text().indexOf('Awful') != -1) {
+			el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) - 1)
+		}
+
+		fade = $(this)
+		setTimeout(function(){fade.removeClass('set_disagree').removeClass('opacity_zero')}, 400)
+		
+	}
+	el.find('.dish_info .profiles').text(parseInt(el.find('.dish_info .profiles').text()) - 1)
+})
 
 });
+
 
 function getLocation(pos)
 {

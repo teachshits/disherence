@@ -1,1 +1,1 @@
-$("#thelist").replaceWith("<%= escape_javascript(render('restaurants/show.html.erb'))%>")
+$("#thelist").AppendTo("<%= escape_javascript(render(@restaurants))%>")

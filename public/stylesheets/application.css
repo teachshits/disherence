@@ -140,15 +140,6 @@ li {
     font-size: 0.9em;
     text-align: center;
     padding-top: 45px; }
-  #top_dishes .dish_container {
-    position: relative; }
-    #top_dishes .dish_container .name {
-      float: left;
-      font-family: CompPro_bold;
-      font-size: 2em;
-      padding: 5px 0 0 10px;
-      color: #d5ffbf;
-      text-shadow: 0 1px 2px #666666; }
   #top_dishes .dish {
     height: 110px;
     background: center;
@@ -156,96 +147,113 @@ li {
     position: relative;
     overflow: hidden;
     -webkit-transition: height 0.2s ease-in; }
-    #top_dishes .dish .user_img {
-      margin: 0 5px 0 10px;
-      width: 30px;
-      height: 30px;
+    #top_dishes .dish .name {
       float: left;
-      border: 3px solid white; }
+      font-family: CompPro_bold;
+      font-size: 2em;
+      padding: 5px 0 0 10px;
+      color: #d5ffbf;
+      text-shadow: 0 1px 2px #666666; }
     #top_dishes .dish .comment {
       position: absolute;
       color: white;
       bottom: 10px;
       text-shadow: none; }
+      #top_dishes .dish .comment .user_img {
+        margin: 0 5px 0 10px;
+        width: 30px;
+        height: 30px;
+        float: left;
+        border: 3px solid white; }
   #top_dishes .dish.expand {
     height: 320px; }
-  #top_dishes .dish_info.slideLeft {
-    left: 0; }
-  #top_dishes .dish_info {
-    z-index: 99;
-    height: 110px;
-    background: left center;
-    background-size: 320px;
-    position: absolute;
-    left: 320px;
-    width: 320px;
-    background: url("../images/pli-bg.png");
-    -webkit-transition: left 0.3s ease; }
-    #top_dishes .dish_info .rating {
+  #top_dishes .dish_info_container.slideLeft {
+    left: -320px; }
+  #top_dishes .dish_info_container {
+    -webkit-transition: left 0.3s ease;
+    position: relative; }
+    #top_dishes .dish_info_container .rating {
       font-family: CompPro_bold;
       background: url("../images/td-rate-flag.png") no-repeat 0 center;
       background-size: 100%;
       font-size: 2em;
       color: #d2ffbe;
-      left: -90px;
+      left: 215px;
       padding: 15px 35px 25px 40px;
       top: 5px;
       text-shadow: 0 2px 2px #999999;
-      position: absolute; }
-    #top_dishes .dish_info .stats {
-      font-size: 1.7em;
-      margin: 10px 10px 0 10px; }
-      #top_dishes .dish_info .stats .like, #top_dishes .dish_info .stats .dislike {
-        background: url("../images/pli-like.png") no-repeat left center;
-        background-size: 25px;
-        float: right;
-        padding-left: 30px;
-        margin-bottom: 10px;
-        color: #d2ffbe;
-        text-shadow: none;
-        height: 25px; }
-      #top_dishes .dish_info .stats .dislike {
-        background: url("../images/pli-dislike.png") no-repeat 5px center;
-        border-left: 1px solid #cbcbcd;
-        margin-left: 5px;
-        color: #e0b355; }
-    #top_dishes .dish_info .cover {
-      background: url("../images/td-rate-flag-tail.png") no-repeat -5px center;
-      background-size: contain;
-      float: left;
-      height: 48px;
-      padding: 5px 7px 12px 20px;
-      margin-top: 1px;
-      text-shadow: 0 2px 2px #999999; }
-    #top_dishes .dish_info .name {
-      line-height: 0.8em;
-      padding: 10px 0 0 30px;
-      width: 150px; }
-    #top_dishes .dish_info .status_aw.opacity_zero {
-      opacity: 0; }
-    #top_dishes .dish_info .status_aw {
       position: absolute;
-      width: 100%;
-      visibility: hidden;
-      opacity: 0;
-      z-index: 0;
-      background: url("/images/td-choise-buttons.png");
-      background-size: 100% auto;
-      -webkit-transition: opacity 0.4s ease; }
-    #top_dishes .dish_info .set_agree_aw, #top_dishes .dish_info .set_disagree_aw {
-      visibility: visible;
-      opacity: 1;
-      background-position: 0 50%; }
-    #top_dishes .dish_info .set_disagree_aw {
-      background-position: 0 100%; }
-    #top_dishes .dish_info .btn_agree_aw, #top_dishes .dish_info .btn_disagree_aw {
-      width: 50%;
-      float: left;
-      margin-top: 10px;
-      background-size: 200% auto;
-      background: url("/images/td-choise-buttons.png") 0 0; }
-    #top_dishes .dish_info .btn_disagree_aw {
-      background: url("/images/td-choise-buttons.png") 100% 0; }
+      z-index: 99; }
+    #top_dishes .dish_info_container .dish_info {
+      z-index: 98;
+      height: 110px;
+      background: left center;
+      background-size: 320px;
+      position: absolute;
+      left: 320px;
+      width: 320px;
+      background: url("../images/pli-bg.png"); }
+      #top_dishes .dish_info_container .dish_info .hr_b {
+        clear: both;
+        height: 1px;
+        margin: 0; }
+      #top_dishes .dish_info_container .dish_info .stats {
+        font-size: 1.7em;
+        margin: 10px 10px 0 10px; }
+        #top_dishes .dish_info_container .dish_info .stats .like, #top_dishes .dish_info_container .dish_info .stats .dislike {
+          background: url("../images/pli-like.png") no-repeat left center;
+          background-size: 25px;
+          float: right;
+          padding-left: 30px;
+          margin-bottom: 10px;
+          color: #d2ffbe;
+          text-shadow: none;
+          height: 25px; }
+        #top_dishes .dish_info_container .dish_info .stats .dislike {
+          background: url("../images/pli-dislike.png") no-repeat 5px center;
+          border-left: 1px solid #cbcbcd;
+          margin-left: 5px;
+          color: #e0b355; }
+      #top_dishes .dish_info_container .dish_info .cover {
+        background: url("../images/td-rate-flag-tail.png") no-repeat -5px center;
+        background-size: contain;
+        float: left;
+        height: 48px;
+        padding: 5px 7px 12px 20px;
+        margin-top: 1px;
+        text-shadow: 0 2px 2px #999999; }
+      #top_dishes .dish_info_container .dish_info .name {
+        line-height: 0.8em;
+        padding: 10px 0 0 30px;
+        width: 150px; }
+      #top_dishes .dish_info_container .dish_info .status_aw.opacity_zero {
+        opacity: 0; }
+      #top_dishes .dish_info_container .dish_info .status_aw {
+        position: absolute;
+        width: 92%;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 0;
+        background: url("/images/td-choise-buttons.png");
+        background-size: 100% auto;
+        -webkit-transition: opacity 0.4s ease;
+        margin: 12px 0 0 18px; }
+      #top_dishes .dish_info_container .dish_info .status_aw.set_agree_aw, #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
+        visibility: visible;
+        opacity: 1;
+        background-position: 0 50%; }
+      #top_dishes .dish_info_container .dish_info .set_disagree_aw {
+        background-position: 0 100%; }
+      #top_dishes .dish_info_container .dish_info .btn_agree_aw, #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
+        margin-top: 10px;
+        width: 45%;
+        float: left;
+        background-size: 200% auto;
+        background: url("/images/td-choise-buttons.png") 0 0; }
+      #top_dishes .dish_info_container .dish_info .btn_agree_aw {
+        margin-left: 20px; }
+      #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
+        background: url("/images/td-choise-buttons.png") 100% 0; }
 
 #resataurants_button {
   background: url("/images/plate.png") no-repeat;
@@ -557,6 +565,21 @@ li {
 
 .btn_disagree {
   background: url("/images/op_btns.png") 100% 0; }
+
+.close_map.hidden {
+  display: none; }
+
+.close_map {
+  border: 1px solid #aeb897;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 17px;
+  color: #726658;
+  background: #f0f1d3;
+  display: block;
+  float: left;
+  margin: 10px 15px;
+  cursor: pointer; }
 
 #container #scroller #map ul li {
   height: auto; }

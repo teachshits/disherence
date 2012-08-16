@@ -8,7 +8,6 @@
 						<div class="restaurant">
 
 							<div class="info">
-								<%= remoteness(@restaurant,cookies[:lat],cookies[:lng]) %>		
 								<div class="name"><%= @restaurant.name %></div>
 								<div class="rate">
 									<div class="star fill"></div>
@@ -32,22 +31,27 @@
 
 						<% @restaurant.dishes.order('likes DESC').each do |d| %>
 							<div class="dish" style="background-image: url('<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.photo %>')">
+								
 								<div class="name"><%= d.name %></div>
-
+								
 								<div class="dish_info_container">				
-									<div class="rating"><span><%= (d.likes * 100)/@restaurant.dishes.sum(:likes) %></span>%</div>
+									<div class="rating"><span><%= @restaurant.dishes.sum(:likes) %></span></div>
 									<div class="dish_info">
 										<div class="name"><%= d.name %></div>
 										<div class="stats">
 											<div class="dislike"><%= d.dislikes %></div>
 											<div class="like"><%= d.likes %></div>
 										</div>
+										<div class="hr_b"></div>
 										<%= awesome_buttons(session[:user],d) %>	
 									</div>
 								</div>
-
-								<div class="user_img" style="background: url('<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.user.photo %>') left center"></div>
-								<div class="comment"><%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.comment.to_s[0..50] %></div>					
+								
+								<div class="comment">
+									<div class="user_img" style="background: url('<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.user.photo %>') left center"></div>
+									<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.comment.to_s[0..50] %>
+								</div>					
+								
 							</div>
 						<% end %>
 					
