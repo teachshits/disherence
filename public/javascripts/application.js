@@ -115,22 +115,22 @@ $(document).ready(function() {
 	})
 	
 	// Restaurant info data
-	$(".place_name, .restaurant .name").live('tap', function(){
-		event.preventDefault()
-		href = $(this).attr('href')		
-		$.ajax({
-        url: href,
-        type: 'get',
-        dataType: 'script',
-        success: function() {
-          loading=false;
-					setTimeout(function () {
-							myScroll.refresh();
-							myScroll.scrollTo(0,0,0)
-						}, 0);
-        }
-    })
-	})
+	// $(".place_name, .restaurant .name").live('tap', function(){
+	// 	event.preventDefault()
+	// 	href = $(this).attr('href')		
+	// 	$.ajax({
+	//         url: href,
+	//         type: 'get',
+	//         dataType: 'script',
+	//         success: function() {
+	//           loading=false;
+	// 				setTimeout(function () {
+	// 						myScroll.refresh();
+	// 						myScroll.scrollTo(0,0,0)
+	// 					}, 0);
+	//         }
+	//     })
+	// })
 	
 	if ($("#wrapper").length > 0){
 		document.ontouchmove = function(e) {e.preventDefault()}
