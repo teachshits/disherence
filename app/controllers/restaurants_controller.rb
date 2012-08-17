@@ -1,5 +1,12 @@
 class RestaurantsController < ApplicationController
   
+  def splashscreen
+    
+    
+    
+  end
+  
+  
   def index
     @restaurants = Restaurant.limit(20)
     @restaurants = @restaurants.by_distance(cookies[:lat], cookies[:lng]) if cookies[:lat] && cookies[:lng]

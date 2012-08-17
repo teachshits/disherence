@@ -12,13 +12,13 @@ class Review < ActiveRecord::Base
 
   scope :with_photos, where('photo IS NOT NULL')
 
-  after_create do |record|
-    if record.opinion
-      record.dish.update_attributes(:likes => record.dish.likes + 1)
-    else
-      record.dish.update_attributes(:dislikes => record.dish.dislikes + 1)
-    end
-  end
+  # after_create do |record|
+  #   if record.opinion
+  #     record.dish.update_attributes(:likes => record.dish.likes + 1)
+  #   else
+  #     record.dish.update_attributes(:dislikes => record.dish.dislikes + 1)
+  #   end
+  # end
 
   after_destroy do |record|
     if record.opinion
