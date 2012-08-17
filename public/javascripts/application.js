@@ -3,7 +3,10 @@ markerList = []
 infoBubbleList = []
 
 $(document).ready(function() {	
+	
 	if ($("#splashscreen").length > 0){
+		document.ontouchmove = function(e) {e.preventDefault()}
+		
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		var loading = true
 		setInterval(function(){
@@ -15,13 +18,8 @@ $(document).ready(function() {
 		        success: function() {
 		          loading = false;
 							myScroll = new iScroll('wrapper', { 
-								scrollbarClass: 'myScrollbar', 
-								onBeforeScrollStart: function() {} 
+								scrollbarClass: 'myScrollbar'
 							})
-							// setTimeout(function () {
-							// 		myScroll.refresh();
-							// 		myScroll.scrollTo(0,0,0)
-							// 	}, 0);
 		        }
 		    })
 			}
