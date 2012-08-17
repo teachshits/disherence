@@ -1,7 +1,7 @@
 require 'carrierwave/orm/activerecord'
 
 class User < ActiveRecord::Base
-  attr_accessible :fb_access_token, :fb_valid_to, :email, :name, :facebook_id, :gender, :current_city, :yelp_profile_id, :remote_photo_url
+  attr_accessible :fb_access_token, :fb_valid_to, :email, :name, :facebook_id, :gender, :current_city, :yelp_profile_id, :remote_photo_url, :remote_photo
   has_many :reviews
   
   validates_uniqueness_of :email, :if => lambda { !self.email.nil? }
@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   mount_uploader :photo, ProfilePhotoUploader
 
   def photo
-    self[:photo].blank? ? (facebook_id.blank? ? nil : "http://graph.facebook.com/#{facebook_id}/picture?type=large") : self.photo_url
+    self[:remote_photo].blank? ? '/images/user_no_photo.png' : self[:remote_photo]
   end
   
   

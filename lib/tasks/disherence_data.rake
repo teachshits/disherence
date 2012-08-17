@@ -5,8 +5,8 @@ task :get_data => :environment do
   http = init_storage
   i = 0
 
-  1.times do
-    i += 19
+  20.times do
+    i += 1
     
     url = "/api/restaurant/info?offset=#{i}"
     data = get_data(http, url)
@@ -51,18 +51,19 @@ def add_dish(restaurant_id, dish)
       :photos => dish['photo'] ? 1 : 0,
       :likes => dish['mentions_count']
     )
-    mydish.id
   end
+  mydish.id
 end
 
 def add_user(user)
   unless myuser = User.find_by_yelp_profile_id(user['profile_id'])
     myuser = User.create(
       :yelp_profile_id => user['profile_id'],
-      :name => user['name']
+      :name => user['name'],
+      :remote_photo => user['photo_url'] ? user['photo_url'] : ''
     )
-    myuser.id
   end
+  myuser.id
 end
 
 def add_review(user_id, dish_id)
@@ -83,12 +84,15 @@ def add_photo(dish_id, photo)
     )
   end
   
-  unless Review.find_by_user_id_and_dish_id_and_remote_photo(myuser.id, dish_id, photo['url'])
+  if review = Review.find_by_user_id_and_dish_id(myuser.id, dish_id)
+    review.update_attributes(:remote_photo => photo['url'])
+  else
     review = Review.create(
       :user_id => myuser.id,
       :dish_id => dish_id,
       :opinion => 1,
-      :remote_photo => photo['url']
+      :remote_photo => photo['url'],
+      :comment => photo['caption']
     )
   end
 end

@@ -1,7 +1,7 @@
 require 'carrierwave/orm/activerecord'
 
 class Review < ActiveRecord::Base
-  attr_accessible :dish_id, :user_id, :opinion, :comment
+  attr_accessible :dish_id, :user_id, :opinion, :comment, :remote_photo
   
   belongs_to :dish
   belongs_to :user
@@ -10,7 +10,7 @@ class Review < ActiveRecord::Base
 
   mount_uploader :photo, ReviewPhotoUploader
 
-  scope :with_photos, where('photo IS NOT NULL')
+  scope :with_photos, where('remote_photo IS NOT NULL')
 
   # after_create do |record|
   #   if record.opinion

@@ -34,11 +34,12 @@
 						
 						<% @restaurant.dishes.order('likes DESC').each do |d| %>
 						<li>
-							<div class="dish" style="background-image: url('<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.photo %>')">
+							<% if dish = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first %>
+							<div class="dish" style="background-image: url('<%= dish.remote_photo %>')">
 								<div class="name"><%= d.name %></div>
 							
 								<div class="dish_info_container">				
-									<div class="rating"><span><%= @restaurant.dishes.sum(:likes) %></span></div>
+									<div class="rating"><span><%= d.likes %></span></div>
 									<div class="dish_info">
 										<div class="name"><%= d.name %></div>
 										<div class="stats">
@@ -51,11 +52,12 @@
 								</div>
 							
 								<div class="comment">
-									<div class="user_img" style="background: url('<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.user.photo %>') left center"></div>
-									<%= d.reviews.where("dish_id = #{d.id} AND photo IS NOT NULL").first.comment.to_s[0..50] %>
+									<div class="user_img" style="background: url('<%= d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.user.remote_photo %>') left center"></div>
+									<%= d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.comment.to_s[0..50] %>
 								</div>					
 							
 							</div>
+							<% end %>
 						</li>
 						<% end %>
 					

@@ -37,15 +37,15 @@
 			</div>
 
 			<img class="cover" src="images/curtain.png" />
-			<div class="img_review_wrapper" style="background-image: url('<%= review.photo %>')" >
+			<div class="img_review_wrapper" style="background-image: url('<%= review.remote_photo %>')" >
 				<img class="img_review" src="images/trsp_review.gif" />
 			</div>
 		
 			<div class="user_info">
 				
 				<div class="user_photo">
-					<div class="photo" style="background-image: url('<%= review.user.photo %>')"></div>
-					<div class="photo_disagree" style="background-image: url('<%= review_opposite(review)[:photo] %>')"></div>
+					<div class="photo" style="background-image: url('<%= review.user.remote_photo %>')"></div>
+					<div class="photo_disagree" style="background-image: url('<%= review_opposite(review)[:remote_photo] %>')"></div>
 				</div>
 				
 				<div class="stats">
