@@ -29,7 +29,7 @@
 					<div class="restaurant">
 						<div class="info">
 							<%= remoteness(restaurant, cookies[:lat],cookies[:lng]) %>
-							<a class="name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
+							<a class="restaurant_name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
 							<div class="rate">
 								<div class="star fill"></div>
 								<div class="star fill"></div>

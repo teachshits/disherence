@@ -4,6 +4,23 @@ infoBubbleList = []
 
 $(document).ready(function() {	
 	
+	$(".restaurant_name").live('tap', function(event){
+		event.preventDefault();
+		console.log($(this).attr('href'))
+		href = $(this).attr('href')
+		$.ajax({
+        url: href,
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+          loading = false;
+					myScroll = new iScroll('wrapper', { 
+						scrollbarClass: 'myScrollbar'
+					})
+        }
+    })
+	})
+	
 	if ($("#splashscreen").length > 0){
 		document.ontouchmove = function(e) {e.preventDefault()}
 		
@@ -30,7 +47,6 @@ $(document).ready(function() {
 		event.preventDefault();
 		console.log($(this).attr('href'))
 	})
-	
 	
 	$(".close_map").live('tap', function(event){
 		event.preventDefault();
