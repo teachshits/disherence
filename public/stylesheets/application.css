@@ -191,7 +191,8 @@ li {
       top: 5px;
       text-shadow: 0 2px 2px #999999;
       position: absolute;
-      z-index: 99; }
+      z-index: 99;
+      min-width: 35px; }
     #top_dishes .dish_info_container .dish_info {
       z-index: 98;
       height: 110px;
