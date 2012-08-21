@@ -3,9 +3,9 @@ require 'net/https'
 task :get_data => :environment do
 
   http = init_storage
-  i = 0
+  i = 100
 
-  100.times do
+  20.times do
     i += 1
     
     url = "/api/restaurant/info?offset=#{i}"
@@ -44,13 +44,18 @@ end
 
 def add_dish(restaurant_id, dish)
   p dish['name']
-  unless mydish = Dish.find_by_restaurant_id_and_name(restaurant_id, dish['name'])
+  if ! mydish = Dish.find_by_restaurant_id_and_name(restaurant_id, dish['name'])
     mydish = Dish.create(
       :restaurant_id => restaurant_id,
       :name => dish['name'],
       :photos => dish['photo'] ? 1 : 0,
       :likes => dish['mentions_count']
     )
+  else
+    mydish.photos = dish['photo'] ? 1 : 0
+    mydish.likes = dish['mentions_count']
+    myydish.save
+    p "updated!"
   end
   mydish.id
 end
