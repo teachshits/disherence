@@ -53,11 +53,13 @@ def add_dish(restaurant_id, dish)
           :restaurant_id => restaurant_id,
           :name => dish['name'],
           :photos => dish['photo'] ? 1 : 0,
-          :likes => dish['mentions_count']
+          :likes => dish['likes_count'],
+          :dislikes => dish['dislikes_count']
       )
     else
       mydish.photos = dish['photo'] ? 1 : 0
-      mydish.likes = dish['mentions_count']
+      mydish.likes = dish['likes_count']
+      mydish.dislikes = dish['dislikes_count']
       mydish.save
       p "updated!"
     end
