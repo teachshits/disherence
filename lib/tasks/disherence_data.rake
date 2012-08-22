@@ -3,9 +3,9 @@ require 'net/https'
 task :get_data => :environment do
 
   http = init_storage
-  i = 100
+  i = -1
 
-  20.times do
+  221.times do
     i += 1
     
     url = "/api/restaurant/info?offset=#{i}"
@@ -54,7 +54,7 @@ def add_dish(restaurant_id, dish)
   else
     mydish.photos = dish['photo'] ? 1 : 0
     mydish.likes = dish['mentions_count']
-    myydish.save
+    mydish.save
     p "updated!"
   end
   mydish.id

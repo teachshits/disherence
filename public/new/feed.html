@@ -1,0 +1,559 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title>
+	<link rel="stylesheet" href="stylesheets/application.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/scrollbar.css"> 
+	<meta name="viewport" content="width=device-width, user-scalable=no"/>
+	<script src="javascript/zepto.min.js"></script>
+	<script src="javascript/iscroll.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAuEnV8Q2S5-Q284dxPFLHohCE37L0gPlo&sensor=false" type="text/javascript"></script>
+	<script>
+	
+	$(document).ready(function() {
+
+		document.ontouchmove = function(e) {e.preventDefault()}
+		$('.users').children('.profiles').each(function(index, item){
+			item.ontouchmove = function(e) {e.stopPropagation()}
+		})
+		
+		var myScroll;
+		myScroll = new iScroll('wrapper', { scrollbarClass: 'myScrollbar', onBeforeScrollStart: null });
+		
+		$('.flag_content').on('swipeLeft', function(){
+			$('.dish_info').removeClass('swipe')
+			$(this).closest('.dish_info').addClass('swipe')
+		})
+		
+
+		$('.stats').on('tap', function(){
+			num_agree = $(this).next('.users').find('.num').text().replace(/\D/g, '')
+			num_disagree = $(this).children('.disagree').text().replace(/\D/g, '')
+
+			$(this).children('.disagree').text('#' + num_agree +  ' user(s) agree')
+			$(this).next('.users').find('.num').text('+' + num_disagree)
+			
+			$(this).next('.users').toggleClass('like').toggleClass('dislike')
+			
+			stat = $(this).children('.opinion').text().indexOf('Awesome') != -1 ? 'Awful' : 'Awesome'
+			$(this).children('.opinion').text('It`s ' + stat)
+			
+			$(this).prev('.user_photo').find('.photo_like').toggleClass('slide_down')
+			$(this).next().find('.profile').toggleClass('hidden')
+			
+			event.stopPropagation()
+			event.preventDefault()
+		})
+		
+		$('.review .dish_info').on('swipeRight', function(){
+			$(this).removeClass('swipe')
+		})
+		
+		$('.users').on('swipeLeft', function(){
+			$(this).addClass('slide')
+			$(this).prev('.stats').addClass('opacity_zero')
+			event.preventDefault()
+			event.stopPropagation()
+		})
+		
+		$('.users').on('swipeRight', function(){
+			$(this).removeClass('slide')
+			$(this).prev('.stats').removeClass('opacity_zero')
+			event.preventDefault()
+			event.stopPropagation()
+		})
+		
+		$('.btn_agree, .btn_disagree').on('click', function(){
+						
+			if (this.className == 'btn_agree') {
+				
+				$(this).prev('.status').addClass('set_agree')
+				el = $(this).prev().prev('.review')
+				$opinion_popup = el.children('.opinion_popup')
+				
+				el.find('.users .num').text('+' + (parseInt(el.find('.users .num').text()) + 1))
+				
+				if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {
+					el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
+					$opinion_popup.text('You agreed it`s awesome').addClass('opinion_awesome')
+					setTimeout("$opinion_popup.removeClass('opinion_awesome')",1500);	
+				} else {
+					$opinion_popup.text('You agreed it`s awful').addClass('opinion_awful')
+					setTimeout("$opinion_popup.removeClass('opinion_awful')",1500);	
+				}
+				
+			} else {
+				
+				$(this).prev().prev('status').addClass('set_disagree')
+				el = $(this).prev().prev().prev('.review')
+				$opinion_popup = el.children('.opinion_popup')
+				
+				el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) + 1) + ' user(s) disagree')
+				
+				if (el.find('.user_info .opinion').text().indexOf('Awful') != -1) {
+					el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
+					$opinion_popup.text('You disagreed it`s awful').addClass('opinion_awesome')
+					setTimeout("$opinion_popup.removeClass('opinion_awesome')",1500);	
+				} else {
+					$opinion_popup.text('You disagreed it`s awesome').addClass('opinion_awful')
+					setTimeout("$opinion_popup.removeClass('opinion_awful')",1500);	
+				}
+			}
+			
+			el.find('.dish_info .profiles').text(parseInt(el.find('.dish_info .profiles').text()) + 1)
+		})
+		
+		$('.status').on('tap', function(event){
+			
+			$(this).addClass('opacity_zero')
+			el = $(this).prev('.review')
+
+			
+			if (this.className.indexOf('set_agree') != -1) {
+				el.find('.users .num').text('+' + (parseInt(el.find('.users .num').text()) - 1))
+
+				if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {		
+					el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) - 1)
+				}
+			
+				fade = $(this)
+				setTimeout(function(){fade.removeClass('set_agree').removeClass('opacity_zero')}, 400)
+				
+			} else {
+				el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) - 1) + ' user(s) disagree')
+				
+				if (el.find('.user_info .opinion').text().indexOf('Awful') != -1) {
+					el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) - 1)
+				}
+
+				fade = $(this)
+				setTimeout(function(){fade.removeClass('set_disagree').removeClass('opacity_zero')}, 400)
+				
+			}
+			el.find('.dish_info .profiles').text(parseInt(el.find('.dish_info .profiles').text()) - 1)
+		})
+	
+	});
+	
+	function load_map(element_id) {
+	  var mapOptions = {
+			mapTypeControl: false,
+			streetViewControl: false,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			maxZoom: 15,
+			center: new google.maps.LatLng(0,0)
+	  }
+	  map = new google.maps.Map(document.getElementById(element_id),mapOptions);
+		return map
+		// setMarkers(map, markers);
+	}
+	
+	</script> 
+</head>
+<body>	
+	<div id="container"> 
+		<div id="header"></div> 
+		
+		<div id="wrapper"> 
+			<div id="scroller"> 
+				<ul id="thelist">
+					 
+					<li>
+						<div class="review">
+							<div class='opinion_popup'></div>
+						
+							<div class="dish_info">
+						
+								<div class="place_info">
+									<div class="flag">
+										<div class="flag_content">
+											<div class="dish_name">waffle monte cristo</div> 
+											<a class="place_name" href="/restaurants/show/3131">Straw</a> 
+											<div class="place_address">203 Octavia Blvd, San Francisco...</div> 
+											<div class="hr"></div> 
+											<div class="stats"> 
+												<div class="likes">51</div> 
+												<div class="profiles">60</div> 
+												<div class="photos">10</div> 
+											</div>
+										</div>
+										<img class="flag_img" src="images/flag.png" />
+									</div>
+
+									<div class="content"> 
+										<div id="map_canvas"></div>
+										<!-- <script>map = load_map('map_canvas')</script> -->
+										<div class="info"> 
+											<div class="name">indian pancake</div> 
+											<div class="dislike">7</div> 
+											<div class="like">49</div> 
+										</div> 
+										<div class="hr"></div> 
+										<div class="description">indian pancake (roti canai) - A Must Get.</div> 
+										<div class="price">$15</div> 
+									</div>
+									
+									<img class="trsp" src="images/trsp_dish_info.gif" />
+								</div>
+							</div>
+								<img class="cover" src="images/curtain.png" />
+								<img class="img_review" src="uploads/4.jpg" />
+								
+								<div class="user_info">
+									<div class="user_photo">
+										<div class="photo_like" style="background-image: url('uploads/user1.jpg')"></div>
+										<div class="photo_dislike" style="background-image: url('uploads/user2.jpg')"></div>
+									</div>
+									<div class="stats">
+										<div class="name">Brad Ivanovich Pit</div>
+										<div class="opinion">It`s Awesome</div>
+										<a href="#" class="disagree">#3 user(s) disagree</a>
+									</div>
+									
+									<div class="users like">
+										<div class="think_so">
+											<div class="num">+7</div>
+											<div class="text">think so</div>
+										</div>
+										
+										<div id="profiles" class="profiles">
+											<div class="profiles_container">
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+											</div>										
+										</div>
+										
+									</div>
+								</div>
+								
+							</div>
+							<div class="status" href="reviews/st/213"><img class="trsp_status" src="images/trsp_status.gif" /></div>
+							<div class="btn_agree" href="reviews/agree/213"><img class="trsp_btn" src="images/trsp_btn.gif" /></div>
+							<div class="btn_disagree" href="reviews/disagree/213"><img class="trsp_btn" src="images/trsp_btn.gif" /></div>
+							<div class="rhr"></div>
+					</li>
+
+					<li>
+						<div class="review">
+						
+							<div class="dish_info">
+						
+								<div class="place_info">
+									<div class="flag">
+										<div class="flag_content">
+											<div class="dish_name">waffle monte cristo</div> 
+											<a class="place_name" href="/restaurants/show/3131">Straw</a> 
+											<div class="place_address">203 Octavia Blvd, San Francisco...</div> 
+											<div class="hr"></div> 
+											<div class="stats"> 
+												<div class="likes">51</div> 
+												<div class="profiles">60</div> 
+												<div class="photos">10</div> 
+											</div>
+										</div>
+										<img class="flag_img" src="images/flag.png" />
+									</div>
+
+									<div class="content"> 
+										<div id="map_canvas"></div>
+										<!-- <script>map = load_map('map_canvas')</script> -->
+										<div class="info"> 
+											<div class="name">indian pancake</div> 
+											<div class="dislike">7</div> 
+											<div class="like">49</div> 
+										</div> 
+										<div class="hr"></div> 
+										<div class="description">indian pancake (roti canai) - A Must Get.</div> 
+										<div class="price">$15</div> 
+									</div>
+									
+									<img class="trsp" src="images/trsp_dish_info.gif" />
+								</div>
+							</div>
+								<img class="cover" src="images/curtain.png" />
+								<img class="img_review" src="uploads/4.jpg" />
+								
+								<div class="user_info">
+									<div class="user_photo">
+										<div class="photo_like" style="background-image: url('uploads/user1.jpg')"></div>
+										<div class="photo_dislike" style="background-image: url('uploads/user2.jpg')"></div>
+									</div>
+									<div class="stats">
+										<div class="name">Brad Ivanovich Pit</div>
+										<div class="opinion">It`s Awesome</div>
+										<a href="#" class="disagree">#3 user(s) disagree</a>
+									</div>
+									
+									<div class="users like">
+										<div class="think_so">
+											<div class="num">+7</div>
+											<div class="text">think so</div>
+										</div>
+										
+										<div id="profiles" class="profiles">
+											<div class="profiles_container">
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+											</div>										
+										</div>
+										
+									</div>
+								</div>
+								
+							</div>
+							<a class="status" href="reviews/st/213"><img class="trsp_status" src="images/trsp_status.gif" /></a>
+							<a class="btn_agree" href="reviews/agree/213"><img class="trsp_btn" src="images/trsp_btn.gif" /></a>
+							<a class="btn_disagree" href="reviews/disagree/213"><img class="trsp_btn" src="images/trsp_btn.gif" /></a>
+							<div class="rhr"></div>
+					</li>
+					
+					<li>
+						<div class="review">
+						
+							<div class="dish_info">
+						
+								<div class="place_info">
+									<div class="flag">
+										<div class="flag_content">
+											<div class="dish_name">waffle monte cristo</div> 
+											<a class="place_name" href="/restaurants/show/3131">Straw</a> 
+											<div class="place_address">203 Octavia Blvd, San Francisco...</div> 
+											<div class="hr"></div> 
+											<div class="stats"> 
+												<div class="likes">51</div> 
+												<div class="profiles">60</div> 
+												<div class="photos">10</div> 
+											</div>
+										</div>
+										<img class="flag_img" src="images/flag.png" />
+									</div>
+
+									<div class="content"> 
+										<div id="map_canvas"></div>
+										<!-- <script>map = load_map('map_canvas')</script> -->
+										<div class="info"> 
+											<div class="name">indian pancake</div> 
+											<div class="dislike">7</div> 
+											<div class="like">49</div> 
+										</div> 
+										<div class="hr"></div> 
+										<div class="description">indian pancake (roti canai) - A Must Get.</div> 
+										<div class="price">$15</div> 
+									</div>
+									
+									<img class="trsp" src="images/trsp_dish_info.gif" />
+								</div>
+							</div>
+								<img class="cover" src="images/curtain.png" />
+								<img class="img_review" src="uploads/4.jpg" />
+								
+								<div class="user_info">
+									<div class="user_photo">
+										<div class="photo_like" style="background-image: url('uploads/user1.jpg')"></div>
+										<div class="photo_dislike" style="background-image: url('uploads/user2.jpg')"></div>
+									</div>
+									<div class="stats">
+										<div class="name">Brad Ivanovich Pit</div>
+										<div class="opinion">It`s Awesome</div>
+										<a href="#" class="disagree">#3 user(s) disagree</a>
+									</div>
+									
+									<div class="users like">
+										<div class="think_so">
+											<div class="num">+7</div>
+											<div class="text">think so</div>
+										</div>
+										
+										<div id="profiles" class="profiles">
+											<div class="profiles_container">
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+											</div>										
+										</div>
+										
+									</div>
+								</div>
+								
+							</div>
+							<a class="status" href="reviews/st/213"><img class="trsp_status" src="images/trsp_status.gif" /></a>
+							<a class="btn_agree" href="reviews/agree/213"><img class="trsp_btn" src="images/trsp_btn.gif" /></a>
+							<a class="btn_disagree" href="reviews/disagree/213"><img class="trsp_btn" src="images/trsp_btn.gif" /></a>
+							<div class="rhr"></div>
+					</li>
+					
+					<li>
+						<div class="review">
+						
+							<div class="dish_info">
+						
+								<div class="place_info">
+									<div class="flag">
+										<div class="flag_content">
+											<div class="dish_name">waffle monte cristo</div> 
+											<a class="place_name" href="/restaurants/show/3131">Straw</a> 
+											<div class="place_address">203 Octavia Blvd, San Francisco...</div> 
+											<div class="hr"></div> 
+											<div class="stats"> 
+												<div class="likes">51</div> 
+												<div class="profiles">60</div> 
+												<div class="photos">10</div> 
+											</div>
+										</div>
+										<img class="flag_img" src="images/flag.png" />
+									</div>
+
+									<div class="content"> 
+										<div id="map_canvas"></div>
+										<!-- <script>map = load_map('map_canvas')</script> -->
+										<div class="info"> 
+											<div class="name">indian pancake</div> 
+											<div class="dislike">7</div> 
+											<div class="like">49</div> 
+										</div> 
+										<div class="hr"></div> 
+										<div class="description">indian pancake (roti canai) - A Must Get.</div> 
+										<div class="price">$15</div> 
+									</div>
+									
+									<img class="trsp" src="images/trsp_dish_info.gif" />
+								</div>
+							</div>
+								<img class="cover" src="images/curtain.png" />
+								<img class="img_review" src="uploads/4.jpg" />
+								
+								<div class="user_info">
+									<div class="user_photo">
+										<div class="photo_like" style="background-image: url('uploads/user1.jpg')"></div>
+										<div class="photo_dislike" style="background-image: url('uploads/user2.jpg')"></div>
+									</div>
+									<div class="stats">
+										<div class="name">Brad Ivanovich Pit</div>
+										<div class="opinion">It`s Awesome</div>
+										<a href="#" class="disagree">#3 user(s) disagree</a>
+									</div>
+									
+									<div class="users like">
+										<div class="think_so">
+											<div class="num">+7</div>
+											<div class="text">think so</div>
+										</div>
+										
+										<div id="profiles" class="profiles">
+											<div class="profiles_container">
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+											</div>										
+										</div>
+										
+									</div>
+								</div>
+								
+							</div>
+							<a class="status" href="reviews/st/213"><img class="trsp_status" src="images/trsp_status.gif" /></a>
+							<a class="btn_agree" href="reviews/agree/213"><img class="trsp_btn" src="images/trsp_btn.gif" /></a>
+							<a class="btn_disagree" href="reviews/disagree/213"><img class="trsp_btn" src="images/trsp_btn.gif" /></a>
+							<div class="rhr"></div>
+					</li>
+					
+					<li>
+						<div class="review">
+						
+							<div class="dish_info">
+						
+								<div class="place_info">
+									<div class="flag">
+										<div class="flag_content">
+											<div class="dish_name">waffle monte cristo</div> 
+											<a class="place_name" href="/restaurants/show/3131">Straw</a> 
+											<div class="place_address">203 Octavia Blvd, San Francisco...</div> 
+											<div class="hr"></div> 
+											<div class="stats"> 
+												<div class="likes">51</div> 
+												<div class="profiles">60</div> 
+												<div class="photos">10</div> 
+											</div>
+										</div>
+										<img class="flag_img" src="images/flag.png" />
+									</div>
+
+									<div class="content"> 
+										<div id="map_canvas"></div>
+										<!-- <script>map = load_map('map_canvas')</script> -->
+										<div class="info"> 
+											<div class="name">indian pancake</div> 
+											<div class="dislike">7</div> 
+											<div class="like">49</div> 
+										</div> 
+										<div class="hr"></div> 
+										<div class="description">indian pancake (roti canai) - A Must Get.</div> 
+										<div class="price">$15</div> 
+									</div>
+									
+									<img class="trsp" src="images/trsp_dish_info.gif" />
+								</div>
+							</div>
+								<img class="cover" src="images/curtain.png" />
+								<img class="img_review" src="uploads/4.jpg" />
+								
+								<div class="user_info">
+									<div class="user_photo">
+										<div class="photo_like" style="background-image: url('uploads/user1.jpg')"></div>
+										<div class="photo_dislike" style="background-image: url('uploads/user2.jpg')"></div>
+									</div>
+									<div class="stats">
+										<div class="name">Brad Ivanovich Pit</div>
+										<div class="opinion">It`s Awesome</div>
+										<a href="#" class="disagree">#3 user(s) disagree</a>
+									</div>
+									
+									<div class="users like">
+										<div class="think_so">
+											<div class="num">+7</div>
+											<div class="text">think so</div>
+										</div>
+										
+										<div id="profiles" class="profiles">
+											<div class="profiles_container">
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+												<a href="#" class="profile" style="background-image: url('uploads/user1.jpg')"></a>
+											</div>										
+										</div>
+										
+									</div>
+								</div>
+								
+							</div>
+							<a class="status" href="reviews/st/213"><img class="trsp_status" src="images/trsp_status.gif" /></a>
+							<a class="btn_agree" href="reviews/agree/213"><img class="trsp_btn" src="images/trsp_btn.gif" /></a>
+							<a class="btn_disagree" href="reviews/disagree/213"><img class="trsp_btn" src="images/trsp_btn.gif" /></a>
+							<div class="rhr"></div>
+					</li>
+				</ul> 
+			</div> 
+		</div> 
+</div>
+
+		
+	</div>
+</body>
+</html>
