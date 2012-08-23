@@ -4,6 +4,22 @@ infoBubbleList = []
 
 $(document).ready(function() {	
 	
+	$(".recheck").live('tap', function(event){
+		center = map.getCenter()
+		center.Xa
+		center.Ya
+		$.ajax({
+        url: 'restaurants?lng=' + center.Ya + '&lat=' + center.Xa,
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+          loading = false;
+					myScroll.refresh();
+        }
+    })
+
+	})
+	
 	$(".restaurant_name").live('tap', function(event){
 		event.preventDefault();
 		console.log($(this).attr('href'))
@@ -23,7 +39,7 @@ $(document).ready(function() {
 	
 	if ($("#splashscreen").length > 0){
 		document.ontouchmove = function(e) {e.preventDefault()}
-		
+
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		var loading = true
 		setInterval(function(){

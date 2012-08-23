@@ -578,7 +578,7 @@ li {
 .close_map.hidden {
   display: none; }
 
-.close_map {
+.close_map, .recheck {
   border: 1px solid #aeb897;
   border-radius: 5px;
   padding: 2px 5px;
@@ -589,6 +589,9 @@ li {
   float: left;
   margin: 10px 15px;
   cursor: pointer; }
+
+.recheck {
+  float: right; }
 
 #container #scroller #map ul li {
   height: auto; }

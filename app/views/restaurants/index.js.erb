@@ -1,1 +1,5 @@
-$("#splashscreen").replaceWith("<%= escape_javascript(render "restaurants/index") %>");
+<% if params[:lat] && params[:lng] %>
+	$("#thelist").replaceWith("<%= escape_javascript(render "restaurants/restaurants") %>");
+<% else %>
+	$("#splashscreen").replaceWith("<%= escape_javascript(render "restaurants/index") %>");
+<% end %>
