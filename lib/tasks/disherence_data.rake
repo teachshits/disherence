@@ -3,9 +3,9 @@ require 'net/https'
 task :get_data => :environment do
 
   http = init_storage
-  i = -1
+  i = 220
 
-  221.times do
+  2.times do
     i += 1
     
     url = "/api/restaurant/info?offset=#{i}"
