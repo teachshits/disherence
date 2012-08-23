@@ -70,6 +70,7 @@ $(document).ready(function() {
 		$('.close_map').removeClass('hidden')
 		event.preventDefault();
 		event.stopPropagation();
+		myScroll.refresh();
 	})
 	
 	// Restauants button
