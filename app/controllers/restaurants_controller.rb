@@ -5,8 +5,17 @@ class RestaurantsController < ApplicationController
   
   
   def index
-    @restaurants = Restaurant.limit(30)
-    @restaurants = @restaurants.by_distance(cookies[:lat], cookies[:lng]) if cookies[:lat] && cookies[:lng]
+    
+    if params[:lat] && params[:lng]
+      lat = params[:lat]
+      lng = params[:lng] 
+    else
+      lat = cookies[:lat]
+      lng = cookies[:lng]
+    end
+    
+    @restaurants = Restaurant.limit(15)
+    @restaurants = @restaurants.by_distance(lat, lng)
 
     @restaurants.reject! do |res|
       to_reject = true
