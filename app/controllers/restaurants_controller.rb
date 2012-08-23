@@ -5,9 +5,19 @@ class RestaurantsController < ApplicationController
   
   
   def index
-    @restaurants = Restaurant.with_dishes.limit(20)
+    @restaurants = Restaurant.limit(30)
     @restaurants = @restaurants.by_distance(cookies[:lat], cookies[:lng]) if cookies[:lat] && cookies[:lng]
-    
+
+    @restaurants.reject! do |res|
+      to_reject = true
+      res.dishes.each do |dish|
+        if dish.reviews.with_photos.size > 0
+          to_reject = false
+          break;
+        end
+      end
+      to_reject
+    end
     # @restaurants_info = Hash.new { |h, k| h[k] = {} }
     # @restaurants.each do |r|
     #   @restaurants_info[r.id][:name] = r.name.gsub(/'/, "\\\\'")
