@@ -110,9 +110,8 @@ $(document).ready(function() {
 	$('.dish').live('tap', function(){
 		$('.dish').not(this).removeClass('expand')
 		$(this).toggleClass('expand')
-		setTimeout(function () {
 				myScroll.refresh();
-			}, 300);
+
 	})
 	
 	// Restaurant info data
