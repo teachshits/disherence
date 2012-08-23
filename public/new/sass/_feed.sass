@@ -1,0 +1,91 @@
+#wrapper
+	position: absolute
+	z-index: 1
+	top: 46px
+	bottom: 0
+	left: 0
+	width: 100%
+	overflow: auto
+
+.img_review, .cover, .trsp_status, .trsp_btn
+	width: 100%
+	display: block
+
+.rhr	
+	height: 1px
+	width: 90%
+	background-color: #ACADA0
+	border-bottom: 1px solid white
+	position: relative
+	margin: 23% 5% 5% 5%
+		
+.review
+	position: relative
+	clear: both
+	overflow: hidden
+	
+	.opinion_popup
+		position: absolute
+		width: 200px
+		height: 100px
+		left: 55px
+		top: 40px
+		background: rgba(0,0,0,0.8) no-repeat
+		background-position: 98px 98px
+		z-index: 1
+		border-radius: 10px
+		padding: 20px 10px
+		font-size: 2em
+		text-align: center
+		text-shadow: none
+		text-transform: uppercase
+		opacity: 0		
+		-webkit-transition: opacity 0.5s ease-in
+
+	.opinion_awesome
+		color: #D2FFBE
+		background-image: url('../images/pli-like.png')
+		opacity: 1
+		z-index: 2
+		-webkit-transition: opacity 0.3s ease
+		
+	.opinion_awful
+		color: #E1B356
+		background-image: url('../images/pli-dislike.png')
+		opacity: 1
+		z-index: 2
+		-webkit-transition: opacity 0.3s ease
+				
+	.cover
+		position: absolute
+	
+	@import "user_info"			
+	@import "dish_info"
+
+.status.opacity_zero
+	opacity: 0
+
+.status
+	position: 	absolute
+	width: 100%
+	visibility: hidden
+	opacity: 0
+	background: url('../images/op_btns.png')
+	background-size: 100% auto
+	-webkit-transition: opacity 0.4s linear
+	
+.set_agree, .set_disagree
+	visibility: visible
+	opacity: 1
+	background-position: 0 50%
+
+.set_disagree
+	background-position: 0 100%
+	 
+.btn_agree, .btn_disagree
+	width: 50%
+	background-size: 200% auto
+	float: left
+	background: url('../images/op_btns.png') 0 0
+.btn_disagree
+	background: url('../images/op_btns.png') 100% 0
