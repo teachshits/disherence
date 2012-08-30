@@ -26,7 +26,7 @@ class Restaurant < ActiveRecord::Base
   end
   
   def as_json(options={})
-    super(:only => [:id, :name, :address, :cuisine, :bill, :yelp_reviews_count, :lat, :lon])
+    super(:only => [:id, :name, :address, :cuisine, :bill, :yelp_reviews_count, :lat, :lng])
   end
   
   def remoteness(lat_cur,lng_cur)
