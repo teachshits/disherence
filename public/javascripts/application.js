@@ -10,9 +10,11 @@ $(document).ready(function() {
 	
 	$("#search_me").live('tap', function(event){
 		key_word = $(this).prev('input').val()
-		console.log(key_word)
+		center = map.getCenter()
+		center.Xa
+		center.Ya
 		$.ajax({
-        url: 'restaurants?search=' + key_word,
+        url: 'restaurants?search=' + key_word + '&lng=' + center.Ya + '&lat=' + center.Xa,
         type: 'get',
         dataType: 'script',
         success: function() {
@@ -48,7 +50,9 @@ $(document).ready(function() {
         dataType: 'script',
         success: function() {
           loading = false;
+					$('#search_restaurant').addClass('hidden')
 					$(".close_map").addClass('hidden');
+					$("#bb").attr('href', '/').removeClass('hidden');
 					myScroll = new iScroll('wrapper', { 
 						scrollbarClass: 'myScrollbar'
 					})
@@ -80,7 +84,6 @@ $(document).ready(function() {
 	
 	$(".map_link").live('tap', function(event){
 		event.preventDefault();
-		console.log($(this).attr('href'))
 	})
 	
 	$(".close_map").live('tap', function(event){

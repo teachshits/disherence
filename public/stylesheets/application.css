@@ -1,3 +1,6 @@
+#bb.hidden {
+  display: none; }
+
 #bb {
   background: url("/images/b_button.jpg") no-repeat;
   height: 22px;
@@ -596,7 +599,7 @@ li {
   margin: 10px -10px 0 0;
   cursor: pointer; }
 
-#search_map_field.hidden {
+#search_map_field.hidden, #search_restaurant.hidden {
   display: none; }
 
 #search_map_field {
