@@ -4,7 +4,26 @@ infoBubbleList = []
 
 $(document).ready(function() {	
 	
-	$(".recheck").live('tap', function(event){
+	$("#search_restaurant").live('tap', function(event){
+		$('#search_map_field').toggleClass('hidden')
+	})
+	
+	$("#search_me").live('tap', function(event){
+		key_word = $(this).prev('input').val()
+		console.log(key_word)
+		$.ajax({
+        url: 'restaurants?search=' + key_word,
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+          loading = false;
+					myScroll.refresh();
+        }
+    })
+
+	})
+	
+	$("#search_on_map").live('tap', function(event){
 		center = map.getCenter()
 		center.Xa
 		center.Ya
@@ -22,7 +41,6 @@ $(document).ready(function() {
 	
 	$(".restaurant_name").live('tap', function(event){
 		event.preventDefault();
-		console.log($(this).attr('href'))
 		href = $(this).attr('href')
 		$.ajax({
         url: href,
@@ -30,6 +48,7 @@ $(document).ready(function() {
         dataType: 'script',
         success: function() {
           loading = false;
+					$(".close_map").addClass('hidden');
 					myScroll = new iScroll('wrapper', { 
 						scrollbarClass: 'myScrollbar'
 					})
@@ -68,6 +87,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$('#search_map_canvas').removeClass('expand_search_map_canvas')
 		$(this).addClass('hidden')
+		$('#search_on_map').addClass('hidden')
 	})
 	
 	if ($("#map_canvas").length > 0){
@@ -84,6 +104,10 @@ $(document).ready(function() {
 	$('#search_map_canvas').live('tap', function(event){
 		$(this).addClass('expand_search_map_canvas')
 		$('.close_map').removeClass('hidden')
+		setTimeout(
+			function(){
+				$('#search_on_map').removeClass('hidden')
+		}, 400);
 		event.preventDefault();
 		event.stopPropagation();
 		myScroll.refresh();

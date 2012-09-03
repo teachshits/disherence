@@ -11,19 +11,22 @@ class User < ActiveRecord::Base
 
   def photo
     self[:remote_photo].blank? ? '/images/user_no_photo.png' : self[:remote_photo]
-  end
+  end  
   
-  
-  def self.create_from_facebook(code)
-    access_token_data = get_facebook_access_token_data(code)
+  def self.authenticate_by_facebook(access_token_data)
     user_data = get_facebook_user_data(access_token_data[:fb_access_token])
-
+    
     if user_data && user = User.find_by_facebook_id(user_data[:facebook_id]) 
       user
     else
       data = access_token_data.merge(user_data)
       create(data)
-    end
+    end    
+  end
+  
+  def self.create_from_facebook(code)
+    access_token_data = get_facebook_access_token_data(code)
+    authenticate_by_facebook(access_token_data)
   end
   
   def self.get_facebook_access_token_data(code)
@@ -46,7 +49,6 @@ class User < ActiveRecord::Base
       end
     end
     data
-    
   end
   
   def self.get_facebook_user_data(access_token)
@@ -60,6 +62,41 @@ class User < ActiveRecord::Base
       :gender => response['gender'],
       :current_city => response['location'] ? response['location']['name'] : nil
     }
+  end
+  
+  def self.authenticate_by_twitter(oauth_token, oauth_token_secret, email = nil)
+    begin
+      client = Twitter::Client.new(:oauth_token => oauth_token, :oauth_token_secret => oauth_token_secret)
+      if user = User.find_by_twitter_id(client.user.id)
+        user.oauth_token = oauth_token
+        user.oauth_token_secret = oauth_token_secret
+        user.save
+      else
+        user = create_user_from_twitter(client, email)
+      end
+      token = Session.get_token(user)
+    rescue
+      nil
+    end
+    {:name => user.name, :fb_access_token =>user.fb_access_token, :fb_valid_to => user.fb_valid_to.to_i, :oauth_token => user.oauth_token, :oauth_token_secret => user.oauth_token_secret, :token => token, :user_id => user.id, :photo => user.user_photo, :facebook_id => user.facebook_id ||= 0, :twitter_id => user.twitter_id ||= 0} unless token.nil?
+  end
+  
+  def self.create_user_from_twitter(client, email = nil)
+    user = User.create({
+      :name => client.user.name,
+      :email => email,  
+      :twitter_id => client.user.id,
+      :remote_photo_url => client.profile_image,
+      :oauth_token => client.oauth_token,
+      :oauth_token_secret => client.oauth_token_secret
+    })
+    # UserPreference.create({:user_id => user.id})
+    # 
+    # get_twitter_friends(client, user)
+    # get_twitter_followers(client, user)
+    # follow_dishfm_user(user.id)
+    
+    user
   end
   
 end

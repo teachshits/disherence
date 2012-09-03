@@ -1,6 +1,62 @@
+#search_restaurant
+	float: right
+	background: url('../images/search_map.png') no-repeat
+	background-size: 50%
+	width: 50px
+	height: 50px
+	margin: 10px -10px 0 0
+	cursor: pointer
+	
+#search_map_field.hidden
+	display: none
+	
+#search_map_field
+	background: url('../images/search_field_bg.jpg') repeat-x
+	height: 26px
+	background-size: 2%
+	padding: 8px 6px
+	
+	#search_field:focus
+		outline: none
+	
+	#search_field
+		border-radius: 13px
+		height: 23px
+		width: 220px
+		float: left
+		padding: 0 5px
+
+	#search_me
+		font-family: Arial
+		border-radius: 5px
+		padding: 5px
+		font-size: 15px
+		color: #424242
+		background: #eff0d1
+		float: left
+		margin-left: 10px
+		cursor: pointer
+	
+#search_on_map.hidden
+	display: none
+#search_on_map
+	color: #fff
+	background-color: #8dc63f
+	border-radius: 5px
+	padding: 5px
+	text-align: center
+	text-shadow: none
+	font-size: 1.3em
+	z-index: 1
+	position: absolute
+	top: 293px
+	width: 308px
+	left: 1px
+	cursor: pointer
+	
 .close_map.hidden
 	display: none
-.close_map, .recheck
+.close_map
 	border: 1px solid #aeb897
 	border-radius: 5px
 	padding: 2px 5px
@@ -11,9 +67,6 @@
 	float: left
 	margin: 10px 15px
 	cursor: pointer
-
-.recheck
-	float: right
 	
 #container #scroller #map ul li
 	height: auto
