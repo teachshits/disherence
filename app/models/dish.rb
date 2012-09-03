@@ -8,6 +8,6 @@ class Dish < ActiveRecord::Base
   end
   
   def top_review
-    self.reviews.select("reviews.remote_photo as photo, comment, user_id, users.remote_photo as user_photo, users.name as user_name").with_photos.limit(1).joins(:user)
+    self.reviews.select("reviews.remote_photo as photo, comment, user_id, users.remote_photo as user_photo, users.name as user_name").order('photo DESC').limit(1).joins(:user)
   end
 end

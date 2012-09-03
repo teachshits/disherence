@@ -15,8 +15,8 @@ class RestaurantsController < ApplicationController
     end
     
     @restaurants = Restaurant.limit(15)
-    @restaurants = @restaurants.by_distance(lat, lng)
-
+    @restaurants = params[:search].blank? ? @restaurants.by_distance(lat, lng) : @restaurants.where('name LIKE ?', "%#{params[:search]}%")
+    
     @restaurants.reject! do |res|
       to_reject = true
       res.dishes.each do |dish|
@@ -27,12 +27,6 @@ class RestaurantsController < ApplicationController
       end
       to_reject
     end
-    # @restaurants_info = Hash.new { |h, k| h[k] = {} }
-    # @restaurants.each do |r|
-    #   @restaurants_info[r.id][:name] = r.name.gsub(/'/, "\\\\'")
-    #   @restaurants_info[r.id][:lat] = r.lat
-    #   @restaurants_info[r.id][:lng] = r.lng
-    # end
     
     @restaurants_info = ""
     i = 0

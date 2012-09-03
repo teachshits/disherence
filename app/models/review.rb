@@ -12,13 +12,13 @@ class Review < ActiveRecord::Base
 
   scope :with_photos, where('reviews.remote_photo IS NOT NULL')
 
-  # after_create do |record|
-  #   if record.opinion
-  #     record.dish.update_attributes(:likes => record.dish.likes + 1)
-  #   else
-  #     record.dish.update_attributes(:dislikes => record.dish.dislikes + 1)
-  #   end
-  # end
+  after_create do |record|
+    if record.opinion
+      record.dish.update_attributes(:likes => record.dish.likes + 1)
+    else
+      record.dish.update_attributes(:dislikes => record.dish.dislikes + 1)
+    end
+  end
 
   after_destroy do |record|
     if record.opinion
@@ -26,6 +26,15 @@ class Review < ActiveRecord::Base
     else
       record.dish.update_attributes(:dislikes => record.dish.dislikes - 1)
     end
+  end
+  
+  def as_json(options={})
+    super(:only => [:id, :opinion, :comment, :remote_photo], :include => [:dish => {:only => [:name, :id], :include => [:restaurant => {:only => [:name, :address, :id]}]}])
+  end
+  
+  
+  def self.dish
+    self.dish.select([:id, :name, :remote_photo])
   end
   
   def agree?(user_id)

@@ -1,4 +1,4 @@
-<% if params[:lat] && params[:lng] %>
+<% if (params[:lat] && params[:lng]) || params[:search] %>
 	$("#thelist").replaceWith("<%= escape_javascript(render "restaurants/restaurants") %>");
 <% else %>
 	$("#splashscreen").replaceWith("<%= escape_javascript(render "restaurants/index") %>");
