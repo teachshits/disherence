@@ -29,7 +29,7 @@ $(document).ready(function() {
 		center.Xa
 		center.Ya
 		$.ajax({
-        url: 'restaurants?search=' + keyword + '&lng=' + center.Ya + '&lat=' + center.Xa,
+        url: 'restaurants?search=' + keyword,
         type: 'get',
         dataType: 'script',
         success: function() {
