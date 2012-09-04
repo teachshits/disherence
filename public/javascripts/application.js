@@ -7,12 +7,14 @@ $(document).ready(function() {
 	$("#bbutton").live('tap', function(event){
 		event.preventDefault();
 		$.ajax({
-        url: 'restaurants?search=',
+        url: 'restaurants?back=1',
         type: 'get',
         dataType: 'script',
         success: function() {
           loading = false;
-					myScroll.refresh();
+					myScroll = new iScroll('wrapper', { 
+						scrollbarClass: 'myScrollbar'
+					})
         }
     })
 	})
