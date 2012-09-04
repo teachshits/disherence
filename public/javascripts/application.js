@@ -39,7 +39,6 @@ $(document).ready(function() {
 					myScroll = new iScroll('wrapper', { 
 						scrollbarClass: 'myScrollbar',
 						fixedScrollbar: true,
-						bounce: false,
 						momentum: false,
 						lockDirection: true
 					})					
