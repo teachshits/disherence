@@ -611,7 +611,7 @@ li {
     outline: none; }
   #search_map_field #search_field {
     float: left;
-    font-size: 2em;
+    font-size: 1.2em;
     width: 240px; }
   #search_map_field #search_me {
     font-family: Arial;
