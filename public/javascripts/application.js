@@ -169,7 +169,7 @@ $(document).ready(function() {
 	$('.dish').live('tap', function(){
 		$('.dish').not(this).removeClass('expand')
 		$(this).toggleClass('expand')
-				myScroll.refresh();
+		setTimeout(function () {myScroll.refresh();}, 300);
 
 	})
 	
