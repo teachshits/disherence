@@ -37,7 +37,11 @@ $(document).ready(function() {
 					myScroll.destroy();
 					myScroll = null;
 					myScroll = new iScroll('wrapper', { 
-						scrollbarClass: 'myScrollbar'
+						scrollbarClass: 'myScrollbar',
+						fixedScrollbar: true,
+						bounce: false,
+						momentum: false,
+						lockDirection: true
 					})					
         }
     })
