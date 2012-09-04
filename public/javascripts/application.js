@@ -3,18 +3,31 @@ markerList = []
 infoBubbleList = []
 
 $(document).ready(function() {	
+
+	$("#bbutton").live('tap', function(event){
+		event.preventDefault();
+		$.ajax({
+        url: 'restaurants?search=',
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+          loading = false;
+					myScroll.refresh();
+        }
+    })
+	})
 	
 	$("#search_restaurant").live('tap', function(event){
 		$('#search_map_field').toggleClass('hidden')
 	})
 	
 	$("#search_me").live('tap', function(event){
-		key_word = $(this).prev('input').val()
+		keyword = $(this).prev('input').val()
 		center = map.getCenter()
 		center.Xa
 		center.Ya
 		$.ajax({
-        url: 'restaurants?search=' + key_word + '&lng=' + center.Ya + '&lat=' + center.Xa,
+        url: 'restaurants?search=' + keyword + '&lng=' + center.Ya + '&lat=' + center.Xa,
         type: 'get',
         dataType: 'script',
         success: function() {
@@ -52,7 +65,7 @@ $(document).ready(function() {
           loading = false;
 					$('#search_restaurant').addClass('hidden')
 					$(".close_map").addClass('hidden');
-					$("#bb").attr('href', '/').removeClass('hidden');
+					$("#bbutton").attr('href', '/').removeClass('hidden');
 					myScroll = new iScroll('wrapper', { 
 						scrollbarClass: 'myScrollbar'
 					})
