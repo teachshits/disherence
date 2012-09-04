@@ -604,16 +604,18 @@ li {
 
 #search_map_field {
   background: url("../images/search_field_bg.jpg") repeat-x;
-  height: 40px;
+  height: 37px;
   padding: 0;
   background-size: 2%;
   padding-bottom: 3px; }
   #search_map_field #search_field:focus {
     outline: none; }
   #search_map_field #search_field {
+    border-radius: 13px;
+    padding: 2px 5px;
     float: left;
-    font-size: 18px;
-    width: 246px;
+    font-size: 1em;
+    width: 225px;
     margin: 7px; }
   #search_map_field #search_me {
     font-family: Arial;
