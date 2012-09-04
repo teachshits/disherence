@@ -607,7 +607,7 @@ li {
   height: 40px;
   padding: 0;
   background-size: 2%;
-  padding: 5px 0; }
+  padding-bottom: 5px; }
   #search_map_field #search_field:focus {
     outline: none; }
   #search_map_field #search_field {
