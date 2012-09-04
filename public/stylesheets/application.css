@@ -605,7 +605,9 @@ li {
 #search_map_field {
   background: url("../images/search_field_bg.jpg") repeat-x;
   height: 40px;
-  background-size: 2%; }
+  padding: 0;
+  background-size: 2%;
+  padding: 5px 0; }
   #search_map_field #search_field:focus {
     outline: none; }
   #search_map_field #search_field {
