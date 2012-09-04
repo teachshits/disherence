@@ -1,5 +1,7 @@
 <% if (params[:lat] && params[:lng]) || params[:search] %>
 	$("#thelist").replaceWith("<%= escape_javascript(render "restaurants/restaurants") %>");
+<% elsif params[:back] == '1' %>
+	
 <% else %>
 	$("#splashscreen").replaceWith("<%= escape_javascript(render "restaurants/index") %>");
 <% end %>
