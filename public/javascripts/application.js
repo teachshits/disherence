@@ -29,12 +29,16 @@ $(document).ready(function() {
 		center.Xa
 		center.Ya
 		$.ajax({
-        url: 'restaurants?search=' + keyword,
+        url: 'restaurants?search=' + keyword + '&lng=' + center.Ya + '&lat=' + center.Xa,
         type: 'get',
         dataType: 'script',
         success: function() {
           loading = false;
-					myScroll.refresh();
+					myScroll.destroy();
+					myScroll = null;
+					myScroll = new iScroll('wrapper', { 
+						scrollbarClass: 'myScrollbar'
+					})					
         }
     })
 
