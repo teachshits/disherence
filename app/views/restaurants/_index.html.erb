@@ -13,9 +13,41 @@
 						<div id="search_map_canvas"></div>
 						<div id="search_map_field" class="hidden">
 							<input type="text" name="search_field" id="search_field" >
+							<a class="clear" id="clearQuery" href="#">
+							    <img src="data:image/gif;base64,R0lGODlhAQABAID%2FAMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D" alt="" />
+							</a>
 							<div id="search_me">Search</div>
 						</div>
-						<script>			
+						<script>		
+						
+						function initClearQueryLink(query,clearQuery){
+						    clearQuery.setAttribute("title","Clear");
+						    clearQuery.addEventListener("mousedown",clearQueryBox,true);
+						    query.addEventListener("keyup",_handleClearQueryLink,false)
+						}
+
+						function _handleClearQueryLink(){
+						    var query=document.getElementById("query");
+						    var clearQuery=document.getElementById("clearQuery");
+						    if(clearQuery)
+						        if(query.value.length>0){
+						            clearQuery.style.display="inline";
+						            clearQuery.style.visibility="visible"
+						        } else{
+						            clearQuery.style.display="none";
+						            clearQuery.style.visibility="hidden"
+						        }
+						}
+
+						function clearQueryBox(event){
+						    var query=document.getElementById("query");
+						    var clearQuery=document.getElementById("clearQuery");
+						    query.value="";
+						    clearQuery.style.display="none";
+						    clearQuery.style.visibility="hidden";
+						    hideSuggest();
+						    if(event)event.preventDefault()
+						}	
 							
 							var selectField = document.getElementById('search_field');
 							selectField.addEventListener('mousedown', function(e) {e.stopPropagation();}, false);	
