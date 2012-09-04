@@ -4,23 +4,6 @@ infoBubbleList = []
 
 $(document).ready(function() {	
 	
-	$('.clear_input').hide();   
-	    $('#search').keyup(function() {
-
-	        var search = $(this).val().replace(/^\s+|\s+$/g,"");
-
-	        if (search.length >= 1) {
-	            $('.clear_input').show();
-	        } else {
-	            $('.clear_input').hide();
-	        }
-
-	        $('.clear_input').click(function() {
-	            $('#search').val('');
-	            $('.clear_input').hide();
-	        }); 
-	    });
-	
 	$("#search_restaurant").live('tap', function(event){
 		$('#search_map_field').toggleClass('hidden')
 	})
