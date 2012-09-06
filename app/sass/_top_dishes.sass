@@ -48,12 +48,13 @@ $urinfo_h: $review_w / 5
 					width: 14px
 					height: 14px
 					background-size: 14px
+					background-repeat: no-repeat
 				.fill
-					background: url('../images/fill.png') no-repeat
+					background-image: url('../images/fill.png')
 				.half
-					background: url('../images/half.png') no-repeat
+					background-image: url('../images/half.png')
 				.empty
-					background: url('../images/empty.png') no-repeat
+					background-image: url('../images/empty.png')
 			.rating
 				clear: both
 				font-size: 0.8em
@@ -165,8 +166,11 @@ $urinfo_h: $review_w / 5
 			.stats			
 				font-size: 1.7em
 				margin: 10px 10px 0 10px
+				
 				.like, .dislike
-					background: url('../images/pli-like.png') no-repeat left center
+					background-image: url('../images/pli-like.png')
+					background-position: left center
+					background-repeat: no-repeat
 					background-size: 25px
 					float: right			
 					padding-left: 30px 
@@ -174,11 +178,14 @@ $urinfo_h: $review_w / 5
 					color: #d2ffbe
 					text-shadow: none
 					height: 25px
+					
 				.dislike
-					background: url('../images/pli-dislike.png') no-repeat 5px center
+					background-image: url('../images/pli-dislike.png')
+					background-position: 5px center
 					border-left: 1px solid #cbcbcd
 					margin-left: 5px
 					color: #e0b355
+					
 			.cover
 				background: url('../images/td-rate-flag-tail.png') no-repeat -5px center
 				background-size: contain
@@ -218,8 +225,10 @@ $urinfo_h: $review_w / 5
 				width: 45%
 				float: left
 				background-size: 200% auto
-				background: url('/images/td-choise-buttons.png') 0 0
+				background-image: url('/images/td-choise-buttons.png')
+				background-position: 0 0
 			.btn_agree_aw
 				margin-left: 20px
 			.btn_disagree_aw
-				background: url('/images/td-choise-buttons.png') 100% 0
+				background-image: url('/images/td-choise-buttons.png')
+				background-position:  100% 0
