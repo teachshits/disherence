@@ -112,13 +112,14 @@ li {
           margin-left: 3px;
           width: 14px;
           height: 14px;
-          background-size: 14px; }
+          background-size: 14px;
+          background-repeat: no-repeat; }
         #top_dishes .restaurant .info .rate .fill {
-          background: url("../images/fill.png") no-repeat; }
+          background-image: url("../images/fill.png"); }
         #top_dishes .restaurant .info .rate .half {
-          background: url("../images/half.png") no-repeat; }
+          background-image: url("../images/half.png"); }
         #top_dishes .restaurant .info .rate .empty {
-          background: url("../images/empty.png") no-repeat; }
+          background-image: url("../images/empty.png"); }
       #top_dishes .restaurant .info .rating {
         clear: both;
         font-size: 0.8em;
@@ -225,7 +226,9 @@ li {
         font-size: 1.7em;
         margin: 10px 10px 0 10px; }
         #top_dishes .dish_info_container .dish_info .stats .like, #top_dishes .dish_info_container .dish_info .stats .dislike {
-          background: url("../images/pli-like.png") no-repeat left center;
+          background-image: url("../images/pli-like.png");
+          background-position: left center;
+          background-repeat: no-repeat;
           background-size: 25px;
           float: right;
           padding-left: 30px;
@@ -234,7 +237,8 @@ li {
           text-shadow: none;
           height: 25px; }
         #top_dishes .dish_info_container .dish_info .stats .dislike {
-          background: url("../images/pli-dislike.png") no-repeat 5px center;
+          background-image: url("../images/pli-dislike.png");
+          background-position: 5px center;
           border-left: 1px solid #cbcbcd;
           margin-left: 5px;
           color: #e0b355; }
@@ -273,11 +277,13 @@ li {
         width: 45%;
         float: left;
         background-size: 200% auto;
-        background: url("/images/td-choise-buttons.png") 0 0; }
+        background-image: url("/images/td-choise-buttons.png");
+        background-position: 0 0; }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw {
         margin-left: 20px; }
       #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
-        background: url("/images/td-choise-buttons.png") 100% 0; }
+        background-image: url("/images/td-choise-buttons.png");
+        background-position: 100% 0; }
 
 #resataurants_button {
   background: url("/images/plate.png") no-repeat;
@@ -703,13 +709,14 @@ li {
           margin-left: 3px;
           width: 14px;
           height: 14px;
-          background-size: 14px; }
+          background-size: 14px;
+          background-repeat: no-repeat; }
         #map .restaurant .info .rate .fill {
-          background: url("../images/fill.png") no-repeat; }
+          background-image: url("../images/fill.png"); }
         #map .restaurant .info .rate .half {
-          background: url("../images/half.png") no-repeat; }
+          background-image: url("../images/half.png"); }
         #map .restaurant .info .rate .empty {
-          background: url("../images/empty.png") no-repeat; }
+          background-image: url("../images/empty.png"); }
       #map .restaurant .info .rating {
         clear: both;
         font-size: 0.8em;

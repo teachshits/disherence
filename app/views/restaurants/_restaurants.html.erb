@@ -14,7 +14,9 @@
 				
 			map = load_map('search_map_canvas');
 			<%= raw @restaurants_info %>
+			
 			var places = []
+			
 			for (var i = 0; i < r_info.length; i++) {
 		    place = []
 				place[0] = r_info[i]['name'];
@@ -23,6 +25,7 @@
 				place[3] = 1;
 				place[4] = r_info[i]['id'];
 				places.push(place)
+				delete r_info[i]
 			}
 			setMarkers(map, places)
 		</script>

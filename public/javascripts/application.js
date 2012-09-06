@@ -37,10 +37,7 @@ $(document).ready(function() {
 					myScroll.destroy();
 					myScroll = null;
 					myScroll = new iScroll('wrapper', { 
-						scrollbarClass: 'myScrollbar',
-						fixedScrollbar: true,
-						momentum: false,
-						lockDirection: true
+						scrollbarClass: 'myScrollbar'
 					})					
         }
     })
@@ -481,9 +478,8 @@ function load_map(element_id) {
 //Clear all markers
 function clearMarkers() {
 	for (var i=0; i< markerList.length; i++) {
-		markerList[i].setMap(null);
+		markerList[i].setMap(null);		
 	}
-	markerList = [];
 	console.log(markerList)
 }
 
