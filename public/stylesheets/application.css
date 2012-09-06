@@ -258,14 +258,14 @@ li {
         opacity: 0; }
       #top_dishes .dish_info_container .dish_info .status_aw {
         position: absolute;
-        width: 92%;
+        width: 108%;
         visibility: hidden;
         opacity: 0;
         z-index: 0;
         background: url("/images/td-choise-buttons.png");
         background-size: 100% auto;
         -webkit-transition: opacity 0.4s ease;
-        margin: 12px 0 0 18px; }
+        margin: 11px 0 0 -17px; }
       #top_dishes .dish_info_container .dish_info .status_aw.set_agree_aw, #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
         visibility: visible;
         opacity: 1;
