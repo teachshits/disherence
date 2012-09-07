@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
   
-  def get_user_opinion
+  def get_user_reviews
     if params[:user_id]
       data = Review.where(:user_id => params[:user_id])
     end
