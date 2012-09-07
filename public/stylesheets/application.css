@@ -182,9 +182,10 @@ li {
       position: absolute;
       color: white;
       bottom: 10px;
+      left: 10px;
       text-shadow: none; }
       #top_dishes .dish .comment .user_img {
-        margin: 0 5px 0 10px;
+        margin: 0 5px 0 0;
         width: 30px;
         height: 30px;
         float: left;
