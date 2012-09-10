@@ -28,9 +28,9 @@ class Review < ActiveRecord::Base
     end
   end
   
-  def as_json(options={})
-    super(:only => [:id, :opinion, :comment, :remote_photo], :include => [:dish => {:only => [:name, :id], :include => [:restaurant => {:only => [:name, :address, :id]}]}])
-  end
+  # def as_json(options={})
+  #   super(:only => [:id, :opinion, :comment, :remote_photo], :include => [:user => {:only => [:name, :id, :remote_photo]}], :include => [:dish => {:only => [:name, :id], :include => [:restaurant => {:only => [:name, :address, :id]}]}])
+  # end
   
   
   def self.dish
