@@ -32,6 +32,13 @@ class Review < ActiveRecord::Base
   #   super(:only => [:id, :opinion, :comment, :remote_photo], :include => [:user => {:only => [:name, :id, :remote_photo]}], :include => [:dish => {:only => [:name, :id], :include => [:restaurant => {:only => [:name, :address, :id]}]}])
   # end
   
+  def photo
+    self[:photo] || ""
+  end
+  
+  def comment
+    self[:comment] || ""
+  end 
   
   def self.dish
     self.dish.select([:id, :name, :remote_photo])
