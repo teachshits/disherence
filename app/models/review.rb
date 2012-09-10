@@ -40,6 +40,10 @@ class Review < ActiveRecord::Base
     self[:comment] || ""
   end 
   
+  def user_photo
+    self[:user_photo] || ""
+  end
+  
   def self.dish
     self.dish.select([:id, :name, :remote_photo])
   end
