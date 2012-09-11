@@ -28,9 +28,9 @@ class Restaurant < ActiveRecord::Base
   def self.bounds(bounds)
     c = bounds.split(',').map {|x| x.to_f}
     if c[0] > c[2]
-      where("lng > ? && lng < 180 && lng > -180 && lng < ? && lat > ? && lat < ?", c[0], c[2], c[1], c[3])
+      where("lat > ? && lat < 180 && lat > -180 && lat < ? && lng > ? && lng < ?", c[0], c[2], c[1], c[3])
     else
-      where("lng > ? && lng < ? && lat > ? && lat < ?", c[0], c[2], c[1], c[3])
+      where("lat > ? && lat < ? && lng > ? && lng < ?", c[0], c[2], c[1], c[3])
     end
   end  
   
