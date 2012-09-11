@@ -160,11 +160,17 @@ $(document).ready(function() {
 	
 	// Restaurant Dish Info slide	
 	$('.dish_info_container .rating').live('swipeleft tap', function(event){
+		$(this).parent().parent().addClass('expand')
 		$(this).parent().addClass('slideLeft')
+		setTimeout(function () {myScroll.refresh();}, 300);
 	})
+	
 	$('.dish_info_container').live('swiperight', function(event){
+		$(this).parent().removeClass('expand')
 		$(this).removeClass('slideLeft')
+		setTimeout(function () {myScroll.refresh();}, 300);
 	})
+	
 	$('.dish_info_container').live('tap', function(event){
 		event.stopPropagation();
 	})
