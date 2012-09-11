@@ -104,15 +104,21 @@ $urinfo_h: $review_w / 5
 		position: relative
 		overflow: hidden
 		-webkit-transition: height 0.2s ease-in
-		.name
+		
+		.name, .price
 			float: left
 			font-family: CompPro_bold
-			font-size: 2em
+			font-size: 1.7em
 			padding: 5px 0 0 10px
 			color: #d5ffbf
 			text-shadow: 0 1px 2px #666
 			width: 220px
 			line-height: 0.9em
+		
+		.price
+			width: auto
+			padding-left: 28px
+			
 		.comment
 			position: absolute
 			color: #fff
@@ -151,7 +157,7 @@ $urinfo_h: $review_w / 5
 			min-width: 35px
 		.dish_info
 			z-index: 98
-			height: 110px
+			height: 320px
 			background: left center
 			background-size: 320px
 			position: absolute
@@ -159,14 +165,22 @@ $urinfo_h: $review_w / 5
 			width: $review_w
 			background: url('../images/pli-bg.png')
 			
+			.description
+				margin: 10px 30px
+				font-size: 1.2em
+				color: #fff
+				text-shadow: none
+			
 			.hr_b
 				clear: both
-				height: 1px
-				margin: 0
+				height: 2px
+				margin: 0 0 0 33px
+				background: #9d9c9d
+				width: 270px
 			
 			.stats			
 				font-size: 1.7em
-				margin: 10px 10px 0 10px
+				margin-right: 15px
 				
 				.like, .dislike
 					background-image: url('../images/pli-like.png')
@@ -197,13 +211,19 @@ $urinfo_h: $review_w / 5
 				text-shadow: 0 2px 2px #999
 			.name
 				line-height: 0.8em
-				padding: 10px 0 0 30px
-				width: 150px
+				padding: 10px 0 5px 30px
+				width: 290px
 			
 			.status_aw.opacity_zero
 				opacity: 0
+				
+			.btn_container
+				position: absolute
+				bottom: 10px
+				width: 320px
 
 			.status_aw
+				
 				position: absolute
 				width: 108%
 				visibility: hidden
@@ -233,3 +253,4 @@ $urinfo_h: $review_w / 5
 			.btn_disagree_aw
 				background-image: url('/images/td-choise-buttons.png')
 				background-position:  100% 0
+				right: 10px

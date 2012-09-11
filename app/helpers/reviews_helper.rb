@@ -16,9 +16,11 @@ module ReviewsHelper
     # </div>"
 		
 		raw "
-    		<div class=\"status_aw\"><img class=\"trsp_status\" src=\"/images/trsp_status.gif\" /></div>
-    		<div class=\"btn_agree_aw\"><img class=\"trsp_btn\" src=\"/images/trsp_btn.gif\" /></div>
-    		<div class=\"btn_disagree_aw\"><img class=\"trsp_btn\" src=\"/images/trsp_btn.gif\" /></div>
+		    <div class=\"btn_container\">
+      		<div class=\"status_aw\"><img class=\"trsp_status\" src=\"/images/trsp_status.gif\" /></div>
+      		<div class=\"btn_agree_aw\"><img class=\"trsp_btn\" src=\"/images/trsp_btn.gif\" /></div>
+      		<div class=\"btn_disagree_aw\"><img class=\"trsp_btn\" src=\"/images/trsp_btn.gif\" /></div>
+      	</div>
 		"
   end
   
