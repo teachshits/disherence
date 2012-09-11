@@ -25,6 +25,15 @@ class Restaurant < ActiveRecord::Base
       COS((#{lng} - lng) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) * 1.609344")
   end
   
+  def self.bounds(bounds)
+    c = bounds.split(',').map {|x| x.to_f}
+    if c[0] > c[2]
+      where("lng > ? && lng < 180 && lng > -180 && lng < ? && lat > ? && lat < ?", c[0], c[2], c[1], c[3])
+    else
+      where("lng > ? && lng < ? && lat > ? && lat < ?", c[0], c[2], c[1], c[3])
+    end
+  end  
+  
   def as_json(options={})
     super(:only => [:id, :name, :address, :cuisine, :bill, :yelp_reviews_count, :lat, :lng])
   end

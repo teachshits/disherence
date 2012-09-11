@@ -20,8 +20,14 @@ class ApiController < ApplicationController
       params[:lng] = -74
     end
     
-    data = Restaurant.by_distance(params[:lat], params[:lng]).limit(params[:limit]).offset(params[:offset])
+    if params[:bounds]
+      data = Restaurant.bounds(params[:bounds])
+    else
+      data = Restaurant.by_distance(params[:lat], params[:lng])
+    end
+    
     data = data.where("name LIKE ?", "%#{params[:search]}%") unless params[:search].blank?
+    data = data.limit(params[:limit]).offset(params[:offset])
     
     return render :json => {
       :restaurants => data.as_json
