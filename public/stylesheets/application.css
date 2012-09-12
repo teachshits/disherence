@@ -84,6 +84,8 @@ li {
 
 #top_dishes {
   width: 320px; }
+  #top_dishes ul li {
+    border-bottom: 2px #e8ebcb solid; }
   #top_dishes .hrw {
     clear: both;
     width: 100%; }
@@ -273,7 +275,7 @@ li {
         width: 320px; }
       #top_dishes .dish_info_container .dish_info .status_aw {
         position: absolute;
-        width: 108%;
+        width: 100%;
         visibility: hidden;
         opacity: 0;
         z-index: 0;
@@ -284,9 +286,9 @@ li {
       #top_dishes .dish_info_container .dish_info .status_aw.set_agree_aw, #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
         visibility: visible;
         opacity: 1;
-        background-position: 0 50%; }
+        background-position: 22px 94%; }
       #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
-        background-position: 0 98%; }
+        background-position: 22px 48%; }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw, #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
         margin-top: 10px;
         width: 45%;
@@ -683,6 +685,10 @@ li {
 
 #map {
   width: 320px; }
+  #map .no_result {
+    padding: 3%;
+    background: #8dc63f;
+    color: white; }
   #map .phoney {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #707070), color-stop(0.51, #5e5e5e), color-stop(0.52, #393939));
     overflow: hidden;

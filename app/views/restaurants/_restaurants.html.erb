@@ -30,25 +30,29 @@
 			setMarkers(map, places)
 		</script>
 	</li>
-<% @restaurants.each do |restaurant| %>
-	<li>
-	<div class="restaurant">
-		<div class="info">
-			<%= remoteness(restaurant, params[:lat],params[:lng]) %>
-			<a class="restaurant_name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
-			<div class="rate">
-				<div class="star fill"></div>
-				<div class="star fill"></div>
-				<div class="star fill"></div>
-				<div class="star half"></div>
-				<div class="star empty"></div>
-				<div class="rating"><div class="ico"></div><%= restaurant.yelp_reviews_count %> on Yelp</div>
+<% if @restaurants.count > 0 %>
+	<% @restaurants.each do |restaurant| %>
+		<li>
+		<div class="restaurant">
+			<div class="info">
+				<%= remoteness(restaurant, params[:lat],params[:lng]) %>
+				<a class="restaurant_name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
+				<div class="rate">
+					<div class="star fill"></div>
+					<div class="star fill"></div>
+					<div class="star fill"></div>
+					<div class="star half"></div>
+					<div class="star empty"></div>
+					<div class="rating"><div class="ico"></div><%= restaurant.yelp_reviews_count %> on Yelp</div>
+				</div>
 			</div>
+			<div class="address"><%= restaurant.address.length > 30 ? restaurant.address[0..27] + '...' : restaurant.address %></div>
+			<div class="stats"><%= restaurant.cuisine.length > 30 ? restaurant.cuisine[0..27] + '...' : restaurant.cuisine %> | <% restaurant.bill.times do %>$<% end %></div>	
 		</div>
-		<div class="address"><%= restaurant.address.length > 30 ? restaurant.address[0..27] + '...' : restaurant.address %></div>
-		<div class="stats"><%= restaurant.cuisine.length > 30 ? restaurant.cuisine[0..27] + '...' : restaurant.cuisine %> | <% restaurant.bill.times do %>$<% end %></div>	
-	</div>
-	<div class="hr"></div>
-	</li>
-<% end %>
+		<div class="hr"></div>
+		</li>
+	<% end %>
+<% else %>
+	<li class="no_result">Hm. We couldn't find what you are looking for. Try a different search.</li>
+<% end%>
 </ul>
