@@ -1,8 +1,7 @@
-<% if (params[:lat] && params[:lng]) || params[:search] %>
+<% if params[:back] == '1' %>
+	$("#container").html("<%= escape_javascript(render "restaurants/index") %>");
+<% elsif (params[:lat] && params[:lng]) || params[:search] %>
 	$("#thelist").replaceWith("<%= escape_javascript(render "restaurants/restaurants") %>");
-<% elsif params[:back] == '1' %>
-	$('#content').remove();
-	$("#header").replaceWith("<%= escape_javascript(render "restaurants/index") %>");
 <% else %>
 	$("#splashscreen").replaceWith("<%= escape_javascript(render "restaurants/index") %>");
 <% end %>
