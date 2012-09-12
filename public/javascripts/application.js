@@ -500,13 +500,13 @@ function setMarkers(map, locations) {
   // Origins, anchor positions and coordinates of the marker
   // increase in the X direction to the right and in
   // the Y direction down.
-  var image = new google.maps.MarkerImage('http://dish.fm/images/mapPointer.png',
+  var image = new google.maps.MarkerImage('/images/trsp.gif',
       // This marker is 20 pixels wide by 32 pixels tall.
-      new google.maps.Size(26, 42),
+      new google.maps.Size(32, 27),
       // The origin for this image is 0,0.
       new google.maps.Point(0,0),
       // The anchor for this image is the base of the flagpole at 0,32.
-      new google.maps.Point(0, 42));
+      new google.maps.Point(32, 27));
   // var shadow = new google.maps.MarkerImage('http://code.google.com/intl/ru-RU/apis/maps/documentation/javascript/examples/images/placeflag_shadow.png',
       // The shadow image is larger in the horizontal dimension
       // while the position and offset are the same as for the main image.
@@ -531,6 +531,7 @@ function setMarkers(map, locations) {
   for (var i = 0; i < locations.length; i++) {
     var place = locations[i];
     var myLatLng = new google.maps.LatLng(place[1], place[2]);
+	
     var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
@@ -539,6 +540,14 @@ function setMarkers(map, locations) {
         title: place[0],
         zIndex: place[3]
     });
+
+		var label = new Label({
+			map: map
+    });
+    label.set('zIndex', 1234);
+    label.bindTo('position', marker, 'position');
+    label.set('text', i + 1);
+		
 			
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 	    return function() {
@@ -582,3 +591,63 @@ function setMarkers(map, locations) {
 	map.setCenter(map_center);	
 	
 }
+
+// Define the overlay, derived from google.maps.OverlayView
+function Label(opt_options) {
+     // Initialization
+     this.setValues(opt_options);
+ 
+     // Here go the label styles
+     var span = this.span_ = document.createElement('span');
+     span.style.cssText = 'position: relative; left: -10px; top: -28px;' +
+                          'padding: 5px 0 0 6px;' +
+													'background-image: url(/images/pointer.png);' +
+													'display: block;' +
+													'width: 26px;' +
+													'height: 23px;' +
+                          'font-size: 14px;';
+ 
+     var div = this.div_ = document.createElement('div');
+     div.appendChild(span);
+     div.style.cssText = 'position: absolute; display: none';
+};
+ 
+Label.prototype = new google.maps.OverlayView;
+ 
+Label.prototype.onAdd = function() {
+     var pane = this.getPanes().overlayImage;
+     pane.appendChild(this.div_);
+ 
+     // Ensures the label is redrawn if the text or position is changed.
+     var me = this;
+     this.listeners_ = [
+          google.maps.event.addListener(this, 'position_changed',
+               function() { me.draw(); }),
+          google.maps.event.addListener(this, 'text_changed',
+               function() { me.draw(); }),
+          google.maps.event.addListener(this, 'zindex_changed',
+               function() { me.draw(); })
+     ];
+};
+ 
+// Implement onRemove
+Label.prototype.onRemove = function() {
+     this.div_.parentNode.removeChild(this.div_);
+ 
+     // Label is removed from the map, stop updating its position/text.
+     for (var i = 0, I = this.listeners_.length; i < I; ++i) {
+          google.maps.event.removeListener(this.listeners_[i]);
+     }
+};
+ 
+// Implement draw
+Label.prototype.draw = function() {
+     var projection = this.getProjection();
+     var position = projection.fromLatLngToDivPixel(this.get('position'));
+     var div = this.div_;
+     div.style.left = position.x + 'px';
+     div.style.top = position.y + 'px';
+     div.style.display = 'block';
+     div.style.zIndex = this.get('zIndex'); //ALLOW LABEL TO OVERLAY MARKER
+     this.span_.innerHTML = this.get('text').toString();
+};
