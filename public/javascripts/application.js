@@ -6,15 +6,18 @@ $(document).ready(function() {
 
 	$("#bbutton").live('tap', function(event){
 		event.preventDefault();
+		center = map.getCenter()
 		$.ajax({
-        url: 'restaurants?back=1',
+        url: 'restaurants?back=1' + '&lng=' + center.Ya + '&lat=' + center.Xa,
         type: 'get',
         dataType: 'script',
         success: function() {
           loading = false;
+					myScroll.destroy();
+					myScroll = null;
 					myScroll = new iScroll('wrapper', { 
 						scrollbarClass: 'myScrollbar'
-					})
+					})					
         }
     })
 	})
@@ -26,8 +29,6 @@ $(document).ready(function() {
 	$("#search_me").live('tap', function(event){
 		keyword = $(this).prev('input').val()
 		center = map.getCenter()
-		center.Xa
-		center.Ya
 		$.ajax({
         url: 'restaurants?search=' + keyword + '&lng=' + center.Ya + '&lat=' + center.Xa,
         type: 'get',
@@ -46,8 +47,6 @@ $(document).ready(function() {
 	
 	$("#search_on_map").live('tap', function(event){
 		center = map.getCenter()
-		center.Xa
-		center.Ya
 		$.ajax({
         url: 'restaurants?lng=' + center.Ya + '&lat=' + center.Xa,
         type: 'get',
@@ -486,7 +485,6 @@ function clearMarkers() {
 	for (var i=0; i< markerList.length; i++) {
 		markerList[i].setMap(null);		
 	}
-	console.log(markerList)
 }
 
 // Add markers to the map
