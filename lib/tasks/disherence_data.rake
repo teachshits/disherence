@@ -1,5 +1,6 @@
 require 'net/https'
 
+desc 'Import disherence data from GAE'
 task :get_data => :environment do
 
   http = init_storage
@@ -32,6 +33,7 @@ task :get_data => :environment do
 
 end
 
+desc 'Update yelp_rating for restaurants'
 task :update_yelp_rating => :environment do
   Restaurant.all.each do |restaurant|
     yelp_restaurant = YelpRestaurant.find(restaurant.yelp_restaurant_id)
