@@ -30,6 +30,7 @@ class RestaurantsController < ApplicationController
     
     @restaurants_info = " "
     i = 0
+    
     @restaurants.each do |r|
       @restaurants_info += "r_info[#{i}] = {};\n"
       @restaurants_info += "r_info[#{i}]['id'] = '#{r.id}';\n"
