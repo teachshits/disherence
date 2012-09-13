@@ -1,4 +1,4 @@
-namespace :yelp do
+namespace :yelp do  
   desc "Convert parsed Yelp's Highlights to Disherense models' "
   task :convert => :environment do
     count = Yelp::HighlightDish.where('dish_photo_url IS NOT NULL').count
