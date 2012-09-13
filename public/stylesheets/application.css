@@ -230,6 +230,7 @@ li {
         color: white;
         text-shadow: none;
         overflow: auto;
+        -webkit-overflow-scrolling: touch;
         max-height: 160px; }
       #top_dishes .dish_info_container .dish_info .hr_b {
         clear: both;

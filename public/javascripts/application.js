@@ -72,7 +72,12 @@ $(document).ready(function() {
 					$(".close_map").addClass('hidden');
 					$("#bbutton").attr('href', '/').removeClass('hidden');
 					myScroll = new iScroll('wrapper', { 
-						scrollbarClass: 'myScrollbar'
+						scrollbarClass: 'myScrollbar',
+						onBeforeScrollMove: function ( e ) {
+							if ($(".description").length > 0){
+								e.preventDefault();
+							}
+						}
 					})
         }
     })
