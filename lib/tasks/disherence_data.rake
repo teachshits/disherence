@@ -37,8 +37,22 @@ desc 'Update yelp_rating for restaurants'
 task :update_yelp_rating => :environment do
   Restaurant.all.each do |restaurant|
     yelp_restaurant = YelpRestaurant.find(restaurant.yelp_restaurant_id)
-    restaurant.yelp_rating = yelp_restaurant.rating
+    restaurant.yelp_rating = yelp_restaurant.rating.nil? ? 0 : yelp_restaurant.rating
     restaurant.save
+  end
+end
+
+desc 'Update dishes info'
+task :update_dishes_info => :environment do
+  Dish.all.each do |dish|
+    yelp_restaurant_id = Restaurant.select('yelp_restaurant_id').where(:id => dish.restaurant_id).first.yelp_restaurant_id
+    yelp_dish = Yelp::Dish.where(:ylp_restaurant_id => yelp_restaurant_id, :name => dish.name).first
+    unless yelp_dish.nil?
+      dish.price = yelp_dish.price.to_f
+      dish.currency = yelp_dish.currency
+      dish.description = yelp_dish.description
+      dish.save
+    end
   end
 end
 
