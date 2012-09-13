@@ -119,7 +119,7 @@ $(document).ready(function() {
 	if ($("#map_canvas").length > 0){
 		map = load_map('map_canvas')
 		id = $('.flag_content:first').attr('id')	
-		setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
+		setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1, r_info[id]['rating'], r_info[i]['type'] ]])
 	}
 	
 	$('.restaurant name').live('tap', function(event){
@@ -250,7 +250,7 @@ $(document).ready(function() {
 		setTimeout(
 			function(){
 				id = current_div.attr('id')	
-				setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1]])
+				setMarkers(map, [[r_info[id]['name'], r_info[id]['lat'], r_info[id]['lng'], 1, r_info[id]['rating'], r_info[i]['type']]])
 				$('#map_canvas').appendTo(current_div.closest('.dish_info').find('.map_canvas')).show()
 		}, 350);
 		
@@ -494,6 +494,8 @@ function clearMarkers() {
 
 // Add markers to the map
 function setMarkers(map, locations) {
+	console.log(r_info)
+	console.log(locations)
 	if (typeof markerList != 'undefined') {
 		clearMarkers()
 	}
@@ -505,13 +507,13 @@ function setMarkers(map, locations) {
   // Origins, anchor positions and coordinates of the marker
   // increase in the X direction to the right and in
   // the Y direction down.
-  var image = new google.maps.MarkerImage('/images/trsp.gif',
+  var image = new google.maps.MarkerImage('/images/point_trsp.gif',
       // This marker is 20 pixels wide by 32 pixels tall.
-      new google.maps.Size(32, 27),
+      new google.maps.Size(32, 40),
       // The origin for this image is 0,0.
       new google.maps.Point(0,0),
       // The anchor for this image is the base of the flagpole at 0,32.
-      new google.maps.Point(32, 27));
+      new google.maps.Point(16, 32));
   // var shadow = new google.maps.MarkerImage('http://code.google.com/intl/ru-RU/apis/maps/documentation/javascript/examples/images/placeflag_shadow.png',
       // The shadow image is larger in the horizontal dimension
       // while the position and offset are the same as for the main image.
@@ -548,10 +550,10 @@ function setMarkers(map, locations) {
 
 		var label = new Label({
 			map: map
-    });
-    label.set('zIndex', 1234);
-    label.bindTo('position', marker, 'position');
-    label.set('text', i + 1);
+		    });
+		    label.set('zIndex', 1);
+		    label.bindTo('position', marker, 'position');
+		    label.set('text', i + 1);
 		
 			
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
@@ -563,20 +565,20 @@ function setMarkers(map, locations) {
 
         infoBubble = new InfoBubble({
           map: map,
-          content: '<div class="phoneytext"><a class="map_link" href="/restaurants/show/'+locations[i][4]+'">'+locations[i][0]+'</a></div>',
-          position: new google.maps.LatLng(parseFloat(locations[i][1]) + 0.0009, locations[i][2] - 0.0002),
+          content: '<a class="map_link" href="/restaurants/show/'+locations[i][4]+'">'+locations[i][0]+' '+locations[i][5]+' '+locations[i][6]+'</a>',
+          position: new google.maps.LatLng(parseFloat(locations[i][1]) + 0.0000, locations[i][2] - 0.0002),
           shadowStyle: 1,
-          padding: 0,
-          backgroundColor: 'rgb(57,57,57)',
+          padding: 5,
+          backgroundColor: '#8DC63F',
           borderRadius: 4,
           arrowSize: 0,
           borderWidth: 1,
-          borderColor: '#2c2c2c',
+          borderColor: '#ccc',
           disableAutoPan: true,
           hideCloseButton: true,
-          arrowPosition: 30,
-          backgroundClassName: 'phoney',
-          arrowStyle: 2
+          // arrowPosition: 30,
+          // backgroundClassName: '',
+          // arrowStyle: 1
         });
 				infoBubble.open();
 				
@@ -604,12 +606,13 @@ function Label(opt_options) {
  
      // Here go the label styles
      var span = this.span_ = document.createElement('span');
-     span.style.cssText = 'position: relative; left: -10px; top: -28px;' +
-                          'padding: 5px 0 0 6px;' +
+     span.style.cssText = 'position: relative; left: -14px; top: -34px;' +
+                          'padding: 7px 0px 0px 7px;' +
 													'background-image: url(/images/pointer.png);' +
+													'background-size: 100%;' +
 													'display: block;' +
-													'width: 26px;' +
-													'height: 23px;' +
+													'width: 34px;' +
+													'height: 27px;' +
                           'font-size: 14px;';
  
      var div = this.div_ = document.createElement('div');

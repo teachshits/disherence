@@ -1,5 +1,27 @@
 module ReviewsHelper
   
+  def yelp_rating(restaurant)
+    rating = []
+    
+    restaurant.yelp_rating.to_i.times do
+			rating.push('<div class="star fill"></div>')
+    end
+
+	  if restaurant.yelp_rating.to_f - restaurant.yelp_rating.to_i != 0
+			rating.push('<div class="star half"></div>')
+			rating_with_half = restaurant.yelp_rating.to_i + 1
+		else
+		  rating_with_half = restaurant.yelp_rating.to_i
+		end
+
+		(5 - rating_with_half).times do
+			rating.push('<div class="star empty"></div>')
+		end
+		
+		raw rating.join
+  end
+  
+  
   def awesome_buttons(user, dish)
     op_btns_add_class = ''
     status_add_class = ''

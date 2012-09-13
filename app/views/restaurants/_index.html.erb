@@ -34,6 +34,8 @@
 								place[2] = r_info[i]['lng'];
 								place[3] = 1;
 								place[4] = r_info[i]['id'];
+								place[5] = r_info[i]['rating'];
+								place[6] = r_info[i]['type'];
 								places.push(place)
 							}
 							
@@ -47,11 +49,7 @@
 								<%= remoteness(restaurant, cookies[:lat],cookies[:lng]) %>
 								<a class="restaurant_name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
 								<div class="rate">
-									<div class="star fill"></div>
-									<div class="star fill"></div>
-									<div class="star fill"></div>
-									<div class="star half"></div>
-									<div class="star empty"></div>
+									<%= yelp_rating(restaurant) %>
 									<div class="rating"><div class="ico"></div><%= restaurant.yelp_reviews_count %> on Yelp</div>
 								</div>
 							</div>

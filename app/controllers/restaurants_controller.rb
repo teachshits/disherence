@@ -36,6 +36,8 @@ class RestaurantsController < ApplicationController
       @restaurants_info += "r_info[#{i}]['name'] = '#{r.name.gsub(/'/, "\\\\'")}';\n"
       @restaurants_info += "r_info[#{i}]['lat'] = '#{r.lat}';\n"
       @restaurants_info += "r_info[#{i}]['lng'] = '#{r.lng}';\n"
+      @restaurants_info += "r_info[#{i}]['rating'] = '<br /><div class=\"s_cont\">#{view_context.yelp_rating(r)}</div>';\n"
+      @restaurants_info += "r_info[#{i}]['type'] = '<br />#{r.cuisine}';\n"
       i += 1
     end  
   end

@@ -69,6 +69,23 @@ li {
   width: 320px;
   display: block; }
 
+.star {
+  float: left;
+  margin-left: 3px;
+  width: 14px;
+  height: 14px;
+  background-size: 14px;
+  background-repeat: no-repeat; }
+
+.fill {
+  background-image: url("../images/fill.png"); }
+
+.half {
+  background-image: url("../images/half.png"); }
+
+.empty {
+  background-image: url("../images/empty.png"); }
+
 @font-face {
   font-family: "CompPro";
   src: local("CompPro");
@@ -85,7 +102,7 @@ li {
 #top_dishes {
   width: 320px; }
   #top_dishes ul li {
-    border-bottom: 2px #e8ebcb solid; }
+    border-bottom: 1px #e8ebcb solid; }
   #top_dishes .hrw {
     clear: both;
     width: 100%; }
@@ -231,7 +248,8 @@ li {
         text-shadow: none;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
-        max-height: 160px; }
+        max-height: 160px;
+        width: 290px; }
       #top_dishes .dish_info_container .dish_info .hr_b {
         clear: both;
         height: 2px;
@@ -688,6 +706,14 @@ li {
 
 #map {
   width: 320px; }
+  #map .map_link {
+    color: white;
+    text-shadow: none;
+    text-align: center;
+    display: block; }
+    #map .map_link .s_cont {
+      width: 85px;
+      margin: 0 auto; }
   #map .no_result {
     padding: 3%;
     background: #8dc63f;
@@ -729,19 +755,6 @@ li {
         width: 160px; }
       #map .restaurant .info .rate {
         float: right; }
-        #map .restaurant .info .rate .star {
-          float: left;
-          margin-left: 3px;
-          width: 14px;
-          height: 14px;
-          background-size: 14px;
-          background-repeat: no-repeat; }
-        #map .restaurant .info .rate .fill {
-          background-image: url("../images/fill.png"); }
-        #map .restaurant .info .rate .half {
-          background-image: url("../images/half.png"); }
-        #map .restaurant .info .rate .empty {
-          background-image: url("../images/empty.png"); }
       #map .restaurant .info .rating {
         clear: both;
         font-size: 0.8em;
