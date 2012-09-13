@@ -49,7 +49,7 @@ task :update_dishes_info => :environment do
     yelp_dish = Yelp::Dish.where(:ylp_restaurant_id => yelp_restaurant_id, :name => dish.name).first
     unless yelp_dish.nil?
       dish.price = yelp_dish.price.to_f
-      dish.currence = yelp_dish.currency
+      dish.currency = yelp_dish.currency
       dish.description = yelp_dish.description
       dish.save
     end
