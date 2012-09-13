@@ -29,7 +29,15 @@ task :get_data => :environment do
     end
     
   end
-  
+
+end
+
+task :update_yelp_rating => :environment do
+  Restaurant.all.each do |restaurant|
+    yelp_restaurant = YelpRestaurant.find(restaurant.yelp_restaurant_id)
+    restaurant.yelp_rating = yelp_restaurant.rating
+    restaurant.save
+  end
 end
 
 def init_storage
