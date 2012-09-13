@@ -5,7 +5,7 @@ task :get_data => :environment do
   http = init_storage
   i = 220
 
-  2.times do
+  917.times do
     i += 1
     
     url = "/api/restaurant/info?offset=#{i}"
