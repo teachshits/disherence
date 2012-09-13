@@ -45,9 +45,7 @@
 											<div class="like"><%= d.likes %></div>
 										</div>
 										<div class="hr_b"></div>
-										<% if dish && rewiew = d.reviews.where("dish_id = #{d.id} AND comment IS NOT NULL").first %>
-											<div class="description"><%= rewiew.comment %></div>
-										<% end %>
+										<div class="description"><%= d.description %></div>
 										<%= awesome_buttons(session[:user],d) %>	
 									</div>
 								</div>
@@ -57,7 +55,7 @@
 										<div class="user_img" style="background: url('<%= d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.user.remote_photo %>') left center"></div>
 										<%= d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.comment.to_s[0..50] %>
 									</div>	
-								<% end %>				
+								<% end %>
 							
 							</div>
 						</li>

@@ -228,7 +228,9 @@ li {
         margin: 10px 30px;
         font-size: 1.2em;
         color: white;
-        text-shadow: none; }
+        text-shadow: none;
+        overflow: auto;
+        max-height: 160px; }
       #top_dishes .dish_info_container .dish_info .hr_b {
         clear: both;
         height: 2px;
