@@ -234,7 +234,6 @@ li {
       min-width: 35px; }
     #top_dishes .dish_info_container .dish_info {
       z-index: 98;
-      height: 320px;
       background: left center;
       background-size: 320px;
       position: absolute;
@@ -291,38 +290,38 @@ li {
       #top_dishes .dish_info_container .dish_info .status_aw.opacity_zero {
         opacity: 0; }
       #top_dishes .dish_info_container .dish_info .btn_container {
-        position: absolute;
+        position: relative;
         bottom: 10px;
         width: 320px; }
       #top_dishes .dish_info_container .dish_info .status_aw {
         position: absolute;
-        width: 100%;
+        width: 106%;
         visibility: hidden;
         opacity: 0;
         z-index: 0;
         background: url("/images/td-choise-buttons.png");
         background-size: 100% auto;
         -webkit-transition: opacity 0.4s ease;
-        margin: 11px 0 0 -17px; }
+        margin: 10px 0 0 -25px; }
       #top_dishes .dish_info_container .dish_info .status_aw.set_agree_aw, #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
         visibility: visible;
         opacity: 1;
-        background-position: 22px 94%; }
+        background-position: 20px 92%; }
       #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
-        background-position: 22px 48%; }
+        background-position: 16px 46%;
+        background-size: 103% auto; }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw, #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
-        margin-top: 10px;
+        margin-top: 12px;
         width: 45%;
         float: left;
-        background-size: 200% auto;
+        background-size: 230% auto;
         background-image: url("/images/td-choise-buttons.png");
-        background-position: 0 0; }
+        background-position: 13% 0; }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw {
-        margin-left: 20px; }
+        margin-left: 23px; }
       #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
         background-image: url("/images/td-choise-buttons.png");
-        background-position: 100% 0;
-        right: 10px; }
+        background-position: 88% 0; }
 
 #resataurants_button {
   background: url("/images/plate.png") no-repeat;
