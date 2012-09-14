@@ -14,19 +14,19 @@ class RestaurantsController < ApplicationController
       lng = cookies[:lng]
     end
     
-    @restaurants = Restaurant.limit(15)
-    @restaurants = params[:search].blank? ? @restaurants.by_distance(lat, lng) : @restaurants.where('name LIKE ?', "%#{params[:search]}%")
+    @restaurants = Restaurant.by_distance(lat, lng).limit(15)
+    @restaurants = @restaurants.where('name LIKE ?', "%#{params[:search]}%") unless params[:search].blank?
     
-    @restaurants.reject! do |res|
-      to_reject = true
-      res.dishes.each do |dish|
-        if dish.reviews.with_photos.size > 0
-          to_reject = false
-          break;
-        end
-      end
-      to_reject
-    end
+    # @restaurants.reject! do |res|
+    #   to_reject = true
+    #   res.dishes.each do |dish|
+    #     if dish.reviews.with_photos.size > 0
+    #       to_reject = false
+    #       break;
+    #     end
+    #   end
+    #   to_reject
+    # end
     
     @restaurants_info = " "
     i = 0

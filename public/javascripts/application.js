@@ -35,11 +35,7 @@ $(document).ready(function() {
         dataType: 'script',
         success: function() {
           loading = false;
-					myScroll.destroy();
-					myScroll = null;
-					myScroll = new iScroll('wrapper', { 
-						scrollbarClass: 'myScrollbar'
-					})					
+					myScroll.refresh();					
         }
     })
 

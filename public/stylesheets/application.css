@@ -234,21 +234,21 @@ li {
       min-width: 35px; }
     #top_dishes .dish_info_container .dish_info {
       z-index: 98;
-      background: left center;
-      background-size: 320px;
+      background-position: left center;
+      background-size: 100%;
       position: absolute;
       left: 320px;
       width: 320px;
-      background: url("../images/pli-bg.png"); }
+      background-image: url("../images/pli-bg.png"); }
       #top_dishes .dish_info_container .dish_info .description {
-        margin: 10px 30px;
+        margin: 10px 35px;
         font-size: 1.2em;
         color: white;
         text-shadow: none;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         max-height: 160px;
-        width: 290px; }
+        width: 285px; }
       #top_dishes .dish_info_container .dish_info .hr_b {
         clear: both;
         height: 2px;
