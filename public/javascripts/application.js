@@ -8,7 +8,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		center = map.getCenter()
 		$.ajax({
-        url: back_url,
+        url: 'restaurants?back=1' + '&lng=' + center.Ya + '&lat=' + center.Xa,
         type: 'get',
         dataType: 'script',
         success: function() {
@@ -562,7 +562,7 @@ function setMarkers(map, locations) {
 
         infoBubble = new InfoBubble({
           map: map,
-          content: '<a class="map_link" href="/restaurants/show/'+locations[i][4]+'">'+locations[i][0]+' '+locations[i][5]+' '+locations[i][6]+'</a>',
+          content: '<a class="ajax_rest map_link" href="/restaurants/show/'+locations[i][4]+'">'+locations[i][0]+' '+locations[i][5]+' '+locations[i][6]+'</a>',
           position: new google.maps.LatLng(parseFloat(locations[i][1]) + 0.0000, locations[i][2] - 0.0002),
           shadowStyle: 1,
           padding: 5,
