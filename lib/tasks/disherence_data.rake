@@ -24,7 +24,8 @@ task :get_data => :environment do
           end
         end
 
-        add_photo(dish_id, dish['photo'], dish['quote']['quote']) if dish['photo']
+        quote = dish['quote'].nil? ? "" : dish['quote']['quote']
+        add_photo(dish_id, dish['photo'], quote) if dish['photo']
       end
 
     end
