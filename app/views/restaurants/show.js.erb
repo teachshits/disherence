@@ -1,3 +1,2 @@
 $("#wrapper").replaceWith("<%= escape_javascript(render "restaurants/show") %>");
-back_url = "<%= @back_url %>"
-console.log(back_url)
+back_url = "<%= escape_javascript raw @back_url %>"

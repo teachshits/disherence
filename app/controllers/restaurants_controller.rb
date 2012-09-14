@@ -46,6 +46,15 @@ class RestaurantsController < ApplicationController
   
   def show
     @restaurant = Restaurant.find_by_id(params[:id])
+    
+    url_params = []
+    url_params.push("back=1")
+    url_params.push("lat=#{cookies[:lat]}")
+    url_params.push("lng=#{cookies[:lng]}")
+    url_params.push("search=#{cookies[:search]}") unless cookies[:search].blank?
+    url_params = url_params.join('&')
+    
+    @back_url = "restaurants?#{url_params}"
   end
   
   def info

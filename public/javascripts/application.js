@@ -8,7 +8,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		center = map.getCenter()
 		$.ajax({
-        url: 'restaurants?back=1' + '&lng=' + center.Ya + '&lat=' + center.Xa,
+        url: back_url,
         type: 'get',
         dataType: 'script',
         success: function() {
@@ -28,7 +28,10 @@ $(document).ready(function() {
 	
 	$("#search_me").live('tap', function(event){
 		keyword = $(this).prev('input').val()
+
+		$.cookie("search", keyword);		
 		center = map.getCenter()
+		
 		$.ajax({
         url: 'restaurants?search=' + keyword + '&lng=' + center.Ya + '&lat=' + center.Xa,
         type: 'get',
@@ -43,6 +46,11 @@ $(document).ready(function() {
 	
 	$("#search_on_map").live('tap', function(event){
 		center = map.getCenter()
+		
+		$.cookie("lat", center.Xa);
+		$.cookie("lng", center.Ya);
+		$.cookie("search", '');
+		
 		$.ajax({
         url: 'restaurants?lng=' + center.Ya + '&lat=' + center.Xa,
         type: 'get',
