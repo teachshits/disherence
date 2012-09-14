@@ -7,14 +7,14 @@ class RestaurantsController < ApplicationController
   def index
     
     if params[:lat] && params[:lng]
-      lat = params[:lat]
-      lng = params[:lng] 
+      @lat = params[:lat]
+      @lng = params[:lng] 
     else
-      lat = cookies[:lat]
-      lng = cookies[:lng]
+      @lat = cookies[:lat]
+      @lng = cookies[:lng]
     end
     
-    @restaurants = Restaurant.by_distance(lat, lng).limit(15)
+    @restaurants = Restaurant.by_distance(@lat, @lng).limit(15)
     @restaurants = @restaurants.where('name LIKE ?', "%#{params[:search]}%") unless params[:search].blank?
     
     # @restaurants.reject! do |res|

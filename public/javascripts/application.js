@@ -55,29 +55,9 @@ $(document).ready(function() {
 
 	})
 	
-	$(".ajax_rest").live('tap', function(event){
-		console.log($(this).attr('class'))
+	$(".restaurant_name").live('tap', function(event){
 		event.preventDefault();
-		href = $(this).attr('href')
-		$.ajax({
-        url: href,
-        type: 'get',
-        dataType: 'script',
-        success: function() {
-          loading = false;
-					$('#search_restaurant').addClass('hidden')
-					$(".close_map").addClass('hidden');
-					$("#bbutton").attr('href', '/').removeClass('hidden');
-					myScroll = new iScroll('wrapper', { 
-						scrollbarClass: 'myScrollbar',
-						onBeforeScrollMove: function ( e ) {
-							if ($(".description").length > 0){
-								e.preventDefault();
-							}
-						}
-					})
-        }
-    })
+		ajax_get_restaurant($(this).attr('href'))
 	})
 	
 	if ($("#splashscreen").length > 0){
@@ -457,6 +437,28 @@ $('.status').live('tap', function(event){
 
 });
 
+function ajax_get_restaurant(href) {
+	$.ajax({
+      url: href,
+      type: 'get',
+      dataType: 'script',
+      success: function() {
+        loading = false;
+				$('#search_restaurant').addClass('hidden')
+				$(".close_map").addClass('hidden');
+				$("#bbutton").attr('href', '/').removeClass('hidden');
+				myScroll = new iScroll('wrapper', { 
+					scrollbarClass: 'myScrollbar',
+					onBeforeScrollMove: function ( e ) {
+						if ($(".description").length > 0){
+							e.preventDefault();
+						}
+					}
+				})
+      }
+  })
+}
+
 
 function getLocation(pos)
 {
@@ -562,7 +564,7 @@ function setMarkers(map, locations) {
 
         infoBubble = new InfoBubble({
           map: map,
-          content: '<a class="ajax_rest map_link" href="/restaurants/show/'+locations[i][4]+'">'+locations[i][0]+' '+locations[i][5]+' '+locations[i][6]+'</a>',
+          content: '<a onClick="ajax_get_restaurant(this.href);return false" class="map_link" href="/restaurants/show/'+locations[i][4]+'">'+locations[i][0]+' '+locations[i][5]+' '+locations[i][6]+'</a>',
           position: new google.maps.LatLng(parseFloat(locations[i][1]) + 0.0000, locations[i][2] - 0.0002),
           shadowStyle: 1,
           padding: 5,
