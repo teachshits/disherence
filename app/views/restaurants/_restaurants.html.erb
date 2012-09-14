@@ -37,7 +37,7 @@
 		<div class="restaurant">
 			<div class="info">
 				<%= remoteness(restaurant, params[:lat],params[:lng]) %>
-				<a class="restaurant_name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
+				<a class="ajax_rest restaurant_name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
 				<div class="rate">					
 					<%= yelp_rating(restaurant) %>
 					<div class="rating"><div class="ico"></div><%= restaurant.yelp_reviews_count %> on Yelp</div>

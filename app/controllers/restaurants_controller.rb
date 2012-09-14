@@ -41,6 +41,7 @@ class RestaurantsController < ApplicationController
       @restaurants_info += "r_info[#{i}]['type'] = '<br />#{r.cuisine}';\n"
       i += 1
     end  
+        
   end
   
   def show

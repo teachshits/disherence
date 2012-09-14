@@ -8,7 +8,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		center = map.getCenter()
 		$.ajax({
-        url: 'restaurants?back=1' + '&lng=' + center.Ya + '&lat=' + center.Xa,
+        url: back_url,
         type: 'get',
         dataType: 'script',
         success: function() {
@@ -55,7 +55,8 @@ $(document).ready(function() {
 
 	})
 	
-	$(".restaurant_name").live('tap', function(event){
+	$(".ajax_rest").live('tap', function(event){
+		console.log($(this).attr('class'))
 		event.preventDefault();
 		href = $(this).attr('href')
 		$.ajax({

@@ -8,56 +8,8 @@
 	<div id="wrapper"> 
 		<div id="scroller"> 
 			<div id="map">
-				<ul id="thelist">
-					<li>
-						<div id="search_on_map" class="hidden">search this location</div>
-						<div id="search_map_canvas"></div>
-						<div id="search_map_field" class="hidden">
-							<input type="text" name="search_field" id="search_field" placeholder="Search..." >
-							<div id="search_me">Search</div>
-						</div>
-						<script>
-													
-							var selectField = document.getElementById('search_field');
-							selectField.addEventListener('mousedown', function(e) {e.stopPropagation();}, false);	
-							selectField.addEventListener('touchstart', function(e) {e.stopPropagation();}, false);	
-							
-							map = load_map('search_map_canvas');
-							<%= raw @restaurants_info %>
-							
-							var places = []
-							
-							for (var i = 0; i < r_info.length; i++) {
-						    place = []
-								place[0] = r_info[i]['name'];
-								place[1] = r_info[i]['lat'];
-								place[2] = r_info[i]['lng'];
-								place[3] = 1;
-								place[4] = r_info[i]['id'];
-								place[5] = r_info[i]['rating'];
-								place[6] = r_info[i]['type'];
-								places.push(place)
-							}
-							
-							setMarkers(map, places)
-						</script>
-					</li>
-					<% @restaurants.each do |restaurant| %>
-						<li>
-						<div class="restaurant">
-							<div class="info">
-								<%= remoteness(restaurant, cookies[:lat],cookies[:lng]) %>
-								<a class="restaurant_name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
-								<div class="rate">
-									<%= yelp_rating(restaurant) %>
-									<div class="rating"><div class="ico"></div><%= restaurant.yelp_reviews_count %> on Yelp</div>
-								</div>
-							</div>
-							<div class="address"><%= restaurant.address.length > 30 ? restaurant.address[0..27] + '...' : restaurant.address %></div>
-							<div class="stats"><%= restaurant.cuisine.length > 30 ? restaurant.cuisine[0..27] + '...' : restaurant.cuisine %> | <% restaurant.bill.times do %>$<% end %></div>	
-						</div>
-						<div class="hr"></div>
-						</li>
-					<% end %>
-				</ul>
+				<%= render 'restaurants' %>
 			</div>
+		</div>
+	</div>
+</div>
