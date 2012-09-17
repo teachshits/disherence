@@ -10,7 +10,11 @@ class User < ActiveRecord::Base
   mount_uploader :photo, ProfilePhotoUploader
 
   def photo
-    self[:remote_photo].blank? ? '/images/user_no_photo.png' : self[:remote_photo]
+    if !self[:facebook_id].blank?
+      "http://graph.facebook.com/#{facebook_id}/picture?type=large"
+    else  
+      self[:remote_photo].blank? ? '/images/user_no_photo.png' : self[:remote_photo]
+    end
   end  
   
   def self.authenticate_by_facebook(access_token_data)
