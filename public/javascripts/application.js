@@ -299,31 +299,31 @@ $(document).ready(function() {
 		$.getJSON(href, function(json) {
 			if (json.url) {
 				window.location.href = json.url
+			} else {
+				el = $(this).parent('.btn_container').prevAll('stats')
+				if (this.className == 'btn_agree_aw') {
+					$(this).prev('.status_aw').addClass('set_agree_aw')
+					el.children('.like')text(parseInt(el.children('.like').text()) + 1)
+
+					// if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {
+					// 	el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
+					// }
+
+				} else {
+					$(this).prev().prev('.status_aw').addClass('set_disagree_aw')
+					el.children('.dislike')text(parseInt(el.children('.dislike').text()) + 1)
+					
+					// el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) + 1) + ' user(s) disagree')
+
+					// if (el.find('.user_info .opinion').text().indexOf('Awful') != -1) {
+					// 	el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
+					// }
+				}
+
+				el.find('.dish_info .profiles').text(parseInt(el.find('.dish_info .profiles').text()) + 1)
 			}
 			loading = false;
-			// myScroll.refresh();
 		 });
-		
-		if (this.className == 'btn_agree_aw') {
-			$(this).prev('.status_aw').addClass('set_agree_aw')
-			el = $(this).prev().prev('.review')
-			el.find('.users .num').text('+' + (parseInt(el.find('.users .num').text()) + 1))
-			
-			if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {
-				el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
-			}
-			
-		} else {
-			$(this).prev().prev('.status_aw').addClass('set_disagree_aw')
-			el = $(this).prev().prev().prev('.review')
-			el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) + 1) + ' user(s) disagree')
-			
-			if (el.find('.user_info .opinion').text().indexOf('Awful') != -1) {
-				el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
-			}
-		}
-		
-		el.find('.dish_info .profiles').text(parseInt(el.find('.dish_info .profiles').text()) + 1)
 	})
 	
 	$('.status_aw').live('tap', function(event){
