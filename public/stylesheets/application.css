@@ -64,6 +64,12 @@ li {
   border-bottom: 1px solid white;
   background-image: url("/images/logo.png");
   background-size: auto 75%; }
+  #header .user_img {
+    margin: 0 5px 0 0;
+    width: 30px;
+    height: 30px;
+    float: left;
+    border: 3px solid white; }
 
 .trsp {
   width: 320px;
@@ -206,12 +212,6 @@ li {
       bottom: 10px;
       left: 10px;
       text-shadow: none; }
-      #top_dishes .dish .comment .user_img {
-        margin: 0 5px 0 0;
-        width: 30px;
-        height: 30px;
-        float: left;
-        border: 3px solid white; }
   #top_dishes .dish.expand {
     height: 320px; }
   #top_dishes .dish_info_container.slideLeft {
