@@ -64,7 +64,7 @@ li {
   border-bottom: 1px solid white;
   background-image: url("/images/logo.png");
   background-size: auto 75%; }
-  #header .user_img {
+  #header .user_img_profile {
     background-position: center center;
     background-size: cover;
     margin: 5px 5px 0 0;
@@ -214,6 +214,14 @@ li {
       bottom: 10px;
       left: 10px;
       text-shadow: none; }
+      #top_dishes .dish .comment .user_img {
+        background-position: center center;
+        background-size: cover;
+        margin: 1px 3px 0 0;
+        width: 30px;
+        height: 30px;
+        float: left;
+        border: 3px solid white; }
   #top_dishes .dish.expand {
     height: 320px; }
   #top_dishes .dish_info_container.slideLeft {
