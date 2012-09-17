@@ -50,7 +50,8 @@
 								<% if dish && %>
 									<div class="comment">
 										<div class="user_img" style="background: url('<%= d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.user.remote_photo %>') left center"></div>
-										<%= d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.comment.to_s[0..50] %>
+										<% comment = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.comment.to_s %>
+										<%= comment.length > 100 ? comment[0 .. 97] + ' ...' : comment %>
 									</div>	
 								<% end %>
 							

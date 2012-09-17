@@ -39,9 +39,9 @@ module ReviewsHelper
 		
 		raw "
 		    <div class=\"btn_container\">
-      		<div class=\"status_aw\"><img class=\"trsp_status\" src=\"/images/trsp_status.gif\" /></div>
-      		<div class=\"btn_agree_aw\"><img class=\"trsp_btn\" src=\"/images/trsp_btn.gif\" /></div>
-      		<div class=\"btn_disagree_aw\"><img class=\"trsp_btn\" src=\"/images/trsp_btn.gif\" /></div>
+      		<a class=\"status_aw\" href=\"/reviews/destroy/#{dish.id}\"><img class=\"trsp_status\" src=\"/images/trsp_status.gif\" /></a>
+      		<a class=\"btn_agree_aw\" href=\"/reviews/awesome/#{dish.id}\"><img class=\"trsp_btn\" src=\"/images/trsp_btn.gif\" /></a>
+      		<a class=\"btn_disagree_aw\" href=\"/reviews/awful/#{dish.id}\"><img class=\"trsp_btn\" src=\"/images/trsp_btn.gif\" /></a>
       	</div>
 		"
   end

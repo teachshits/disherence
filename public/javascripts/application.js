@@ -3,7 +3,7 @@ markerList = []
 infoBubbleList = []
 
 $(document).ready(function() {	
-
+	
 	$("#bbutton").live('tap', function(event){
 		event.preventDefault();
 		center = map.getCenter()
@@ -203,26 +203,6 @@ $(document).ready(function() {
 		myScroll = new iScroll('wrapper', { 
 			scrollbarClass: 'myScrollbar', 
 			onBeforeScrollStart: function() {} ,
-			// 			onScrollMove:  function() {
-			// 
-			// 				if (v_height * page + myScroll.y < 700 && flag == true) {
-			// 				flag = false; 
-			// 				console.log(page)
-			// 				page++;
-			// 				$.ajax({
-			// 		        url: '/reviews?page=' + page,
-			// 		        type: 'get',
-			// 		        dataType: 'script',
-			// 		        success: function() {
-			// 		          loading=false;
-			// 							setTimeout(function () {
-			// 									myScroll.refresh();
-			// 									myScroll.scrollTo(0,0,0)
-			// 									flag = true;
-			// 							}, 0);
-			// 		        }
-			// 		    })
-			// 			}}
 		})		
 	}
 	
@@ -313,6 +293,16 @@ $(document).ready(function() {
 	$('.btn_agree_aw, .btn_disagree_aw').live('tap', function(){
 		event.preventDefault()
 		event.stopPropagation()
+		
+		href = $(this).attr('href')		
+		
+		$.getJSON(href, function(json) {
+			if (json.url) {
+				window.location.href = json.url
+			}
+			loading = false;
+			// myScroll.refresh();
+		 });
 		
 		if (this.className == 'btn_agree_aw') {
 			$(this).prev('.status_aw').addClass('set_agree_aw')

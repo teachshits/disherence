@@ -39,7 +39,7 @@ class ReviewsController < ApplicationController
         
         return render :json => {:result => 1, :likes => likes, :dislikes => dislikes, :rating => rating}
       else
-        return render :json => {"result" => 0, "url" => Rails.application.config.fb_auth_url}
+        return render :json => {:result => 0, :url => Rails.application.config.fb_auth_url}
       end
     end
   end
