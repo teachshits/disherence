@@ -291,7 +291,6 @@ $(document).ready(function() {
 	
 	// Awesome && Awfull Buttons
 	$('.btn_agree_aw, .btn_disagree_aw').live('tap', function(){
-		event.preventDefault()
 		event.stopPropagation()
 		
 		elem = $(this)
@@ -321,10 +320,10 @@ $(document).ready(function() {
 			}
 			loading = false;
 		 });
+		return false
 	})
 	
 	$('.status_aw').live('tap', function(event){
-		event.preventDefault()
 		event.stopPropagation()
 		
 		elem = $(this)
@@ -343,7 +342,7 @@ $(document).ready(function() {
 				elem.removeClass('set_disagree_aw').removeClass('opacity_zero');
 			}, 400)
 		})
-		
+		return false
 	})
 	
 // Agree && Disagree Buttons
