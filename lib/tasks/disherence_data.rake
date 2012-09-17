@@ -4,9 +4,9 @@ desc 'Import disherence data from GAE'
 task :get_data => :environment do
 
   http = init_storage
-  i = 220
+  i = -1
 
-  917.times do
+  1138.times do
     i += 1
     
     url = "/api/restaurant/info?offset=#{i}"
@@ -24,7 +24,8 @@ task :get_data => :environment do
           end
         end
 
-        add_photo(dish_id, dish['photo']) if dish['photo']
+        quote = dish['quote'].nil? ? "" : dish['quote']['quote']
+        add_photo(dish_id, dish['photo'], quote) if dish['photo']
       end
 
     end
@@ -112,7 +113,7 @@ def add_review(user_id, dish_id)
   end
 end
 
-def add_photo(dish_id, photo)
+def add_photo(dish_id, photo, comment)
   unless myuser = User.find_by_yelp_profile_id(photo['user_profile_id'])
     myuser = User.create(
       :yelp_profile_id => photo['user_profile_id'],
@@ -121,14 +122,15 @@ def add_photo(dish_id, photo)
   end
   
   if review = Review.find_by_user_id_and_dish_id(myuser.id, dish_id)
-    review.update_attributes(:remote_photo => photo['url'])
+    p "Update comment to: #{comment}"
+    review.update_attributes(:remote_photo => photo['url'], :comment => comment)
   else
     review = Review.create(
       :user_id => myuser.id,
       :dish_id => dish_id,
       :opinion => 1,
       :remote_photo => photo['url'],
-      :comment => photo['caption']
+      :comment => comment
     )
   end
 end
