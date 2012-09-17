@@ -303,7 +303,7 @@ $(document).ready(function() {
 				el = $(this).parent('.btn_container').prevAll('stats')
 				if (this.className == 'btn_agree_aw') {
 					$(this).prev('.status_aw').addClass('set_agree_aw')
-					el.children('.like')text(parseInt(el.children('.like').text()) + 1)
+					el.children('.like').text(parseInt(el.children('.like').text()) + 1)
 
 					// if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {
 					// 	el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
@@ -311,7 +311,7 @@ $(document).ready(function() {
 
 				} else {
 					$(this).prev().prev('.status_aw').addClass('set_disagree_aw')
-					el.children('.dislike')text(parseInt(el.children('.dislike').text()) + 1)
+					el.children('.dislike').text(parseInt(el.children('.dislike').text()) + 1)
 					
 					// el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) + 1) + ' user(s) disagree')
 
