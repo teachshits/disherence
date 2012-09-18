@@ -46,6 +46,10 @@ $(document).ready(function() {
         type: 'get',
         dataType: 'script',
         success: function() {
+					if (keyword != '') {
+						$('#search_map_field').removeClass('hidden')
+						$('#search_field').val(keyword);
+					}
           loading = false;
 					myScroll.refresh();					
         }
