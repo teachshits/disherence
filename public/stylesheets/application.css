@@ -323,11 +323,11 @@ li {
         background: url("/images/op_btns.png");
         background-size: 100% auto;
         -webkit-transition: opacity 0.4s ease;
-        margin: 10px 0 0 -25px; }
+        margin: 10px 0 0 0; }
       #top_dishes .dish_info_container .dish_info .status_aw.set_agree_aw, #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
         visibility: visible;
         opacity: 1;
-        background-position: 20px 92%; }
+        background-position: 0px 68%; }
       #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
         background-position: 0px 104%;
         background-size: 94% auto;
