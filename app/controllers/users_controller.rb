@@ -12,5 +12,11 @@ class UsersController < ApplicationController
     end
   end  
   
+  def logout
+    session[:user] = nil
+    return render :json => {:result => 1}
+  end
+  
+  
   
 end

@@ -34,9 +34,9 @@
 								<div class="dish_info_container">				
 									<div class="rating"><span><%= d.likes >= 1000 ? ">#{d.likes.to_s[0]}K" : d.likes %></span></div>
 									<div class="dish_info">
-										<div class="name"><%= d.name.length > 200 ? d.name[0 .. 200] + ' ...' : d.name %></div>
+										<div class="name"><%= d.name.length > 190 ? d.name[0 .. 190] + ' ...' : d.name %></div>
 										
-										<div class="price"><%= d.price %> <%= d.currency %></div>
+										<div class="price"><% if d.price > 0 %><%= d.price %> <%= d.currency %><% end %></div>
 										<div class="stats">
 											<div class="dislike"><%= d.dislikes %></div>
 											<div class="like"><%= d.likes %></div>
