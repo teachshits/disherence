@@ -290,16 +290,16 @@ $(document).ready(function() {
 			if (json.url) {
 				window.location.href = json.url
 			} else {
-
-				if (elem.attr('class') == 'btn_agree_aw') {
+				
+				if (elem.attr('class').indexOf('btn_agree_aw') != -1) {
 					
-					elem.prev('.status_aw').addClass('set_agree_aw')
+					elem.prevAll('.status_aw').addClass('set_agree_aw')
 					stats.find('.like').text(json.likes)
 					stats.find('.dislike').text(json.dislikes)
 					
 				} else {
 					
-					elem.prev().prev('.status_aw').addClass('set_disagree_aw')
+					elem.prevAll('.status_aw').addClass('set_disagree_aw')
 					stats.find('.dislike').text(json.dislikes)
 					stats.find('.like').text(json.likes	)
 					
