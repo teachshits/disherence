@@ -276,35 +276,11 @@ $(document).ready(function() {
 		event.stopPropagation()
 	})
 	
-	// Awesome && Awful Buttons
-	$('.btn_agree_d, .btn_disagree_d').live('tap', function(){		
-		$status_obj = $(this).parent('.op_btns_d').prev('.op_status_d')
-		$bg_url = "url('/images/td-choise-buttons.png')"
-		
-		//buttons animation
-		if ($(this).hasClass('btn_agree_d')) {
-			$status_obj.addClass('set_like')
-			$(this).prev('.stats').children('.like').html(parseInt($(this)) + 1)
-		}
-		
-		if ($(this).hasClass('btn_disagree_d')) {
-			$status_obj.addClass('set_dislike')
-			$(this).prev('.stats').children('.dislike').html(parseInt($(this)) + 1)
-		}		
-		//update stats
-		// update_dish_stats($status_obj, json)
-	})
-	
-	$('.op_status_d').live('tap', function(){
-		// update_dish_stats($(this), json)	
-		$(this).fadeOut()
-		$(this).next('.op_btns_d').fadeIn()
-		return false;
-	})	
-	
 	// Awesome && Awfull Buttons
 	$('.btn_agree_aw, .btn_disagree_aw').live('tap', function(){
 		event.stopPropagation()
+		
+		$(this).addClass('tapped')
 		
 		elem = $(this)
 		href = elem.attr('href')		
@@ -318,7 +294,6 @@ $(document).ready(function() {
 				if (elem.attr('class') == 'btn_agree_aw') {
 					
 					elem.prev('.status_aw').addClass('set_agree_aw')
-					console.log(stats.children('.likes'))
 					stats.find('.like').text(json.likes)
 					stats.find('.dislike').text(json.dislikes)
 					
@@ -357,81 +332,6 @@ $(document).ready(function() {
 		})
 		return false
 	})
-	
-// Agree && Disagree Buttons
-$('.btn_agree, .btn_disagree').live('tap', function(){
-	event.preventDefault()
-	event.stopPropagation()
-	
-	if (this.className == 'btn_agree') {
-		
-		$(this).prev('.status').addClass('set_agree')
-		el = $(this).prev().prev('.review')
-		$opinion_popup = el.children('.opinion_popup')
-		
-		el.find('.users .num').text('+' + (parseInt(el.find('.users .num').text()) + 1))
-		
-		if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {
-			el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
-			$opinion_popup.text('You think it`s awesome').addClass('opinionesome')
-			setTimeout("$opinion_popup.removeClass('opinionesome')",1500);	
-		} else {
-			$opinion_popup.text('You think it`s awful').addClass('opinionful')
-			setTimeout("$opinion_popup.removeClass('opinionful')",1500);	
-		}
-		
-	} else {
-
-		$(this).prev().prev('.status').addClass('set_disagree')
-		el = $(this).prev().prev().prev('.review')
-		$opinion_popup = el.children('.opinion_popup')
-		
-		el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) + 1) + ' user(s) disagree')
-		
-		if (el.find('.user_info .opinion').text().indexOf('Awful') != -1) {
-			el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) + 1)
-			$opinion_popup.text('You think it`s awesome').addClass('opinionesome')
-			setTimeout("$opinion_popup.removeClass('opinionesome')",1500);	
-		} else {
-			$opinion_popup.text('You think it`s awful').addClass('opinionful')
-			setTimeout("$opinion_popup.removeClass('opinionful')",1500);	
-		}
-	}
-	
-	el.find('.dish_info .profiles').text(parseInt(el.find('.dish_info .profiles').text()) + 1)
-})
-
-$('.status').live('tap', function(event){
-	event.preventDefault()
-	event.stopPropagation()
-	
-	$(this).addClass('opacity_zero')
-	el = $(this).prev('.review')
-
-	
-	if (this.className.indexOf('set_agree') != -1) {
-		el.find('.users .num').text('+' + (parseInt(el.find('.users .num').text()) - 1))
-
-		if (el.find('.user_info .opinion').text().indexOf('Awesome') != -1) {		
-			el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) - 1)
-		}
-	
-		fade = $(this)
-		setTimeout(function(){fade.removeClass('set_agree').removeClass('opacity_zero')}, 400)
-		
-	} else {
-		el.find('.disagree').text('#' + (parseInt(el.find('.disagree').text().replace(/\D/g, '')) - 1) + ' user(s) disagree')
-		
-		if (el.find('.user_info .opinion').text().indexOf('Awful') != -1) {
-			el.find('.dish_info .likes').text(parseInt(el.find('.dish_info .likes').text()) - 1)
-		}
-
-		fade = $(this)
-		setTimeout(function(){fade.removeClass('set_disagree').removeClass('opacity_zero')}, 400)
-		
-	}
-	el.find('.dish_info .profiles').text(parseInt(el.find('.dish_info .profiles').text()) - 1)
-})
 
 });
 

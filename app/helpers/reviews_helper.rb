@@ -30,12 +30,6 @@ module ReviewsHelper
       op_btns_add_class = ' hidden'
       status_add_class = review.opinion == true ? ' like' :  ' dislike'
     end
-    
-    #     raw "<div class=\"op_status_d#{status_add_class}\" href=\"/reviews/destroy/#{dish.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></div>
-    # <div class=\"op_btns_d#{op_btns_add_class}\">
-    #   <div class=\"btn_agree_d\" id=\"_reviews_awesome_#{dish.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></div>
-    #   <div class=\"btn_disagree_d\" id=\"_reviews_awful_#{dish.id}\"><img class=\"trsp\" src=\"/images/trsp.gif\"/></div>
-    # </div>"
 		
 		raw "
 		    <div class=\"btn_container\">

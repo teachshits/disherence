@@ -213,7 +213,7 @@ li {
       width: 100%;
       height: 100%;
       display: block;
-      background-image: url("/images/name_shadow_slice.png");
+      background-image: url("/images/name_shadow.png");
       background-repeat: repeat-x; }
     #top_dishes .dish .price {
       width: auto;
@@ -261,7 +261,7 @@ li {
       width: 320px;
       background-image: url("../images/pli-bg.png"); }
       #top_dishes .dish_info_container .dish_info .description {
-        margin: 10px 35px;
+        margin: 10px 23px;
         font-size: 1.2em;
         color: white;
         text-shadow: none;
@@ -272,9 +272,9 @@ li {
       #top_dishes .dish_info_container .dish_info .hr_b {
         clear: both;
         height: 2px;
-        margin: 0 0 0 33px;
+        margin: 0 0 0 23px;
         background: #9d9c9d;
-        width: 270px; }
+        width: 280px; }
       #top_dishes .dish_info_container .dish_info .stats {
         font-size: 1.7em;
         margin-right: 15px; }
@@ -306,7 +306,8 @@ li {
       #top_dishes .dish_info_container .dish_info .name {
         line-height: 0.8em;
         padding: 10px 0 5px 30px;
-        width: 290px; }
+        width: 290px;
+        background: none; }
       #top_dishes .dish_info_container .dish_info .status_aw.opacity_zero {
         opacity: 0; }
       #top_dishes .dish_info_container .dish_info .btn_container {
@@ -319,7 +320,7 @@ li {
         visibility: hidden;
         opacity: 0;
         z-index: 0;
-        background: url("/images/td-choise-buttons.png");
+        background: url("/images/op_btns.png");
         background-size: 100% auto;
         -webkit-transition: opacity 0.4s ease;
         margin: 10px 0 0 -25px; }
@@ -334,14 +335,18 @@ li {
         margin-top: 12px;
         width: 45%;
         float: left;
-        background-size: 230% auto;
-        background-image: url("/images/td-choise-buttons.png");
-        background-position: 13% 0; }
+        background-size: 205% auto;
+        background-image: url("/images/op_btns.png"); }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw {
-        margin-left: 23px; }
+        margin-left: 15px; }
+      #top_dishes .dish_info_container .dish_info .btn_agree_aw.tapped {
+        background-position: 0 34%; }
       #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
-        background-image: url("/images/td-choise-buttons.png");
-        background-position: 88% 0; }
+        background-image: url("/images/op_btns.png");
+        background-position: 100% 0;
+        margin-left: 10px; }
+      #top_dishes .dish_info_container .dish_info .btn_disagree_aw.tapped {
+        background-position: 100% 34%; }
 
 #resataurants_button {
   background: url("/images/plate.png") no-repeat;
