@@ -4,7 +4,7 @@ class Dish < ActiveRecord::Base
   has_many :reviews
   
   def as_json(options={})
-    super(:only => [:id, :name, :likes, :dislikes], :methods => [:top_review])
+    super(:only => [:id, :name, :likes, :dislikes, :description], :methods => [:top_review])
   end
   
   def top_review
