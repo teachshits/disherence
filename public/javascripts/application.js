@@ -7,6 +7,7 @@ $(document).ready(function() {
 	$("#user_img_profile").live('tap', function(event){
 		$.getJSON('/users/logout', function(json) {
 			if (json.result == 1) {
+				$("#user_img_profile").addClass('hidden')
 				loading = false;
 			}
 		})
@@ -28,10 +29,6 @@ $(document).ready(function() {
 					})					
         }
     })
-	})
-
-	$("#user_img_profile").live('tap', function(event){
-		$('#search_map_field').toggleClass('hidden')
 	})
 	
 	$("#search_restaurant").live('tap', function(event){

@@ -64,6 +64,8 @@ li {
   border-bottom: 1px solid white;
   background-image: url("/images/logo.png");
   background-size: auto 75%; }
+  #header #user_img_profile.hidden {
+    display: none; }
   #header #user_img_profile {
     background-position: center center;
     background-size: cover;
