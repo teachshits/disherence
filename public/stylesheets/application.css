@@ -329,8 +329,10 @@ li {
         opacity: 1;
         background-position: 20px 92%; }
       #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
-        background-position: 16px 46%;
-        background-size: 103% auto; }
+        background-position: 0px 101%;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        margin-left: 0px; }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw, #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
         margin-top: 12px;
         width: 45%;
