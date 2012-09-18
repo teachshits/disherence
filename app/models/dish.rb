@@ -6,7 +6,7 @@ class Dish < ActiveRecord::Base
   def as_json(options={})
     
     self[:description] ||= ""
-    self[:price] ||= ""
+    self[:price] ||= 0
     self[:currency] ||= ""
       
     super(:only => [:id, :name, :likes, :dislikes, :description, :price, :currency], :methods => [:top_review])
