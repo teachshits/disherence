@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
     
     if params[:lat] && params[:lng]
       @lat = params[:lat]
-      @lng = params[:lng] 
+      @lng = params[:lng]
     else
       @lat = cookies[:lat]
       @lng = cookies[:lng]

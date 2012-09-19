@@ -26,11 +26,19 @@ $(document).ready(function() {
         dataType: 'script',
         success: function() {
           loading = false;
+
 					myScroll.destroy();
 					myScroll = null;
 					myScroll = new iScroll('wrapper', { 
 						scrollbarClass: 'myScrollbar'
-					})					
+					})		
+					
+					if ($.cookie("search").length > 0) {
+						$('#search_map_field').removeClass('hidden')
+						$('#search_field').val($.cookie("search"))
+					}
+					size_map()
+					
         }
     })
 	})
@@ -42,8 +50,11 @@ $(document).ready(function() {
 	$("#search_me").live('tap', function(event){
 		keyword = $(this).prev('input').val()
 
-		$.cookie("search", keyword);		
 		center = map.getCenter()
+		$.cookie("search", keyword);
+		$.cookie("lat", center.Xa);
+		$.cookie("lng", center.Ya);		
+		
 		
 		$.ajax({
         url: 'restaurants?search=' + keyword + '&lng=' + center.Ya + '&lat=' + center.Xa,
@@ -55,7 +66,8 @@ $(document).ready(function() {
 						$('#search_field').val(keyword);
 					}
           loading = false;
-					myScroll.refresh();					
+					myScroll.refresh();	
+					size_map()				
         }
     })
 
@@ -75,6 +87,7 @@ $(document).ready(function() {
         success: function() {
           loading = false;
 					myScroll.refresh();
+					size_map()
         }
     })
 
@@ -112,12 +125,17 @@ $(document).ready(function() {
 	})
 	
 	$(".close_map").live('tap', function(event){
-		event.preventDefault();
+		
 		$('#search_map_canvas').removeClass('expand_search_map_canvas')
 		$(this).addClass('pressed')
+		
 		setTimeout(function(){ $(".close_map").addClass('hidden').removeClass('pressed') },50);
+		
 		$('#search_on_map').addClass('hidden')
 		$("#user_img_profile").removeClass('hidden')
+		
+		$.cookie("map", 'small');
+		return false
 	})
 	
 	if ($("#map_canvas").length > 0){
@@ -132,16 +150,22 @@ $(document).ready(function() {
 	})
 	
 	$('#search_map_canvas').live('tap', function(event){
+
 		$(this).addClass('expand_search_map_canvas')
 		$('.close_map').removeClass('hidden')
+
 		$('#user_img_profile').addClass('hidden')
+		$.cookie("map", 'big');
+
 		setTimeout(
 			function(){
 				$('#search_on_map').removeClass('hidden')
 		}, 400);
+		
 		event.preventDefault();
 		event.stopPropagation();
 		myScroll.refresh();
+		
 	})
 	
 	// Restauants button
@@ -341,6 +365,17 @@ $(document).ready(function() {
 	})
 
 });
+
+function size_map() {
+	if ($.cookie("map") == 'big') {
+		$('#search_map_canvas').addClass('expand_search_map_canvas')
+		$(".close_map").removeClass('hidden')
+		setTimeout(
+			function(){
+				$('#search_on_map').removeClass('hidden')
+		}, 400);
+	}
+}
 
 function ajax_get_restaurant(href) {
 	$.ajax({

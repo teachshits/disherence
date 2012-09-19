@@ -46,7 +46,7 @@
 				</div>
 			</div>
 			<div class="address"><%= restaurant.address.length > 30 ? restaurant.address[0..27] + '...' : restaurant.address %></div>
-			<div class="stats"><%= restaurant.cuisine.length > 30 ? restaurant.cuisine[0..27] + '...' : restaurant.cuisine %> | <% restaurant.bill.times do %>$<% end %></div>	
+			<div class="stats"><%= restaurant.cuisine.length > 30 ? restaurant.cuisine[0..27] + '...' : restaurant.cuisine %> | <% restaurant.bill.to_i.times do %>$<% end %></div>	
 		</div>
 		<div class="hr"></div>
 		</li>
