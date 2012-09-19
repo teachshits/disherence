@@ -28,7 +28,8 @@ class RestaurantsController < ApplicationController
     #   to_reject
     # end
     
-    @restaurants_info = " "
+    time = Time.now.to_i
+    @restaurants_info = "r_info = [];\n"
     i = 0
     
     @restaurants.each do |r|
@@ -39,6 +40,7 @@ class RestaurantsController < ApplicationController
       @restaurants_info += "r_info[#{i}]['lng'] = '#{r.lng}';\n"
       @restaurants_info += "r_info[#{i}]['rating'] = '<br /><div class=\"s_cont\">#{view_context.yelp_rating(r)}</div>';\n"
       @restaurants_info += "r_info[#{i}]['type'] = '<br />#{r.cuisine}';\n"
+      @restaurants_info += "r_info[#{i}]['count'] = '<br />#{@restaurants.count}';\n"
       i += 1
     end  
         

@@ -399,7 +399,7 @@ function clearMarkers() {
 // Add markers to the map
 function setMarkers(map, locations) {
 	console.log(r_info)
-	console.log(locations)
+	// console.log(locations)
 	if (typeof markerList != 'undefined') {
 		clearMarkers()
 	}
