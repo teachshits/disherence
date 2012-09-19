@@ -14,8 +14,12 @@ $(document).ready(function() {
 	})
 	
 	$("#bbutton").live('tap', function(event){
+		
 		event.preventDefault();
 		center = map.getCenter()
+		
+		$(this).addClass('pressed')
+		
 		$.ajax({
         url: back_url,
         type: 'get',
@@ -110,7 +114,8 @@ $(document).ready(function() {
 	$(".close_map").live('tap', function(event){
 		event.preventDefault();
 		$('#search_map_canvas').removeClass('expand_search_map_canvas')
-		$(this).addClass('hidden')
+		$(this).addClass('pressed')
+		setTimeout(function(){ $(".close_map").addClass('hidden').removeClass('pressed') },50);
 		$('#search_on_map').addClass('hidden')
 	})
 	
@@ -128,6 +133,7 @@ $(document).ready(function() {
 	$('#search_map_canvas').live('tap', function(event){
 		$(this).addClass('expand_search_map_canvas')
 		$('.close_map').removeClass('hidden')
+		$('#user_img_profile').addClass('hidden')
 		setTimeout(
 			function(){
 				$('#search_on_map').removeClass('hidden')

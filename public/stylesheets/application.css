@@ -2,16 +2,16 @@
   display: none; }
 
 #bbutton {
-  background: url("/images/b_button.png") no-repeat;
-  height: 22px;
-  width: 50px;
-  background-size: 88%;
+  background-image: url("/images/back.png");
+  background-repeat: no-repeat;
+  height: 28px;
+  width: 64px;
+  background-size: 100%;
   float: left;
-  margin: 8px;
-  color: #726658;
-  font-size: 17px;
-  padding-left: 20px;
-  padding-top: 5px; }
+  margin: 9px; }
+
+#bbutton.pressed {
+  background-position: 0 100%; }
 
 body {
   font-family: CompPro;
@@ -721,16 +721,16 @@ li {
   cursor: pointer; }
 
 .close_map {
-  border: 1px solid #aeb897;
-  border-radius: 5px;
-  padding: 2px 5px;
-  font-size: 17px;
-  color: #726658;
-  background: #f0f1d3;
-  display: block;
+  background-image: url("/images/close.png");
+  background-size: 100%;
+  width: 55px;
+  height: 28px;
   float: right;
-  margin: 10px 15px;
+  margin: 10px;
   cursor: pointer; }
+
+.close_map.pressed {
+  background-position: 0 100%; }
 
 #container #scroller #map ul li {
   height: auto; }
