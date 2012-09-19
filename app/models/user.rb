@@ -1,13 +1,20 @@
 require 'carrierwave/orm/activerecord'
 
 class User < ActiveRecord::Base
-  attr_accessible :fb_access_token, :fb_valid_to, :email, :name, :facebook_id, :gender, :current_city, :yelp_profile_id, :remote_photo_url, :remote_photo
+  attr_accessible :fb_access_token, :fb_valid_to, :email, :name, :facebook_id, :gender, :current_city, :yelp_profile_id, :remote_photo_url, :remote_photo, :token
   has_many :reviews
   
   validates_uniqueness_of :email, :if => lambda { !self.email.nil? }
   validates_uniqueness_of :fb_access_token, :if => lambda { self.email.nil? && !self.fb_access_token.nil? }
 
-  mount_uploader :photo, ProfilePhotoUploader
+  # mount_uploader :photo, ProfilePhotoUploader
+  
+  require 'digest/md5' 
+  
+  def as_json(options={})
+    super(:only => [:token])
+  end
+   
 
   def photo
     if !self[:facebook_id].blank?
@@ -24,8 +31,11 @@ class User < ActiveRecord::Base
       user
     else
       data = access_token_data.merge(user_data)
-      create(data)
+      user = create(data)
     end    
+    
+    user.update_attributes(:token => Digest::MD5.hexdigest(user.created_at.to_s).to_s) if user.token.blank?
+    user
   end
   
   def self.create_from_facebook(code)

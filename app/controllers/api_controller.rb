@@ -65,6 +65,42 @@ class ApiController < ApplicationController
     return render :json => {
           :session => session || nil,
     }
-    
   end
+  
+  def awesome
+    if dish_id = params[:dish_id]
+      if user = User.find_by_token(params[:token])
+        r = Review.awesome(dish_id,user.id)        
+        
+        likes = r.dish.likes
+        dislikes = r.dish.dislikes
+        rating = (r.dish.likes * 100)/r.dish.restaurant.dishes.sum(:likes)
+        
+        return render :json => {:result => 1}
+      else
+        return render :json => {:result => 0}
+      end
+      return render :json => {:result => 2}
+    end
+    return render :json => {:result => 3}
+  end
+  
+  def awful
+    if dish_id = params[:dish_id]
+      if user = User.find_by_token(params[:token])
+        r = Review.awful(dish_id,user.id)
+        
+        likes = r.dish.likes
+        dislikes = r.dish.dislikes
+        rating = (r.dish.likes * 100)/r.dish.restaurant.dishes.sum(:likes)
+        
+        return render :json => {"result" => 1}
+      else
+        return render :json => {"result" => 0}
+      end
+      return render :json => {"result" => 0}
+    end
+    return render :json => {"result" => 0}
+  end
+  
 end
