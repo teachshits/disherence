@@ -115,9 +115,9 @@ $(document).ready(function() {
 		event.preventDefault();
 		$('#search_map_canvas').removeClass('expand_search_map_canvas')
 		$(this).addClass('pressed')
-		$("#user_img_profile").removeClass('hidden')
 		setTimeout(function(){ $(".close_map").addClass('hidden').removeClass('pressed') },50);
 		$('#search_on_map').addClass('hidden')
+		$("#user_img_profile").removeClass('hidden')
 	})
 	
 	if ($("#map_canvas").length > 0){
