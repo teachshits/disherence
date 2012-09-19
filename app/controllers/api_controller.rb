@@ -62,17 +62,6 @@ class ApiController < ApplicationController
       session = User.authenticate_by_twitter(params[:oauth_token], params[:oauth_token_secret], params[:email])
     end
     
-
-    if params[:push_token] && session[:user_id]
-      User.link_push_token(params[:push_token], session[:user_id])
-    
-      if device = APN::Device.find_by_token_and_user_id(params[:push_token], session[:user_id])
-        device.active = 1
-        device.save
-      end
-      
-    end
-    
     return render :json => {
           :session => session || nil,
     }
