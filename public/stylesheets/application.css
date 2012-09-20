@@ -101,9 +101,9 @@ li {
   background: rgba(0, 0, 0, 0.6);
   border-radius: 3px;
   position: absolute;
-  width: 80%;
-  padding: 10px 10px 40px 10px;
-  left: 7%;
+  width: 90%;
+  padding: 2% 2% 40px 2%;
+  left: 3%;
   top: 40%;
   z-index: 100;
   text-shadow: none;
@@ -146,7 +146,7 @@ li {
     float: right;
     height: 29px;
     width: 41px;
-    margin: -15px 12px 0 0;
+    margin: 35px -75px -35px 0;
     background-size: 100%; }
   #top_dishes .share.pressed {
     background-position: 0 100%; }
@@ -202,13 +202,15 @@ li {
       background: url("../images/rr-marker.png") no-repeat;
       background-size: 12px;
       padding-left: 20px;
-      margin-right: 5px; }
+      margin-right: 5px;
+      width: 65%; }
     #top_dishes .restaurant .stats {
       clear: both;
       text-shadow: none;
       float: left;
       font-family: CompPro_bold;
-      margin-right: 5px; }
+      margin-right: 5px;
+      width: 80%; }
   #top_dishes .hr {
     clear: both;
     height: 1px;

@@ -10,7 +10,7 @@ $(document).ready(function() {
 	})
 	
 	$("#user_img_profile").live('tap', function(event){
-		loader()
+		loader('Bye! Bye!')
 		$.getJSON('/users/logout', function(json) {
 			if (json.result == 1) {
 				$("#user_img_profile").addClass('hidden')
@@ -20,7 +20,7 @@ $(document).ready(function() {
 	})
 	
 	$("#bbutton").live('tap', function(event){
-		loader()
+		loader('Loading places next to You')
 		event.preventDefault();
 		center = map.getCenter()
 		
@@ -53,7 +53,7 @@ $(document).ready(function() {
 	})
 	
 	$("#search_me").live('tap', function(event){
-		loader()
+		loader('Loading places next to You')
 		keyword = $(this).prev('input').val()
 
 		center = map.getCenter()
@@ -81,7 +81,7 @@ $(document).ready(function() {
 	
 	$("#search_on_map").live('tap', function(event){
 		
-		loader()
+		loader('Loading places next to You')
 		center = map.getCenter()
 		
 		$(this).addClass('pressed')
@@ -103,7 +103,7 @@ $(document).ready(function() {
 	})
 	
 	$(".restaurant_name").live('tap', function(event){
-		loader()
+		loader('Analyzing millions of reviews')
 		event.preventDefault();
 		ajax_get_restaurant($(this).attr('href'))
 		setTimeout(function(){ loader() },10);
@@ -217,7 +217,7 @@ $(document).ready(function() {
 	
 	// Restaurant info data
 	$(".place_name, .restaurant .name").live('tap', function(){
-		loader()
+		loader('Analyzing millions of reviews')
 		event.preventDefault()
 		href = $(this).attr('href')		
 		$.ajax({
@@ -311,17 +311,17 @@ $(document).ready(function() {
 	$('.btn_agree_aw, .btn_disagree_aw').live('tap', function(){
 		event.stopPropagation()
 		
-		$(this).addClass('tapped')
-		
 		elem = $(this)
 		href = elem.attr('href')		
 		stats = elem.parent('.btn_container').prevAll('.stats')
 		
 		$.getJSON(href, function(json) {
 			if (json.url) {
+				loader('Connecting to Fcebook')
 				window.location.href = json.url
 			} else {
 				
+				elem.addClass('tapped')
 				if (elem.attr('class').indexOf('btn_agree_aw') != -1) {
 					
 					elem.prevAll('.status_aw').addClass('set_agree_aw')
@@ -368,6 +368,9 @@ $(document).ready(function() {
 
 function loader(message) {
 	$('#loader').toggleClass('hidden')
+	if (message) {
+		$('#loader').text(message)
+	}
 }
 
 function preload(arrayOfImages) {
