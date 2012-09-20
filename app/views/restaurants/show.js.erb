@@ -1,2 +1,11 @@
-$("#wrapper").replaceWith("<%= escape_javascript(render "restaurants/show") %>");
-back_url = "<%= escape_javascript raw @back_url %>"
+back_url = "<%= escape_javascript raw @back_url %>";
+
+arrayOfImages = [];
+<% @restaurant.dishes.where('photos > 0 || likes > 0').order('likes DESC').each do |d| %>
+	<% if review = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first %>								
+arrayOfImages.push("<%= review.remote_photo %>");
+	<% end %>
+<% end %>
+preload(arrayOfImages);
+setTimeout(function(){ $("#wrapper").replaceWith("<%= escape_javascript(render "restaurants/show") %>");}, 1);
+

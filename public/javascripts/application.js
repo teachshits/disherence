@@ -2,7 +2,7 @@ r_info = []
 markerList = []
 infoBubbleList = []
 
-$(document).ready(function() {	
+$(document).ready(function() {
 	
 	$(".share").live('tap', function(event){
 		$(this).toggleClass('pressed')
@@ -372,6 +372,12 @@ $(document).ready(function() {
 	})
 
 });
+
+function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+        $('<img/>')[0].src = this;
+    });
+}
 
 function size_map() {
 	if ($.cookie("map") == 'big') {

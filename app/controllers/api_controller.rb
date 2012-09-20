@@ -36,7 +36,7 @@ class ApiController < ApplicationController
   
   def get_best_dishes
     if params[:restaurant_id]
-      data = Dish.where(:restaurant_id => params[:restaurant_id]).order("likes - dislikes DESC")
+      data = Dish.where("restaurant_id = ? AND (likes > 0 || remote_photo IS NOT NULL)", params[:restaurant_id]).order("likes - dislikes DESC")
       
       return render :json => {
         :best_dishes => data.as_json

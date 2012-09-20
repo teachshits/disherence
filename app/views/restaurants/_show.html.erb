@@ -21,8 +21,7 @@
 							<div id="banner">
 								Based on <%= @restaurant.yelp_reviews_count %> reviews on Yelp, Zagat, Foursquare
 							</div>
-						</li>
-						
+						</li>						
 						<% @restaurant.dishes.where('photos > 0 || likes > 0').order('likes DESC').each do |d| %>
 						<li>
 							<% if dish = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first %>
@@ -48,8 +47,8 @@
 										<%= awesome_buttons(session[:user],d) %>	
 									</div>
 								</div>
-								
-								<% if dish && %>
+																
+								<% if dish %>
 									<div class="comment">
 										<div class="user_img" style="background-image: url('<%= d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.user.remote_photo %>')"></div>
 										<% comment = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.comment.to_s %>
