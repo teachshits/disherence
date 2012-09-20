@@ -118,6 +118,16 @@ li {
   #top_dishes .hrw {
     clear: both;
     width: 100%; }
+  #top_dishes .share {
+    background-image: url("../images/b_share.png");
+    background-repeat: no-repeat;
+    float: right;
+    height: 29px;
+    width: 41px;
+    margin: -15px 12px 0 0;
+    background-size: 100%; }
+  #top_dishes .share.pressed {
+    background-position: 0 100%; }
   #top_dishes .restaurant {
     margin: 10px 0 10px 10px;
     color: #414143;
@@ -665,12 +675,16 @@ li {
 
 #search_restaurant {
   float: left;
-  background: url("../images/search_map.png") no-repeat;
-  background-size: 50%;
-  width: 50px;
-  height: 50px;
+  background-image: url("../images/b_search.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 41px;
+  height: 28px;
   margin: 10px 0 0 15px;
   cursor: pointer; }
+
+#search_restaurant.pressed {
+  background-position: 0 100%; }
 
 #search_map_field {
   background: url("../images/search_bg.png") repeat-x;
@@ -706,19 +720,17 @@ li {
     cursor: pointer; }
 
 #search_on_map {
-  color: white;
-  background-color: #8dc63f;
-  border-radius: 5px;
-  padding: 5px;
-  text-align: center;
-  text-shadow: none;
-  font-size: 1.3em;
+  background-image: url("/images/b_search_here.png");
+  background-size: 100%;
   z-index: 1;
   position: absolute;
-  top: 293px;
-  width: 308px;
-  left: 1px;
+  top: 279px;
+  width: 309px;
+  left: 6px;
   cursor: pointer; }
+
+#search_on_map.pressed {
+  background-position: 0 100%; }
 
 .close_map {
   background-image: url("/images/close.png");

@@ -4,6 +4,11 @@ infoBubbleList = []
 
 $(document).ready(function() {	
 	
+	$(".share").live('tap', function(event){
+		$(this).toggleClass('pressed')
+		
+	})
+	
 	$("#user_img_profile").live('tap', function(event){
 		$.getJSON('/users/logout', function(json) {
 			if (json.result == 1) {
@@ -45,6 +50,7 @@ $(document).ready(function() {
 	
 	$("#search_restaurant").live('tap', function(event){
 		$('#search_map_field').toggleClass('hidden')
+		$(this).toggleClass('pressed')
 	})
 	
 	$("#search_me").live('tap', function(event){
@@ -76,6 +82,7 @@ $(document).ready(function() {
 	$("#search_on_map").live('tap', function(event){
 		center = map.getCenter()
 		
+		$(this).addClass('pressed')
 		$.cookie("lat", center.Xa);
 		$.cookie("lng", center.Ya);
 		$.cookie("search", '');
