@@ -97,6 +97,28 @@ li {
 .empty {
   background-image: url("../images/empty.png"); }
 
+#loader {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
+  position: absolute;
+  width: 80%;
+  padding: 10px 10px 40px 10px;
+  left: 7%;
+  top: 40%;
+  z-index: 100;
+  text-shadow: none;
+  color: #d5ffbf;
+  font-size: 1.7em;
+  font-family: CompPro_bold;
+  text-align: center;
+  background-image: url("/images/loading.gif");
+  background-repeat: no-repeat;
+  background-position: center 80%;
+  background-size: 12%; }
+
+#loader.hidden {
+  display: none; }
+
 @font-face {
   font-family: "CompPro";
   src: local("CompPro");
@@ -145,7 +167,8 @@ li {
       #top_dishes .restaurant .info .name {
         float: left;
         font-size: 1.7em;
-        width: 70%; }
+        width: 70%;
+        line-height: 0.9em; }
       #top_dishes .restaurant .info .rate {
         float: right; }
         #top_dishes .restaurant .info .rate .star {
