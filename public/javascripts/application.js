@@ -381,12 +381,12 @@ function preload(arrayOfImages) {
 
 function size_map() {
 	if ($.cookie("map") == 'big') {
-		$('#search_map_canvas').addClass('expand_search_map_canvas')
+		$('#user_img_profile').addClass('hidden')
 		$(".close_map").removeClass('hidden')
+		$('#search_map_canvas').addClass('expand_search_map_canvas')
 		setTimeout(
 			function(){
 				$('#search_on_map').removeClass('hidden')
-				$('#user_img_profile').addClass('hidden')
 		}, 400);
 	}
 }
