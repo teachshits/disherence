@@ -7,5 +7,5 @@ arrayOfImages.push("<%= review.remote_photo %>");
 	<% end %>
 <% end %>
 preload(arrayOfImages);
-setTimeout(function(){ $("#wrapper").replaceWith("<%= escape_javascript(render "restaurants/show") %>");}, 1);
+$("#wrapper").replaceWith("<%= escape_javascript(render "restaurants/show") %>");
 
