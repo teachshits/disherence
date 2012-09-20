@@ -41,6 +41,7 @@ $(document).ready(function() {
 					if ($.cookie("search").length > 0) {
 						$('#search_map_field').removeClass('hidden')
 						$('#search_field').val($.cookie("search"))
+						$('#user_img_profile').addClass('hidden')
 					}
 					size_map()
         }
