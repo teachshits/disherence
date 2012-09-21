@@ -129,7 +129,8 @@ li {
     background-repeat: no-repeat;
     width: 289px;
     height: 48px;
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    display: block; }
   #share #tw {
     margin: 0;
     background-position: 0 69%; }

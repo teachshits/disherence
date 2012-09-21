@@ -11,7 +11,16 @@ $(document).ready(function() {
 	})
 	
 	$("#share #fb, #share #tw").live('tap', function(event){
-		$(this).toggleClass('pressed')		
+		button = $(this)		
+		$.ajax({
+        url: button.attr('href'),
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+					button.toggleClass('pressed')		
+        }
+    })
+		return false
 	})
 	
 	$("#user_img_profile").live('tap', function(event){

@@ -1,15 +1,20 @@
 class ApiController < ApplicationController
   
   def share
-    if !params[:token].blank? && !params[:restaurant_id].blank?
+    if ( !params[:token].blank? || !session[:user].blank?) && !params[:restaurant_id].blank?      
       
+      params[:token] = session[:user].token if params[:token].blank?
+    
       if params[:provider] == 'facebook'
         User.share_on_facebook(params[:token], params[:restaurant_id]) 
       elsif params[:provider] == 'twitter'
         User.share_on_twitter(params[:token], params[:restaurant_id]) 
       end
       
-    end    
+      return render :json => { :result => 1}
+    end
+    
+    return render :json => { :result => 0}
   end
   
   
