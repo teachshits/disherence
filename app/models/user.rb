@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
         fb_share_url += "?access_token=#{user.fb_access_token}"
         
         fb_share_url += "&link=" + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
-        fb_share_url += "&message=#{restaurant.name}"
+        fb_share_url += "&message=" + CGI.escape(restaurant.name).gsub("+", "%20")
         
         if dish = Dish.where("restaurant_id = ? AND photos > 0",restaurant_id).order("likes DESC").first
           photo = dish.reviews.where("remote_photo IS NOT NULL").first.remote_photo
