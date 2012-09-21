@@ -18,9 +18,13 @@ class User < ActiveRecord::Base
         
         fb_access_token_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
         fb_access_token_url += "?access_token=#{user.fb_access_token}"
-        # fb_access_token_url += "&link=http://demo.disherence.com"
-        fb_access_token_url += "&message=test"
-        # fb_access_token_url += "&picture=demo.disherence.com/"
+        fb_access_token_url += "&link=http://demo.disherence.com/restaurants/show/#{restaurant_id}"
+        fb_access_token_url += "&message=#{restaurant.name}"
+        
+        if dish = Dish.where("restaurant_id = ? AND photos > 0",restaurant_id).order("likes DESC").first
+          photo = dish.reviews.where("remote_photo IS NOT NULL").first.remote_photo
+          fb_access_token_url += "&picture=#{photo}"
+        end
 
         response = HTTParty.post(fb_access_token_url)
         
