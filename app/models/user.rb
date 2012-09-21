@@ -9,24 +9,26 @@ class User < ActiveRecord::Base
 
   # mount_uploader :photo, ProfilePhotoUploader
   
-  require 'digest/md5' 
+  require 'digest/md5'
+  require 'cgi' 
   
   def self.share_on_facebook(user_token, restaurant_id)
     
     if user = find_by_token(user_token)
       if restaurant = Restaurant.find_by_id(restaurant_id)
         
-        fb_access_token_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
-        fb_access_token_url += "?access_token=#{user.fb_access_token}"
-        fb_access_token_url += "&link=http://demo.disherence.com/restaurants/show/#{restaurant_id}"
-        fb_access_token_url += "&message=#{restaurant.name}"
+        fb_share_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
+        fb_share_url += "?access_token=#{user.fb_access_token}"
+        
+        fb_share_url += "&link=" + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
+        fb_share_url += "&message=#{restaurant.name}"
         
         if dish = Dish.where("restaurant_id = ? AND photos > 0",restaurant_id).order("likes DESC").first
           photo = dish.reviews.where("remote_photo IS NOT NULL").first.remote_photo
-          fb_access_token_url += "&picture=#{photo}"
+          fb_share_url += "&picture=" + CGI.escape(photo).gsub("+", "%20")
         end
 
-        response = HTTParty.post(fb_access_token_url)
+        response = HTTParty.post(fb_share_url)
         
       end
     end
