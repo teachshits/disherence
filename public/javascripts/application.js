@@ -13,14 +13,16 @@ $(document).ready(function() {
 	$("#share #fb, #share #tw").live('tap', function(event){
 		button = $(this)		
 		button.toggleClass('pressed')
-		setTimeout(function(){ button.parent().addClass('hidden') },1000)
-		loader('Sending to Facebook')
+		setTimeout(function(){
+			button.parent().addClass('hidden')
+			loader('Sending to Facebook')	
+		},1000)
+		
 		$.ajax({
         url: button.attr('href'),
         type: 'get',
         dataType: 'json',
         success: function() {
-					setTimeout(function(){ loader() },10)
 					loader(loader('Shared successfully!'))	
 					setTimeout(function(){ loader() },1000)
         }
