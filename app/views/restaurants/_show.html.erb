@@ -1,3 +1,7 @@
+<div id="share" class="hidden">
+	<div id="fb"></div>
+	<div id="tw"></div>
+</div>
 		<div id="wrapper"> 
 			<div id="scroller">
 				<div id="top_dishes"> 
@@ -12,7 +16,7 @@
 										<div class="rating"><div class="ico"></div><%= @restaurant.yelp_reviews_count %> on Yelp</div>
 									</div>
 								</div>
-								<div class="share"><img src="/images/trsp.gif" /></div>
+								<div class="b_share"><img src="/images/trsp.gif" /></div>
 								<div class="address"><%= @restaurant.address %></div>
 								<div class="stats"><%= @restaurant.cuisine %> | <% @restaurant.bill.to_i.times do%>$<% end %></div>	
 							</div>

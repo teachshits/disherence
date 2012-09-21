@@ -98,7 +98,7 @@ li
 .empty
 	background-image: url('../images/empty.png')
 
-#loader
+#loader, #share
 	background: rgba(0, 0, 0, 0.6)
 	border-radius: 3px
 	position: absolute
@@ -117,12 +117,28 @@ li
 	background-position: center 80%
 	background-size: 12%
 	
-#loader.hidden
+#loader.hidden, #share.hidden
 	display: none
 
+#share
+	background-image: none
+	padding: 2%
+	#fb, #tw
+		cursor: pointer
+		background-image: url('../images/b_share_tf.png')
+		background-size: 100%
+		background-repeat: no-repeat
+		width: 289px
+		height: 48px
+		margin-bottom: 5px
+	#tw
+		margin: 0
+		background-position: 0 69%
+	#fb.pressed
+		background-position: 0 32%
+	#tw.pressed
+		background-position: 0 100%
 			
-	
-
 @import "fonts"
 @import "top_dishes"
 @import "feed"

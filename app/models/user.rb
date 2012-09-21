@@ -11,10 +11,27 @@ class User < ActiveRecord::Base
   
   require 'digest/md5' 
   
+  def self.share_on_facebook(user_token, restaurant_id)
+    
+    if user = find_by_token(user_token)
+      if restaurant = Restaurant.find_by_id(restaurant_id)
+        
+        fb_access_token_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
+        fb_access_token_url += "?access_token=#{user.fb_access_token}"
+        # fb_access_token_url += "&link=http://demo.disherence.com"
+        fb_access_token_url += "&message=test"
+        # fb_access_token_url += "&picture=demo.disherence.com/"
+
+        response = HTTParty.post(fb_access_token_url)
+        
+      end
+    end
+    
+  end
+  
   def as_json(options={})
     super(:only => [:token])
   end
-   
 
   def photo
     if !self[:facebook_id].blank?

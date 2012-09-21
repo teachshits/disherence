@@ -97,7 +97,7 @@ li {
 .empty {
   background-image: url("../images/empty.png"); }
 
-#loader {
+#loader, #share {
   background: rgba(0, 0, 0, 0.6);
   border-radius: 3px;
   position: absolute;
@@ -116,8 +116,27 @@ li {
   background-position: center 80%;
   background-size: 12%; }
 
-#loader.hidden {
+#loader.hidden, #share.hidden {
   display: none; }
+
+#share {
+  background-image: none;
+  padding: 2%; }
+  #share #fb, #share #tw {
+    cursor: pointer;
+    background-image: url("../images/b_share_tf.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 289px;
+    height: 48px;
+    margin-bottom: 5px; }
+  #share #tw {
+    margin: 0;
+    background-position: 0 69%; }
+  #share #fb.pressed {
+    background-position: 0 32%; }
+  #share #tw.pressed {
+    background-position: 0 100%; }
 
 @font-face {
   font-family: "CompPro";
@@ -140,7 +159,7 @@ li {
   #top_dishes .hrw {
     clear: both;
     width: 100%; }
-  #top_dishes .share {
+  #top_dishes .b_share {
     background-image: url("../images/b_share.png");
     background-repeat: no-repeat;
     float: right;
@@ -148,7 +167,7 @@ li {
     width: 41px;
     margin: 35px -75px -35px 0;
     background-size: 100%; }
-  #top_dishes .share.pressed {
+  #top_dishes .b_share.pressed {
     background-position: 0 100%; }
   #top_dishes .restaurant {
     margin: 10px 0 10px 10px;

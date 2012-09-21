@@ -1,5 +1,18 @@
 class ApiController < ApplicationController
   
+  def share
+    if !params[:token].blank? && !params[:restaurant_id].blank?
+      
+      if params[:provider] == 'facebook'
+        User.share_on_facebook(params[:token], params[:restaurant_id]) 
+      elsif params[:provider] == 'twitter'
+        User.share_on_twitter(params[:token], params[:restaurant_id]) 
+      end
+      
+    end    
+  end
+  
+  
   def get_user_reviews
     if params[:user_id]
       data = Review.where(:user_id => params[:user_id])

@@ -4,9 +4,14 @@ infoBubbleList = []
 
 $(document).ready(function() {
 	
-	$(".share").live('tap', function(event){
+	$(".b_share").live('tap', function(event){
 		$(this).toggleClass('pressed')
+		$("#share").toggleClass('hidden')
 		
+	})
+	
+	$("#share #fb, #share #tw").live('tap', function(event){
+		$(this).toggleClass('pressed')		
 	})
 	
 	$("#user_img_profile").live('tap', function(event){
