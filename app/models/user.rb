@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
         
         restaurant_name = CGI.escape(restaurant.name).gsub("+", "%20")
         
-        fb_share_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
+        fb_share_url =  "https://graph.facebook.com/#{user.facebook_id}/links"
         fb_share_url += "?access_token=#{user.fb_access_token}"
         
         fb_share_url += "&link=" + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
