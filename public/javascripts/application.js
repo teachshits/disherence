@@ -10,13 +10,15 @@ $(document).ready(function() {
 	})
 	
 	$("#user_img_profile").live('tap', function(event){
-		loader('Bye! Bye!')
-		$.getJSON('/users/logout', function(json) {
-			if (json.result == 1) {
-				$("#user_img_profile").addClass('hidden')
-				setTimeout(function(){ loader() },10)
-			}
-		})
+		loader('Давай Досвидания!')
+		setTimeout(function(){
+			$.getJSON('/users/logout', function(json) {
+				if (json.result == 1) {
+					$("#user_img_profile").addClass('hidden')
+					setTimeout(function(){ loader() },10)
+				}
+			})
+		},1500)
 	})
 	
 	$("#bbutton").live('tap', function(event){
