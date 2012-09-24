@@ -1,5 +1,5 @@
 class Dish < ActiveRecord::Base
-  attr_accessible :restaurant_id, :name, :likes, :dislikes, :photos, :voted=
+  attr_accessible :restaurant_id, :name, :likes, :dislikes, :photos, :voted
   belongs_to :restaurant
   has_many :reviews
   
@@ -9,11 +9,16 @@ class Dish < ActiveRecord::Base
     self[:price] ||= 0
     self[:currency] ||= ""
       
-    super(:only => [:id, :name, :likes, :dislikes, :description, :price, :currency, :voted=], :methods => [:top_review, :voted])
+    super(:only => [:id, :name, :likes, :dislikes, :description, :price, :currency, :voted], :methods => [:top_review, :voted])
   end
   
   def top_review
     self.reviews.select("reviews.remote_photo as photo, comment, user_id, users.remote_photo as user_photo, users.name as user_name").order('photo DESC').limit(1).joins(:user)
   end
+  
+  def voted=(state)
+    voted = state
+  end
+  
   
 end
