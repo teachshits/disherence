@@ -56,15 +56,16 @@ class ApiController < ApplicationController
   def get_best_dishes
     if params[:restaurant_id]
       data = Dish.where("restaurant_id = ? AND (likes > 0 || photos > 0)", params[:restaurant_id]).order("likes - dislikes DESC")      
-
-      if !params[:token].blank? && user = User.find_by_token(params[:token])
-        data.each do |dish|
+      
+      data.each do |dish|
+        dish.opinion = ""
+        if !params[:token].blank? && user = User.find_by_token(params[:token])
           if review = Review.find_by_user_id_and_dish_id(user.id, dish.id)
             dish.opinion = review.opinion
           end
         end
-      end        
-
+      end
+      
       return render :json => {
         :best_dishes => data
       }
