@@ -12,7 +12,7 @@ $(document).ready(function() {
 			dataType: 'html',
 		    success: function(data) {
 				obj = $.parseJSON($($(data.responseText)[5]).text())
-				if (obj.results[0].length != -1){
+				if (obj.results[0] != null){
 					lat = obj.results[0].geometry.location.lat
 					lng = obj.results[0].geometry.location.lng
 					$.cookie("lat", lat);
