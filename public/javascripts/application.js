@@ -17,9 +17,11 @@ $(document).ready(function() {
 					lng = obj.results[0].geometry.location.lng
 					$.cookie("lat", lat);
 					$.cookie("lng", lng);
+					console.log(1);
 				} else {
 					$.cookie("lat", "40.7143528");
 					$.cookie("lng", "-74.00597309999999");
+					console.log(2);
 				}
 				console.log(lat)
 				console.log(lng)
