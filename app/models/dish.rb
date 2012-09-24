@@ -16,7 +16,7 @@ class Dish < ActiveRecord::Base
     self.reviews.select("reviews.remote_photo as photo, comment, user_id, users.remote_photo as user_photo, users.name as user_name").order('photo DESC').limit(1).joins(:user)
   end
   
-  def opinion=(state)
+  def opinion=(state = "")
     self[:opinion] = state
   end
   
