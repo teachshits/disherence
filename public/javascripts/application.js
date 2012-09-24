@@ -4,6 +4,20 @@ infoBubbleList = []
 
 $(document).ready(function() {
 	
+	$("#submit_location").live('tap', function(event){
+		href = "http://maps.google.com/maps/api/geocode/json?address=" + $(this).prev('input').val() + "&sensor=true"
+		// 
+		// $.getJSON(href, function(json) {
+		// 	console.log(json)
+		// 	  })
+	
+		$.getJSON(href, 
+		function(json) {
+		    alert(json);
+		});
+		return false
+	})
+	
 	$(".b_share").live('tap', function(event){
 		$(this).toggleClass('pressed')
 		$("#share").toggleClass('hidden')
@@ -153,6 +167,8 @@ $(document).ready(function() {
 							})
 		        }
 		    })
+			} else {
+				$('#ask_location').addClass('show')
 			}
 		},200);
 	}
@@ -449,7 +465,7 @@ function getLocation(pos)
 
 function unknownLocation()
 {
-  console.log('Could not find location');
+  ask_location = 1
 }
 
 function load_map(element_id) {

@@ -98,7 +98,7 @@ li
 .empty
 	background-image: url('../images/empty.png')
 
-#loader, #share
+#loader, #share, #ask_location
 	background: rgba(0, 0, 0, 0.6)
 	border-radius: 3px
 	position: absolute
@@ -139,6 +139,30 @@ li
 		background-position: 0 32%
 	#tw.pressed
 		background-position: 0 100%
+		
+#ask_location
+	background-image: none
+	padding: 2%
+	display: block
+	
+	input 
+		font-size: 0.8em
+		padding: 5px
+		background: rgba(0, 0, 0, 0.1)
+		border: 1px #fff solid
+		color: white
+		text-align: center
+	#submit_location
+		border: none
+		font-size: 0.6em
+		padding: 5px 20px
+		border-radius: 20px
+		background: #A9DD42
+		color: #000
+		text-shadow: 0 1px 0 white
+#ask_location .show
+	display: block
+	
 			
 @import "fonts"
 @import "top_dishes"
