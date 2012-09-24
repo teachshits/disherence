@@ -59,10 +59,10 @@ class ApiController < ApplicationController
       if params[:token]
         data[:voted] = 1
       else
-        data.voted = 2
+        # data[:voted] = 2
       end
       return render :json => {
-        :best_dishes => data.as_json()
+        :best_dishes => data
       }
     end
   end
