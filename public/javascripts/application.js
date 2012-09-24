@@ -5,17 +5,24 @@ infoBubbleList = []
 $(document).ready(function() {
 	
 	$("#submit_location").live('tap', function(event){
-		href = "http://maps.google.com/maps/api/geocode/json?address=" + $(this).prev('input').val() + "&sensor=true"
+		href = "http://maps.google.com/maps/api/geocode/json?address=" + encodeURI($(this).prev('input').val()) + "&sensor=true"
 		$.ajax({
 		    url: href,
 		    type: 'GET',
 			dataType: 'html',
 		    success: function(data) {
 				obj = $.parseJSON($($(data.responseText)[5]).text())
-				lat = obj.results[0].geometry.location.lat
-				lng = obj.results[0].geometry.location.lng
-				
-					console.log(lng)
+				if (obj.results[0]){
+					lat = obj.results[0].geometry.location.lat
+					lng = obj.results[0].geometry.location.lng
+					$.cookie("lat", lat);
+					$.cookie("lng", lng);
+				} else {
+					$.cookie("lat", lat);
+					$.cookie("lng", lng);
+				}
+				console.log(lat)
+				console.log(lng)
 
 		    }
 		});
