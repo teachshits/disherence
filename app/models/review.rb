@@ -34,7 +34,7 @@ class Review < ActiveRecord::Base
   
   def photo
     if self[:photo].blank? 
-      if !self[:remote_photo].blank
+      if !self[:remote_photo].blank?
         self[:remote_photo]
       elsif review = Review.where("dish_id = ? AND remote_photo IS NOT NULL", self[:dish_id])
         review.first.remote_photo
