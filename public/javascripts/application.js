@@ -9,8 +9,8 @@ $(document).ready(function() {
 		$.ajax({
 		    url: href,
 		    type: 'GET',
-		    success: function(json) {
-					console.log(json)
+		    success: function(html) {
+					console.log(html.find('p').text())
 		    }
 		});
 	
