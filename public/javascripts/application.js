@@ -134,10 +134,12 @@ $(document).ready(function() {
 	
 	if ($("#splashscreen").length > 0){
 		document.ontouchmove = function(e) {e.preventDefault()}
-
+		console.log($.cookie("lat") + ":" + $.cookie("lng"))
+		
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		var loading = true
 		console.log($.cookie("lat") + ":" + $.cookie("lng"))
+		
 		setInterval(function(){
 			if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
 				$.ajax({
