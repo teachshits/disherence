@@ -6,15 +6,14 @@ $(document).ready(function() {
 	
 	$("#submit_location").live('tap', function(event){
 		href = "http://maps.google.com/maps/api/geocode/json?address=" + $(this).prev('input').val() + "&sensor=true"
-		// 
-		// $.getJSON(href, function(json) {
-		// 	console.log(json)
-		// 	  })
-	
-		$.getJSON(href, 
-		function(json) {
-		    alert(json);
+		$.ajax({
+		    url: href,
+		    type: 'GET',
+		    success: function(json) {
+					console.log(json)
+		    }
 		});
+	
 		return false
 	})
 	

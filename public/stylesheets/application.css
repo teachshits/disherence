@@ -142,7 +142,7 @@ li {
 #ask_location {
   background-image: none;
   padding: 2%;
-  display: block; }
+  display: none; }
   #ask_location input {
     font-size: 0.8em;
     padding: 5px;
