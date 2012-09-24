@@ -107,7 +107,7 @@ class ReviewsController < ApplicationController
     end
   end
   
-  def destroy
+  def delete_review
     if user = User.find_by_token(params[:token])
       if !params[:review_id].blank? && review = Review.find_by_user_id_and_review_id(user.id, params[:review_id])
         review.destroy
