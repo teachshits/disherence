@@ -137,6 +137,7 @@ $(document).ready(function() {
 
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		var loading = true
+		console.log($.cookie("lat") + ":" + $.cookie("lng"))
 		setInterval(function(){
 			if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
 				$.ajax({
@@ -471,8 +472,6 @@ function clearMarkers() {
 
 // Add markers to the map
 function setMarkers(map, locations) {
-	console.log(r_info)
-	// console.log(locations)
 	if (typeof markerList != 'undefined') {
 		clearMarkers()
 	}
