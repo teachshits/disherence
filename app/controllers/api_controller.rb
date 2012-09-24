@@ -137,7 +137,7 @@ class ApiController < ApplicationController
         review.destroy
         return render :json => { :result => 1}
       end
-      return render :json => { :result => 2}
+      return render :json => { :result => 0}
     end
     return render :json => { :result => 0}
   end
