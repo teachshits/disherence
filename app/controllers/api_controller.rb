@@ -20,7 +20,7 @@ class ApiController < ApplicationController
   
   def get_user_profile
     if user = User.find_by_token(params[:token])      
-      data = Review.where(:user_id => params[:user_id])
+      data = Review.where(:user_id => user.id)
     end
     
     return render :json => {
