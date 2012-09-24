@@ -108,52 +108,14 @@ class ReviewsController < ApplicationController
   end
   
   def destroy
-    if dish_id = params[:id]
-      if user = session[:user]
-        
-        if rd = Review.find_by_dish_id_and_user_id(dish_id,user.id)
-          
-          if rw = Review.find_by_id(params[:review_id])
-            
-            likes = rd.dish.likes
-            dislikes = rd.dish.dislikes
-            users = rd.dish.likes + rd.dish.dislikes - 1
-            photos = rd.dish.photos
-            agree = rw.count_agree
-            disagree = rw.count_disagree
-
-            rw.agree?(user.id) == 1 ? agree -= 1 : disagree -= 1
-            rd.opinion == true ? likes -= 1 : dislikes -= 1
-          else
-            likes = rd.dish.likes
-            dislikes = rd.dish.dislikes
-            
-            if rd.opinion == true
-              rating = ((likes - 1) * 100)/(rd.dish.restaurant.dishes.sum(:likes) - 1)
-              likes -= 1
-            else
-              rating = (likes * 100)/rd.dish.restaurant.dishes.sum(:likes)
-              dislikes -= 1
-            end
-
-          end
-          rd.destroy
-          
-          return render :json => {
-            :result => 1,
-            :likes => likes, 
-            :dislikes => dislikes,
-            :users => users,
-            :photos => photos,
-            :agree => agree,
-            :disagree => disagree,
-            :rating => rating || nil
-          }
-          
-        end
+    if user = User.find_by_token(params[:token])
+      if review_id = params[:review_id]
+        review = Review.find_by_user_id_and_review_id(user.id, review_id)
+        review.destroy
+        return render :json => { :result => 1}
       end
-      
     end
+    return render :json => { :result => 0}
   end
   
 end
