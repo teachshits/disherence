@@ -109,11 +109,11 @@ class ReviewsController < ApplicationController
   
   def destroy
     if user = User.find_by_token(params[:token])
-      if review_id = params[:review_id]
-        review = Review.find_by_user_id_and_review_id(user.id, review_id)
+      if !params[:review_id].blank? && review = Review.find_by_user_id_and_review_id(user.id, params[:review_id])
         review.destroy
         return render :json => { :result => 1}
       end
+      return render :json => { :result => 2}
     end
     return render :json => { :result => 0}
   end
