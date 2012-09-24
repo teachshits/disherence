@@ -61,7 +61,7 @@ $(document).ready(function() {
 						scrollbarClass: 'myScrollbar'
 					})		
 					
-					if ($.cookie("search").length > 0) {
+					if ($.cookie("search") != null) {
 						$('#search_map_field').removeClass('hidden')
 						$('#search_field').val($.cookie("search"))
 					}
