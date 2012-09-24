@@ -17,7 +17,7 @@ class Dish < ActiveRecord::Base
   end
   
   def voted
-    
+    0
   end
   
 end
