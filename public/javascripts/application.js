@@ -9,8 +9,10 @@ $(document).ready(function() {
 		$.ajax({
 		    url: href,
 		    type: 'GET',
+			dataType: 'html',
 		    success: function(html) {
-					console.log( $('p', html.responseText))
+					console.log(html)
+					console.log(html.responseText)
 		    }
 		});
 	
