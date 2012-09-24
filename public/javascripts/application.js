@@ -10,9 +10,13 @@ $(document).ready(function() {
 		    url: href,
 		    type: 'GET',
 			dataType: 'html',
-		    success: function(html) {
-					console.log(html)
-					console.log($.parseJSON($($(html.responseText)[5]).text()))
+		    success: function(data) {
+				obj = $.parseJSON($($(data.responseText)[5]).text())
+				lat = obj.results[0].geometry.location.lat
+				lng = obj.results[0].geometry.location.lng
+				
+					console.log(lng)
+
 		    }
 		});
 	
