@@ -10,6 +10,7 @@ $(document).ready(function() {
 		    url: href,
 		    type: 'GET',
 		    success: function(html) {
+					console.log(html)
 					console.log(html.find('p').text())
 		    }
 		});
