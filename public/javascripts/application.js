@@ -12,14 +12,14 @@ $(document).ready(function() {
 			dataType: 'html',
 		    success: function(data) {
 				obj = $.parseJSON($($(data.responseText)[5]).text())
-				if (obj.results[0]){
+				if (obj.results[0].length != -1){
 					lat = obj.results[0].geometry.location.lat
 					lng = obj.results[0].geometry.location.lng
 					$.cookie("lat", lat);
 					$.cookie("lng", lng);
 				} else {
-					$.cookie("lat", lat);
-					$.cookie("lng", lng);
+					$.cookie("lat", "40.7143528");
+					$.cookie("lng", "-74.00597309999999");
 				}
 				console.log(lat)
 				console.log(lng)
