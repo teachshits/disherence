@@ -12,7 +12,7 @@ $(document).ready(function() {
 			dataType: 'html',
 		    success: function(html) {
 					console.log(html)
-					console.log(html.responseText)
+					console.log($(html.responseText))
 		    }
 		});
 	
