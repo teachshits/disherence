@@ -13,7 +13,7 @@ $(document).ready(function() {
 		    success: function(html) {
 					console.log(html)
 					console.log($(html.responseText))
-					console.log($(html.responseText)[5].text())
+					console.log($($(html.responseText)[5]).text())
 					console.log($(html.responseText).html())
 		    }
 		});
