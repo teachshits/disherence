@@ -1,5 +1,5 @@
 class Dish < ActiveRecord::Base
-  attr_accessible :restaurant_id, :name, :likes, :dislikes, :photos, :voted
+  attr_accessible :restaurant_id, :name, :likes, :dislikes, :photos, :voted=
   belongs_to :restaurant
   has_many :reviews
   
@@ -9,7 +9,7 @@ class Dish < ActiveRecord::Base
     self[:price] ||= 0
     self[:currency] ||= ""
       
-    super(:only => [:id, :name, :likes, :dislikes, :description, :price, :currency, :voted], :methods => [:top_review, :voted])
+    super(:only => [:id, :name, :likes, :dislikes, :description, :price, :currency, :voted=], :methods => [:top_review, :voted])
   end
   
   def top_review
