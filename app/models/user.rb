@@ -41,7 +41,15 @@ class User < ActiveRecord::Base
   end
   
   def as_json(options={})
-    super(:only => [:token])
+    super(:only => [:token, :name, :photo], :methods => [:likes, :dislikes])
+  end
+  
+  def likes
+    Review.where("user_id = ? AND opinion = 1", id).count
+  end
+  
+  def dislikes
+    Review.where("user_id = ? AND opinion = 0", id).count
   end
 
   def photo

@@ -18,12 +18,13 @@ class ApiController < ApplicationController
   end
   
   
-  def get_user_reviews
-    if params[:user_id]
+  def get_user_profile
+    if user = User.find_by_token(params[:token])      
       data = Review.where(:user_id => params[:user_id])
     end
     
     return render :json => {
+      :user => user.as_json,
       :reviews => data.as_json
     }
   end
