@@ -17,18 +17,25 @@ $(document).ready(function() {
 					lng = obj.results[0].geometry.location.lng
 					$.cookie("lat", lat);
 					$.cookie("lng", lng);
-					console.log(1);
 				} else {
 					$.cookie("lat", "40.7143528");
 					$.cookie("lng", "-74.00597309999999");
-					console.log(2);
 				}
-				console.log($.cookie("lat"))
-				console.log($.cookie("lng"))
-
+				
+				$.ajax({
+			        url: '/restaurants/index',
+			        type: 'get',
+			        dataType: 'script',
+			        success: function() {
+			          loading = false;
+						myScroll = new iScroll('wrapper', { 
+							scrollbarClass: 'myScrollbar'
+						})
+			        }
+			    })
+			
 		    }
-		});
-	
+		})
 		return false
 	})
 	
