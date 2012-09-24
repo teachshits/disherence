@@ -13,7 +13,7 @@ $(document).ready(function() {
 		    success: function(html) {
 					console.log(html)
 					console.log($(html.responseText))
-					console.log($(html.responseText).find('p')[3])
+					console.log($(html.responseText).find('p')[0])
 					console.log($(html.responseText).find('p').html())
 		    }
 		});
