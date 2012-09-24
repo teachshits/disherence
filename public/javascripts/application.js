@@ -23,8 +23,8 @@ $(document).ready(function() {
 					$.cookie("lng", "-74.00597309999999");
 					console.log(2);
 				}
-				console.log(lat)
-				console.log(lng)
+				console.log($.cookie("lat"))
+				console.log($.cookie("lng"))
 
 		    }
 		});
