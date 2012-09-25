@@ -18,7 +18,9 @@ class UsersController < ApplicationController
   end
   
   def profile
-    
+    if session[:user]
+      @reviews = Reviews.where("user_id = ?", session[:user].id)
+    end
   end
   
   
