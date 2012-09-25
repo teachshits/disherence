@@ -486,7 +486,9 @@ function getLocation(pos)
 
 function unknownLocation()
 {
-  $('#ask_location').addClass('show')
+	if ($.cookie("lat") == null || $.cookie("lng") == null){
+	  $('#ask_location').addClass('show')
+	}
 }
 
 function load_map(element_id) {
