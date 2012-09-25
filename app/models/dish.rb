@@ -1,5 +1,7 @@
 class Dish < ActiveRecord::Base
   attr_accessible :restaurant_id, :name, :likes, :dislikes, :photos, :opinion
+  # attr_writer :opinion
+  attr_accessor :opinion
   belongs_to :restaurant
   has_many :reviews
   
@@ -16,9 +18,9 @@ class Dish < ActiveRecord::Base
     self.reviews.select("reviews.remote_photo as photo, comment, user_id, users.remote_photo as user_photo, users.name as user_name").order('photo DESC').limit(1).joins(:user)
   end
   
-  def opinion=(state)
-    self[:opinion] = state
-  end
-  
+  # def opinion=(state)
+  #   self[:opinion] = state
+  # end
+  # 
   
 end
