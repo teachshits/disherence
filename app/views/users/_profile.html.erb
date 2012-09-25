@@ -12,7 +12,7 @@
 	<% @reviews.each do |review| %>
 		<div class="review">
 			<img class="review_img" src="<%= review.photo %>" />
-			<div class="opinion_img" class="<% review.opinion == true ? 'like' : 'dislike' %>"><img src="/images/trsp.gif" /></div>
+			<div class="opinion_img <% review.opinion == true ? 'like' : 'dislike' %>"><img src="/images/trsp.gif" /></div>
 			<div class="description">
 				<div class="name"><%= review.dish.name %></div>
 				<div class="place"><%= review.dish.restaurant.name %></div>
