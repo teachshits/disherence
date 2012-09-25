@@ -70,15 +70,16 @@ $(document).ready(function() {
 	})
 	
 	$("#user_img_profile").live('tap', function(event){
-		loader('Давай Досвидания!')
-		setTimeout(function(){
-			$.getJSON('/users/logout', function(json) {
-				if (json.result == 1) {
-					$("#user_img_profile").addClass('hidden')
-					setTimeout(function(){ loader() },10)
-				}
-			})
-		},1500)
+		loader('Loading your data')
+		$.ajax({
+        url: 'users/profile',
+        type: 'get',
+        dataType: 'script',
+        success: function() {	
+	
+        }
+    })
+
 	})
 	
 	$("#bbutton").live('tap', function(event){

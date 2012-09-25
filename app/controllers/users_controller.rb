@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     return render :json => {:result => 1}
   end
   
+  def profile
+    
+  end
+  
+  
   
   
 end
