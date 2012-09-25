@@ -10,12 +10,13 @@
 <div id="user_reviews">
 	<div class="count"><%= @reviews.count %> opinions</div>
 	<% @reviews.each do |review| %>
-	<div class="review">
-		<img src="<%= review.photo %>" />
-		<div class="description">
-			<div class="name"><%= review.dish.name %></div>
-			<div class="place"><%= review.dish.restaurant.name %></div>
-			<div class="address"><%= review.dish.restaurant.address %></div>
+		<div class="review">
+			<img src="<%= review.photo %>" />
+			<div class="description">
+				<div class="name"><%= review.dish.name %></div>
+				<div class="place"><%= review.dish.restaurant.name %></div>
+				<div class="address"><%= review.dish.restaurant.address %></div>
+			</div>
 		</div>
-	</div>	
+	<% end %>	
 </div>
