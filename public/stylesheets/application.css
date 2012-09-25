@@ -933,7 +933,8 @@ li {
   text-align: center;
   margin: 5px auto; }
 #user_reviews .review {
-  float: left; }
+  display: inline;
+  margin: 0 0 10px 10px; }
   #user_reviews .review img {
     width: 88px;
     height: 88px;
