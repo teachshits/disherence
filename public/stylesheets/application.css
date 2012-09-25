@@ -943,9 +943,12 @@ li {
     -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3); }
   #user_reviews .review .opinion_img {
-    background: url("/images/user_like_opinion.png");
     position: absolute;
     bottom: 0px;
     left: 20px; }
+  #user_reviews .review .opinion_img.like {
+    background-image: url("/images/user_like_opinion.png"); }
+  #user_reviews .review .opinion_img.dislike {
+    background-image: url("/images/user_dislike_opinion.png"); }
   #user_reviews .review .description {
     display: none; }
