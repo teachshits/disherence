@@ -13,7 +13,7 @@ class Dish < ActiveRecord::Base
   end
   
   def top_review
-    self.reviews.select("reviews.remote_photo as photo, comment, user_id, users.remote_photo as user_photo, users.name as user_name").order('photo DESC').where("reviews.remote_photo IS NOT NULL").limit(1).joins(:user)
+    self.reviews.select("reviews.remote_photo, reviews.photo, comment, user_id, users.remote_photo as user_photo, users.name as user_name").order('photo DESC').where("reviews.remote_photo IS NOT NULL").limit(1).joins(:user)
   end
   
   def opinion=(state)
