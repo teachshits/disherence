@@ -172,29 +172,28 @@ $(document).ready(function() {
 	})
 	
 	if ($("#splashscreen").length > 0){
-		document.ontouchmove = function(e) {e.preventDefault()}
-				
+
+		document.ontouchmove = function(e) {e.preventDefault()}				
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
-		var loading = true
-		$('#ask_location').addClass('show')
-		
-		// setInterval(function(){
-		// 	if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
-		// 		$.ajax({
-		//         url: '/restaurants/index',
-		//         type: 'get',
-		//         dataType: 'script',
-		//         success: function() {
-		//           loading = false;
-		// 					myScroll = new iScroll('wrapper', { 
-		// 						scrollbarClass: 'myScrollbar'
-		// 					})
-		//         }
-		//     })
-		// 	} else {
-		// 		$('#ask_location').addClass('show')
-		// 	}
-		// },200);
+
+		var loading = true		
+		setInterval(function(){
+			if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
+				$.ajax({
+		        url: '/restaurants/index',
+		        type: 'get',
+		        dataType: 'script',
+		        success: function() {
+		          loading = false;
+							myScroll = new iScroll('wrapper', { 
+								scrollbarClass: 'myScrollbar'
+							})
+		        }
+		    })
+			} else {
+				$('#ask_location').addClass('show')
+			}
+		},200);
 	}
 	
 	$(".map_link").live('tap', function(event){
