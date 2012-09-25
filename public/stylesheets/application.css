@@ -956,6 +956,7 @@ li {
     #user_reviews .review .opinion_img.dislike {
       background-image: url("/images/user_dislike_opinion.png"); }
     #user_reviews .review .description {
+      display: none;
       background: white;
       position: absolute; }
     #user_reviews .review .description.show {
