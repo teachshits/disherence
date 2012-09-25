@@ -11,7 +11,8 @@
 	<div class="count"><%= @reviews.count %> opinions</div>
 	<% @reviews.each do |review| %>
 		<div class="review">
-			<img src="<%= review.photo %>" />
+			<img class="review_img" src="<%= review.photo %>" />
+			<img class="opinion_img" src="<%= opinion_img %>" />
 			<div class="description">
 				<div class="name"><%= review.dish.name %></div>
 				<div class="place"><%= review.dish.restaurant.name %></div>
