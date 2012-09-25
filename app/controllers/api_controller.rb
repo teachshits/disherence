@@ -1,4 +1,5 @@
 class ApiController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
   
   def share
     if ( !params[:token].blank? || !session[:user].blank?) && !params[:restaurant_id].blank?      
