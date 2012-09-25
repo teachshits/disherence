@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   
   def profile
     if session[:user]
-      @reviews = Reviews.where("user_id = ?", session[:user].id)
+      @reviews = Review.where("user_id = ?", session[:user].id)
     end
   end
   
