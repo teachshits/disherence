@@ -1,6 +1,5 @@
 class Dish < ActiveRecord::Base
-  attr_accessible :restaurant_id, :name, :likes, :dislikes, :photos, :opinion
-  # attr_writer :opinion
+  attr_accessible :restaurant_id, :name, :likes, :dislikes, :photos
   attr_accessor :opinion
   belongs_to :restaurant
   has_many :reviews
