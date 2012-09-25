@@ -896,27 +896,40 @@ li {
     border-top: #9fa198 1px solid;
     background: white; }
 
-#user_info img {
-  width: 64px;
-  height: 64px;
-  border: 2px;
-  -webkit-box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.6);
-  box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.6); }
-#user_info #name {
-  font-family: CompPro_bold;
-  font-size: 1em; }
-#user_info #opinion {
-  font-size: 1em; }
+#user_info {
+  margin: 10px;
+  color: #414042; }
+  #user_info img {
+    float: left;
+    width: 64px;
+    height: 64px;
+    border: 2px;
+    -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3); }
+  #user_info #name {
+    font-family: CompPro_bold;
+    font-size: 1.5em;
+    margin: 0;
+    padding-top: 10px; }
+  #user_info #opinion {
+    line-height: 1em;
+    font-size: 1.1em;
+    margin: 0; }
 
 .hr {
   clear: both;
   height: 1px;
-  border-top: #9fa198 1px solid;
-  background: white;
+  border-top: #c3c4c2 1px solid;
+  background: #ebecdc;
   margin: 0 10px; }
 
 #user_reviews .count {
-  color: #726658; }
+  font-family: Helvetica, Arial;
+  text-shadow: none;
+  font-size: 1.2em;
+  color: #726658;
+  text-align: center;
+  margin: 5px auto; }
 #user_reviews .review {
   float: left; }
   #user_reviews .review img {
