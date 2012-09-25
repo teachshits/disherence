@@ -924,34 +924,39 @@ li {
   background: #ebecdc;
   margin: 0 10px; }
 
-#user_reviews .count {
-  font-family: Helvetica, Arial;
-  font-weight: bold;
-  text-shadow: none;
-  font-size: 0.9em;
-  color: #726658;
-  text-align: center;
-  margin: 5px auto; }
-#user_reviews .review {
-  display: inline;
-  margin: 0 4px 10px 0;
-  position: relative; }
-  #user_reviews .review .review_img {
-    width: 88px;
-    height: 88px;
-    border: 3px solid white;
-    -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3); }
-  #user_reviews .review .opinion_img {
-    position: absolute;
-    bottom: -14px;
-    left: 25px;
-    width: 47px;
-    height: 37px;
-    background-size: 100%; }
-  #user_reviews .review .opinion_img.like {
-    background-image: url("/images/user_like_opinion.png"); }
-  #user_reviews .review .opinion_img.dislike {
-    background-image: url("/images/user_dislike_opinion.png"); }
-  #user_reviews .review .description {
-    display: none; }
+#user_reviews {
+  line-height: 4em; }
+  #user_reviews .count {
+    font-family: Helvetica, Arial;
+    font-weight: bold;
+    text-shadow: none;
+    font-size: 0.9em;
+    color: #726658;
+    text-align: center;
+    margin: -15px auto; }
+  #user_reviews .review {
+    display: inline;
+    margin: 0 4px 10px 0;
+    position: relative; }
+    #user_reviews .review .review_img {
+      width: 88px;
+      height: 88px;
+      border: 3px solid white;
+      -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3); }
+    #user_reviews .review .opinion_img {
+      position: absolute;
+      bottom: -14px;
+      left: 25px;
+      width: 47px;
+      height: 37px;
+      background-size: 100%; }
+    #user_reviews .review .opinion_img.like {
+      background-image: url("/images/user_like_opinion.png"); }
+    #user_reviews .review .opinion_img.dislike {
+      background-image: url("/images/user_dislike_opinion.png"); }
+    #user_reviews .review .description {
+      background: white;
+      position: absolute; }
+    #user_reviews .review .description.show {
+      display: block; }

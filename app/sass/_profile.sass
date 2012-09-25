@@ -25,6 +25,7 @@
 	background: #ebecdc
 	margin: 0 10px
 #user_reviews
+	line-height: 4em
 	.count
 		font-family: Helvetica, Arial
 		font-weight: bold
@@ -32,7 +33,7 @@
 		font-size: 0.9em
 		color: #726658
 		text-align: center
-		margin: 5px auto
+		margin: -15px auto
 	.review
 		display: inline
 		margin: 0 4px 10px 0
@@ -55,7 +56,11 @@
 		.opinion_img.dislike
 			background-image: url('/images/user_dislike_opinion.png')
 		.description
-			display: none
+			// display: none
+			background: #fff
+			position: absolute
+		.description.show
+			display: block
 			
 			
 		
