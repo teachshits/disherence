@@ -11,7 +11,9 @@ $(document).ready(function() {
 		    type: 'GET',
 			dataType: 'html',
 		    success: function(data) {
+				
 				obj = $.parseJSON($($(data.responseText)[5]).text())
+				
 				if (obj.results[0] != null){
 					lat = obj.results[0].geometry.location.lat
 					lng = obj.results[0].geometry.location.lng
@@ -21,6 +23,8 @@ $(document).ready(function() {
 					$.cookie("lat", "40.7143528");
 					$.cookie("lng", "-74.00597309999999");
 				}
+				
+				$("#ask_location").removeClass('show')
 				
 				$.ajax({
 			        url: '/restaurants/index',
@@ -169,29 +173,28 @@ $(document).ready(function() {
 	
 	if ($("#splashscreen").length > 0){
 		document.ontouchmove = function(e) {e.preventDefault()}
-		console.log($.cookie("lat") + ":" + $.cookie("lng"))
-		
+				
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		var loading = true
-		console.log($.cookie("lat") + ":" + $.cookie("lng"))
+		$('#ask_location').addClass('show')
 		
-		setInterval(function(){
-			if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
-				$.ajax({
-		        url: '/restaurants/index',
-		        type: 'get',
-		        dataType: 'script',
-		        success: function() {
-		          loading = false;
-							myScroll = new iScroll('wrapper', { 
-								scrollbarClass: 'myScrollbar'
-							})
-		        }
-		    })
-			} else {
-				$('#ask_location').addClass('show')
-			}
-		},200);
+		// setInterval(function(){
+		// 	if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
+		// 		$.ajax({
+		//         url: '/restaurants/index',
+		//         type: 'get',
+		//         dataType: 'script',
+		//         success: function() {
+		//           loading = false;
+		// 					myScroll = new iScroll('wrapper', { 
+		// 						scrollbarClass: 'myScrollbar'
+		// 					})
+		//         }
+		//     })
+		// 	} else {
+		// 		$('#ask_location').addClass('show')
+		// 	}
+		// },200);
 	}
 	
 	$(".map_link").live('tap', function(event){
