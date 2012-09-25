@@ -122,8 +122,9 @@ def add_photo(dish_id, photo, comment)
   end
   
   if review = Review.find_by_user_id_and_dish_id(myuser.id, dish_id)
-    p "Update comment to: #{comment}"
-    review.update_attributes(:remote_photo => photo['url'], :comment => comment)
+    caption = comment.empty? ? photo['caption'] : comment
+    p "Update comment to: #{caption}"
+    review.update_attributes(:remote_photo => photo['url'], :comment => caption)
   else
     review = Review.create(
       :user_id => myuser.id,
