@@ -28,7 +28,7 @@
 			<% @restaurant.dishes.order('likes DESC').each do |d| %>
 			<li>
 				<div class="dish" style="background-image: url('<%= d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.remote_photo %>')">
-					<div class="name"><%= d.name %></div>
+					<div class="name"><%= d.nam.gsub(/\d+\.\s+/, '') %></div>
 				
 					<div class="dish_info_container">				
 						<div class="rating"><span><%= @restaurant.dishes.sum(:likes) %></span></div>
