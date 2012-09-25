@@ -65,11 +65,10 @@ class ApiController < ApplicationController
           end
         end
       end
-      
-      return render :json => {
-        :best_dishes => data
-      }
     end
+    return render :json => {
+      :best_dishes => data || 0
+    }
   end
   
   # http://0.0.0.0:3000/api/set_opinion?opinion=1&user_id=14563&dish_id=50
