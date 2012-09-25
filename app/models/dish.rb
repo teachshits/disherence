@@ -3,7 +3,7 @@ class Dish < ActiveRecord::Base
   belongs_to :restaurant
   has_many :reviews
   
-  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
+  skip_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
   
   def as_json(options={})
     
