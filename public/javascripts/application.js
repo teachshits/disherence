@@ -380,7 +380,7 @@ $(document).ready(function() {
 		
 		$.getJSON(href, function(json) {
 			if (json.url) {
-				loader('Connecting to Fcebook')
+				loader('Connecting to Facebook')
 				window.location.href = json.url
 			} else {
 				
