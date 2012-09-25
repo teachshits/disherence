@@ -47,7 +47,12 @@ class ApiController < ApplicationController
       data = Restaurant.by_distance(params[:lat], params[:lng])
     end
     
-    data = data.where("name LIKE ?", "%#{params[:search]}%") unless params[:search].blank?
+    if !params[:search].blank?
+      data = data.where("name LIKE ?", "%#{params[:search]}%")   
+    else
+      data = data.joins(:dishes).where("dishes.likes > 0").group("restaurants.id")
+    end
+    
     data = data.limit(params[:limit]).offset(params[:offset])
     
     return render :json => {
