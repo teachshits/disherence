@@ -17,16 +17,16 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.by_distance(@lat, @lng).limit(15)
     @restaurants = @restaurants.where('name LIKE ?', "%#{params[:search]}%") unless params[:search].blank?
     
-    # @restaurants.reject! do |res|
-    #   to_reject = true
-    #   res.dishes.each do |dish|
-    #     if dish.reviews.with_photos.size > 0
-    #       to_reject = false
-    #       break;
-    #     end
-    #   end
-    #   to_reject
-    # end
+    @restaurants.reject! do |res|
+      to_reject = true
+      res.dishes.each do |dish|
+        if dish.reviews.with_photos.size > 0
+          to_reject = false
+          break;
+        end
+      end
+      to_reject
+    end
     
     time = Time.now.to_i
     @restaurants_info = "r_info = [];\n"
