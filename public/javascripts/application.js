@@ -76,7 +76,8 @@ $(document).ready(function() {
         type: 'get',
         dataType: 'script',
         success: function() {	
-	
+					setTimeout(function(){ loader() },0);
+					myScroll.refresh();	
         }
     })
 
