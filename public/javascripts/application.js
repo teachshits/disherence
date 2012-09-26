@@ -8,13 +8,13 @@ $(document).ready(function() {
 		
 		element = $(this)
 		
-		$(".review").children('.description').removeClass('show')
-		$(this).children('.description').addClass('show')
+		$(".review").siblings().children('.description').removeClass('show')
+		// $(this).children('.description').addClass('show')
 		
-		$(".review").removeClass('slide_2')
-		$(".review").removeClass('slide_3')
-		$(this).removeClass('slide_2')
-		$(this).removeClass('slide_3')
+		$(".review").siblings().removeClass('slide_2')
+		$(".review").siblings().removeClass('slide_3')
+		// $(this).removeClass('slide_2')
+		// $(this).removeClass('slide_3')
 		
 		if (($(".review").index(element) - 1)%3 == 0) {
 			element.toggleClass('slide_2')
