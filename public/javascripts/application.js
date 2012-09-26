@@ -4,8 +4,11 @@ infoBubbleList = []
 
 $(document).ready(function() {
 	
-	$("review").live('tap', function(event){
-		$(this).children('.description').addClass('show')
+	$(".review").live('tap', function(event){
+		
+		console.log($(".review").index($(this)))
+
+		$(this).children('.description').toggleClass('show')
 	})
 	
 	$("#submit_location").live('tap', function(event){
