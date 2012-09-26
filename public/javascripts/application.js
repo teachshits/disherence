@@ -7,7 +7,10 @@ $(document).ready(function() {
 	$(".review").live('tap', function(event){
 		
 		element = $(this)
+		
 		$(".review").children('.description').removeClass('show')
+		$(".review").removeClass('slide_2')
+		$(".review").removeClass('slide_3')
 		
 		if (($(".review").index(element) - 1)%3 == 0) {
 			element.toggleClass('slide_2')
