@@ -956,8 +956,20 @@ li {
     #user_reviews .review .opinion_img.dislike {
       background-image: url("/images/user_dislike_opinion.png"); }
     #user_reviews .review .description {
+      line-height: 1.2em;
+      width: 205px;
+      height: 88px;
       display: none;
       background: white;
       position: absolute; }
+      #user_reviews .review .description .name {
+        color: #414042;
+        font-size: 1.2em; }
+      #user_reviews .review .description .place {
+        color: #808285;
+        font-size: 0.9em; }
+      #user_reviews .review .description .address {
+        color: #808285;
+        font-size: 1em; }
     #user_reviews .review .description.show {
       display: block; }
