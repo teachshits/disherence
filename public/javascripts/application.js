@@ -9,12 +9,9 @@ $(document).ready(function() {
 		element = $(this)
 		
 		$(".review").not(this).children('.description').removeClass('show')
-		// $(this).children('.description').addClass('show')
 		
 		$(".review").not(this).removeClass('slide_2')
 		$(".review").not(this).removeClass('slide_3')
-		// $(this).removeClass('slide_2')
-		// $(this).removeClass('slide_3')
 		
 		if (($(".review").index(element) - 1)%3 == 0) {
 			element.toggleClass('slide_2')
