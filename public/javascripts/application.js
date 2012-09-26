@@ -13,12 +13,12 @@ $(document).ready(function() {
 		$(".review").removeClass('slide_3')
 		
 		if (($(".review").index(element) - 1)%3 == 0) {
-			element.toggleClass('slide_2')
+			element.addClass('slide_2')
 		} else if (($(".review").index(element) - 2)%3 == 0) {
-			element.toggleClass('slide_3')
+			element.addClass('slide_3')
 		}
 
-		$(this).children('.description').toggleClass('show')
+		$(this).children('.description').addClass('show')
 	})
 	
 	$("#submit_location").live('tap', function(event){
