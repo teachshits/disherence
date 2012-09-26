@@ -8,11 +8,11 @@ $(document).ready(function() {
 		
 		element = $(this)
 		
-		$(".review").siblings().children('.description').removeClass('show')
+		$(".review").not(this).children('.description').removeClass('show')
 		// $(this).children('.description').addClass('show')
 		
-		$(".review").siblings().removeClass('slide_2')
-		$(".review").siblings().removeClass('slide_3')
+		$(".review").not(this).removeClass('slide_2')
+		$(".review").not(this).removeClass('slide_3')
 		// $(this).removeClass('slide_2')
 		// $(this).removeClass('slide_3')
 		
