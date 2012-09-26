@@ -81,7 +81,11 @@ $(document).ready(function() {
         dataType: 'script',
         success: function() {	
 					setTimeout(function(){ loader() },0);
-					myScroll.refresh();	
+					myScroll.destroy();
+					myScroll = null;
+					myScroll = new iScroll('wrapper', { 
+						scrollbarClass: 'myScrollbar'
+					})
         }
     })
 
