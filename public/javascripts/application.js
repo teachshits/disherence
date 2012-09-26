@@ -1,28 +1,28 @@
 r_info = []
 markerList = []
 infoBubbleList = []
-review_obj = ''
 
 $(document).ready(function() {
 	
 	$(".review").live('tap', function(event){
 		
+		element = $(this)
+		
 		$(".review").children('.description').removeClass('show')
+		$(this).children('.description').addClass('show')
+		
 		$(".review").removeClass('slide_2')
 		$(".review").removeClass('slide_3')
+		$(this).removeClass('slide_2')
+		$(this).removeClass('slide_3')
 		
-		if (review_obj != $(this)) {
-			$(this).children('.description').addClass('show')
-		}
-		
-		review_obj = $(this)
-		
-		if (($(".review").index(review_obj) - 1)%3 == 0) {
-			review_obj.addClass('slide_2')
-		} else if (($(".review").index(review_obj) - 2)%3 == 0) {
-			review_obj.addClass('slide_3')
+		if (($(".review").index(element) - 1)%3 == 0) {
+			element.toggleClass('slide_2')
+		} else if (($(".review").index(element) - 2)%3 == 0) {
+			element.toggleClass('slide_3')
 		}
 
+		$(this).children('.description').toggleClass('show')
 	})
 	
 	$("#submit_location").live('tap', function(event){
