@@ -6,11 +6,15 @@ $(document).ready(function() {
 	
 	$(".review").live('tap', function(event){
 		
-		element = $(this)
-		
 		$(".review").children('.description').removeClass('show')
 		$(".review").removeClass('slide_2')
 		$(".review").removeClass('slide_3')
+		
+		if (element != $(this)) {
+			$(this).children('.description').addClass('show')
+		}
+		
+		element = $(this)
 		
 		if (($(".review").index(element) - 1)%3 == 0) {
 			element.addClass('slide_2')
@@ -18,7 +22,6 @@ $(document).ready(function() {
 			element.addClass('slide_3')
 		}
 
-		$(this).children('.description').addClass('show')
 	})
 	
 	$("#submit_location").live('tap', function(event){
