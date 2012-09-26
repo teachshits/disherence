@@ -934,6 +934,10 @@ li {
     color: #726658;
     text-align: center;
     margin: -15px auto; }
+  #user_reviews .review.slide_2 {
+    margin: 0 104px 0 -101px; }
+  #user_reviews .review.slide_3 {
+    margin: 0 208px 0 -202px; }
   #user_reviews .review {
     display: inline;
     margin: 0 4px 10px 0;

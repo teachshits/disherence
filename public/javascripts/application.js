@@ -9,8 +9,10 @@ $(document).ready(function() {
 		
 		if (($(".review").index(element) - 1)%3 == 0) {
 			console.log(2)
+			element.addClass('slide_2')
 		} else if (($(".review").index(element) - 2)%3 == 0) {
 			console.log(3)
+			element.addClass('slide_3')
 		}
 
 		$(this).children('.description').toggleClass('show')
