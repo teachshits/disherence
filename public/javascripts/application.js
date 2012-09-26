@@ -1,6 +1,7 @@
 r_info = []
 markerList = []
 infoBubbleList = []
+review_obj = ''
 
 $(document).ready(function() {
 	
@@ -10,16 +11,16 @@ $(document).ready(function() {
 		$(".review").removeClass('slide_2')
 		$(".review").removeClass('slide_3')
 		
-		if (element != $(this)) {
+		if (review_obj != $(this)) {
 			$(this).children('.description').addClass('show')
 		}
 		
-		element = $(this)
+		review_obj = $(this)
 		
-		if (($(".review").index(element) - 1)%3 == 0) {
-			element.addClass('slide_2')
-		} else if (($(".review").index(element) - 2)%3 == 0) {
-			element.addClass('slide_3')
+		if (($(".review").index(review_obj) - 1)%3 == 0) {
+			review_obj.addClass('slide_2')
+		} else if (($(".review").index(review_obj) - 2)%3 == 0) {
+			review_obj.addClass('slide_3')
 		}
 
 	})
