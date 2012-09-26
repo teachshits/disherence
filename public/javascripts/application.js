@@ -5,13 +5,13 @@ infoBubbleList = []
 $(document).ready(function() {
 	
 	$(".review").live('tap', function(event){
+		
 		element = $(this)
+		$(".review").children('.description').removeClass('show')
 		
 		if (($(".review").index(element) - 1)%3 == 0) {
-			console.log(2)
 			element.toggleClass('slide_2')
 		} else if (($(".review").index(element) - 2)%3 == 0) {
-			console.log(3)
 			element.toggleClass('slide_3')
 		}
 
