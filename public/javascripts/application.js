@@ -5,8 +5,13 @@ infoBubbleList = []
 $(document).ready(function() {
 	
 	$(".review").live('tap', function(event){
+		element = $(this)
 		
-		console.log($(".review").index($(this)))
+		if (($(".review").index(element) - 1)%3 == 0) {
+			console.log(2)
+		} else if (($(".review").index(element) - 2)%3 == 0) {
+			console.log(3)
+		}
 
 		$(this).children('.description').toggleClass('show')
 	})
