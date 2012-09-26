@@ -24,10 +24,10 @@ class ApiController < ApplicationController
     if user = User.find_by_token(params[:token])      
       data = Review.where(:user_id => user.id)
     end
-    
+        
     return render :json => {
       :user => user.as_json,
-      :reviews => data.as_json
+      :reviews => data.as_json(:only => [:id, :remote_photo, :photo], :include => [:dish => {:only => [:name], :include => [:restaurant => {:only => [:name, :address, :id]}]}])
     }
   end
   
