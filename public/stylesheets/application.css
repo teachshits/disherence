@@ -957,7 +957,7 @@ li {
       background-image: url("/images/user_dislike_opinion.png"); }
     #user_reviews .review .description {
       line-height: 1.2em;
-      width: 195px;
+      width: 180px;
       height: 74px;
       display: none;
       background: white;

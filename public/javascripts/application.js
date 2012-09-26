@@ -4,6 +4,10 @@ infoBubbleList = []
 
 $(document).ready(function() {
 	
+	$("review").live('tap', function(event){
+		$(this).children('.description').addClass('show')
+	})
+	
 	$("#submit_location").live('tap', function(event){
 		href = "http://maps.google.com/maps/api/geocode/json?address=" + encodeURI($(this).prev('input').val()) + "&sensor=true"
 		$.ajax({
