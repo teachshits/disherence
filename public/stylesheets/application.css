@@ -423,13 +423,13 @@ li {
       #top_dishes .dish_info_container .dish_info .btn_agree_aw {
         margin-left: 15px; }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw.tapped {
-        background-position: 0 34%; }
+        background-position: 0 19%; }
       #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
         background-image: url("/images/op_btns.png");
         background-position: 100% 0;
         margin-left: 10px; }
       #top_dishes .dish_info_container .dish_info .btn_disagree_aw.tapped {
-        background-position: 100% 34%; }
+        background-position: 100% 19%; }
 
 #resataurants_button {
   background: url("/images/plate.png") no-repeat;

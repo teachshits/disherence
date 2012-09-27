@@ -448,8 +448,8 @@ $(document).ready(function() {
 			elem.addClass('tapped')
 			
 			setTimeout(function(){
-				elem.removeClass('set_agree_aw').removeClass('opacity_zero');
-				elem.removeClass('set_disagree_aw').removeClass('opacity_zero');
+				elem.removeClass('set_agree_aw').removeClass('opacity_zero').removeClass('tapped');
+				elem.removeClass('set_disagree_aw').removeClass('opacity_zero').removeClass('tapped');
 			}, 400)
 		})
 		return false
