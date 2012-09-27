@@ -3,7 +3,7 @@ markerList = []
 infoBubbleList = []
 
 $(document).ready(function() {
-	document.ontouchmove = function(e) {e.preventDefault()}
+	alert(navigator.userAgent)
 	
 	$(".review").live('tap', function(event){
 		element = $(this)
@@ -447,17 +447,19 @@ function refresh_scroll() {
 }
 
 function init_scroll() {
+	// document.ontouchmove = function(e) {e.preventDefault()}
 	// $('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
 	if (typeof myScroll != 'undefined'){
 		myScroll.destroy();
 		myScroll = null;
 	}
 	
-	
 	myScroll = new iScroll('wrapper', { 
 		scrollbarClass: 'myScrollbar'
 		// onBeforeScrollStart: function() {}
 	})
+	
+	return myScroll
 }
 
 function loader(message) {
