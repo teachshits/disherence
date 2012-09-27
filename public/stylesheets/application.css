@@ -851,13 +851,14 @@ li {
     color: #414143;
     background: #dfdfc5; }
     #map .restaurant .distance {
+      line-height: 1.7em;
       color: #6c6053;
       height: 60px;
       width: 53.33333px;
       float: left;
       display: block;
       text-align: right;
-      padding: 9px 10px 0 0; }
+      padding: 5px 10px 0 0; }
     #map .restaurant .info {
       margin-right: 10px; }
       #map .restaurant .info .restaurant_name {
