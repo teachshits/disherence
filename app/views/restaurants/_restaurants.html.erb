@@ -33,12 +33,14 @@
 			setMarkers(map, places)
 		</script>
 	</li>
+<%i = 0%>
 <% if @restaurants.count > 0 %>
 	<% @restaurants.each do |restaurant| %>
+		<%i += 1%>
 		<li>
 		<div class="restaurant">
 			<div class="info">
-				<%= remoteness(restaurant, @lat, @lng) %>
+				<div class="distance"># <%=i%><br /> <%= remoteness(restaurant, @lat, @lng) %></div>
 				<a class="restaurant_name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
 				<div class="rate">					
 					<%= yelp_rating(restaurant) %>

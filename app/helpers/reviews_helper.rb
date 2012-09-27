@@ -27,13 +27,12 @@ module ReviewsHelper
     status_add_class = ''
     
     if user && dish && review = Review.find_by_dish_id_and_user_id(dish.id,user.id)
-      op_btns_add_class = ' hidden'
-      status_add_class = review.opinion == true ? ' like' :  ' dislike'
+      status_add_class = review.opinion == true ? ' set_agree_aw' :  ' set_disagree_aw'
     end
 		
 		raw "
 		    <div class=\"btn_container\">
-      		<a class=\"status_aw\" href=\"/reviews/destroy/#{dish.id}\"><img class=\"trsp_status\" src=\"/images/trsp_status.gif\" /></a>
+      		<a class=\"status_aw#{status_add_class}\" href=\"/reviews/destroy/#{dish.id}\"><img class=\"trsp_status\" src=\"/images/trsp_status.gif\" /></a>
       		<a class=\"btn_agree_aw\" href=\"/reviews/awesome/#{dish.id}\"><img class=\"trsp_btn\" src=\"/images/trsp_btn.gif\" /></a>
       		<a class=\"btn_disagree_aw\" href=\"/reviews/awful/#{dish.id}\"><img class=\"trsp_btn\" src=\"/images/trsp_btn.gif\" /></a>
       	</div>
