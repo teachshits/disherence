@@ -460,9 +460,10 @@ function init_scroll() {
 			scrollbarClass: 'myScrollbar'
 			// onBeforeScrollStart: function() {}
 		})
+	} else {
+		$("#wrapper").css("position", "relative");
 	}
 	
-	return myScroll
 }
 
 function loader(message) {
