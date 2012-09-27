@@ -47,6 +47,11 @@
 										</div>
 										<div class="hr_b"></div>
 										<div class="description"><%= d.description %></div>
+										<div class="description">
+										<% d.reviews.where('comment != ""').each do |r| %>
+											<li><%= r.comment %></li>
+										<% end %>	
+										</div>
 										<%= awesome_buttons(session[:user],d) %>	
 									</div>
 								</div>
