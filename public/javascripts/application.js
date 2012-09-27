@@ -514,10 +514,10 @@ function ajax_get_restaurant(href) {
 
 function getLocation(pos)
 {
-	setTimeout(function(){
-		$.cookie("lat", pos.coords.latitude);
-		$.cookie("lng", pos.coords.longitude);
-	},1000)
+	alert(pos.coords.latitude)
+	alert(pos.coords.longitude)
+	$.cookie("lat", pos.coords.latitude);
+	$.cookie("lng", pos.coords.longitude);
 }
 
 function unknownLocation()
