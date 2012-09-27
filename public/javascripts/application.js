@@ -442,7 +442,7 @@ $(document).ready(function() {
 });
 
 function refresh_scroll() {
-	if (navigator.userAgent.indexOf("iPhone") != -1) {
+	if (navigator.userAgent.indexOf("iPhone") == -1) {
 		myScroll.refresh()
 	}
 }
@@ -455,13 +455,13 @@ function init_scroll() {
 		myScroll = null;
 	}
 	
-	if (navigator.userAgent.indexOf("iPhone") != -1) {
+	if (navigator.userAgent.indexOf("iPhone") == -1) {
 		myScroll = new iScroll('wrapper', { 
 			scrollbarClass: 'myScrollbar'
 			// onBeforeScrollStart: function() {}
 		})
 	} else {
-		$("#wrapper").css("position", "relative");
+		// $("#wrapper").css("position", "relative");
 	}
 	
 }
