@@ -3,7 +3,6 @@ markerList = []
 infoBubbleList = []
 
 $(document).ready(function() {
-	alert(navigator.userAgent.indexOf("iPhone"))
 	
 	$(".review").live('tap', function(event){
 		element = $(this)
@@ -443,7 +442,9 @@ $(document).ready(function() {
 });
 
 function refresh_scroll() {
-	myScroll.refresh()
+	if (navigator.userAgent.indexOf("iPhone") != -1) {
+		myScroll.refresh()
+	}
 }
 
 function init_scroll() {
@@ -454,10 +455,12 @@ function init_scroll() {
 		myScroll = null;
 	}
 	
-	myScroll = new iScroll('wrapper', { 
-		scrollbarClass: 'myScrollbar'
-		// onBeforeScrollStart: function() {}
-	})
+	if (navigator.userAgent.indexOf("iPhone") != -1) {
+		myScroll = new iScroll('wrapper', { 
+			scrollbarClass: 'myScrollbar'
+			// onBeforeScrollStart: function() {}
+		})
+	}
 	
 	return myScroll
 }
