@@ -202,10 +202,8 @@ $(document).ready(function() {
 		alert('2')
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		alert('3')
-		setInterval(function(){
-			alert('4')
-			if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
-				alert('5')
+		if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
+			setInterval(function(){
 				$.ajax({
 		        url: '/restaurants/index',
 		        type: 'get',
@@ -219,8 +217,8 @@ $(document).ready(function() {
 							alert('6')
 		        }
 		    })
-			}
-		},200);
+			},200);
+		}
 	}
 	
 	$(".map_link").live('tap', function(event){
