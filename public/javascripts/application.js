@@ -3,7 +3,7 @@ markerList = []
 infoBubbleList = []
 
 $(document).ready(function() {
-	alert(navigator.userAgent)
+	alert(navigator.userAgent.indexOf("iPhone"))
 	
 	$(".review").live('tap', function(event){
 		element = $(this)
