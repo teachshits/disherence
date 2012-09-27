@@ -362,7 +362,10 @@ li {
         font-size: 0.8em;
 		line-height: 1.4em;
 		border: none;
-		margin-bottom: 5px; }
+		margin-bottom: 5px;
+		min-height: 45px; }
+      #top_dishes .dish_info_container .dish_info .description ul {
+         margin-top: 5px; }		
       #top_dishes .dish_info_container .dish_info .hr_b {
         clear: both;
         height: 2px;
