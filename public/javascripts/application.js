@@ -200,22 +200,15 @@ $(document).ready(function() {
 		document.ontouchmove = function(e) {e.preventDefault()}				
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		
-		alert('3')
 		id = setInterval(function(){
-		
-			alert('4')
-			alert($.cookie("lat")+':'+$.cookie("lng")+':')
 			
 			if ($.cookie("clear_interval")!= null){
-				alert(22)
 				clearInterval(id);
-				$.cookie("clear_interval") = null;
+				$.cookie("clear_interval", null);
 			}
 			
 			if ($.cookie("lat") != null && $.cookie("lng") != null){
 				clearInterval(id);
-		
-				alert('5')
 				$.ajax({
 		        url: '/restaurants/index',
 		        type: 'get',
@@ -224,7 +217,6 @@ $(document).ready(function() {
 							myScroll = new iScroll('wrapper', { 
 								scrollbarClass: 'myScrollbar'
 							})
-							alert('7')
 		        }
 		    })
 			}
@@ -520,8 +512,6 @@ function ajax_get_restaurant(href) {
 
 function getLocation(pos)
 {
-	alert(pos.coords.latitude)
-	alert(pos.coords.longitude)
 	$.cookie("lat", pos.coords.latitude);
 	$.cookie("lng", pos.coords.longitude);
 }
