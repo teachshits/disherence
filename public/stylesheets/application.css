@@ -50,8 +50,11 @@ li {
   margin: 0 auto;
   left: 50%;
   margin-left: -160px; }
-  #container #scroller ul li {
-    height: 384px; }
+  #container #scroller {
+    overflow-y: auto;
+    overflow-x: hidden; }
+    #container #scroller ul li {
+      height: 384px; }
 
 #header {
   position: absolute;

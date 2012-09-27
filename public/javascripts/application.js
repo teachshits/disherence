@@ -50,9 +50,9 @@ $(document).ready(function() {
 			        dataType: 'script',
 			        success: function() {
 			          loading = false;
-						myScroll = new iScroll('wrapper', { 
-							scrollbarClass: 'myScrollbar'
-						})
+						// myScroll = new iScroll('wrapper', { 
+						// 	scrollbarClass: 'myScrollbar'
+						// })
 			        }
 			    })
 			
@@ -95,11 +95,11 @@ $(document).ready(function() {
         dataType: 'script',
         success: function() {	
 					setTimeout(function(){ loader() },0);
-					myScroll.destroy();
-					myScroll = null;
-					myScroll = new iScroll('wrapper', { 
-						scrollbarClass: 'myScrollbar'
-					})
+					// myScroll.destroy();
+					// myScroll = null;
+					// myScroll = new iScroll('wrapper', { 
+					// 	scrollbarClass: 'myScrollbar'
+					// })
         }
     })
 
@@ -118,11 +118,11 @@ $(document).ready(function() {
         dataType: 'script',
         success: function() {
 
-					myScroll.destroy();
-					myScroll = null;
-					myScroll = new iScroll('wrapper', { 
-						scrollbarClass: 'myScrollbar'
-					})		
+					// myScroll.destroy();
+					// myScroll = null;
+					// myScroll = new iScroll('wrapper', { 
+					// 	scrollbarClass: 'myScrollbar'
+					// })		
 					
 					if ($.cookie("search") != null) {
 						$('#search_map_field').removeClass('hidden')
@@ -157,7 +157,7 @@ $(document).ready(function() {
 						$('#search_map_field').removeClass('hidden')
 						$('#search_field').val(keyword);
 					}
-					myScroll.refresh();	
+					// myScroll.refresh();	
 					size_map()
 					setTimeout(function(){ loader() },10);
         }
@@ -180,7 +180,7 @@ $(document).ready(function() {
         type: 'get',
         dataType: 'script',
         success: function() {
-					myScroll.refresh();
+					// myScroll.refresh();
 					size_map()
 					setTimeout(function(){ loader() },10);
         }
@@ -214,9 +214,9 @@ $(document).ready(function() {
 		        type: 'get',
 		        dataType: 'script',
 		        success: function() {
-							myScroll = new iScroll('wrapper', { 
-								scrollbarClass: 'myScrollbar'
-							})
+							// myScroll = new iScroll('wrapper', { 
+							// 	scrollbarClass: 'myScrollbar'
+							// })
 		        }
 		    })
 			}
@@ -267,7 +267,7 @@ $(document).ready(function() {
 		
 		event.preventDefault();
 		event.stopPropagation();
-		myScroll.refresh();
+		// myScroll.refresh();
 		
 	})
 	
@@ -286,13 +286,13 @@ $(document).ready(function() {
 	$('.dish_info_container .rating').live('swipeleft tap', function(event){
 		$(this).parent().parent().addClass('expand')
 		$(this).parent().addClass('slideLeft')
-		setTimeout(function () {myScroll.refresh();}, 300);
+		// setTimeout(function () {myScroll.refresh();}, 300);
 	})
 	
 	$('.dish_info_container').live('swiperight', function(event){
 		$(this).parent().removeClass('expand')
 		$(this).removeClass('slideLeft')
-		setTimeout(function () {myScroll.refresh();}, 300);
+		// setTimeout(function () {myScroll.refresh();}, 300);
 	})
 	
 	$('.dish_info_container').live('tap', function(event){
@@ -303,7 +303,7 @@ $(document).ready(function() {
 	$('.dish').live('tap', function(){
 		$('.dish').not(this).removeClass('expand')
 		$(this).toggleClass('expand')
-		setTimeout(function () {myScroll.refresh();}, 300);
+		// setTimeout(function () {myScroll.refresh();}, 300);
 
 	})
 	
@@ -318,10 +318,10 @@ $(document).ready(function() {
 	        dataType: 'script',
 	        success: function() {
 					setTimeout(function () {
-							myScroll = new iScroll('wrapper', { 
-								scrollbarClass: 'myScrollbar', 
-								onBeforeScrollStart: function() {} 
-							})
+							// myScroll = new iScroll('wrapper', { 
+							// 	scrollbarClass: 'myScrollbar', 
+							// 	onBeforeScrollStart: function() {} 
+							// })
 							loader()
 						}, 0);
 	        }
@@ -335,7 +335,7 @@ $(document).ready(function() {
 		var flag = true
 		var page = 1
 		v_height = document.getElementById('wrapper').scrollHeight
-
+	
 		myScroll = new iScroll('wrapper', { 
 			scrollbarClass: 'myScrollbar', 
 			onBeforeScrollStart: function() {} ,
@@ -460,6 +460,20 @@ $(document).ready(function() {
 
 });
 
+function init_scroll() {
+	document.ontouchmove = function(e) {e.preventDefault()}
+	$('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
+	
+	var flag = true
+	var page = 1
+	v_height = document.getElementById('wrapper').scrollHeight
+
+	myScroll = new iScroll('wrapper', { 
+		scrollbarClass: 'myScrollbar', 
+		onBeforeScrollStart: function() {} ,
+	})
+	
+}
 
 function loader(message) {
 	$('#loader').toggleClass('hidden')
@@ -496,14 +510,14 @@ function ajax_get_restaurant(href) {
 				$('#search_restaurant').addClass('hidden')
 				$(".close_map").addClass('hidden');
 				$("#bbutton").attr('href', '/').removeClass('hidden');
-				myScroll = new iScroll('wrapper', { 
-					scrollbarClass: 'myScrollbar',
-					onBeforeScrollMove: function ( e ) {
-						if ($(".description").length > 0){
-							e.preventDefault();
-						}
-					}
-				})
+				// myScroll = new iScroll('wrapper', { 
+				// 	scrollbarClass: 'myScrollbar',
+				// 	onBeforeScrollMove: function ( e ) {
+				// 		if ($(".description").length > 0){
+				// 			e.preventDefault();
+				// 		}
+				// 	}
+				// })
 				setTimeout(function(){ loader() },10);
       }
   })

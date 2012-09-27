@@ -33,7 +33,7 @@ class Review < ActiveRecord::Base
   # end
   
   def opinion
-    self[:opinion] || "no"
+    self[:opinion] || 3
   end
   
   def photo

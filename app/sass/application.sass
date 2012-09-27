@@ -52,8 +52,11 @@ li
 	left: 50%
 	margin-left: -$width/2
 	
-	#scroller ul li
-		height: $width * 1.2
+	#scroller
+		overflow-y: auto
+		overflow-x: hidden
+		ul li
+			height: $width * 1.2
 	
 #header	
 	position: absolute

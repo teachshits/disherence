@@ -65,7 +65,7 @@ class ApiController < ApplicationController
       data = Dish.where("restaurant_id = ? AND (likes > 0 || photos > 0)", params[:restaurant_id]).order("likes - dislikes DESC")      
       
       data.each do |dish|
-        dish.opinion = "no"
+        dish.opinion = 3
         if !params[:token].blank? && user = User.find_by_token(params[:token])
           if review = Review.find_by_user_id_and_dish_id(user.id, dish.id)
             dish.opinion = review.opinion
