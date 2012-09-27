@@ -201,20 +201,22 @@ $(document).ready(function() {
 		document.ontouchmove = function(e) {e.preventDefault()}				
 		alert('2')
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
-		alert('3')
+		alert($.cookie("lat")+':'+$.cookie("lng")+':'+loading)
 		if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
+			alert($.cookie("lat")+':'+$.cookie("lng")+':'+loading)
 			setInterval(function(){
+				alert('3')
 				$.ajax({
 		        url: '/restaurants/index',
 		        type: 'get',
 		        dataType: 'script',
 		        success: function() {
-							alert('6')
+							alert('4')
 		          loading = false;
 							myScroll = new iScroll('wrapper', { 
 								scrollbarClass: 'myScrollbar'
 							})
-							alert('6')
+							alert('5')
 		        }
 		    })
 			},200);
