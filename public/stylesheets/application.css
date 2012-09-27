@@ -407,9 +407,13 @@ li {
         visibility: visible;
         opacity: 1;
         background-repeat: no-repeat;
-        background-position: 0px 65%; }
+        background-position: 0px 39%; }
       #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw {
-        background-position: 0px 97%; }
+        background-position: 0px 58%; }
+      #top_dishes .dish_info_container .dish_info .status_aw.set_agree_aw.tapped {
+        background-position: 0px 65%; }
+      #top_dishes .dish_info_container .dish_info .status_aw.set_disagree_aw.tapped {
+        background-position: 0px 75%; }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw, #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
         margin-top: 12px;
         width: 45%;
