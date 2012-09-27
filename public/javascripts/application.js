@@ -517,7 +517,7 @@ function getLocation(pos)
 	setTimeout(function(){
 		$.cookie("lat", pos.coords.latitude);
 		$.cookie("lng", pos.coords.longitude);
-	},10)
+	},1000)
 }
 
 function unknownLocation()
