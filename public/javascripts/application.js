@@ -206,6 +206,7 @@ $(document).ready(function() {
 			alert('4')
 			alert($.cookie("lat")+':'+$.cookie("lng")+':'+loading)
 			if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
+				clearInterval(id);
 				alert('5')
 				alert($.cookie("lat")+':'+$.cookie("lng")+':'+loading)
 				$.ajax({
@@ -214,12 +215,11 @@ $(document).ready(function() {
 		        dataType: 'script',
 		        success: function() {
 							alert('6')
-		          loading = false;
+		          // loading = false;
 							myScroll = new iScroll('wrapper', { 
 								scrollbarClass: 'myScrollbar'
 							})
 							alert('7')
-							clearInterval(id);
 		        }
 		    })
 			}
