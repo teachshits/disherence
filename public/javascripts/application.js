@@ -201,26 +201,28 @@ $(document).ready(function() {
 		document.ontouchmove = function(e) {e.preventDefault()}				
 		alert('2')
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
-		alert($.cookie("lat")+':'+$.cookie("lng")+':'+loading)
-		if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
+		alert('3')
+		setInterval(function(){
+			alert('4')
 			alert($.cookie("lat")+':'+$.cookie("lng")+':'+loading)
-			setInterval(function(){
-				alert('3')
+			if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
+				alert('5')
+				alert($.cookie("lat")+':'+$.cookie("lng")+':'+loading)
 				$.ajax({
 		        url: '/restaurants/index',
 		        type: 'get',
 		        dataType: 'script',
 		        success: function() {
-							alert('4')
+							alert('6')
 		          loading = false;
 							myScroll = new iScroll('wrapper', { 
 								scrollbarClass: 'myScrollbar'
 							})
-							alert('5')
+							alert('7')
 		        }
 		    })
-			},200);
-		}
+			}
+		},200);
 	}
 	
 	$(".map_link").live('tap', function(event){
