@@ -27,7 +27,7 @@ class ApiController < ApplicationController
         
     return render :json => {
       :user => user.as_json,
-      :reviews => data.as_json(:only => [:id, :remote_photo, :photo], :include => [:dish => {:only => [:name], :include => [:restaurant => {:only => [:name, :address, :id, :bill, :cuisine, :lat, :lng, :yelp_reviews_count, :yelp_rating]}]}])
+      :reviews => data.as_json(:only => [:id, :remote_photo, :photo, :opinion], :include => [:dish => {:only => [:name], :include => [:restaurant => {:only => [:name, :address, :id, :bill, :cuisine, :lat, :lng, :yelp_reviews_count, :yelp_rating]}]}])
     }
   end
   
@@ -65,7 +65,7 @@ class ApiController < ApplicationController
       data = Dish.where("restaurant_id = ? AND (likes > 0 || photos > 0)", params[:restaurant_id]).order("likes - dislikes DESC")      
       
       data.each do |dish|
-        dish.opinion = ""
+        dish.opinion = "no"
         if !params[:token].blank? && user = User.find_by_token(params[:token])
           if review = Review.find_by_user_id_and_dish_id(user.id, dish.id)
             dish.opinion = review.opinion

@@ -205,7 +205,13 @@ $(document).ready(function() {
 		
 			alert('4')
 			alert($.cookie("lat")+':'+$.cookie("lng")+':')
-		
+			
+			if ($.cookie("clear_interval")!= null){
+				alert(22)
+				clearInterval(id);
+				$.cookie("clear_interval") = null;
+			}
+			
 			if ($.cookie("lat") != null && $.cookie("lng") != null){
 				clearInterval(id);
 		
@@ -215,7 +221,6 @@ $(document).ready(function() {
 		        type: 'get',
 		        dataType: 'script',
 		        success: function() {
-							alert('6')
 							myScroll = new iScroll('wrapper', { 
 								scrollbarClass: 'myScrollbar'
 							})
@@ -521,11 +526,11 @@ function getLocation(pos)
 	$.cookie("lng", pos.coords.longitude);
 }
 
-function unknownLocation()
+function unknownLocation(interval_id)
 {
-	alert(22)
 	if ($.cookie("lat") == null || $.cookie("lng") == null){
 	  $('#ask_location').addClass('show')
+		$.cookie("clear_interval", 1)
 	}
 }
 

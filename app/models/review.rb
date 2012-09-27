@@ -32,6 +32,10 @@ class Review < ActiveRecord::Base
   #   super(:only => [:id, :opinion, :comment, :remote_photo], :include => [:user => {:only => [:name, :id, :remote_photo]}], :include => [:dish => {:only => [:name, :id], :include => [:restaurant => {:only => [:name, :address, :id]}]}])
   # end
   
+  def opinion
+    self[:opinion] || "no"
+  end
+  
   def photo
     if self[:photo].blank? 
       if !self[:remote_photo].blank?
