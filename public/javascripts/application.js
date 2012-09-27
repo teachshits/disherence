@@ -422,6 +422,7 @@ $(document).ready(function() {
 					stats.find('.like').text(json.likes	)
 					
 				}
+				elem.removeClass('tapped')
 
 			}
 		 });
@@ -435,8 +436,8 @@ $(document).ready(function() {
 		href = elem.attr('href')
 		stats = elem.parent('.btn_container').prevAll('.stats')
 		
-		elem.nextAll('.btn_agree_aw').removeClass('tapped')
-		elem.nextAll('.btn_disagree_aw').removeClass('tapped')
+		// elem.nextAll('.btn_agree_aw').removeClass('tapped')
+		// elem.nextAll('.btn_disagree_aw').removeClass('tapped')
 		
 		elem.addClass('opacity_zero')
 		
@@ -450,7 +451,7 @@ $(document).ready(function() {
 			setTimeout(function(){
 				elem.removeClass('set_agree_aw').removeClass('opacity_zero').removeClass('tapped');
 				elem.removeClass('set_disagree_aw').removeClass('opacity_zero').removeClass('tapped');
-			}, 400)
+			}, 200)
 		})
 		return false
 	})

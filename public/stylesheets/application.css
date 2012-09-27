@@ -419,13 +419,13 @@ li {
         width: 45%;
         float: left;
         background-size: 205% auto;
-        background-image: url("/images/op_btns.png"); }
+        background-image: url("/images/op_btns.png?123"); }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw {
         margin-left: 15px; }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw.tapped {
         background-position: 0 19%; }
       #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
-        background-image: url("/images/op_btns.png");
+        background-image: url("/images/op_btns.png?123");
         background-position: 100% 0;
         margin-left: 10px; }
       #top_dishes .dish_info_container .dish_info .btn_disagree_aw.tapped {
