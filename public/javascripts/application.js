@@ -3,6 +3,7 @@ markerList = []
 infoBubbleList = []
 
 $(document).ready(function() {
+	document.ontouchmove = function(e) {e.preventDefault()}
 	
 	$(".review").live('tap', function(event){
 		element = $(this)
@@ -446,7 +447,6 @@ function refresh_scroll() {
 }
 
 function init_scroll() {
-	document.ontouchmove = function(e) {e.preventDefault()}
 	// $('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
 	if (typeof myScroll != 'undefined'){
 		myScroll.destroy();
