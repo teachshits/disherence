@@ -458,8 +458,6 @@ function init_scroll() {
 		scrollbarClass: 'myScrollbar'
 		// onBeforeScrollStart: function() {}
 	})
-	
-	return myScroll
 }
 
 function loader(message) {
