@@ -196,22 +196,27 @@ $(document).ready(function() {
 	})
 	
 	if ($("#splashscreen").length > 0){
-
+		loading = true;
+		alert('1')
 		document.ontouchmove = function(e) {e.preventDefault()}				
+		alert('2')
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
-
-		var loading = true		
+		alert('3')
 		setInterval(function(){
+			alert('4')
 			if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
+				alert('5')
 				$.ajax({
 		        url: '/restaurants/index',
 		        type: 'get',
 		        dataType: 'script',
 		        success: function() {
+							alert('6')
 		          loading = false;
 							myScroll = new iScroll('wrapper', { 
 								scrollbarClass: 'myScrollbar'
 							})
+							alert('6')
 		        }
 		    })
 			}
@@ -435,9 +440,6 @@ $(document).ready(function() {
 		elem = $(this)
 		href = elem.attr('href')
 		stats = elem.parent('.btn_container').prevAll('.stats')
-		
-		// elem.nextAll('.btn_agree_aw').removeClass('tapped')
-		// elem.nextAll('.btn_disagree_aw').removeClass('tapped')
 		
 		elem.addClass('opacity_zero')
 		
