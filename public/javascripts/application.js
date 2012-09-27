@@ -422,7 +422,7 @@ $(document).ready(function() {
 					stats.find('.like').text(json.likes	)
 					
 				}
-				elem.removeClass('tapped')
+				setTimeout(function(){elem.removeClass('tapped')}, 100)
 
 			}
 		 });
@@ -451,7 +451,7 @@ $(document).ready(function() {
 			setTimeout(function(){
 				elem.removeClass('set_agree_aw').removeClass('opacity_zero').removeClass('tapped');
 				elem.removeClass('set_disagree_aw').removeClass('opacity_zero').removeClass('tapped');
-			}, 200)
+			}, 100)
 		})
 		return false
 	})
