@@ -445,6 +445,8 @@ $(document).ready(function() {
 			stats.find('.dislike').text(json.dislikes)
 			stats.find('.like').text(json.likes	)
 			
+			elem.addClass('tapped')
+			
 			setTimeout(function(){
 				elem.removeClass('set_agree_aw').removeClass('opacity_zero');
 				elem.removeClass('set_disagree_aw').removeClass('opacity_zero');
