@@ -202,7 +202,7 @@ $(document).ready(function() {
 		alert('2')
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
 		alert('3')
-		setInterval(function(){
+		id = setInterval(function(){
 			alert('4')
 			alert($.cookie("lat")+':'+$.cookie("lng")+':'+loading)
 			if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
@@ -219,6 +219,7 @@ $(document).ready(function() {
 								scrollbarClass: 'myScrollbar'
 							})
 							alert('7')
+							clearInterval(id);
 		        }
 		    })
 			}
@@ -522,6 +523,7 @@ function getLocation(pos)
 
 function unknownLocation()
 {
+	alert(22)
 	if ($.cookie("lat") == null || $.cookie("lng") == null){
 	  $('#ask_location').addClass('show')
 	}
