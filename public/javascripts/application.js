@@ -435,6 +435,9 @@ $(document).ready(function() {
 		href = elem.attr('href')
 		stats = elem.parent('.btn_container').prevAll('.stats')
 		
+		elem.nextAll('.btn_agree_aw').removeClass('tapped')
+		elem.nextAll('.btn_disagree_aw').removeClass('tapped')
+		
 		elem.addClass('opacity_zero')
 		
 		$.getJSON(href, function(json) {
