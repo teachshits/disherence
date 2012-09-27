@@ -196,26 +196,26 @@ $(document).ready(function() {
 	})
 	
 	if ($("#splashscreen").length > 0){
-		loading = true;
-		alert('1')
+		
 		document.ontouchmove = function(e) {e.preventDefault()}				
-		alert('2')
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
+		
 		alert('3')
 		id = setInterval(function(){
+		
 			alert('4')
-			alert($.cookie("lat")+':'+$.cookie("lng")+':'+loading)
-			if ($.cookie("lat") != null && $.cookie("lng") != null && loading == true){
+			alert($.cookie("lat")+':'+$.cookie("lng")+':')
+		
+			if ($.cookie("lat") != null && $.cookie("lng") != null){
 				clearInterval(id);
+		
 				alert('5')
-				alert($.cookie("lat")+':'+$.cookie("lng")+':'+loading)
 				$.ajax({
 		        url: '/restaurants/index',
 		        type: 'get',
 		        dataType: 'script',
 		        success: function() {
 							alert('6')
-		          // loading = false;
 							myScroll = new iScroll('wrapper', { 
 								scrollbarClass: 'myScrollbar'
 							})
