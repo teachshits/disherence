@@ -5,9 +5,7 @@ infoBubbleList = []
 $(document).ready(function() {
 	
 	$(".review").live('tap', function(event){
-		
 		element = $(this)
-		
 		$(".review").not(this).children('.description').removeClass('show')
 		
 		$(".review").not(this).removeClass('slide_2')
@@ -27,7 +25,7 @@ $(document).ready(function() {
 		$.ajax({
 		    url: href,
 		    type: 'GET',
-			dataType: 'html',
+				dataType: 'html',
 		    success: function(data) {
 				
 				obj = $.parseJSON($($(data.responseText)[5]).text())
@@ -50,9 +48,7 @@ $(document).ready(function() {
 			        dataType: 'script',
 			        success: function() {
 			          loading = false;
-						// myScroll = new iScroll('wrapper', { 
-						// 	scrollbarClass: 'myScrollbar'
-						// })
+								init_scroll()
 			        }
 			    })
 			
@@ -95,11 +91,7 @@ $(document).ready(function() {
         dataType: 'script',
         success: function() {	
 					setTimeout(function(){ loader() },0);
-					// myScroll.destroy();
-					// myScroll = null;
-					// myScroll = new iScroll('wrapper', { 
-					// 	scrollbarClass: 'myScrollbar'
-					// })
+					init_scroll()
         }
     })
 
@@ -117,18 +109,13 @@ $(document).ready(function() {
         type: 'get',
         dataType: 'script',
         success: function() {
-
-					// myScroll.destroy();
-					// myScroll = null;
-					// myScroll = new iScroll('wrapper', { 
-					// 	scrollbarClass: 'myScrollbar'
-					// })		
+					init_scroll()
+					size_map()
 					
 					if ($.cookie("search") != null) {
 						$('#search_map_field').removeClass('hidden')
 						$('#search_field').val($.cookie("search"))
 					}
-					size_map()
         }
     })
 	})
@@ -157,7 +144,7 @@ $(document).ready(function() {
 						$('#search_map_field').removeClass('hidden')
 						$('#search_field').val(keyword);
 					}
-					// myScroll.refresh();	
+					refresh_scroll()
 					size_map()
 					setTimeout(function(){ loader() },10);
         }
@@ -180,7 +167,7 @@ $(document).ready(function() {
         type: 'get',
         dataType: 'script',
         success: function() {
-					// myScroll.refresh();
+					refresh_scroll()
 					size_map()
 					setTimeout(function(){ loader() },10);
         }
@@ -214,9 +201,7 @@ $(document).ready(function() {
 		        type: 'get',
 		        dataType: 'script',
 		        success: function() {
-							// myScroll = new iScroll('wrapper', { 
-							// 	scrollbarClass: 'myScrollbar'
-							// })
+							init_scroll()
 		        }
 		    })
 			}
@@ -267,7 +252,7 @@ $(document).ready(function() {
 		
 		event.preventDefault();
 		event.stopPropagation();
-		// myScroll.refresh();
+		refresh_scroll()
 		
 	})
 	
@@ -286,13 +271,13 @@ $(document).ready(function() {
 	$('.dish_info_container .rating').live('swipeleft tap', function(event){
 		$(this).parent().parent().addClass('expand')
 		$(this).parent().addClass('slideLeft')
-		// setTimeout(function () {myScroll.refresh();}, 300);
+		setTimeout(function () {refresh_scroll()}, 300);
 	})
 	
 	$('.dish_info_container').live('swiperight', function(event){
 		$(this).parent().removeClass('expand')
 		$(this).removeClass('slideLeft')
-		// setTimeout(function () {myScroll.refresh();}, 300);
+		 setTimeout(function () {refresh_scroll()}, 300);
 	})
 	
 	$('.dish_info_container').live('tap', function(event){
@@ -303,7 +288,7 @@ $(document).ready(function() {
 	$('.dish').live('tap', function(){
 		$('.dish').not(this).removeClass('expand')
 		$(this).toggleClass('expand')
-		// setTimeout(function () {myScroll.refresh();}, 300);
+		setTimeout(function () {refresh_scroll()}, 300);
 
 	})
 	
@@ -318,29 +303,26 @@ $(document).ready(function() {
 	        dataType: 'script',
 	        success: function() {
 					setTimeout(function () {
-							// myScroll = new iScroll('wrapper', { 
-							// 	scrollbarClass: 'myScrollbar', 
-							// 	onBeforeScrollStart: function() {} 
-							// })
+							init_scroll()
 							loader()
 						}, 0);
 	        }
 	    })
 	})
 	
-	if ($("#wrapper").length > 0){
-		document.ontouchmove = function(e) {e.preventDefault()}
-		$('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
-		
-		var flag = true
-		var page = 1
-		v_height = document.getElementById('wrapper').scrollHeight
-	
-		myScroll = new iScroll('wrapper', { 
-			scrollbarClass: 'myScrollbar', 
-			onBeforeScrollStart: function() {} ,
-		})		
-	}
+	// if ($("#wrapper").length > 0){
+	// 	document.ontouchmove = function(e) {e.preventDefault()}
+	// 	$('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
+	// 	
+	// 	var flag = true
+	// 	var page = 1
+	// 	v_height = document.getElementById('wrapper').scrollHeight
+	// 
+	// 	myScroll = new iScroll('wrapper', { 
+	// 		scrollbarClass: 'myScrollbar', 
+	// 		onBeforeScrollStart: function() {} ,
+	// 	})		
+	// }
 	
 	$('.flag_content').live('swipeleft', function(){
 		
@@ -439,16 +421,15 @@ $(document).ready(function() {
 		
 		elem = $(this)
 		href = elem.attr('href')
-		stats = elem.parent('.btn_container').prevAll('.stats')
 		
+		stats = elem.parent('.btn_container').prevAll('.stats')
 		elem.addClass('opacity_zero')
 		
 		$.getJSON(href, function(json) {
-			
+			elem.addClass('tapped')
+						
 			stats.find('.dislike').text(json.dislikes)
 			stats.find('.like').text(json.likes	)
-			
-			elem.addClass('tapped')
 			
 			setTimeout(function(){
 				elem.removeClass('set_agree_aw').removeClass('opacity_zero').removeClass('tapped');
@@ -460,19 +441,25 @@ $(document).ready(function() {
 
 });
 
-function init_scroll() {
-	document.ontouchmove = function(e) {e.preventDefault()}
-	$('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
-	
-	var flag = true
-	var page = 1
-	v_height = document.getElementById('wrapper').scrollHeight
+function refresh_scroll() {
+	myScroll.refresh()
+}
 
+function init_scroll() {
+	// document.ontouchmove = function(e) {e.preventDefault()}
+	// $('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
+	if (typeof myScroll != 'undefined'){
+		myScroll.destroy();
+		myScroll = null;
+	}
+	
+	
 	myScroll = new iScroll('wrapper', { 
-		scrollbarClass: 'myScrollbar', 
-		onBeforeScrollStart: function() {} ,
+		scrollbarClass: 'myScrollbar'
+		// onBeforeScrollStart: function() {}
 	})
 	
+	return myScroll
 }
 
 function loader(message) {
@@ -510,14 +497,7 @@ function ajax_get_restaurant(href) {
 				$('#search_restaurant').addClass('hidden')
 				$(".close_map").addClass('hidden');
 				$("#bbutton").attr('href', '/').removeClass('hidden');
-				// myScroll = new iScroll('wrapper', { 
-				// 	scrollbarClass: 'myScrollbar',
-				// 	onBeforeScrollMove: function ( e ) {
-				// 		if ($(".description").length > 0){
-				// 			e.preventDefault();
-				// 		}
-				// 	}
-				// })
+				init_scroll()
 				setTimeout(function(){ loader() },10);
       }
   })
