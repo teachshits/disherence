@@ -2,10 +2,12 @@ module ReviewsHelper
   
   def dish_likes(user, dish)
     if user && review = Review.find_by_user_id_and_dish_id(user.id, dish.id)
-      raw review.opinion == true ? 'You <span class="like_it">like it</span>' : 'You <span class="hate_it">hate it</span>'
+      text = review.opinion == true ? 'You <span class="like_it">like it</span>' : 'You <span class="hate_it">hate it</span>'
     else
-      dish.likes >= 1000 ? ">#{dish.likes.to_s[0]}K" : dish.likes
+      text = dish.likes >= 1000 ? ">#{dish.likes.to_s[0]}K" : dish.likes
     end
+    
+    raw "<div class=\"rating#{' dislike' if review.opinion == false}\">#{text}<span></span></div>"
   end
   
   def yelp_rating(restaurant)

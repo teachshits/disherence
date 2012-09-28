@@ -320,7 +320,7 @@ li {
   #top_dishes .dish_info_container {
     -webkit-transition: left 0.3s ease;
     position: relative; }
-    #top_dishes .dish_info_container .rating.hate_it {
+    #top_dishes .dish_info_container .rating.dislike {
       background-image: url("/images/td-hate-flag.png"); }
     #top_dishes .dish_info_container .rating {
       font-family: CompPro_bold;
