@@ -429,13 +429,17 @@ $(document).ready(function() {
 		href = elem.attr('href')
 		
 		stats = elem.parent('.btn_container').prevAll('.stats')
+		rating = elem.parent('.btn_container').parent('.dish_info').prev('.rating')
+		
+		rating.removeClass('dislike')
 		elem.addClass('opacity_zero')
 		
 		$.getJSON(href, function(json) {
 			elem.addClass('tapped')
 						
 			stats.find('.dislike').text(json.dislikes)
-			stats.find('.like').text(json.likes	)
+			stats.find('.like').text(json.likes)
+			rating.text(json.likes)
 			
 			setTimeout(function(){
 				elem.removeClass('set_agree_aw').removeClass('opacity_zero').removeClass('tapped');
