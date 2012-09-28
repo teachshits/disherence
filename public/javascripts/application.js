@@ -391,6 +391,7 @@ $(document).ready(function() {
 		elem = $(this)
 		href = elem.attr('href')		
 		stats = elem.parent('.btn_container').prevAll('.stats')
+		rating = elem.parent('.btn_container').parent('.dish_info').prev('.rating')
 		
 		$.getJSON(href, function(json) {
 			if (json.url) {
@@ -404,13 +405,14 @@ $(document).ready(function() {
 					elem.prevAll('.status_aw').addClass('set_agree_aw')
 					stats.find('.like').text(json.likes)
 					stats.find('.dislike').text(json.dislikes)
-					elem.parent('.btn_container').parent('.dish_info').prev('.rating').html('<span>You <span class="like_it">like it</span></span>')
+					rating.html('<span>You <span class="like_it">like it</span></span>')
 					
 				} else {
 					
 					elem.prevAll('.status_aw').addClass('set_disagree_aw')
 					stats.find('.dislike').text(json.dislikes)
 					stats.find('.like').text(json.likes	)
+					rating.addClass('hate_it').html('<span>You <span class="hate_it">hate it</span></span>')
 					
 				}
 				setTimeout(function(){elem.removeClass('tapped')}, 100)
