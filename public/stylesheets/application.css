@@ -321,7 +321,9 @@ li {
     -webkit-transition: left 0.3s ease;
     position: relative; }
     #top_dishes .dish_info_container .rating.dislike {
-      background-image: url("/images/td-hate-flag.png"); }
+      background-image: url("/images/td-hate-flag.png");
+      color: #e1b356;
+      padding: 22px 50px 25px 40px; }
     #top_dishes .dish_info_container .rating {
       font-family: CompPro_bold;
       background: url("../images/td-rate-flag.png") no-repeat 0 center;
