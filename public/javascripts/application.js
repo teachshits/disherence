@@ -404,6 +404,7 @@ $(document).ready(function() {
 					elem.prevAll('.status_aw').addClass('set_agree_aw')
 					stats.find('.like').text(json.likes)
 					stats.find('.dislike').text(json.dislikes)
+					elem.parent('.btn_container').parent('.dish_info').prev('.rating').html('<span>You <span class="like_it">like it</span></span>')
 					
 				} else {
 					
