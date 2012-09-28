@@ -348,7 +348,7 @@ li {
         text-shadow: none;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
-        max-height: 160px;
+        max-height: 165px;
         width: 285px; }
         #top_dishes .dish_info_container .dish_info .description .user_img {
           background-position: center center;

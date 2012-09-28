@@ -269,8 +269,11 @@ $(document).ready(function() {
 	
 	// Restaurant Dish Info slide	
 	$('.dish_info_container .rating').live('swipeleft tap', function(event){
-		$(this).parent().parent().addClass('expand')
-		$(this).parent().addClass('slideLeft')
+		el = $(this).parent()
+		if (!(el.parent().hasClass('expand') && !el.hasClass('slideLeft'))) {
+			el.parent().toggleClass('expand')
+		}
+		el.toggleClass('slideLeft')
 		setTimeout(function () {refresh_scroll()}, 300);
 	})
 	

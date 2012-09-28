@@ -36,7 +36,7 @@
 								<div class="name"><%= d.name.length > 25 ? d.name[0 .. 25] + ' ...' : d.name %></div>
 								
 								<div class="dish_info_container">				
-									<div class="rating"><span><%= d.likes >= 1000 ? ">#{d.likes.to_s[0]}K" : d.likes %></span></div>
+									<div class="rating"><span><%= dish_likes(session[:user],d) %></span></div>
 									<div class="dish_info">
 										<div class="name"><%= d.name.length > 190 ? d.name[0 .. 190] + ' ...' : d.name %></div>
 										
