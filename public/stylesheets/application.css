@@ -320,6 +320,8 @@ li {
   #top_dishes .dish_info_container {
     -webkit-transition: left 0.3s ease;
     position: relative; }
+    #top_dishes .dish_info_container .rating.hate_it {
+      background-image: url("/images/td-hate-flag.png"); }
     #top_dishes .dish_info_container .rating {
       font-family: CompPro_bold;
       background: url("../images/td-rate-flag.png") no-repeat 0 center;
@@ -332,14 +334,13 @@ li {
       text-shadow: 0 2px 2px #999999;
       position: absolute;
       z-index: 99;
-      min-width: 35px;
-      line-height: 0.5em; }
-      #top_dishes .dish_info_container .rating .like_or_hate {
+      min-width: 35px; }
+      #top_dishes .dish_info_container .rating .like_it, #top_dishes .dish_info_container .rating .hate_it {
         font-size: 0.5em;
         font-family: CompPro;
         display: block;
         line-height: 0.1em;
-        margin-left: 4px 0 12px 0; }
+        margin: -1px 0 12px 4px; }
     #top_dishes .dish_info_container .dish_info {
       z-index: 98;
       background-position: left center;
