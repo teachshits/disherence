@@ -412,7 +412,7 @@ $(document).ready(function() {
 					elem.prevAll('.status_aw').addClass('set_disagree_aw')
 					stats.find('.dislike').text(json.dislikes)
 					stats.find('.like').text(json.likes	)
-					rating.addClass('hate_it').html('<span>You <span class="hate_it">hate it</span></span>')
+					rating.addClass('dislike').html('<span>You <span class="hate_it">hate it</span></span>')
 					
 				}
 				setTimeout(function(){elem.removeClass('tapped')}, 100)
