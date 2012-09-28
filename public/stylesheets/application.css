@@ -1,3 +1,6 @@
+#wrapper {
+  background: #e2e2c8; }
+
 #bbutton.hidden {
   display: none; }
 
@@ -21,7 +24,8 @@ body {
   background: #e2e2c8;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-user-select: none;
-  -webkit-text-size-adjust: none; }
+  -webkit-text-size-adjust: none;
+  background-image: url("/images/main_bg.png"); }
 
 #splashscreen {
   width: 100%; }
@@ -49,7 +53,8 @@ li {
   height: 100%;
   margin: 0 auto;
   left: 50%;
-  margin-left: -160px; }
+  margin-left: -160px;
+  background: #e2e2c8; }
   #container #scroller {
     overflow-y: auto;
     overflow-x: hidden; }
