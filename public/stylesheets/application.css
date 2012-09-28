@@ -333,6 +333,8 @@ li {
       position: absolute;
       z-index: 99;
       min-width: 35px; }
+      #top_dishes .dish_info_container .rating span {
+        font-size: 0.5em; }
     #top_dishes .dish_info_container .dish_info {
       z-index: 98;
       background-position: left center;
