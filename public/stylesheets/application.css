@@ -332,7 +332,8 @@ li {
       text-shadow: 0 2px 2px #999999;
       position: absolute;
       z-index: 99;
-      min-width: 35px; }
+      min-width: 35px;
+      line-height: 0.5em; }
       #top_dishes .dish_info_container .rating .like_or_hate {
         font-size: 0.5em; }
     #top_dishes .dish_info_container .dish_info {
