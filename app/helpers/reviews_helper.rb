@@ -2,7 +2,7 @@ module ReviewsHelper
   
   def dish_likes(user, dish)
     if user && review = Review.find_by_user_id_and_dish_id(user.id, dish.id)
-      review.opinion == true ? raw "You <span>like it</span>" : raw "You <span>hate it</span>"
+      raw review.opinion == true ? "You <span>like it</span>" : "You <span>hate it</span>"
     else
       dish.likes >= 1000 ? ">#{dish.likes.to_s[0]}K" : dish.likes
     end
