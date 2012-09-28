@@ -335,7 +335,11 @@ li {
       min-width: 35px;
       line-height: 0.5em; }
       #top_dishes .dish_info_container .rating .like_or_hate {
-        font-size: 0.5em; }
+        font-size: 0.5em;
+        font-family: CompPro;
+        display: block;
+        line-height: 0.1em;
+        margin-left: 4px 0 12px 0; }
     #top_dishes .dish_info_container .dish_info {
       z-index: 98;
       background-position: left center;
