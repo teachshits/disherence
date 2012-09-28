@@ -7,7 +7,7 @@ module ReviewsHelper
       text = dish.likes >= 1000 ? ">#{dish.likes.to_s[0]}K" : dish.likes
     end
     
-    raw "<div class=\"rating#{' dislike' if review.opinion == false}\">#{text}<span></span></div>"
+    raw "<div class=\"rating#{' dislike' if review && review.opinion == false}\">#{text}<span></span></div>"
   end
   
   def yelp_rating(restaurant)
