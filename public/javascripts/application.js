@@ -88,21 +88,23 @@ $(document).ready(function() {
 	$("#fb_share_button, #tw_share_button").live('tap', function(event){
 		obj = $(this)
 		loader('Sending to Facebook')	
-		
-		$.ajax({
-	        url: obj.prev().prev().attr('href') + "&text=" + obj.prev().val(),
-	        type: 'get',
-	        dataType: 'json',
-	        success: function() {
-						loader('Shared successfully!')
-						setTimeout(function(){
-							loader()
-							obj.removeClass('show')
-							obj.prev().removeClass('show')
-							obj.prev().prev().removeClass('pressed')
-						},1000)
-	        }
-	  })
+
+		setTimeout(function(){		
+			$.ajax({
+		        url: obj.prev().prev().attr('href') + "&text=" + obj.prev().val(),
+		        type: 'get',
+		        dataType: 'json',
+		        success: function() {
+							loader('Shared successfully!')
+							setTimeout(function(){
+								loader()
+								obj.removeClass('show')
+								obj.prev().removeClass('show')
+								obj.prev().prev().removeClass('pressed')
+							},1000)
+		        }
+		  })
+		})
 		return false
 	})
 	
