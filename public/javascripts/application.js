@@ -92,7 +92,7 @@ $(document).ready(function() {
 		},1000)
 		
 		$.ajax({
-	        url: obj.prev().prev().attr('href') + "&text=" + obj.prev().text(),
+	        url: obj.prev().prev().attr('href') + "&text=" + obj.prev().val(),
 	        type: 'get',
 	        dataType: 'json',
 	        success: function() {
