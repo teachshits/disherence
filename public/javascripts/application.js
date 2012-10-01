@@ -69,32 +69,41 @@ $(document).ready(function() {
 		
 	})
 	
-	$("#share #fb, #share #tw").live('tap', function(event){
+	$("#share #fb").live('tap', function(event){
 		button = $(this)		
 		button.toggleClass('pressed')
 		$("#fb_share_text").toggleClass('show')
+		$("#fb_share_button").toggleClass('show')
 
 	})
 	
-	// $("#share #fb").live('tap', function(event){
-	// 	button = $(this)		
-	// 	button.toggleClass('pressed')
-	// 	setTimeout(function(){
-	// 		button.parent().addClass('hidden')
-	// 		loader('Sending to Facebook')	
-	// 	},1000)
-	// 	
-	// 	$.ajax({
-	//         url: button.attr('href'),
-	//         type: 'get',
-	//         dataType: 'json',
-	//         success: function() {
-	// 				loader(loader('Shared successfully!'))	
-	// 				setTimeout(function(){ loader() },1000)
-	//         }
-	//     })
-	// 	return false
-	// })
+	$("#share #tw").live('tap', function(event){
+		button = $(this)		
+		button.toggleClass('pressed')
+		$("#tw_share_text").toggleClass('show')
+		$("#tw_share_button").toggleClass('show')
+
+	})
+	
+	$("#fb_share_button, #tw_share_button").live('tap', function(event){
+		button = $(this)		
+		button.toggleClass('pressed')
+		setTimeout(function(){
+			button.parent().addClass('hidden')
+			loader('Sending to Facebook')	
+		},1000)
+		
+		$.ajax({
+	        url: button.attr('href'),
+	        type: 'get',
+	        dataType: 'json',
+	        success: function() {
+					loader(loader('Shared successfully!'))	
+					setTimeout(function(){ loader() },1000)
+	        }
+	    })
+		return false
+	})
 	
 	$("#user_img_profile").live('tap', function(event){
 		loader('Loading your data')

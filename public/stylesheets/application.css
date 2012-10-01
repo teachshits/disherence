@@ -139,12 +139,16 @@ li {
     padding: 3%;
     border: none;
     border-radius: 3px;
-    font-size: 0.5em; }
+    font-size: 0.5em;
+    display: none; }
   #loader #fb_share_button, #loader #tw_share_button, #share #fb_share_button, #share #tw_share_button, #ask_location #fb_share_button, #ask_location #tw_share_button {
     font-size: 1em;
-    margin: 5px auto 10px auto;
+    margin: 0px auto 15px auto;
     display: block;
-    width: 50%; }
+    width: 50%;
+    display: none; }
+  #loader #fb_share_text.show, #loader #tw_share_text.show, #loader #fb_share_button.show, #loader #tw_share_button.show, #share #fb_share_text.show, #share #tw_share_text.show, #share #fb_share_button.show, #share #tw_share_button.show, #ask_location #fb_share_text.show, #ask_location #tw_share_text.show, #ask_location #fb_share_button.show, #ask_location #tw_share_button.show {
+    display: block; }
 
 #loader.hidden, #share.hidden {
   display: none; }
