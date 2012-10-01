@@ -156,7 +156,8 @@ li {
 
 #share {
   background-image: none;
-  padding: 2%; }
+  padding: 2%;
+  z-index: 99; }
   #share #fb, #share #tw {
     cursor: pointer;
     background-image: url("../images/b_share_tf.png");

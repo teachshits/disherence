@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
         
         fb_share_url += "&link=" + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
         fb_share_url += "&message=" + CGI.escape("#{'Check out ' + restaurant_name} http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
-        fb_share_url += "&description=#{text}%20#{restaurant_name}"
+        fb_share_url += "&description=#{text}"
         fb_share_url += "&name=#{restaurant_name}"
         fb_share_url += "&caption=#{restaurant_name}"       
         
