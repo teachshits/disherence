@@ -104,7 +104,7 @@ $(document).ready(function() {
 							},1000)
 		        }
 		  })
-		})
+		}, 10)
 		return false
 	})
 	
