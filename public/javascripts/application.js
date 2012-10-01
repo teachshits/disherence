@@ -97,10 +97,10 @@ $(document).ready(function() {
 						loader('Shared successfully!')
 						setTimeout(function(){
 							loader()
-							obj.removeClass('show')
-							obj.prev().removeClass('show')
-							obj.prev().prev().removeClass('pressed')
 						},1000)
+						obj.removeClass('show')
+						obj.prev().removeClass('show')
+						obj.prev().prev().removeClass('pressed')
 	        }
 	  })
 		return false
