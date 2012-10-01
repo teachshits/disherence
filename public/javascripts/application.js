@@ -6,6 +6,7 @@ $(document).ready(function() {
 	
 	$(".close_popup").live('tap', function(event){
 		$(this).parent().addClass('hidden')
+		$(".b_share").removeClass('pressed')
 		return false
 	})
 	
