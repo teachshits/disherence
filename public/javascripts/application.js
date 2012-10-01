@@ -100,6 +100,8 @@ $(document).ready(function() {
 							obj.removeClass('show')
 							obj.prev().removeClass('show')
 							obj.prev().prev().removeClass('pressed')
+							obj.parent().addClass('hidden')
+							$(".b_share").removeClass('pressed')
 							loader()
 						},1000)
 	        }
