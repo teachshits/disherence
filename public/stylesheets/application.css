@@ -132,7 +132,7 @@ li {
     height: 12px;
     display: block;
     float: right;
-    margin: 0 5px 0 -5px; }
+    margin: 5px 5px 0px -5px; }
 
 #loader.hidden, #share.hidden {
   display: none; }
