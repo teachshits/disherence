@@ -12,6 +12,25 @@ class User < ActiveRecord::Base
   require 'digest/md5'
   require 'cgi' 
   
+  def self.share_on_twitter(user_token, restaurant_id, text)
+   
+    if user = find_by_token(user_token)
+      if restaurant = Restaurant.find_by_id(restaurant_id) 
+      
+        restaurant_name = CGI.escape(restaurant.name).gsub("+", "%20")
+        restaurant_address = CGI.escape(restaurant.address).gsub("+", "%20")
+        
+        if !user.oauth_token_secret.blank? && !user.oauth_token.blank?
+          client = Twitter::Client.new(:oauth_token => user.oauth_token, :oauth_token_secret => user.oauth_token_secret)
+          caption = "Check out #{restaurant_name} on @disherence (#{restaurant_address}) " + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
+          client.update(caption)
+        end
+        
+      end
+    end
+    
+  end
+  
   def self.share_on_facebook(user_token, restaurant_id, text)
     
     if user = find_by_token(user_token)

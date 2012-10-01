@@ -1,14 +1,14 @@
 require 'carrierwave/orm/activerecord'
 
 class Review < ActiveRecord::Base
-  attr_accessible :dish_id, :user_id, :opinion, :comment, :remote_photo
+  attr_accessible :dish_id, :user_id, :opinion, :comment, :remote_photo, :photo
   
   belongs_to :dish
   belongs_to :user
   
   validates :user_id, :uniqueness => {:scope => [:dish_id, :opinion]}
 
-  # mount_uploader :photo, ReviewPhotoUploader
+  mount_uploader :photo, ReviewPhotoUploader
 
   scope :with_photos, where('reviews.remote_photo IS NOT NULL')
 
