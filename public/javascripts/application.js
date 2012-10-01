@@ -94,13 +94,14 @@ $(document).ready(function() {
 	        type: 'get',
 	        dataType: 'json',
 	        success: function() {
+						loader()
 						loader('Shared successfully!')
 						setTimeout(function(){
+							obj.removeClass('show')
+							obj.prev().removeClass('show')
+							obj.prev().prev().removeClass('pressed')
 							loader()
 						},1000)
-						obj.removeClass('show')
-						obj.prev().removeClass('show')
-						obj.prev().prev().removeClass('pressed')
 	        }
 	  })
 		return false
