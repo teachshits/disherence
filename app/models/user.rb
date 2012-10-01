@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
         fb_share_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
         fb_share_url += "?access_token=#{user.fb_access_token}"
         
-        fb_share_url += "&link=" + CGI.escape("#{'Check out ' + restaurant_name} http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
-        fb_share_url += "&message=" + CGI.escape("#{text} http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
-        fb_share_url += "&description=#{restaurant_name}"
+        fb_share_url += "&link=" + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
+        fb_share_url += "&message=" + CGI.escape("#{'Check out ' + restaurant_name} http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
+        fb_share_url += "&description=#{text}%20#{restaurant_name}"
         fb_share_url += "&name=#{restaurant_name}"
         fb_share_url += "&caption=#{restaurant_name}"       
         
