@@ -74,7 +74,7 @@ $(document).ready(function() {
 		button.toggleClass('pressed')
 		$("#fb_share_text").toggleClass('show')
 		$("#fb_share_button").toggleClass('show')
-
+		return false
 	})
 	
 	$("#share #tw").live('tap', function(event){
@@ -82,7 +82,7 @@ $(document).ready(function() {
 		button.toggleClass('pressed')
 		$("#tw_share_text").toggleClass('show')
 		$("#tw_share_button").toggleClass('show')
-
+		return false
 	})
 	
 	$("#fb_share_button, #tw_share_button").live('tap', function(event){
