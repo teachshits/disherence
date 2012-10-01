@@ -125,7 +125,7 @@ li {
   background-size: 12%; }
   #loader p, #share p, #ask_location p {
     margin: 10px 0; }
-  #loader .close_share, #share .close_share, #ask_location .close_share {
+  #loader .close_popup, #share .close_popup, #ask_location .close_popup {
     background-image: url("/images/close_popup.png");
     width: 12px;
     height: 12px;

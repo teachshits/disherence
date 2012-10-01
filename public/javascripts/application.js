@@ -4,6 +4,10 @@ infoBubbleList = []
 
 $(document).ready(function() {
 	
+	$(".close_popup").live('tap', function(event){
+		$(this).parrent().addClass('hidden')
+	})
+	
 	$(".review").live('tap', function(event){
 		element = $(this)
 		$(".review").not(this).children('.description').removeClass('show')
