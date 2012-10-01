@@ -86,20 +86,21 @@ $(document).ready(function() {
 	})
 	
 	$("#fb_share_button, #tw_share_button").live('tap', function(event){
-		button = $(this)		
-		button.toggleClass('pressed')
+		obj = $(this)
 		setTimeout(function(){
-			button.parent().addClass('hidden')
 			loader('Sending to Facebook')	
 		},1000)
 		
 		$.ajax({
-	        url: button.attr('href'),
+	        url: obj.prev().prev().attr('href') + "&text" = obj.prev().value(),
 	        type: 'get',
 	        dataType: 'json',
 	        success: function() {
 					loader(loader('Shared successfully!'))	
 					setTimeout(function(){ loader() },1000)
+					obj.removeClass('show')
+					obj.prev().removeClass('show')
+					obj.prev().prev().removeClass('pressed')
 	        }
 	    })
 		return false

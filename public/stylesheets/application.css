@@ -140,10 +140,11 @@ li {
     border: none;
     border-radius: 3px;
     font-size: 0.5em;
-    display: none; }
+    display: none;
+    margin: 0px auto; }
   #loader #fb_share_button, #loader #tw_share_button, #share #fb_share_button, #share #tw_share_button, #ask_location #fb_share_button, #ask_location #tw_share_button {
     font-size: 1em;
-    margin: 0px auto 15px auto;
+    margin: 10px auto;
     display: block;
     width: 50%;
     display: none; }
