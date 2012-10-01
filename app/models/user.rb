@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
         fb_share_url += "?access_token=#{user.fb_access_token}"
         
         fb_share_url += "&link=" + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
-        fb_share_url += "&message=Check out #{restaurant_name}" + CGI.escape(" http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
+        fb_share_url += "&message=Check%20out%20#{restaurant_name}" + CGI.escape(" http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
         fb_share_url += "&description=#{text}"
         fb_share_url += "&name=#{restaurant_name}"
         fb_share_url += "&caption=#{restaurant_name}"       
