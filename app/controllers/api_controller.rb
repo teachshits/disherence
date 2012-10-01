@@ -8,9 +8,9 @@ class ApiController < ApplicationController
       params[:token] = session[:user].token if params[:token].blank?
     
       if params[:provider] == 'facebook'
-        User.share_on_facebook(params[:token], params[:restaurant_id]) 
+        User.share_on_facebook(params[:token], params[:restaurant_id], params[:text]) 
       elsif params[:provider] == 'twitter'
-        User.share_on_twitter(params[:token], params[:restaurant_id]) 
+        User.share_on_twitter(params[:token], params[:restaurant_id], params[:text]) 
       end
       
       return render :json => { :result => 1}

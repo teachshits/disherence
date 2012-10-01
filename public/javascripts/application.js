@@ -87,6 +87,7 @@ $(document).ready(function() {
 	
 	$("#fb_share_button, #tw_share_button").live('tap', function(event){
 		obj = $(this)
+		
 		setTimeout(function(){
 			loader('Sending to Facebook')	
 		},1000)
@@ -96,13 +97,15 @@ $(document).ready(function() {
 	        type: 'get',
 	        dataType: 'json',
 	        success: function() {
-					loader(loader('Shared successfully!'))	
-					setTimeout(function(){ loader() },1000)
-					obj.removeClass('show')
-					obj.prev().removeClass('show')
-					obj.prev().prev().removeClass('pressed')
+						loader('Shared successfully!')
+						setTimeout(function(){
+							loader()
+							obj.removeClass('show')
+							obj.prev().removeClass('show')
+							obj.prev().prev().removeClass('pressed')
+						},1000)
 	        }
-	    })
+	  })
 		return false
 	})
 	

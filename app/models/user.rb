@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   require 'digest/md5'
   require 'cgi' 
   
-  def self.share_on_facebook(user_token, restaurant_id)
+  def self.share_on_facebook(user_token, restaurant_id, text)
     
     if user = find_by_token(user_token)
       if restaurant = Restaurant.find_by_id(restaurant_id)
@@ -22,8 +22,8 @@ class User < ActiveRecord::Base
         fb_share_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
         fb_share_url += "?access_token=#{user.fb_access_token}"
         
-        fb_share_url += "&link=" + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
-        fb_share_url += "&message=" + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
+        fb_share_url += "&link=" + CGI.escape("#{'Check out ' + restaurant_name} http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
+        fb_share_url += "&message=" + CGI.escape("#{text} http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
         fb_share_url += "&description=#{restaurant_name}"
         fb_share_url += "&name=#{restaurant_name}"
         fb_share_url += "&caption=#{restaurant_name}"       
