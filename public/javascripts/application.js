@@ -87,10 +87,7 @@ $(document).ready(function() {
 	
 	$("#fb_share_button, #tw_share_button").live('tap', function(event){
 		obj = $(this)
-		
-		setTimeout(function(){
-			loader('Sending to Facebook')	
-		},1000)
+		loader('Sending to Facebook')	
 		
 		$.ajax({
 	        url: obj.prev().prev().attr('href') + "&text=" + obj.prev().val(),
