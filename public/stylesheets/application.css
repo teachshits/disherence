@@ -123,11 +123,14 @@ li {
   background-repeat: no-repeat;
   background-position: center 80%;
   background-size: 12%; }
-  #loader .close, #share .close, #ask_location .close {
+  #loader p, #share p, #ask_location p {
+    margin: 10px 0; }
+  #loader .close_share, #share .close_share, #ask_location .close_share {
     background-image: url("/images/close_popup.png");
     width: 12px;
     height: 12px;
-    display: block; }
+    display: block;
+    float: right; }
 
 #loader.hidden, #share.hidden {
   display: none; }
