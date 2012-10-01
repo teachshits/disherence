@@ -3,8 +3,10 @@
 	<p>Share info</p>
 	<a id="fb" href="/api/share?provider=facebook&restaurant_id=<%= @restaurant.id %>"><img src="/images/trsp.gif" /></a>
 	<textarea id="fb_share_text"></textarea>
+	<input type="button" name="send" value="share" id="fb_share_button"/>
 	<a id="tw" href="/api/share?provider=twitter&restaurant_id=<%= @restaurant.id %>" ><img src="/images/trsp.gif" /></a>
 	<textarea id="tw_share_text"></textarea>
+	<input type="button" name="send" value="share" id="tw_share_button"/>
 </div>
 		<div id="wrapper"> 
 			<div id="scroller">
