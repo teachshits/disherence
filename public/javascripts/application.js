@@ -89,21 +89,20 @@ $(document).ready(function() {
 		obj = $(this)
 		loader('Sending to Facebook')	
 
-		setTimeout(function(){		
-			$.ajax({
-		        url: obj.prev().prev().attr('href') + "&text=" + obj.prev().val(),
-		        type: 'get',
-		        dataType: 'json',
-		        success: function() {
-							loader('Shared successfully!')
-							setTimeout(function(){
-								loader()
-								obj.removeClass('show')
-								obj.prev().removeClass('show')
-								obj.prev().prev().removeClass('pressed')
-							},1000)
-		        }
-		  })
+		$.ajax({
+	        url: obj.prev().prev().attr('href') + "&text=" + obj.prev().val(),
+	        type: 'get',
+	        dataType: 'json',
+	        success: function() {
+						loader('Shared successfully!')
+						setTimeout(function(){
+							loader()
+							obj.removeClass('show')
+							obj.prev().removeClass('show')
+							obj.prev().prev().removeClass('pressed')
+						},1000)
+	        }
+	  })
 		return false
 	})
 	
