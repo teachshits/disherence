@@ -5,7 +5,8 @@ infoBubbleList = []
 $(document).ready(function() {
 	
 	$(".close_popup").live('tap', function(event){
-		$(this).parrent().addClass('hidden')
+		$(this).parent().addClass('hidden')
+		return false
 	})
 	
 	$(".review").live('tap', function(event){
