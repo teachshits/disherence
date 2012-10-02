@@ -73,5 +73,7 @@ module Disherence
     config.fb_auth_url += '&scope=email,publish_actions,offline_access'
     config.fb_auth_url += "&state=#{rand(10)}"
     
+    config.tw_auth_url = 'https://api.twitter.com/oauth/authorize'
+    
   end
 end

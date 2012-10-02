@@ -105,7 +105,7 @@ li {
 .empty {
   background-image: url("../images/empty.png"); }
 
-#loader, #share, #ask_location {
+#loader, #share, #ask_location, #login_popup {
   background: rgba(0, 0, 0, 0.85);
   border-radius: 3px;
   position: absolute;
@@ -123,9 +123,9 @@ li {
   background-repeat: no-repeat;
   background-position: center 80%;
   background-size: 12%; }
-  #loader p, #share p, #ask_location p {
+  #loader p, #share p, #ask_location p, #login_popup p {
     margin: 10px 0; }
-  #loader .close_popup, #share .close_popup, #ask_location .close_popup {
+  #loader .close_popup, #share .close_popup, #ask_location .close_popup, #login_popup .close_popup {
     background-image: url("/images/close_popup.png");
     background-size: 100%;
     width: 12px;
@@ -133,7 +133,7 @@ li {
     display: block;
     float: right;
     margin: 5px 5px 0px -5px; }
-  #loader #fb_share_text, #loader #tw_share_text, #share #fb_share_text, #share #tw_share_text, #ask_location #fb_share_text, #ask_location #tw_share_text {
+  #loader #fb_share_text, #loader #tw_share_text, #share #fb_share_text, #share #tw_share_text, #ask_location #fb_share_text, #ask_location #tw_share_text, #login_popup #fb_share_text, #login_popup #tw_share_text {
     width: 90%;
     height: 85px;
     padding: 3%;
@@ -142,23 +142,23 @@ li {
     font-size: 0.5em;
     display: none;
     margin: 0px auto; }
-  #loader #fb_share_button, #loader #tw_share_button, #share #fb_share_button, #share #tw_share_button, #ask_location #fb_share_button, #ask_location #tw_share_button {
+  #loader #fb_share_button, #loader #tw_share_button, #share #fb_share_button, #share #tw_share_button, #ask_location #fb_share_button, #ask_location #tw_share_button, #login_popup #fb_share_button, #login_popup #tw_share_button {
     font-size: 1em;
     margin: 10px auto;
     display: block;
     width: 50%;
     display: none; }
-  #loader #fb_share_text.show, #loader #tw_share_text.show, #loader #fb_share_button.show, #loader #tw_share_button.show, #share #fb_share_text.show, #share #tw_share_text.show, #share #fb_share_button.show, #share #tw_share_button.show, #ask_location #fb_share_text.show, #ask_location #tw_share_text.show, #ask_location #fb_share_button.show, #ask_location #tw_share_button.show {
+  #loader #fb_share_text.show, #loader #tw_share_text.show, #loader #fb_share_button.show, #loader #tw_share_button.show, #share #fb_share_text.show, #share #tw_share_text.show, #share #fb_share_button.show, #share #tw_share_button.show, #ask_location #fb_share_text.show, #ask_location #tw_share_text.show, #ask_location #fb_share_button.show, #ask_location #tw_share_button.show, #login_popup #fb_share_text.show, #login_popup #tw_share_text.show, #login_popup #fb_share_button.show, #login_popup #tw_share_button.show {
     display: block; }
 
-#loader.hidden, #share.hidden {
+#loader.hidden, #share.hidden, #login_popup.hidden {
   display: none; }
 
-#share {
+#share, #login_popup {
   background-image: none;
   padding: 2%;
   z-index: 99; }
-  #share #fb, #share #tw {
+  #share #fb, #share #tw, #login_popup #fb, #login_popup #tw {
     cursor: pointer;
     background-image: url("../images/b_share_tf.png");
     background-size: 100%;
@@ -167,13 +167,16 @@ li {
     height: 48px;
     margin-bottom: 5px;
     display: block; }
-  #share #tw {
+  #share #tw, #login_popup #tw {
     margin: 0;
     background-position: 0 69%; }
-  #share #fb.pressed {
+  #share #fb.pressed, #login_popup #fb.pressed {
     background-position: 0 32%; }
-  #share #tw.pressed {
+  #share #tw.pressed, #login_popup #tw.pressed {
     background-position: 0 100%; }
+
+#login_popup #fb, #login_popup #tw {
+  background-image: url("../images/b_login_tf.png"); }
 
 #ask_location {
   background-image: none;

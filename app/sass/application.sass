@@ -106,7 +106,7 @@ li
 .empty
 	background-image: url('../images/empty.png')
 
-#loader, #share, #ask_location
+#loader, #share, #ask_location, #login_popup
 	background: rgba(0, 0, 0, 0.85)
 	border-radius: 3px
 	position: absolute
@@ -154,10 +154,10 @@ li
 		display: block
 		
 	
-#loader.hidden, #share.hidden
+#loader.hidden, #share.hidden, #login_popup.hidden
 	display: none
 
-#share
+#share, #login_popup
 	background-image: none
 	padding: 2%
 	z-index: 99
@@ -177,6 +177,10 @@ li
 		background-position: 0 32%
 	#tw.pressed
 		background-position: 0 100%
+
+#login_popup
+	#fb, #tw
+		background-image: url('../images/b_login_tf.png')
 		
 #ask_location
 	background-image: none

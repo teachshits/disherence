@@ -421,8 +421,9 @@ $(document).ready(function() {
 		
 		$.getJSON(href, function(json) {
 			if (json.url) {
-				loader('Connecting to Facebook')
-				window.location.href = json.url
+				$("#login_popup").removeClass('hidden')
+				// loader('Connecting to Facebook')
+				// window.location.href = json.url
 			} else {
 				
 				elem.addClass('tapped')
