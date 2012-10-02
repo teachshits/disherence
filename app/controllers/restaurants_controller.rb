@@ -57,6 +57,10 @@ class RestaurantsController < ApplicationController
     url_params = url_params.join('&')
     
     @back_url = "restaurants?#{url_params}"
+    
+    @fb_url = Rails.application.config.fb_auth_url
+    @tw_url = ''
+    
   end
   
   def info
@@ -70,5 +74,14 @@ class RestaurantsController < ApplicationController
       return render :json => [0]
     end
   end
+  
+  
+  # private
+  # 
+  # def oauth
+  #   consumer_key = 'XQlhrLVWUJK7q1AK9uTeQ'
+  #   consumer_secret = 'M2iDOlkxW8Y7430Q6HgFquY1haZnaEqIVrFhyE0XIo'
+  #   @oauth ||= Twitter.OAuth.new(consumer_key, consumer_secret)
+  # end
   
 end

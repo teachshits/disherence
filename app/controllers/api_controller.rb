@@ -93,7 +93,6 @@ class ApiController < ApplicationController
     if params[:provider] == 'facebook' && params[:access_token]
       session = User.authenticate_by_facebook(:fb_access_token => params[:access_token], :fb_valid_to => params[:fb_valid_to]) 
     elsif params[:provider] == 'twitter' && params[:oauth_token] && params[:oauth_token_secret]
-      # oauth.set_callback_url("http://#{request.host}#{":#{request.port}" unless request.port == 80}/users/auth_callback")
       session = User.authenticate_by_twitter(params[:oauth_token], params[:oauth_token_secret], params[:email])
     end
     
@@ -147,16 +146,6 @@ class ApiController < ApplicationController
       return render :json => { :result => 0}
     end
     return render :json => { :result => 0}
-  end
-  
-  # private
-  # 
-  # def oauth
-  #   consumer_key = 'XQlhrLVWUJK7q1AK9uTeQ'
-  #   consumer_secret = 'M2iDOlkxW8Y7430Q6HgFquY1haZnaEqIVrFhyE0XIo'
-  #   
-  #   @oauth ||= Twitter.OAuth.new(consumer_key, consumer_secret)
-  # end
-  
+  end  
   
 end
