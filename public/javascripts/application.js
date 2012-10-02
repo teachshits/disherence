@@ -175,7 +175,6 @@ $(document).ready(function() {
 					setTimeout(function(){ loader() },10);
         }
     })
-
 	})
 	
 	$("#search_on_map").live('tap', function(event){
