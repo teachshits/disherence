@@ -141,7 +141,7 @@ class User < ActiveRecord::Base
         user.oauth_token_secret = oauth_token_secret
         user.save
       else
-        user = create_user_from_twitter(client, email)
+        user = create_user_from_twitter(client, oauth_token, oauth_token_secret, email)
       end
     rescue
       nil
@@ -149,14 +149,14 @@ class User < ActiveRecord::Base
     user
   end
   
-  def self.create_user_from_twitter(client, email = nil)
+  def self.create_user_from_twitter(client, oauth_token, oauth_token_secret, email = nil)
     user = User.create({
       :name => client.user.name,
       :email => email,  
       :twitter_id => client.user.id,
       :remote_photo => client.user.profile_image_url,
-      :oauth_token => client.oauth_token,
-      :oauth_token_secret => client.oauth_token_secret
+      :oauth_token => oauth_token,
+      :oauth_token_secret => oauth_token_secret
     })
     user
   end
