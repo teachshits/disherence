@@ -17,6 +17,7 @@
 		<script src="/javascripts/application.js?<%=Time.now().to_i%>"></script>
 	</head>
 <body>
+	<%= session[:oauth_token] + ":" + session[:oauth_secret] %>
 	<div id="container">
 		<div id="loader" class="hidden">Loading</div>
 		<%= yield %>

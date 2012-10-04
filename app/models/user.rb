@@ -143,11 +143,10 @@ class User < ActiveRecord::Base
       else
         user = create_user_from_twitter(client, email)
       end
-      token = Session.get_token(user)
     rescue
       nil
     end
-    {:name => user.name, :fb_access_token =>user.fb_access_token, :fb_valid_to => user.fb_valid_to.to_i, :oauth_token => user.oauth_token, :oauth_token_secret => user.oauth_token_secret, :token => token, :user_id => user.id, :photo => user.user_photo, :facebook_id => user.facebook_id ||= 0, :twitter_id => user.twitter_id ||= 0} unless token.nil?
+    user
   end
   
   def self.create_user_from_twitter(client, email = nil)
@@ -159,12 +158,6 @@ class User < ActiveRecord::Base
       :oauth_token => client.oauth_token,
       :oauth_token_secret => client.oauth_token_secret
     })
-    # UserPreference.create({:user_id => user.id})
-    # 
-    # get_twitter_friends(client, user)
-    # get_twitter_followers(client, user)
-    # follow_dishfm_user(user.id)
-    
     user
   end
   

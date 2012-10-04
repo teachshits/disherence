@@ -10,7 +10,8 @@ gem 'httparty', '~> 0.8.3'
 gem 'carrierwave', '~> 0.6.2'
 gem 'mini_magick', '~> 3.4'
 gem 'kaminari'
-gem "twitter", "~> 2.1.0"
+gem "oauth"
+gem "twitter", :git => "https://github.com/sferik/twitter"
 
 gem 'rails_admin'
 gem 'devise'
