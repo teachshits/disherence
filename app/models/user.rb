@@ -154,7 +154,7 @@ class User < ActiveRecord::Base
       :name => client.user.name,
       :email => email,  
       :twitter_id => client.user.id,
-      :remote_photo_url => client.profile_image,
+      :remote_photo => client.user.profile_image_url,
       :oauth_token => client.oauth_token,
       :oauth_token_secret => client.oauth_token_secret
     })
