@@ -39,14 +39,15 @@
 		<%i += 1%>
 		<li>
 		<div class="restaurant">
+			<div class="distance"># <%=i%><br /> <%= remoteness(restaurant, @lat, @lng) %></div>
 			<div class="info">
-				<div class="distance"># <%=i%><br /> <%= remoteness(restaurant, @lat, @lng) %></div>
 				<a class="restaurant_name" href="restaurants/show/<%= restaurant.id %>"><%= restaurant.name.length > 15 ? restaurant.name[0..12] + '...' : restaurant.name %></a>
 				<div class="rate">					
 					<%= yelp_rating(restaurant) %>
 					<div class="rating"><div class="ico"></div><%= restaurant.yelp_reviews_count %> on Yelp</div>
 				</div>
 			</div>
+			
 			<div class="address"><%= restaurant.address.length > 30 ? restaurant.address[0..27] + '...' : restaurant.address %></div>
 			<div class="stats"><%= restaurant.cuisine.length > 30 ? restaurant.cuisine[0..27] + '...' : restaurant.cuisine %> | <% restaurant.bill.to_i.times do %>$<% end %></div>	
 		</div>

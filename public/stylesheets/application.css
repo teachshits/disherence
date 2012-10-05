@@ -831,15 +831,15 @@ li {
   #search_map_field #search_field:focus {
     outline: none; }
   #search_map_field #search_field {
-    background-image: url("/images/search_ico.png");
+    background-image: url("/images/search_ico.png?123456");
     background-position: 5px;
     background-repeat: no-repeat;
-    background-size: 7%;
+    background-size: contain;
     border-radius: 3px;
-    padding: 6px 8px 5px 26px;
+    padding: 6px 8px 5px 25px;
     float: left;
     font-size: 1em;
-    width: 205px;
+    width: 69%;
     margin: 7px;
     border: none;
     font-size: 0.8em; }
@@ -925,29 +925,30 @@ li {
       height: 60px;
       width: 17%;
       float: left;
-      display: block;
       text-align: right;
       padding: 6px 10px 0 0; }
     #map .restaurant .info {
-      margin-right: 10px; }
+      margin-right: 10px;
+      float: left; }
       #map .restaurant .info .restaurant_name {
         float: left;
         font-size: 1.7em;
-        width: 160px; }
-      #map .restaurant .info .rate {
-        float: right; }
-      #map .restaurant .info .rating {
         clear: both;
-        font-size: 0.8em;
-        color: #808086;
-        text-shadow: none;
-        float: right; }
-      #map .restaurant .info .ico {
-        float: left;
-        width: 12px;
-        height: 14px;
-        background: url("../images/rr-users.png") no-repeat 0 center;
-        background-size: 10px; }
+        width: 160px; }
+    #map .restaurant .rate {
+      float: right; }
+    #map .restaurant .rating {
+      clear: both;
+      font-size: 0.8em;
+      color: #808086;
+      text-shadow: none;
+      float: right; }
+    #map .restaurant .ico {
+      float: left;
+      width: 12px;
+      height: 14px;
+      background: url("../images/rr-users.png") no-repeat 0 center;
+      background-size: 10px; }
     #map .restaurant .address {
       float: left;
       background: url("../images/rr-marker.png") no-repeat;
@@ -957,7 +958,8 @@ li {
       text-shadow: none;
       float: left;
       font-family: CompPro_bold;
-      width: 250px; }
+      clear: both;
+      margin: -10px 0 0 75px; }
   #map .hr {
     margin-left: 64px;
     margin-right: 10px;
