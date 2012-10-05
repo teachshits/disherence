@@ -48,18 +48,18 @@ li {
   list-style: none; }
 
 #container {
-  width: 360px;
+  width: 320px;
   position: absolute;
   height: 100%;
   margin: 0 auto;
   left: 50%;
-  margin-left: -180px;
+  margin-left: -160px;
   background: #e2e2c8; }
   #container #scroller {
     overflow-y: auto;
     overflow-x: hidden; }
     #container #scroller ul li {
-      height: 432px; }
+      height: 384px; }
 
 #header {
   position: absolute;
@@ -85,7 +85,7 @@ li {
     cursor: pointer; }
 
 .trsp {
-  width: 360px;
+  width: 320px;
   display: block; }
 
 .star {
@@ -350,7 +350,7 @@ li {
         float: left;
         border: 3px solid white; }
   #top_dishes .dish.expand {
-    height: 360px; }
+    height: 320px; }
   #top_dishes .dish_info_container.slideLeft {
     left: -100%; }
   #top_dishes .dish_info_container {
@@ -394,7 +394,7 @@ li {
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         max-height: 165px;
-        width: 90%; }
+        width: 88%; }
         #top_dishes .dish_info_container .dish_info .description .user_img {
           background-position: center center;
           background-size: cover;
@@ -416,7 +416,7 @@ li {
         height: 2px;
         margin: 0 0 0 7%;
         background: #9d9c9d;
-        width: 90%; }
+        width: 88%; }
       #top_dishes .dish_info_container .dish_info .stats {
         font-size: 1.7em;
         margin-right: 15px; }
@@ -485,7 +485,7 @@ li {
         background-size: 205% auto;
         background-image: url("/images/op_btns.png?123"); }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw {
-        margin-left: 15px; }
+        margin-left: 3.5%; }
       #top_dishes .dish_info_container .dish_info .btn_agree_aw.tapped {
         background-position: 0 19%; }
       #top_dishes .dish_info_container .dish_info .btn_disagree_aw {
@@ -910,7 +910,7 @@ li {
     padding: 0;
     height: 19px; }
   #map #search_map_canvas {
-    height: 180px;
+    height: 160px;
     width: 100%;
     -webkit-transition: height 0.3s ease; }
   #map #search_map_canvas.expand_search_map_canvas {
@@ -923,7 +923,7 @@ li {
       line-height: 1.6em;
       color: #6c6053;
       height: 60px;
-      width: 53.33333px;
+      width: 17%;
       float: left;
       display: block;
       text-align: right;
