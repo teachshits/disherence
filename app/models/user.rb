@@ -17,13 +17,12 @@ class User < ActiveRecord::Base
     if user = find_by_token(user_token)
       if restaurant = Restaurant.find_by_id(restaurant_id) 
       
-        # restaurant_name = CGI.escape(restaurant.name).gsub("+", "%20")
-        restaurant_address = CGI.escape(restaurant.address).gsub("+", "%20")
+        text = text > 120 ? text[0..115] + '... ' : text + ' '
+        text += "http://demo.disherence.com/restaurants/show/#{restaurant_id}"
         
         if !user.oauth_token_secret.blank? && !user.oauth_token.blank?
           client = Twitter::Client.new(:oauth_token => user.oauth_token, :oauth_token_secret => user.oauth_token_secret)
-          caption = "Check out #{restaurant.name} on @disherence http://demo.disherence.com/restaurants/show/#{restaurant_id}"
-          client.update(caption)
+          client.update(text)
         end
         
       end
