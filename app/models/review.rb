@@ -8,7 +8,7 @@ class Review < ActiveRecord::Base
   
   validates :user_id, :uniqueness => {:scope => [:dish_id, :opinion]}
 
-  # mount_uploader :photo, ReviewPhotoUploader
+  mount_uploader :local_photo, ReviewPhotoUploader
 
   scope :with_photos, where('reviews.remote_photo IS NOT NULL')
 
@@ -37,14 +37,18 @@ class Review < ActiveRecord::Base
   # end
   
   def photo
-    if self[:photo].blank? 
+    if self[:local_photo].blank? 
       if !self[:remote_photo].blank?
         self[:remote_photo]
+      elsif review = Review.where("dish_id = ? AND local_photo IS NOT NULL", self[:dish_id]).first
+        review.local_photo
       elsif review = Review.where("dish_id = ? AND remote_photo IS NOT NULL", self[:dish_id]).first
         review.remote_photo
       else
         ""
       end
+    else
+      self[:local_photo]
     end
   end
   
@@ -81,18 +85,18 @@ class Review < ActiveRecord::Base
   end
   
   
-  def self.awesome(dish_id, user_id)
+  def self.awesome(dish_id, user_id, photo = nil)
     if rd = find_by_dish_id_and_user_id(dish_id,user_id)
       rd.destroy
     end
-    self.create(:dish_id => dish_id, :user_id => user_id, :opinion => true)
+    self.create(:dish_id => dish_id, :user_id => user_id, :opinion => true, :local_photo => photo)
   end
   
-  def self.awful(dish_id, user_id)
+  def self.awful(dish_id, user_id, photo = nil)
     if rd = find_by_dish_id_and_user_id(dish_id,user_id)
       rd.destroy
     end
-    self.create(:dish_id => dish_id, :user_id => user_id, :opinion => false)
+    self.create(:dish_id => dish_id, :user_id => user_id, :opinion => false, :local_photo => photo)
   end
   
   def self.agree(review_id, user_id)
