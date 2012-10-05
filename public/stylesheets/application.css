@@ -215,7 +215,7 @@ li {
   height: auto; }
 
 #top_dishes {
-  width: 320px; }
+  width: 100%; }
   #top_dishes ul li {
     border-bottom: 1px #e8ebcb solid;
     position: relative; }
@@ -350,9 +350,9 @@ li {
         float: left;
         border: 3px solid white; }
   #top_dishes .dish.expand {
-    height: 320px; }
+    height: 360px; }
   #top_dishes .dish_info_container.slideLeft {
-    left: -320px; }
+    left: -100%; }
   #top_dishes .dish_info_container {
     -webkit-transition: left 0.3s ease;
     position: relative; }
@@ -365,7 +365,7 @@ li {
       background-size: 100%;
       font-size: 2em;
       color: #d2ffbe;
-      left: 230px;
+      left: 74%;
       padding: 16px 36px 25px 40px;
       top: 5px;
       text-shadow: 1px 1px 0px #444444;
@@ -383,18 +383,18 @@ li {
       background-position: left center;
       background-size: 100%;
       position: absolute;
-      left: 320px;
-      width: 320px;
+      left: 100%;
+      width: 100%;
       background-image: url("../images/pli-bg.png"); }
       #top_dishes .dish_info_container .dish_info .description {
-        margin: 10px 23px;
+        margin: 10px 7%;
         font-size: 1.2em;
         color: white;
         text-shadow: none;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         max-height: 165px;
-        width: 285px; }
+        width: 90%; }
         #top_dishes .dish_info_container .dish_info .description .user_img {
           background-position: center center;
           background-size: cover;
@@ -414,9 +414,9 @@ li {
       #top_dishes .dish_info_container .dish_info .hr_b {
         clear: both;
         height: 2px;
-        margin: 0 0 0 23px;
+        margin: 0 0 0 7%;
         background: #9d9c9d;
-        width: 280px; }
+        width: 90%; }
       #top_dishes .dish_info_container .dish_info .stats {
         font-size: 1.7em;
         margin-right: 15px; }
@@ -860,7 +860,7 @@ li {
   background-size: 100%;
   z-index: 1;
   position: absolute;
-  bottom: 1%;
+  bottom: 10px;
   width: 96%;
   left: 2%;
   cursor: pointer; }
