@@ -48,18 +48,18 @@ li {
   list-style: none; }
 
 #container {
-  width: 320px;
+  width: 360px;
   position: absolute;
   height: 100%;
   margin: 0 auto;
   left: 50%;
-  margin-left: -160px;
+  margin-left: -180px;
   background: #e2e2c8; }
   #container #scroller {
     overflow-y: auto;
     overflow-x: hidden; }
     #container #scroller ul li {
-      height: 384px; }
+      height: 432px; }
 
 #header {
   position: absolute;
@@ -85,7 +85,7 @@ li {
     cursor: pointer; }
 
 .trsp {
-  width: 320px;
+  width: 360px;
   display: block; }
 
 .star {
@@ -910,7 +910,7 @@ li {
     padding: 0;
     height: 19px; }
   #map #search_map_canvas {
-    height: 160px;
+    height: 180px;
     width: 100%;
     -webkit-transition: height 0.3s ease; }
   #map #search_map_canvas.expand_search_map_canvas {
