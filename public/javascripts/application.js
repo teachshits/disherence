@@ -86,8 +86,9 @@ $(document).ready(function() {
 	})
 	
 	$("#fb_share_button, #tw_share_button").live('tap', function(event){
-		obj = $(this)
-		loader('Sending to Facebook')	
+		var obj = $(this)
+		var ldr_text = $(this).attr('id') == 'fb_share_button' ? 'Sending to Facebook' : 'Sending to Twitter'
+		loader(ldr_text)	
 
 		$.ajax({
 	        url: obj.prev().prev().attr('href') + "&text=" + obj.prev().val(),
