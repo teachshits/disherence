@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
         
         if !user.oauth_token_secret.blank? && !user.oauth_token.blank?
           client = Twitter::Client.new(:oauth_token => user.oauth_token, :oauth_token_secret => user.oauth_token_secret)
-          caption = "Check out  best dishes in #{restaurant_name} on @disherence " + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", " ")
+          caption = "Check out #{restaurant_name} on @disherence " + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", " ")
           client.update(caption)
         end
         
