@@ -48,18 +48,18 @@ li {
   list-style: none; }
 
 #container {
-  width: 480px;
+  width: 360px;
   position: absolute;
   height: 100%;
   margin: 0 auto;
   left: 50%;
-  margin-left: -240px;
+  margin-left: -180px;
   background: #e2e2c8; }
   #container #scroller {
     overflow-y: auto;
     overflow-x: hidden; }
     #container #scroller ul li {
-      height: 576px; }
+      height: 432px; }
 
 #header {
   position: absolute;
@@ -85,7 +85,7 @@ li {
     cursor: pointer; }
 
 .trsp {
-  width: 480px;
+  width: 360px;
   display: block; }
 
 .star {
