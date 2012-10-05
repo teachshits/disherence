@@ -1,7 +1,7 @@
 require 'carrierwave/orm/activerecord'
 
 class User < ActiveRecord::Base
-  attr_accessible :fb_access_token, :fb_valid_to, :email, :name, :facebook_id, :gender, :current_city, :yelp_profile_id, :remote_photo_url, :remote_photo, :token
+  attr_accessible :fb_access_token, :fb_valid_to, :email, :name, :facebook_id, :gender, :current_city, :yelp_profile_id, :remote_photo_url, :remote_photo, :token, :twitter_id, :oauth_token, :oauth_token_secret
   has_many :reviews
   
   validates_uniqueness_of :email, :if => lambda { !self.email.nil? }
