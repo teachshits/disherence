@@ -146,6 +146,7 @@ class User < ActiveRecord::Base
     rescue
       nil
     end
+    user.update_attributes(:token => Digest::MD5.hexdigest(user.created_at.to_s).to_s) if user.token.blank?
     user
   end
   
