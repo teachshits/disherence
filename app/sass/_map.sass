@@ -54,9 +54,9 @@
 	background-size: 100%
 	z-index: 1
 	position: absolute
-	top: 279px
-	width: 309px
-	left: 6px
+	top: 20%
+	width: 96%
+	left: 2%
 	cursor: pointer
 #search_on_map.pressed
 	background-position: 0 100%
@@ -76,7 +76,8 @@
 #container #scroller #map ul li
 	height: auto
 #map
-
+	width: 100%
+	
 	.map_link
 		color: #fff
 		text-shadow: none
@@ -103,10 +104,9 @@
 		padding: 0
 		height: 19px
 		
-	width: $review_w
 	#search_map_canvas
-		height: $review_w - $review_w * 0.5
-		width: $review_w
+		height: $width - $width * 0.5
+		width: 100%
 		-webkit-transition: height 0.3s ease
 	#search_map_canvas.expand_search_map_canvas
 		height: 330px

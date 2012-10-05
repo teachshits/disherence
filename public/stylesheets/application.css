@@ -860,9 +860,9 @@ li {
   background-size: 100%;
   z-index: 1;
   position: absolute;
-  top: 279px;
-  width: 309px;
-  left: 6px;
+  top: 20%;
+  width: 96%;
+  left: 2%;
   cursor: pointer; }
 
 #search_on_map.pressed {
@@ -884,7 +884,7 @@ li {
   height: auto; }
 
 #map {
-  width: 320px; }
+  width: 100%; }
   #map .map_link {
     color: white;
     text-shadow: none;
@@ -909,8 +909,8 @@ li {
     padding: 0;
     height: 19px; }
   #map #search_map_canvas {
-    height: 160px;
-    width: 320px;
+    height: 180px;
+    width: 100%;
     -webkit-transition: height 0.3s ease; }
   #map #search_map_canvas.expand_search_map_canvas {
     height: 330px; }
