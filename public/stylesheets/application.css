@@ -48,18 +48,18 @@ li {
   list-style: none; }
 
 #container {
-  width: 360px;
+  width: 320px;
   position: absolute;
   height: 100%;
   margin: 0 auto;
   left: 50%;
-  margin-left: -180px;
+  margin-left: -160px;
   background: #e2e2c8; }
   #container #scroller {
     overflow-y: auto;
     overflow-x: hidden; }
     #container #scroller ul li {
-      height: 432px; }
+      height: 384px; }
 
 #header {
   position: absolute;
@@ -85,7 +85,7 @@ li {
     cursor: pointer; }
 
 .trsp {
-  width: 360px;
+  width: 320px;
   display: block; }
 
 .star {
@@ -860,7 +860,7 @@ li {
   background-size: 100%;
   z-index: 1;
   position: absolute;
-  top: 18%;
+  bottom: 1%;
   width: 96%;
   left: 2%;
   cursor: pointer; }
@@ -881,7 +881,8 @@ li {
   background-position: 0 100%; }
 
 #container #scroller #map ul li {
-  height: auto; }
+  height: auto;
+  position: relative; }
 
 #map {
   width: 100%; }
@@ -909,7 +910,7 @@ li {
     padding: 0;
     height: 19px; }
   #map #search_map_canvas {
-    height: 180px;
+    height: 160px;
     width: 100%;
     -webkit-transition: height 0.3s ease; }
   #map #search_map_canvas.expand_search_map_canvas {
