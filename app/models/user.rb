@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     if user = find_by_token(user_token)
       if restaurant = Restaurant.find_by_id(restaurant_id) 
       
-        text = text > 120 ? text[0..115] + '... ' : text + ' '
+        text = text.length > 120 ? text[0..115] + '... ' : text + ' '
         text += "http://demo.disherence.com/restaurants/show/#{restaurant_id}"
         
         if !user.oauth_token_secret.blank? && !user.oauth_token.blank?
