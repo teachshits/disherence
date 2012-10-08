@@ -3,12 +3,7 @@ markerList = []
 infoBubbleList = []
 
 $(document).ready(function() {
-	
-	if (navigator.userAgent.indexOf("Android") != -1) {
-		$("#content").css('width', '360px')
-		$("#content").css('margin-left', '180px')
-		$("#search_map_canvas").css('height', '180px')
-	}
+	android_size()
 	
 	$(".close_popup").live('tap', function(event){
 		$(this).parent().addClass('hidden')
@@ -488,6 +483,7 @@ function refresh_scroll() {
 	if (navigator.userAgent.indexOf("Android") != -1 || navigator.userAgent.indexOf("iPhone") != -1 || navigator.userAgent.indexOf("iPad") != -1) {
 		myScroll.refresh()
 	}
+	android_size()
 }
 
 function init_scroll() {
@@ -506,7 +502,16 @@ function init_scroll() {
 	} else {
 		$("#wrapper").css("position", "relative");
 	}
-	
+	android_size()
+
+}
+
+function android_size(){
+	if (navigator.userAgent.indexOf("Android") != -1) {
+		$("#container").addClass('android')
+		$("#search_map_canvas").addClass('android')
+		$(".dish").addClass('android')
+	}
 }
 
 function loader(message) {
