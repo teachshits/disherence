@@ -498,7 +498,7 @@ function init_scroll() {
 		myScroll = new iScroll('wrapper', { 
 			scrollbarClass: 'myScrollbar'
 			// onBeforeScrollStart: function() {}
-	// 	})
+		})
 	// } else {
 	// 	$("#wrapper").css("position", "relative");
 	// }
