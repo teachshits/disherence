@@ -118,7 +118,9 @@ $(document).ready(function() {
         type: 'get',
         dataType: 'script',
         success: function() {	
-					setTimeout(function(){ loader() },0);
+					alert(1)
+					setTimeout(function(){ loader() },100);
+					alert(2)
 					init_scroll()
         }
     })
@@ -489,7 +491,9 @@ function refresh_scroll() {
 function init_scroll() {
 	// document.ontouchmove = function(e) {e.preventDefault()}
 	// $('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
+	alert(2)
 	if (typeof myScroll != 'undefined'){
+		alert(3)
 		myScroll.destroy();
 		myScroll = null;
 	}
