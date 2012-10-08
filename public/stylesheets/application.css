@@ -365,7 +365,7 @@ li {
       background-size: 100%;
       font-size: 2em;
       color: #d2ffbe;
-      left: 74%;
+      right: -20px;
       padding: 16px 36px 25px 40px;
       top: 5px;
       text-shadow: 1px 1px 0px #444444;
@@ -836,24 +836,25 @@ li {
     background-repeat: no-repeat;
     background-size: contain;
     border-radius: 3px;
-    padding: 6px 8px 5px 25px;
+    padding: 6px 3% 6px 7%;
     float: left;
     font-size: 1em;
-    width: 69%;
-    margin: 7px;
+    width: 65%;
+    margin: 6px 1%;
     border: none;
     font-size: 0.8em; }
   #search_map_field #search_me {
     font-weight: bold;
     border-radius: 3px;
-    padding: 6px;
-    font-size: 15px;
+    padding: 6px 0;
     color: #726658;
     background-color: #eff0d1;
     font-size: 0.9em;
     float: left;
     margin-top: 6px;
-    cursor: pointer; }
+    cursor: pointer;
+    width: 22%;
+    text-align: center; }
 
 #search_on_map {
   background-image: url("/images/b_search_here.png");
@@ -927,16 +928,15 @@ li {
       float: left;
       text-align: right;
       padding: 6px 10px 0 0; }
-    #map .restaurant .info {
-      margin-right: 10px;
+    #map .restaurant .restaurant_name {
+      font-size: 1.7em;
       float: left; }
-      #map .restaurant .info .restaurant_name {
-        float: left;
-        font-size: 1.7em;
-        clear: both;
-        width: 160px; }
+    #map .restaurant .info {
+      float: left; }
     #map .restaurant .rate {
-      float: right; }
+      position: absolute;
+      top: 0;
+      right: 10px; }
     #map .restaurant .rating {
       clear: both;
       font-size: 0.8em;
@@ -953,13 +953,13 @@ li {
       float: left;
       background: url("../images/rr-marker.png") no-repeat;
       background-size: 12px;
-      padding-left: 20px; }
+      padding-left: 20px;
+      clear: both; }
     #map .restaurant .stats {
       text-shadow: none;
       float: left;
       font-family: CompPro_bold;
-      clear: both;
-      margin: -10px 0 0 75px; }
+      clear: both; }
   #map .hr {
     margin-left: 64px;
     margin-right: 10px;
