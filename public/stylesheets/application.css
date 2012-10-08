@@ -58,8 +58,6 @@ li {
   #container #scroller {
     overflow-y: auto;
     overflow-x: hidden; }
-    #container #scroller ul li {
-      height: 384px; }
 
 #header {
   position: absolute;
@@ -83,10 +81,6 @@ li {
     float: right;
     border: 3px solid white;
     cursor: pointer; }
-
-.trsp {
-  width: 320px;
-  display: block; }
 
 .star {
   float: left;
