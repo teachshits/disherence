@@ -59,7 +59,7 @@ li {
     overflow-y: auto;
     overflow-x: hidden; }
     #container #scroller ul li {
-      max-height: 384px; }
+      max-height: 10000px; }
 
 #container.android {
   width: 360px;
