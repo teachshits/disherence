@@ -449,9 +449,9 @@ li {
         margin-top: 1px;
         text-shadow: 0 2px 2px #999999; }
       #top_dishes .dish_info_container .dish_info .name {
-        line-height: 0.8em;
+        line-height: 0.9em;
         padding: 10px 0 5px 30px;
-        width: 290px;
+        width: 60%;
         background: none; }
       #top_dishes .dish_info_container .dish_info .status_aw.opacity_zero {
         opacity: 0; }
