@@ -499,11 +499,13 @@ function init_scroll() {
 	}
 	
 	if (navigator.userAgent.indexOf("Android") != -1 || navigator.userAgent.indexOf("iPhone") != -1 || navigator.userAgent.indexOf("iPad") != -1) {
+		alert(4)
 		myScroll = new iScroll('wrapper', { 
 			scrollbarClass: 'myScrollbar'
 			// onBeforeScrollStart: function() {}
 		})
 	} else {
+		alert(5)
 		$("#wrapper").css("position", "relative");
 	}
 	android_size()
