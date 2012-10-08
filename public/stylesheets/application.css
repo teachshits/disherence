@@ -1004,7 +1004,7 @@ li {
 
 #user_reviews {
   line-height: 4em;
-  margin: 0 10px; }
+  margin: 0 3%; }
   #user_reviews .count {
     font-family: Helvetica, Arial;
     font-weight: bold;
