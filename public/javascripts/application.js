@@ -479,7 +479,7 @@ $(document).ready(function() {
 });
 
 function refresh_scroll() {
-	if (navigator.userAgent.indexOf("Android") != -1 || navigator.userAgent.indexOf("iPad") != -1 || navigator.userAgent.indexOf("iPad") != -1) {
+	if (navigator.userAgent.indexOf("Android") != -1 || navigator.userAgent.indexOf("iPhone") != -1 || navigator.userAgent.indexOf("iPad") != -1) {
 		myScroll.refresh()
 	}
 }
@@ -492,7 +492,7 @@ function init_scroll() {
 		myScroll = null;
 	}
 	
-	if (navigator.userAgent.indexOf("Android") != -1 || navigator.userAgent.indexOf("iPad") != -1 || navigator.userAgent.indexOf("iPad") != -1) {
+	if (navigator.userAgent.indexOf("Android") != -1 || navigator.userAgent.indexOf("iPhone") != -1 || navigator.userAgent.indexOf("iPad") != -1) {
 		myScroll = new iScroll('wrapper', { 
 			scrollbarClass: 'myScrollbar'
 			// onBeforeScrollStart: function() {}
