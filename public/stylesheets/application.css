@@ -1003,7 +1003,8 @@ li {
   margin: 0 10px; }
 
 #user_reviews {
-  line-height: 4em; }
+  line-height: 4em;
+  margin: 0 10px; }
   #user_reviews .count {
     font-family: Helvetica, Arial;
     font-weight: bold;
