@@ -117,10 +117,8 @@ $(document).ready(function() {
         url: 'users/profile',
         type: 'get',
         dataType: 'script',
-        success: function() {	
-					alert(1)
+        success: function() {
 					setTimeout(function(){ loader() },100);
-					alert(2)
 					init_scroll()
         }
     })
@@ -491,23 +489,19 @@ function refresh_scroll() {
 function init_scroll() {
 	// document.ontouchmove = function(e) {e.preventDefault()}
 	// $('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
-	alert(2)
 	if (typeof myScroll != 'undefined'){
-		alert(3)
 		myScroll.destroy();
 		myScroll = null;
 	}
 	
-	// if (navigator.userAgent.indexOf("Android") != -1 || navigator.userAgent.indexOf("iPhone") != -1 || navigator.userAgent.indexOf("iPad") != -1) {
-	// 	alert(4)
+	if (navigator.userAgent.indexOf("Android") != -1 || navigator.userAgent.indexOf("iPhone") != -1 || navigator.userAgent.indexOf("iPad") != -1) {
 		myScroll = new iScroll('wrapper', { 
 			scrollbarClass: 'myScrollbar'
 			// onBeforeScrollStart: function() {}
 		})
-	// } else {
-	// 	alert(5)
-	// 	$("#wrapper").css("position", "relative");
-	// }
+	} else {
+		$("#wrapper").css("position", "relative");
+	}
 	android_size()
 
 }
