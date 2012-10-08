@@ -4,6 +4,12 @@ infoBubbleList = []
 
 $(document).ready(function() {
 	
+	if (navigator.userAgent.indexOf("Android") != -1) {
+		$("#content").css('width', '360px')
+		$("#content").css('margin-left', '180px')
+		$("#search_map_canvas").css('height', '180px')
+	}
+	
 	$(".close_popup").live('tap', function(event){
 		$(this).parent().addClass('hidden')
 		$(".b_share").removeClass('pressed')
