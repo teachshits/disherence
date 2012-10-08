@@ -336,6 +336,8 @@ li {
       width: auto;
       padding-left: 28px;
       clear: both; }
+    #top_dishes .dish .comment.hidden {
+      display: none; }
     #top_dishes .dish .comment {
       position: absolute;
       color: white;

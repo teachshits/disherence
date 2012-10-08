@@ -301,12 +301,14 @@ $(document).ready(function() {
 			el.parent().toggleClass('expand')
 		}
 		el.toggleClass('slideLeft')
+		el.next('.comment').addClass('hidden')
 		setTimeout(function () {refresh_scroll()}, 300);
 	})
 	
 	$('.dish_info_container').live('swiperight', function(event){
 		$(this).parent().removeClass('expand')
 		$(this).removeClass('slideLeft')
+		el.next('.comment').removeClass('hidden')
 		 setTimeout(function () {refresh_scroll()}, 300);
 	})
 	
