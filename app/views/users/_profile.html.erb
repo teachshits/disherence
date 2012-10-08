@@ -8,24 +8,26 @@
 				<%= @reviews.where("opinion = 0").count %> awful
 			</p>
 		</div>
-		<div class="hr">
+	</li>
+	<li>
+		<div class="hr"></div>
 		<div id="user_reviews">
 			<div class="count"><%= @reviews.count %> opinions</div>
-			<% i = 0 %>
-			<% @reviews.each do |review| %>
-			<% i += 1 %>
-				<div class="review">
-					<img class="review_img" src="<%= review.photo %>" />
-					<div class="opinion_img <%= review.opinion == true ? 'like' : 'dislike' %>"><img src="/images/trsp.gif" /></div>
-					<div class="description">
-						<div class="name"><%= review.dish.name %></div>
-						<div class="place"><%= review.dish.restaurant.name %></div>
-						<div class="address"><%= review.dish.restaurant.address %></div>
-					</div>
-				</div>
-			<%if i % 3 == 0%><br /><%end%>
-			<% end %>	
-		</div>
 		</div>
 	</li>
+	<% i = 0 %>
+	<% @reviews.each do |review| %>
+	<% i += 1 %>
+		<li>
+			<div class="review">
+				<img class="review_img" src="<%= review.photo %>" />
+				<div class="opinion_img <%= review.opinion == true ? 'like' : 'dislike' %>"><img src="/images/trsp.gif" /></div>
+				<div class="description">
+					<div class="name"><%= review.dish.name %></div>
+					<div class="place"><%= review.dish.restaurant.name %></div>
+					<div class="address"><%= review.dish.restaurant.address %></div>
+				</div>
+			</div>
+	<%if i % 3 == 0%><br /></li><%end%>
+	<% end %>	
 </ul>
