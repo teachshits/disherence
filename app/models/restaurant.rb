@@ -11,6 +11,10 @@ class Restaurant < ActiveRecord::Base
   Rfeet = Rmiles * 5282   # radius in feet
   Rmeters = Rkm * 1000    # radius in meters
   
+  def bill
+    self[:bill] || ""
+  end
+  
   def self.near(lat, lng, rad = 1)
     where("((ACOS(
     	SIN(lat * PI() / 180) * SIN(? * PI() / 180) + 

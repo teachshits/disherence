@@ -7,11 +7,6 @@ $("#wvb").live('tap', function(event){
 	return false
 })
 
-$("#thelist li").live('tap', function(event){
-	$(this).addClass('tapped')
-	return false
-})
-
 $(document).ready(function() {
 	android_size()
 	
@@ -214,10 +209,11 @@ $(document).ready(function() {
 	})
 	
 	$(".restaurant_name").live('tap', function(event){
+		$(this).parent().parent().parent().addClass('tapped')
 		loader('Analyzing millions of reviews')
-		event.preventDefault();
 		ajax_get_restaurant($(this).attr('href'))
 		setTimeout(function(){ loader() },10);
+		return false
 	})
 	
 	if ($("#splashscreen").length > 0){
