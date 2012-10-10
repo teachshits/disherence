@@ -487,6 +487,14 @@ $(document).ready(function() {
 
 });
 
+function check_Android() {
+	return (navigator.userAgent.indexOf("Android") != -1) ? 1 : 0
+}
+
+function check_iPhone() {
+	return (navigator.userAgent.indexOf("iPhone") != -1) ? 1 : 0
+}
+
 function check_mobile() {
 	if (navigator.userAgent.indexOf("Android") != -1 || 
 			navigator.userAgent.indexOf("iPhone") != -1 || 
