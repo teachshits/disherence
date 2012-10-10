@@ -861,7 +861,7 @@ li {
 #web_search {
   float: left;
   display: block;
-  margin: -4px 0 0 9px;
+  margin: 6px 0 0 9px;
   position: absolute; }
 
 #web_search.pressed {
@@ -889,6 +889,7 @@ li {
   height: 37px;
   padding: 0;
   padding-bottom: 3px;
+  margin-top: -15px;
   font-family: Helvetica, Arial; }
   #search_map_field #search_field:focus {
     outline: none; }
