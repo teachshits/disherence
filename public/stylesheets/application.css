@@ -961,7 +961,8 @@ li {
 
 #container #scroller #map ul li {
   height: auto;
-  position: relative; }
+  position: relative;
+  padding-top: 5px; }
 
 #map ul li.tapped {
   background: #eff0d1; }
@@ -992,7 +993,6 @@ li {
     padding: 0;
     height: 19px; }
   #map .restaurant {
-    margin-top: 10px;
     color: #414143;
     background: #dfdfc5; }
     #map .restaurant .distance {
@@ -1010,7 +1010,7 @@ li {
       float: left; }
     #map .restaurant .rate {
       position: absolute;
-      top: 0;
+      top: 10px;
       right: 10px; }
     #map .restaurant .rating {
       clear: both;
