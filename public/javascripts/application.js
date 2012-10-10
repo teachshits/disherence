@@ -7,6 +7,11 @@ $("#wvb").live('tap', function(event){
 	return false
 })
 
+$("#thelist li").live('tap', function(event){
+	$(this).addClass('tapped')
+	return false
+})
+
 $(document).ready(function() {
 	android_size()
 	

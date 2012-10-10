@@ -173,7 +173,7 @@ li {
   width: 560px;
   background: rgba(0, 0, 0, 0.65);
   left: 50%;
-  top: 12%;
+  top: 77px;
   margin-left: -305px;
   font-size: 2.1em;
   text-align: left;
@@ -962,6 +962,9 @@ li {
 #container #scroller #map ul li {
   height: auto;
   position: relative; }
+
+#map ul li.tapped {
+  background: #eff0d1; }
 
 #map {
   width: 100%; }
