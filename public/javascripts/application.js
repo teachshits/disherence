@@ -2,6 +2,11 @@ r_info = []
 markerList = []
 infoBubbleList = []
 
+$("#wvb").live('tap', function(event){
+	$(this).parent().addClass('hidden')
+	return false
+})
+
 $(document).ready(function() {
 	android_size()
 	
@@ -148,9 +153,10 @@ $(document).ready(function() {
     })
 	})
 	
-	$("#search_restaurant").live('tap', function(event){
+	$("#search_restaurant, #web_search").live('tap', function(event){
 		$('#search_map_field').toggleClass('hidden')
 		$(this).toggleClass('pressed')
+		return false
 	})
 	
 	$("#search_me").live('tap', function(event){
@@ -481,8 +487,20 @@ $(document).ready(function() {
 
 });
 
+function check_mobile() {
+	if (navigator.userAgent.indexOf("Android") != -1 || 
+			navigator.userAgent.indexOf("iPhone") != -1 || 
+			navigator.userAgent.indexOf("iPad") != -1
+	) {
+		return 1
+	} else {
+		return 0
+	}
+
+}
+
 function refresh_scroll() {
-	if (navigator.userAgent.indexOf("Android") != -1 || navigator.userAgent.indexOf("iPhone") != -1 || navigator.userAgent.indexOf("iPad") != -1) {
+	if (check_mobile() == 1) {
 		myScroll.refresh()
 	}
 	android_size()
@@ -496,7 +514,7 @@ function init_scroll() {
 		myScroll = null;
 	}
 	
-	if (navigator.userAgent.indexOf("Android") != -1 || navigator.userAgent.indexOf("iPhone") != -1 || navigator.userAgent.indexOf("iPad") != -1) {
+	if (check_mobile() == 1) {
 		myScroll = new iScroll('wrapper', { 
 			scrollbarClass: 'myScrollbar'
 			// onBeforeScrollStart: function() {}
@@ -556,7 +574,6 @@ function ajax_get_restaurant(href) {
       }
   })
 }
-
 
 function getLocation(pos)
 {

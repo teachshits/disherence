@@ -17,6 +17,14 @@
 		<script src="/javascripts/application.js?<%=Time.now().to_i%>"></script>
 	</head>
 <body>
+	<div id="web_popup" class="hidden">
+		We analyze millions of reviews from sites like Yelp, Tripadvisor and Foursquare to show you the best dishes at any restaurants<br />
+		<a href="/"><img src="/images/app_store.png"></a>
+		<a href="/"><img src="/images/google.png"></a>
+		<a href="/" id="wvb"><img src="/images/web.png"></a>
+	</div>
+	<div id="web_header"><a href=""><img src="/images/logo_web.png" /></a></div>
+	<div id="search_map_canvas_big" class="hidden"></div>
 	<div id="container">
 		<div id="loader" class="hidden">Loading</div>
 		<%= yield %>

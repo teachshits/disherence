@@ -1,6 +1,10 @@
+$width_big: 640px
 $width_android: 360px
 $width: 320px
 
+
+#wrapper.big
+	top: 0
 #wrapper
 	background: #E2E2C8
 
@@ -49,6 +53,10 @@ ul
 li
 	list-style: none
 
+#container.big
+	width: $width_big
+	margin-left: -$width_big/2
+	
 #container
 	width: $width
 	position: absolute
@@ -61,13 +69,23 @@ li
 	#scroller
 		overflow-y: auto
 		overflow-x: hidden
-		ul li
-			max-height: 10000px
+		ul
+			width: $width
+			margin: 0 auto
+			li
+				max-height: 10000px
 
+#content.big
+	width: $width_big
+	margin: 0 auto
+	
 #container.android
 	width: $width_android
 	margin-left: -$width_android/2
 	
+#header.hidden
+	display: none
+
 #header	
 	position: absolute
 	top: 0
@@ -111,7 +129,7 @@ li
 .empty
 	background-image: url('../images/empty.png')
 
-#loader, #share, #ask_location, #login_popup
+#loader, #share, #ask_location, #login_popup, #web_popup
 	background: rgba(0, 0, 0, 0.85)
 	border-radius: 3px
 	position: absolute
@@ -158,8 +176,25 @@ li
 	#fb_share_text.show, #tw_share_text.show, #fb_share_button.show, #tw_share_button.show
 		display: block
 		
+#web_popup
+	background-image: none
+	width: 560px
+	background: rgba(0, 0, 0, 0.65)
+	left: 50%
+	top: 12%
+	margin-left: -305px
+	font-size: 2.1em
+	text-align: left
+	padding-bottom: 0
 	
-#loader.hidden, #share.hidden, #login_popup.hidden
+	a
+		display: block
+		margin: 20px 12px
+		float: left
+	
+		
+	
+#loader.hidden, #share.hidden, #login_popup.hidden, #web_popup.hidden
 	display: none
 
 #share, #login_popup
@@ -210,6 +245,15 @@ li
 		
 #ask_location.show
 	display: block
+	
+#web_header
+	text-align: center
+	width: 100%
+	background: #fff
+	padding: 5px 0
+	box-shadow: 0px 2px 5px 3px rgba(0, 0, 0, 0.2)
+	position: relative
+	z-index: 1
 	
 @import "fonts"
 @import "top_dishes"

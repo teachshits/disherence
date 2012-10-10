@@ -1,6 +1,6 @@
 <ul id="thelist">
 	<li>
-		<div id="search_map_canvas"></div>
+		<div id="search_map_canvas" class="hidden"></div>
 		<script>
 			
 			if (window.location.hash == '#_=_') window.location.hash = '';
@@ -8,8 +8,22 @@
 			var selectField = document.getElementById('search_field');
 			selectField.addEventListener('mousedown', function(e) {e.stopPropagation();}, false);	
 			selectField.addEventListener('touchstart', function(e) {e.stopPropagation();}, false);
-				
-			map = load_map('search_map_canvas');
+			
+			
+			if (check_mobile() == 1) {
+				$('#search_map_canvas').removeClass('hidden')
+				$('#header').removeClass('hidden')
+				map = load_map('search_map_canvas');
+			} else {
+				$('#container').addClass('big')
+				$('#content').addClass('big')
+				$('#wrapper').addClass('big')
+				$('#web_popup').removeClass('hidden')
+				$('#web_search').removeClass('hidden')
+				$('#search_map_canvas_big').removeClass('hidden')
+				map = load_map('search_map_canvas_big');
+			}
+							
 			<%= raw @restaurants_info %>
 			
 			var places = []
@@ -31,7 +45,7 @@
 	<li>
 		<div id="search_on_map" class="hidden"><img src="/images/b_search_here_blank.gif" /></div>
 	</li>
-	<li>
+	<li class="web_s">
 		<div id="search_map_field" class="hidden">
 			<input type="text" name="search_field" id="search_field" placeholder="Find places" >
 			<div id="search_me">Search</div>

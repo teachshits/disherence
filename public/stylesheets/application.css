@@ -1,3 +1,6 @@
+#wrapper.big {
+  top: 0; }
+
 #wrapper {
   background: #e2e2c8; }
 
@@ -47,6 +50,10 @@ ul {
 li {
   list-style: none; }
 
+#container.big {
+  width: 640px;
+  margin-left: -320px; }
+
 #container {
   width: 320px;
   position: absolute;
@@ -58,12 +65,22 @@ li {
   #container #scroller {
     overflow-y: auto;
     overflow-x: hidden; }
-    #container #scroller ul li {
-      max-height: 10000px; }
+    #container #scroller ul {
+      width: 320px;
+      margin: 0 auto; }
+      #container #scroller ul li {
+        max-height: 10000px; }
+
+#content.big {
+  width: 640px;
+  margin: 0 auto; }
 
 #container.android {
   width: 360px;
   margin-left: -180px; }
+
+#header.hidden {
+  display: none; }
 
 #header {
   position: absolute;
@@ -105,7 +122,7 @@ li {
 .empty {
   background-image: url("../images/empty.png"); }
 
-#loader, #share, #ask_location, #login_popup {
+#loader, #share, #ask_location, #login_popup, #web_popup {
   background: rgba(0, 0, 0, 0.85);
   border-radius: 3px;
   position: absolute;
@@ -123,9 +140,9 @@ li {
   background-repeat: no-repeat;
   background-position: center 80%;
   background-size: 30px; }
-  #loader p, #share p, #ask_location p, #login_popup p {
+  #loader p, #share p, #ask_location p, #login_popup p, #web_popup p {
     margin: 10px 0; }
-  #loader .close_popup, #share .close_popup, #ask_location .close_popup, #login_popup .close_popup {
+  #loader .close_popup, #share .close_popup, #ask_location .close_popup, #login_popup .close_popup, #web_popup .close_popup {
     background-image: url("/images/close_popup.png");
     background-size: 100%;
     width: 12px;
@@ -133,7 +150,7 @@ li {
     display: block;
     float: right;
     margin: 5px 5px 0px -5px; }
-  #loader #fb_share_text, #loader #tw_share_text, #share #fb_share_text, #share #tw_share_text, #ask_location #fb_share_text, #ask_location #tw_share_text, #login_popup #fb_share_text, #login_popup #tw_share_text {
+  #loader #fb_share_text, #loader #tw_share_text, #share #fb_share_text, #share #tw_share_text, #ask_location #fb_share_text, #ask_location #tw_share_text, #login_popup #fb_share_text, #login_popup #tw_share_text, #web_popup #fb_share_text, #web_popup #tw_share_text {
     width: 90%;
     height: 85px;
     padding: 3%;
@@ -142,16 +159,31 @@ li {
     font-size: 0.5em;
     display: none;
     margin: 0px auto; }
-  #loader #fb_share_button, #loader #tw_share_button, #share #fb_share_button, #share #tw_share_button, #ask_location #fb_share_button, #ask_location #tw_share_button, #login_popup #fb_share_button, #login_popup #tw_share_button {
+  #loader #fb_share_button, #loader #tw_share_button, #share #fb_share_button, #share #tw_share_button, #ask_location #fb_share_button, #ask_location #tw_share_button, #login_popup #fb_share_button, #login_popup #tw_share_button, #web_popup #fb_share_button, #web_popup #tw_share_button {
     font-size: 1em;
     margin: 10px auto;
     display: block;
     width: 50%;
     display: none; }
-  #loader #fb_share_text.show, #loader #tw_share_text.show, #loader #fb_share_button.show, #loader #tw_share_button.show, #share #fb_share_text.show, #share #tw_share_text.show, #share #fb_share_button.show, #share #tw_share_button.show, #ask_location #fb_share_text.show, #ask_location #tw_share_text.show, #ask_location #fb_share_button.show, #ask_location #tw_share_button.show, #login_popup #fb_share_text.show, #login_popup #tw_share_text.show, #login_popup #fb_share_button.show, #login_popup #tw_share_button.show {
+  #loader #fb_share_text.show, #loader #tw_share_text.show, #loader #fb_share_button.show, #loader #tw_share_button.show, #share #fb_share_text.show, #share #tw_share_text.show, #share #fb_share_button.show, #share #tw_share_button.show, #ask_location #fb_share_text.show, #ask_location #tw_share_text.show, #ask_location #fb_share_button.show, #ask_location #tw_share_button.show, #login_popup #fb_share_text.show, #login_popup #tw_share_text.show, #login_popup #fb_share_button.show, #login_popup #tw_share_button.show, #web_popup #fb_share_text.show, #web_popup #tw_share_text.show, #web_popup #fb_share_button.show, #web_popup #tw_share_button.show {
     display: block; }
 
-#loader.hidden, #share.hidden, #login_popup.hidden {
+#web_popup {
+  background-image: none;
+  width: 560px;
+  background: rgba(0, 0, 0, 0.65);
+  left: 50%;
+  top: 12%;
+  margin-left: -305px;
+  font-size: 2.1em;
+  text-align: left;
+  padding-bottom: 0; }
+  #web_popup a {
+    display: block;
+    margin: 20px 12px;
+    float: left; }
+
+#loader.hidden, #share.hidden, #login_popup.hidden, #web_popup.hidden {
   display: none; }
 
 #share, #login_popup {
@@ -200,6 +232,15 @@ li {
 
 #ask_location.show {
   display: block; }
+
+#web_header {
+  text-align: center;
+  width: 100%;
+  background: white;
+  padding: 5px 0;
+  box-shadow: 0px 2px 5px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1; }
 
 @font-face {
   font-family: "CompPro";
@@ -814,8 +855,21 @@ li {
 .btn_disagree {
   background: url("/images/op_btns.png") 100% 0; }
 
-#search_map_field.hidden, #search_restaurant.hidden, #search_on_map.hidden, .close_map.hidden {
+#search_map_field.hidden, #search_restaurant.hidden, #search_on_map.hidden, .close_map.hidden, #web_search.hidden {
   display: none; }
+
+#web_search {
+  float: left;
+  display: block;
+  margin: -4px 0 0 9px;
+  position: absolute; }
+
+#web_search.pressed {
+  margin-top: 6px; }
+
+.web_s {
+  left: -109px;
+  width: 588px; }
 
 #search_restaurant {
   float: left;
@@ -887,6 +941,24 @@ li {
 .close_map.pressed {
   background-position: 0 100%; }
 
+#search_map_canvas.android {
+  height: 180px; }
+
+#search_map_canvas {
+  height: 160px;
+  width: 100%;
+  -webkit-transition: height 0.3s ease; }
+
+#search_map_canvas.expand_search_map_canvas {
+  height: 330px; }
+
+#search_map_canvas.hidden, #search_map_canvas_big.hidden {
+  display: none; }
+
+#search_map_canvas_big {
+  width: 100%;
+  height: 320px; }
+
 #container #scroller #map ul li {
   height: auto;
   position: relative; }
@@ -916,14 +988,6 @@ li {
     line-height: 20px;
     padding: 0;
     height: 19px; }
-  #map #search_map_canvas.android {
-    height: 180px; }
-  #map #search_map_canvas {
-    height: 160px;
-    width: 100%;
-    -webkit-transition: height 0.3s ease; }
-  #map #search_map_canvas.expand_search_map_canvas {
-    height: 330px; }
   #map .restaurant {
     margin-top: 10px;
     color: #414143;
