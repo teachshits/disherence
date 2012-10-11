@@ -11,7 +11,7 @@ module ApplicationHelper
       
       domain = "http://demo.disherence.com"
       app_id = '361774547226492'
-      object = 'Restaurant'
+      object = 'restaurant'
       
       # url = "#{domain}#{eval "#{type}_path(#{@fb_obj.id})" }"
       
