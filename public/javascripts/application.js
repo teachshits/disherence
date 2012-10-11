@@ -119,7 +119,7 @@ $(document).ready(function() {
 	$("#user_img_profile").live('tap', function(event){
 		loader('Loading your data')
 		$.ajax({
-        url: 'users/profile',
+        url: '/users/profile',
         type: 'get',
         dataType: 'script',
         success: function() {
