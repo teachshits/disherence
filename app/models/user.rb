@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
 
         activity_url = "https://graph.facebook.com/me/disherence:shared"
         activity_url += "?access_token=#{user.fb_access_token}"
-        activity_url += "&object="+ CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
+        activity_url += "&restaurant="+ CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
 
         activity = HTTParty.post(activity_url)
         response = HTTParty.post(fb_share_url)
