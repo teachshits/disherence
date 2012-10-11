@@ -7,14 +7,14 @@ module ApplicationHelper
   end
   
   def fb_opengraph_meta_tag
-    if params[:id]
+    if restaurant = Restaurant.find_by_id(params[:id])
       
       domain = "http://demo.disherence.com"
       app_id = '361774547226492'
       
       # url = "#{domain}#{eval "#{type}_path(#{@fb_obj.id})" }"
       
-      title = "Restaurant"
+      title = restaurant.name
       url = "#{domain}/restaurants/#{params[:id]}"
             
       dish = Dish.where("restaurant_id = ? AND photos > 0 ",params[:id]).first
