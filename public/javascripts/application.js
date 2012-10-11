@@ -2,13 +2,13 @@ r_info = []
 markerList = []
 infoBubbleList = []
 
-$("#wvb").live('tap', function(event){
-	$(this).parent().addClass('hidden')
-	return false
-})
-
 $(document).ready(function() {
 	android_size()
+	
+	$("#wvb").live('tap', function(event){
+		$(this).parent().addClass('hidden')
+		return false
+	})
 	
 	$(".close_popup").live('tap', function(event){
 		$(this).parent().addClass('hidden')
@@ -212,6 +212,8 @@ $(document).ready(function() {
 		$(this).parent().parent().parent().addClass('tapped')
 		loader('Analyzing millions of reviews')
 		ajax_get_restaurant($(this).attr('href'))
+		$('#search_map_canvas_big').addClass('hidden')
+		$('#wrapper').addClass('top10')
 		setTimeout(function(){ loader() },10);
 		return false
 	})

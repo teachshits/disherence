@@ -1,3 +1,14 @@
+.application.hidden {
+  display: none; }
+
+.application {
+  position: absolute;
+  right: -235px;
+  top: 10px; }
+
+#wrapper.top10 {
+  top: 10px; }
+
 #wrapper.big {
   top: 0; }
 
