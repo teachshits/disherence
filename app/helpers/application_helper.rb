@@ -11,6 +11,7 @@ module ApplicationHelper
       
       domain = "http://demo.disherence.com"
       app_id = '361774547226492'
+      object = 'Restaurant'
       
       # url = "#{domain}#{eval "#{type}_path(#{@fb_obj.id})" }"
       
@@ -24,7 +25,7 @@ module ApplicationHelper
       
       raw %Q{
         <meta property="fb:app_id" content="#{app_id}" /> 
-        <meta property="og:type"   content="object" /> 
+        <meta property="og:type"   content="#{object}" /> 
         <meta property="og:url"    content="#{url}" /> 
         <meta property="og:title"  content="#{title}" /> 
         <meta property="og:image"  content="#{image}" />
