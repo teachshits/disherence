@@ -1,9 +1,10 @@
 <!DOCTYPE html> 
 <html> 
-	<head> 
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object#"> 
 		<title>Disherence</title> 
 		<meta name="viewport" content="width=device-width, user-scalable=no"/>
 		<meta name="apple-mobile-web-app-capable" content="yes">
+		<%= fb_opengraph_meta_tag %>
 		<link rel="stylesheet" href="/stylesheets/application.css?<%=Time.now().to_i%>" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/scrollbar.css"> 
 		<script src="/javascripts/jquery-1.7.2.min.js"></script>
@@ -18,7 +19,7 @@
 	</head>
 <body>
 	<div id="web_popup" class="hidden">
-		We analyze millions of reviews from sites like Yelp, Tripadvisor and Foursquare to show you the best dishes at any restaurants<br />
+		We analyze millions of reviews on the web to show you the best dishes at any restaurants<br />
 		<a href="/"><img src="/images/app_store.png"></a>
 		<a href="/"><img src="/images/google.png"></a>
 		<a href="/" id="wvb"><img src="/images/web.png"></a>

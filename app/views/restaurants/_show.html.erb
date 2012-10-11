@@ -33,7 +33,7 @@
 							</div>
 							<div class="hr"></div>
 							<div id="banner">
-								Based on <%= @restaurant.yelp_reviews_count %> reviews on Yelp, Zagat, Foursquare
+								Based on <%= @restaurant.yelp_reviews_count %> reviews on Foursquare and other sites
 							</div>
 						</li>						
 						<% @restaurant.dishes.where('photos > 0 || likes > 0').order('likes DESC').each do |d| %>
