@@ -62,7 +62,11 @@ class ApiController < ApplicationController
   
   def get_best_dishes
     if params[:restaurant_id]
-      data = Dish.where("restaurant_id = ? AND (likes > 0 || photos > 0)", params[:restaurant_id]).order("likes - dislikes DESC")      
+      
+      params[:limit] ||= 25
+      params[:offset] ||= 0
+      
+      data = Dish.where("restaurant_id = ? AND (likes > 0 || photos > 0)", params[:restaurant_id]).order("likes - dislikes DESC").limit(params[:limit]).offset(params[:offset])
       
       data.each do |dish|
         dish.opinion = 3
