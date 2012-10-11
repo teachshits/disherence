@@ -302,7 +302,7 @@ $(document).ready(function() {
 	})
 	
 	// Restaurant Dish Info slide	
-	$('.dish_info_container .rating').live('swipeleft, tap', function(event){
+	$('.dish_info_container .rating').live('swipeleft tap', function(event){
 		el = $(this).parent()
 		if (!(el.parent().hasClass('expand') && !el.hasClass('slideLeft'))) {
 			el.parent().toggleClass('expand')
@@ -312,7 +312,7 @@ $(document).ready(function() {
 		setTimeout(function () {refresh_scroll()}, 300);
 	})
 	
-	$('.dish_info_container').live('swiperight, tap', function(event){
+	$('.dish_info_container').live('swiperight tap', function(event){
 		$(this).parent().removeClass('expand')
 		$(this).removeClass('slideLeft')
 		el.next('.comment').removeClass('hidden')
