@@ -19,7 +19,11 @@
 				$('#content').addClass('big')
 				$('#wrapper').addClass('big')
 				$('#search_map_field').parent().addClass('web_s')
-				$('#web_popup').removeClass('hidden')
+				
+				if ($.cookie("ask_version") != 1) {
+					$('#web_popup').removeClass('hidden')
+				}
+				
 				$('#web_header').removeClass('hidden')
 				$('#web_search').removeClass('hidden')
 				$("#application").removeClass('hidden')

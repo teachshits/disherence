@@ -6,7 +6,8 @@ $(document).ready(function() {
 	android_size()
 	
 	$("#wvb").live('tap', function(event){
-		$(this).parent().addClass('hidden')
+		$("#web_popup").addClass('hidden')
+		$.cookie("ask_version", 1);
 		return false
 	})
 	
@@ -213,7 +214,6 @@ $(document).ready(function() {
 		loader('Analyzing millions of reviews')
 		ajax_get_restaurant($(this).attr('href'))
 		$('#search_map_canvas_big').addClass('hidden')
-		$('#wrapper').addClass('top10')
 		setTimeout(function(){ loader() },10);
 		return false
 	})
@@ -304,20 +304,38 @@ $(document).ready(function() {
 	})
 	
 	// Restaurant Dish Info slide	
-	$('.dish_info_container .rating').live('swipeleft tap', function(event){
+	$('.dish_info_container .rating').live('swipeleft', function(event){
+		
 		el = $(this).parent()
 		if (!(el.parent().hasClass('expand') && !el.hasClass('slideLeft'))) {
 			el.parent().toggleClass('expand')
+			console.log(el)
 		}
+		
 		el.toggleClass('slideLeft')
 		el.next('.comment').addClass('hidden')
+		
 		setTimeout(function () {refresh_scroll()}, 300);
 	})
 	
-	$('.dish_info_container').live('swiperight tap', function(event){
+	$('.dish_info_container').live('swiperight', function(event){
 		$(this).parent().removeClass('expand')
 		$(this).removeClass('slideLeft')
 		el.next('.comment').removeClass('hidden')
+		 setTimeout(function () {refresh_scroll()}, 300);
+	})
+	
+	$('.dish_info_container').live('tap', function(event){
+		
+		dish = $(this).parent()
+		container = $(this)
+		
+		if (!(dish.hasClass('expand') && !container.hasClass('slideLeft'))){
+			$(this).parent().toggleClass('expand')
+		}
+		
+		$(this).toggleClass('slideLeft')
+		$(this).next('.comment').toggleClass('hidden')
 		 setTimeout(function () {refresh_scroll()}, 300);
 	})
 	
@@ -552,9 +570,9 @@ function loader(message) {
 	}
 }
 
-function preload(arrayOfImages) {
-    $(arrayOfImages).each(function(){
-        $('<img/>')[0].src = this;
+function preload(images) {
+    $(images).each(function(){
+        $('<img/>').css('background-image', 'url(' + this + ')');
     });
 }
 

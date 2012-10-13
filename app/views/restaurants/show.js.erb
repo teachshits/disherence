@@ -6,6 +6,5 @@ arrayOfImages = [];
 arrayOfImages.push("<%= review.remote_photo %>");
 	<% end %>
 <% end %>
-preload(arrayOfImages);
 $("#wrapper").replaceWith("<%= escape_javascript(render "restaurants/show") %>");
-
+preload(arrayOfImages);
