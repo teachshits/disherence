@@ -6,11 +6,8 @@
   right: -235px;
   top: 10px; }
 
-#wrapper.top10 {
-  top: 10px; }
-
 #wrapper.big {
-  top: 0; }
+  top: 10px; }
 
 #wrapper {
   background: #e2e2c8; }
