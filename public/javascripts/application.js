@@ -571,10 +571,21 @@ function loader(message) {
 	}
 }
 
-function preload(images) {
-    $(images).each(function(){
-        $('<img/>').css('background-image', 'url(' + this + ')');
-    });
+function preload(images) {	
+	$(images).each(function(index){
+
+		var bgImg = new Image()		
+		var el = $($("div.dish")[index])
+		
+		bgImg.onload = function(){
+			el.css('background-image', 'url(' + bgImg.src + ')');
+			el.prev('.preloader').addClass('hidden')
+		};
+		
+		if (this == '') {el.prev('.preloader').addClass('hidden')}
+				
+		bgImg.src = this;
+	});
 }
 
 function size_map() {

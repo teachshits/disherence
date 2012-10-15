@@ -1,9 +1,11 @@
 back_url = "<%= escape_javascript raw @back_url %>";
 
 arrayOfImages = [];
-<% @restaurant.dishes.where('photos > 0 || likes > 0').order('likes DESC').each do |d| %>
+<% @restaurant.dishes.order('likes DESC').each do |d| %>
 	<% if review = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first %>								
 arrayOfImages.push("<%= review.remote_photo %>");
+	<% else %>
+arrayOfImages.push("");
 	<% end %>
 <% end %>
 $("#wrapper").replaceWith("<%= escape_javascript(render "restaurants/show") %>");
