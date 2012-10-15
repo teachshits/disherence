@@ -124,6 +124,7 @@ $(document).ready(function() {
         type: 'get',
         dataType: 'script',
         success: function() {
+					$('#search_map_canvas_big').addClass('hidden')
 					setTimeout(function(){ loader() },100);
 					init_scroll()
         }
