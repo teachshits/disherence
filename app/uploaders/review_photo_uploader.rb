@@ -1,7 +1,7 @@
 # encoding: utf-8
 require "securerandom"
 
-class ReviewPhotoUploader < CarrierWave::Uploader::Base
+class ReviewLocalPhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
