@@ -583,7 +583,6 @@ function preload(images) {
 		};
 		
 		if (this == '') {el.prev('.preloader').addClass('hidden')}
-				
 		bgImg.src = this;
 	});
 }
