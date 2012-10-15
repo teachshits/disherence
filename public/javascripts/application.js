@@ -125,6 +125,7 @@ $(document).ready(function() {
         dataType: 'script',
         success: function() {
 					$('#search_map_canvas_big').addClass('hidden')
+					$('#stlw').addClass('hidden')
 					setTimeout(function(){ loader() },100);
 					init_scroll()
         }
@@ -187,7 +188,7 @@ $(document).ready(function() {
     })
 	})
 	
-	$("#search_on_map").live('tap', function(event){
+	$("#search_on_map, #stlw").live('tap', function(event){
 		
 		loader('Loading places next to You')
 		center = map.getCenter()
@@ -214,7 +215,10 @@ $(document).ready(function() {
 		$(this).parent().parent().parent().addClass('tapped')
 		loader('Analyzing millions of reviews')
 		ajax_get_restaurant($(this).attr('href'))
+
 		$('#search_map_canvas_big').addClass('hidden')
+		$('#stlw').addClass('hidden')
+
 		setTimeout(function(){ loader() },10);
 		return false
 	})

@@ -15,6 +15,7 @@
 				$('#header').removeClass('hidden')
 				map = load_map('search_map_canvas');
 			} else {
+				
 				$('#container').addClass('big')
 				$('#content').addClass('big')
 				$('#wrapper').addClass('big')
@@ -47,6 +48,13 @@
 				places.push(place)
 			}
 			setMarkers(map, places)
+			
+			if (check_iPhone() != 1 && check_Android() != 1) { 
+				google.maps.event.addListener(map, "center_changed", function() {
+					$('#stlw').removeClass('hidden')
+			  })
+			}
+			
 		</script>
 	</li>
 	<li>
