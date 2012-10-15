@@ -24,7 +24,7 @@ task :get_data => :environment do
           end
         end
 
-        quote = dish['quote'].nil? ? "" : dish['quote']['quote']
+        quote = dish['quote']
         add_photo(dish_id, dish['photo'], quote) if dish['photo']
       end
 
@@ -120,18 +120,27 @@ def add_photo(dish_id, photo, comment)
       :name => photo['user_name']
     )
   end
-  
+
+  caption = comment.nil? ? photo['caption'] : comment['quote']
+  comment_source_url = comment.nil? ? nil : comment['source_url']
+  comment_source_type = comment.nil? ? nil : comment['source_type']
+
   if review = Review.find_by_user_id_and_dish_id(myuser.id, dish_id)
-    caption = comment.empty? ? photo['caption'] : comment
     p "Update comment to: #{caption}"
-    review.update_attributes(:remote_photo => photo['url'], :comment => caption)
+    review.update_attributes(:remote_photo => photo['url'], :remote_photo_source_url => photo['source_url'],
+                             :remote_photo_source_type => photo['source_type'], :comment => caption,
+                             :comment_source_type => comment_source_type, :comment_source_url => comment_source_url)
   else
     review = Review.create(
       :user_id => myuser.id,
       :dish_id => dish_id,
       :opinion => 1,
       :remote_photo => photo['url'],
-      :comment => comment
+      :remote_photo_source_url => photo['source_url'],
+      :remote_photo_source_type => photo['source_type'],
+      :comment => caption,
+      :comment_source_type => comment_source_type,
+      :comment_source_url => comment_source_url
     )
   end
 end
