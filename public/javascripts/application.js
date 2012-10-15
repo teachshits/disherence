@@ -215,10 +215,6 @@ $(document).ready(function() {
 		$(this).parent().parent().parent().addClass('tapped')
 		loader('Analyzing millions of reviews')
 		ajax_get_restaurant($(this).attr('href'))
-
-		$('#search_map_canvas_big').addClass('hidden')
-		$('#stlw').addClass('hidden')
-
 		setTimeout(function(){ loader() },10);
 		return false
 	})
@@ -600,9 +596,13 @@ function ajax_get_restaurant(href) {
       type: 'get',
       dataType: 'script',
       success: function() {
+				
 				$('#search_restaurant').addClass('hidden')
 				$(".close_map").addClass('hidden');
 				$("#bbutton").attr('href', '/').removeClass('hidden');
+				$('#search_map_canvas_big').addClass('hidden')
+				$('#stlw').addClass('hidden')
+				
 				init_scroll()
 				setTimeout(function(){ loader() },10);
       }

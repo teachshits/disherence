@@ -50,8 +50,9 @@
 			setMarkers(map, places)
 			
 			if (check_iPhone() != 1 && check_Android() != 1) { 
-				google.maps.event.addListener(map, "center_changed", function() {
+				google.maps.event.addListener(map, "bounds_changed", function() {
 					$('#stlw').removeClass('hidden')
+					google.maps.event.clearListeners(map, 'bounds_changed');
 			  })
 			}
 			
