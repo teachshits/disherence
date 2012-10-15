@@ -1,7 +1,7 @@
 require 'carrierwave/orm/activerecord'
 
 class Review < ActiveRecord::Base
-  attr_accessible :dish_id, :user_id, :opinion, :comment, :remote_photo, :photo, :local_photo
+  attr_accessible :dish_id, :user_id, :opinion, :comment, :remote_photo, :photo, :local_photo, :remote_photo_source_url, :remote_photo_source_type, :comment_source_type, :comment_source_url
   
   belongs_to :dish
   belongs_to :user
