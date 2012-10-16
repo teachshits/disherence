@@ -356,7 +356,7 @@ $(document).ready(function() {
 		$(this).toggleClass('expand')
 		setTimeout(function () {
 			dish.children('.comment').toggleClass('hidden')
-			dish.children('.link').toggleClass('hidden')
+			dish.children('.src_photo_link').toggleClass('hidden')
 			refresh_scroll()}, 300);
 
 	})
