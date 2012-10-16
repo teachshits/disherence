@@ -87,11 +87,9 @@
 										</a>
 										
 									</div>
-									<% if !dish.remote_photo_source_url.blank? %>
 									<div class="src_photo_link hidden">	
-										<a href="<%= dish.remote_photo_source_url %>">Photo taken by <%= dish.user.name %> from <%= dish.remote_photo_source_type.upcase %></a>
+										<a href="<%= dish.remote_photo_source_url %>">Photo taken by <%= dish.user.name %> from <%= dish.remote_photo_source_type %></a>
 									</div>
-									<% end %>
 								<% end %>
 							
 							</div>
