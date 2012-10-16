@@ -7,6 +7,7 @@ $(document).ready(function() {
 	
 	$(".source_type, .src_photo_link").live('tap', function(event){
 		event.stopPropagation();
+		loader('Redirecting to source website')
 	})
 	
 	$("#wvb").live('tap', function(event){

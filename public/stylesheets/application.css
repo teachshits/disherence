@@ -409,7 +409,7 @@ li {
       display: block;
       background-image: url("/images/name_shadow.png");
       background-repeat: repeat-x;
-      padding-top: 20px; }
+      padding-top: 10px; }
     #top_dishes .dish .price {
       width: auto;
       padding-left: 28px;
@@ -449,8 +449,8 @@ li {
       font-size: 2em;
       color: #d2ffbe;
       right: -20px;
-      padding: 16px 36px 25px 40px;
-      top: 5px;
+      padding: 15px 36px 25px 40px;
+      top: 0;
       text-shadow: 1px 1px 0px #444444;
       position: absolute;
       z-index: 99;
