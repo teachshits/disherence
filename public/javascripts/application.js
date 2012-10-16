@@ -5,6 +5,10 @@ infoBubbleList = []
 $(document).ready(function() {
 	android_size()
 	
+	$(".source_type, .src_photo_link").live('tap', function(event){
+		event.stopPropagation();
+	})
+	
 	$("#wvb").live('tap', function(event){
 		$("#web_popup").addClass('hidden')
 		$.cookie("ask_version", 1);
@@ -14,6 +18,7 @@ $(document).ready(function() {
 	$(".close_popup").live('tap', function(event){
 		$(this).parent().addClass('hidden')
 		$(".b_share").removeClass('pressed')
+		$.cookie("ask_version", 1);
 		return false
 	})
 	
@@ -346,9 +351,13 @@ $(document).ready(function() {
 	
 	// Restaurant info dish expand
 	$('.dish').live('tap', function(){
+		dish = $(this)
 		$('.dish').not(this).removeClass('expand')
 		$(this).toggleClass('expand')
-		setTimeout(function () {refresh_scroll()}, 300);
+		setTimeout(function () {
+			dish.children('.comment').toggleClass('hidden')
+			dish.children('.link').toggleClass('hidden')
+			refresh_scroll()}, 300);
 
 	})
 	

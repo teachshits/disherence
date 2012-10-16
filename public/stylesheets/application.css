@@ -198,6 +198,8 @@ li {
   font-size: 2.1em;
   text-align: left;
   padding-bottom: 0; }
+  #web_popup .close_popup {
+    margin: -12px; }
   #web_popup a {
     display: block;
     margin: 20px 12px;
@@ -388,6 +390,10 @@ li {
     position: relative;
     overflow: hidden;
     -webkit-transition: height 0.2s ease-in; }
+    #top_dishes .dish .source_type img {
+      width: 20px;
+      margin: -15px 5px 0 5px;
+      float: right; }
     #top_dishes .dish .name, #top_dishes .dish .price {
       float: left;
       font-family: CompPro_bold;
@@ -408,15 +414,15 @@ li {
       width: auto;
       padding-left: 28px;
       clear: both; }
-    #top_dishes .dish .comment.hidden {
+    #top_dishes .dish .comment.hidden, #top_dishes .dish .src_photo_link.hidden {
       display: none; }
-    #top_dishes .dish .comment {
+    #top_dishes .dish .comment, #top_dishes .dish .src_photo_link a {
       position: absolute;
       color: white;
       bottom: 10px;
       left: 10px;
       text-shadow: none; }
-      #top_dishes .dish .comment .user_img {
+      #top_dishes .dish .comment .user_img, #top_dishes .dish .src_photo_link a .user_img {
         background-position: center center;
         background-size: cover;
         margin: 1px 3px 0 0;

@@ -64,7 +64,7 @@
 											<ul>
 											<% d.reviews.where('comment != ""').each do |r| %>
  												<li>
-													<div class="user_img" style="background-image: url('<%= r.user.remote_photo %>')"></div>
+													<div class="user_img" style="background-image: url('<%= r.user.photo unless r.user.nil? %>')"></div>
 													<%= r.comment %>
 												</li> 
 											<% end %>	
@@ -79,7 +79,19 @@
 										<div class="user_img" style="background-image: url('<%= d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.user.remote_photo %>')"></div>
 										<% comment = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.comment.to_s %>
 										<%= comment.length > 100 ? comment[0 .. 97] + ' ...' : comment %>
-									</div>	
+										
+										<a class="source_type" href="<%= dish.comment_source_url %>" >
+										<% if dish.comment_source_type == 'yelp' %>
+											<img src="/images/yelp_src.png" />
+										<% end %>
+										</a>
+										
+									</div>
+									<% if !dish.remote_photo_source_url.blank? %>
+									<div class="src_photo_link hidden">	
+										<a href="<%= dish.remote_photo_source_url %>">Photo taken by <%= dish.user.name %> from <%= dish.remote_photo_source_type.upcase %></a>
+									</div>
+									<% end %>
 								<% end %>
 							
 							</div>
