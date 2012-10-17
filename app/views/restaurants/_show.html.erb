@@ -39,12 +39,7 @@
 						<% @restaurant.dishes.where('photos > 0 || likes > 0').order('likes DESC').each do |d| %>
 						<li>
 							<img class="preloader" src="/images/preloader.gif" />
-							<% if dish = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first %>
-								<!-- <div class="dish" style="background-image: url('<%= dish.remote_photo %>')"> -->
-								<div class="dish" style="background-image: url('/images/no_foto.png')">
-							<% else %>
-								 <div class="dish" style="background-image: url('/images/no_foto.png')">
-							<% end %>
+							<div class="dish" style="background-image: url('/images/no_foto.png')">
 								
 								<div class="name"><%= d.name.length > 25 ? d.name[0 .. 25] + ' ...' : d.name %></div>
 								
@@ -74,7 +69,7 @@
 									</div>
 								</div>
 																
-								<% if dish %>
+								<% if dish = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first %>
 									<div class="comment">
 										<div class="user_img" style="background-image: url('<%= d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.user.remote_photo %>')"></div>
 										<% comment = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first.comment.to_s %>

@@ -11,8 +11,7 @@ $(document).ready(function() {
 	})
 	
 	$("#wvb").live('tap', function(event){
-		$("#web_popup").addClass('hidden')
-		$.cookie("ask_version", 1);
+		close_web_popup()
 		return false
 	})
 	
@@ -195,7 +194,8 @@ $(document).ready(function() {
 	})
 	
 	$("#search_on_map, #stlw").live('tap', function(event){
-		
+
+		close_web_popup()
 		loader('Loading places next to You')
 		center = map.getCenter()
 		
@@ -219,6 +219,7 @@ $(document).ready(function() {
 	
 	$(".restaurant_name").live('tap', function(event){
 		$(this).parent().parent().parent().addClass('tapped')
+		close_web_popup()
 		loader('Analyzing millions of reviews')
 		ajax_get_restaurant($(this).attr('href'))
 		setTimeout(function(){ loader() },10);
@@ -518,6 +519,12 @@ $(document).ready(function() {
 	})
 
 });
+
+function close_web_popup() {
+	$("#web_popup").addClass('hidden')
+	$.cookie("ask_version", 1);
+}
+
 
 function check_Android() {
 	return (navigator.userAgent.indexOf("Android") != -1) ? 1 : 0
