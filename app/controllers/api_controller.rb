@@ -106,10 +106,11 @@ class ApiController < ApplicationController
   end
   
   def awesome
+    Review.create(:local_photo => params[:local_photo], :dish_id => dish.id, :user_id => user.id, :opinion => true)
+
     if dish = Dish.find_by_id(params[:dish_id])
       if user = User.find_by_token(params[:token])
         r = Review.awesome(dish.id, user.id, params[:local_photo])        
-        Review.create(:local_photo => params[:local_photo], :dish_id => dish.id, :user_id => user.id, :opinion => true)
         
         likes = r.dish.likes
         dislikes = r.dish.dislikes
