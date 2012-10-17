@@ -106,9 +106,9 @@ class ApiController < ApplicationController
   end
   
   def awesome
-    if dish_id = params[:dish_id]
+    if dish = Dish.find_by_id(params[:dish_id])
       if user = User.find_by_token(params[:token])
-        r = Review.awesome(dish_id, user.id, params[:local_photo])        
+        r = Review.awesome(dish.id, user.id, params[:local_photo])        
         
         likes = r.dish.likes
         dislikes = r.dish.dislikes
@@ -119,7 +119,9 @@ class ApiController < ApplicationController
         return render :json => {:result => 0}
       end
       return render :json => {:result => 2}
+      
     end
+    
     return render :json => {:result => 3}
   end
   
