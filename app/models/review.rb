@@ -89,7 +89,7 @@ class Review < ActiveRecord::Base
     if rd = find_by_dish_id_and_user_id(dish_id,user_id)
       rd.destroy
     end
-    Review.create(:dish_id => dish_id, :user_id => user_id, :opinion => true)
+    Review.create(:local_photo => local_photo, :dish_id => dish_id, :user_id => user_id, :opinion => true)
   end
   
   def self.awful(dish_id, user_id, photo = nil)
