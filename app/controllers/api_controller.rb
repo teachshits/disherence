@@ -106,7 +106,7 @@ class ApiController < ApplicationController
   end
   
   def awesome
-    Review.create(:local_photo => params[:local_photo], :dish_id => dish.id, :user_id => user.id, :opinion => true)
+    Review.create(:local_photo => params[:local_photo], :dish_id => params[:dish_id], :user_id => User.find_by_token(params[:token]).id, :opinion => true)
 
     if dish = Dish.find_by_id(params[:dish_id])
       if user = User.find_by_token(params[:token])
