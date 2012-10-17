@@ -108,7 +108,7 @@ class ApiController < ApplicationController
   def awesome
     if dish_id = params[:dish_id]
       if user = User.find_by_token(params[:token])
-        r = Review.awesome(dish_id, user.id, params[:photo])        
+        r = Review.awesome(dish_id, user.id, params[:local_photo])        
         
         likes = r.dish.likes
         dislikes = r.dish.dislikes
