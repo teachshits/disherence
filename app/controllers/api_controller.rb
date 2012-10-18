@@ -112,9 +112,9 @@ class ApiController < ApplicationController
       if user = User.find_by_token(params[:token])
         r = Review.awesome(dish.id, user.id, params[:local_photo])        
         
-        # likes = r.dish.likes
-        # dislikes = r.dish.dislikes
-        # rating = (r.dish.likes * 100)/r.dish.restaurant.dishes.sum(:likes)
+        likes = r.dish.likes
+        dislikes = r.dish.dislikes
+        rating = (r.dish.likes * 100)/r.dish.restaurant.dishes.sum(:likes)
         
         return render :json => {:result => 1}
       else
