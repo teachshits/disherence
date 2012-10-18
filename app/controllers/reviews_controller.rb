@@ -29,9 +29,9 @@ class ReviewsController < ApplicationController
   end
   
   def awesome
-    if dish_id = params[:id]
+    if dish = Dish.find_by_id(params[:id])
       if user = session[:user]
-        r = Review.awesome(dish_id,user.id)        
+        r = Review.awesome(dish.id,user.id)        
         
         likes = r.dish.likes
         dislikes = r.dish.dislikes
