@@ -5,6 +5,11 @@ infoBubbleList = []
 $(document).ready(function() {
 	android_size()
 	
+	$(window).unload( function () {
+		event.stopPropagation();
+		alert(1)
+	});
+	
 	$(".source_type, .src_photo_link").live('tap', function(event){
 		event.stopPropagation();
 		loader('Redirecting to source website')
