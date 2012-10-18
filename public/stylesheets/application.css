@@ -390,9 +390,11 @@ li {
     position: relative;
     overflow: hidden;
     -webkit-transition: height 0.2s ease-in; }
-    #top_dishes .dish .source_type img {
-      width: 20px;
-      margin: -15px 5px 0 5px; }
+    #top_dishes .dish .source_type {
+      float: right;
+      margin-top: -12px; }
+      #top_dishes .dish .source_type img {
+        width: 20px; }
     #top_dishes .dish .name, #top_dishes .dish .price {
       float: left;
       font-family: CompPro_bold;
@@ -422,9 +424,6 @@ li {
       left: 10px;
       text-shadow: none;
       width: 96%; }
-      #top_dishes .dish .comment .source_type, #top_dishes .dish .src_photo_link a .source_type {
-        float: right;
-        margin-top: 18px; }
       #top_dishes .dish .comment .user_img, #top_dishes .dish .src_photo_link a .user_img {
         background-position: center center;
         background-size: cover;
