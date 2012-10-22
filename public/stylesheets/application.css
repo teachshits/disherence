@@ -82,6 +82,9 @@ li {
       #container #scroller ul li {
         max-height: 10000px; }
 
+#content {
+  margin: 40px auto; }
+
 #content.big {
   width: 640px;
   margin: 0 auto; }
