@@ -5,10 +5,13 @@ $width: 320px
 .application.hidden
 	display: none
 
+.application.toTop
+	top: 60px
+
 .application
-	position: absolute
-	right: -235px
-	top: 10px
+	position: fixed
+	left: 77%
+	top: 335px
 
 #wrapper.big
 	top: 10px
@@ -123,7 +126,7 @@ li
 #stlw	
 	position: absolute
 	top: 320px
-	margin: 0 50%
+	margin: -45px 50%
 	left: -265px
 	z-index: 9
 	
@@ -266,8 +269,8 @@ li
 	background: #fff
 	padding: 10px 0 5px 0
 	box-shadow: 0px 2px 5px 3px rgba(0, 0, 0, 0.2)
-	position: relative
-	z-index: 1
+	position: fixed
+	z-index: 999
 	
 	#user_img_profile
 		margin: 0 10px 0 -10px
