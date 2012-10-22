@@ -13,7 +13,8 @@
   top: 10px; }
 
 #wrapper {
-  background: #e2e2c8; }
+  background: #e2e2c8;
+  top: 48px; }
 
 #bbutton.hidden {
   display: none; }
@@ -75,18 +76,17 @@ li {
   background: #e2e2c8; }
   #container #scroller {
     overflow-y: auto;
-    overflow-x: hidden; }
+    overflow-x: hidden;
+    margin-top: 48px; }
     #container #scroller ul {
       width: 320px;
       margin: 0 auto; }
       #container #scroller ul li {
         max-height: 10000px; }
 
-#content {
-  margin: 40px auto; }
-
 #content.big {
-  width: 640px; }
+  width: 640px;
+  margin: 0 auto; }
 
 #container.android {
   width: 360px;
