@@ -6,8 +6,15 @@ $(document).ready(function() {
 	android_size()
 	
 	$(window).scroll(function() {
+		
 		var scroll_top = $(window).scrollTop();
-		if (scroll_top <= 275) { $('.application').css({ 'top': 335 - scroll_top + 'px' }) }
+		
+		if ($("#search_map_canvas_big").hasClass('hidden')) {
+			if (scroll_top <= 10) { $('.application').css({ 'top':'60px' }) }
+		} else {
+			if (scroll_top <= 275) { $('.application').css({ 'top': 335 - scroll_top + 'px' }) }
+		}
+		
   })
 	
 	$(".source_type, .src_photo_link").live('tap', function(event){
