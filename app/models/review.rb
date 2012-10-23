@@ -45,7 +45,7 @@ class Review < ActiveRecord::Base
       elsif review = Review.where("dish_id = ? AND remote_photo IS NOT NULL", self[:dish_id]).first
         review.remote_photo
       else
-        ""
+        "http://demo.disherence.com/images/no-dish-photo-profile.png"
       end
     else
       self[:local_photo]
