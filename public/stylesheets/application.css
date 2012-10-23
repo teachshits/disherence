@@ -9,6 +9,9 @@
   left: 77%;
   top: 335px; }
 
+#wrapper.map {
+  top: 0; }
+
 #wrapper {
   background: #e2e2c8;
   top: 45px; }
