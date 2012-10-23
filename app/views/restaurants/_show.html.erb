@@ -38,7 +38,7 @@
 								Based on <%= @restaurant.yelp_reviews_count %> reviews on Foursquare and other sites
 							</div>
 						</li>						
-						<% @restaurant.dishes.where('photos > 0 || likes > 0').order('likes DESC').each do |d| %>
+						<% @dishes.each do |d| %>
 						<li>
 							<img class="preloader" src="/images/preloader.gif" />
 							<div class="dish" style="background-image: url('/images/no_foto.png')">

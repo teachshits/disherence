@@ -48,6 +48,14 @@ class RestaurantsController < ApplicationController
   
   def show
     @restaurant = Restaurant.find_by_id(params[:id])
+    @dishes = @restaurant.dishes.where('photos > 0 || likes > 0').order('likes DESC')
+    
+    if request.env["HTTP_USER_AGENT"].include?('iPhone') || 
+       request.env["HTTP_USER_AGENT"].include?('iPad') || 
+       request.env["HTTP_USER_AGENT"].include?('Android')
+     
+      @dishes = @dishes.limit(20)
+    end
     
     url_params = []
     url_params.push("back=1")
