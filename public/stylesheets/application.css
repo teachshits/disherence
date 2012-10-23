@@ -13,8 +13,7 @@
   top: 10px; }
 
 #wrapper {
-  background: #e2e2c8;
-  top: 48px; }
+  background: #e2e2c8; }
 
 #bbutton.hidden {
   display: none; }
@@ -76,8 +75,7 @@ li {
   background: #e2e2c8; }
   #container #scroller {
     overflow-y: auto;
-    overflow-x: hidden;
-    margin-top: 48px; }
+    overflow-x: hidden; }
     #container #scroller ul {
       width: 320px;
       margin: 0 auto; }

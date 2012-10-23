@@ -10,42 +10,6 @@ $(document).ready(function() {
 		if (scroll_top <= 275) { $('.application').css({ 'top': 335 - scroll_top + 'px' }) }
   })
 	
-	$(function() {
-
-	    // grab the initial top offset of the navigation 
-	    var sticky_navigation_offset_top = $('.application').offset().top;
-
-	    // our function that decides weather the navigation bar should have "fixed" css position or not.
-	    var sticky_navigation = function(){
-	        var scroll_top = $(window).scrollTop(); // our current vertical position from the top
-
-	        // if we've scrolled more than the navigation, change its position to fixed to stick to top,
-	        // otherwise change it back to relative
-	        if (scroll_top > sticky_navigation_offset_top) { 
-	            $('.application').css({ 'top': 670 - scroll_top + 'px' });
-	        } else {
-	            $('.application').css({ 'top': 60 + scroll_top - 335 + 'px' }); 
-	        }   
-	    };
-	
-			// position: fixed
-			// left: 77%
-			// top: 335px
-
-	    // run our function on load
-
-	    // and run it again every time you scroll
-	    // $(window).scroll(function() {
-	    //      sticky_navigation();
-	    // });
-
-	});
-	
-	$(window).unload( function () {
-		event.stopPropagation();
-		alert(1)
-	});
-	
 	$(".source_type, .src_photo_link").live('tap', function(event){
 		event.stopPropagation();
 		loader('Redirecting to source website')
@@ -164,6 +128,7 @@ $(document).ready(function() {
 	})
 	
 	$("#user_img_profile").live('tap', function(event){
+		$('html, body').animate({scrollTop:0}, 'slow');
 		loader('Loading your data')
 		$.ajax({
         url: '/users/profile',
@@ -262,6 +227,7 @@ $(document).ready(function() {
 		$(this).parent().parent().parent().addClass('tapped')
 		close_web_popup()
 		loader('Analyzing millions of reviews')
+		$('html, body').animate({scrollTop:0}, 'slow');
 		ajax_get_restaurant($(this).attr('href'))
 		setTimeout(function(){ loader() },10);
 		return false
