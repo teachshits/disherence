@@ -3,7 +3,7 @@ markerList = []
 infoBubbleList = []
 
 window.onhashchange = function () {
-	
+
 	if (window.location.hash == '') {
 		$.ajax({
         url: '/restaurants?back=1',
@@ -13,7 +13,11 @@ window.onhashchange = function () {
 					get_restaurants()					
         }
     })
-	}	
+	} else if (window.location.hash.indexOf('restaurants') != -1) {
+		ajax_get_restaurant(window.location.hash.slice(1))
+	}	else if (window.location.hash.indexOf('profile') != -1) {
+		ajax_get_user_profile()
+	}
 }
 
 $(document).ready(function() {
@@ -155,21 +159,7 @@ $(document).ready(function() {
 	})
 	
 	$("#user_img_profile").live('tap', function(event){
-		$('html, body').animate({scrollTop:0}, 'slow');
-		loader('Loading your data')
-		$.ajax({
-        url: '/users/profile',
-        type: 'get',
-        dataType: 'script',
-        success: function() {
-					window.location.hash = 'profile';
-					$('#search_map_canvas_big').addClass('hidden')
-					$('#stlw').addClass('hidden')
-					setTimeout(function(){ loader() },100);
-					init_scroll()
-        }
-    })
-
+		ajax_get_user_profile()
 	})
 	
 	$("#bbutton").live('tap', function(event){
@@ -549,10 +539,29 @@ function get_restaurants() {
 	init_scroll()
 	size_map()
 	
-	if ($.cookie("search") != null || $.cookie("search").length > 0) {
-		$('#search_map_field').removeClass('hidden')
-		$('#search_field').val($.cookie("search"))
+	if ($.cookie("search") != null) {
+		if ($.cookie("search").length > 0) {
+			$('#search_map_field').removeClass('hidden')
+			$('#search_field').val($.cookie("search"))
+		}
 	}
+}
+
+function ajax_get_user_profile() {
+	$('html, body').animate({scrollTop:0}, 'slow');
+	loader('Loading your data')
+	$.ajax({
+      url: '/users/profile',
+      type: 'get',
+      dataType: 'script',
+      success: function() {
+				window.location.hash = 'profile';
+				$('#search_map_canvas_big').addClass('hidden')
+				$('#stlw').addClass('hidden')
+				setTimeout(function(){ loader() },100);
+				init_scroll()
+      }
+  })
 }
 
 
@@ -656,7 +665,6 @@ function ajax_get_restaurant(href) {
 	
 	loader('Analyzing millions of reviews')
 	$('html, body').animate({scrollTop:0}, 'slow');
-	loader()
 	
 	$.ajax({
       url: href,
@@ -670,7 +678,7 @@ function ajax_get_restaurant(href) {
 				$('#search_map_canvas_big').addClass('hidden')
 				$('#stlw').addClass('hidden')
 				
-				window.location.hash = 'restaurant';
+				window.location.hash = href;
 				init_scroll()
 				
 				setTimeout(function(){ loader() },10);
