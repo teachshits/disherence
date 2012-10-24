@@ -2,6 +2,21 @@ r_info = []
 markerList = []
 infoBubbleList = []
 
+window.onhashchange = function () {
+	
+	if (window.location.hash == '') {
+		$.ajax({
+        url: '/restaurants?back=1',
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+					get_restaurants()					
+        }
+    })
+	}
+	
+}
+
 $(document).ready(function() {
 	android_size()
 	
@@ -142,6 +157,7 @@ $(document).ready(function() {
         type: 'get',
         dataType: 'script',
         success: function() {
+					window.location.hash = 'profile';
 					$('#search_map_canvas_big').addClass('hidden')
 					$('#stlw').addClass('hidden')
 					setTimeout(function(){ loader() },100);
@@ -154,7 +170,6 @@ $(document).ready(function() {
 	$("#bbutton").live('tap', function(event){
 		loader('Loading places next to You')
 		event.preventDefault();
-		center = map.getCenter()
 		
 		$(this).addClass('pressed')
 		
@@ -163,13 +178,7 @@ $(document).ready(function() {
         type: 'get',
         dataType: 'script',
         success: function() {
-					init_scroll()
-					size_map()
-					
-					if ($.cookie("search") != null) {
-						$('#search_map_field').removeClass('hidden')
-						$('#search_field').val($.cookie("search"))
-					}
+					get_restaurants()
         }
     })
 	})
@@ -186,12 +195,11 @@ $(document).ready(function() {
 
 		center = map.getCenter()
 		$.cookie("search", keyword);
-		$.cookie("lat", center.Xa);
-		$.cookie("lng", center.Ya);		
-		
+		$.cookie("lat", center.lat());
+		$.cookie("lng", center.lng());		
 		
 		$.ajax({
-        url: 'restaurants?search=' + keyword + '&lng=' + center.Ya + '&lat=' + center.Xa,
+        url: 'restaurants?search=' + keyword + '&lng=' + center.lng() + '&lat=' + center.lat(),
         type: 'get',
         dataType: 'script',
         success: function() {
@@ -213,12 +221,12 @@ $(document).ready(function() {
 		center = map.getCenter()
 		
 		$(this).addClass('pressed')
-		$.cookie("lat", center.Xa);
-		$.cookie("lng", center.Ya);
+		$.cookie("lat", center.lat());
+		$.cookie("lng", center.lng());
 		$.cookie("search", '');
 		
 		$.ajax({
-        url: 'restaurants?lng=' + center.Ya + '&lat=' + center.Xa,
+        url: 'restaurants?lng=' + center.lng() + '&lat=' + center.lat(),
         type: 'get',
         dataType: 'script',
         success: function() {
@@ -237,6 +245,7 @@ $(document).ready(function() {
 		$('html, body').animate({scrollTop:0}, 'slow');
 		ajax_get_restaurant($(this).attr('href'))
 		setTimeout(function(){ loader() },10);
+		window.location.hash = 'restaurant';
 		return false
 	})
 	
@@ -533,6 +542,18 @@ $(document).ready(function() {
 	})
 
 });
+
+function get_restaurants() {
+	center = map.getCenter()
+	init_scroll()
+	size_map()
+	
+	if ($.cookie("search").length > 0) {
+		$('#search_map_field').removeClass('hidden')
+		$('#search_field').val($.cookie("search"))
+	}
+}
+
 
 function close_web_popup() {
 	$("#web_popup").addClass('hidden')
