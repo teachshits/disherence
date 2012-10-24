@@ -13,12 +13,17 @@ window.onhashchange = function () {
 					get_restaurants()					
         }
     })
-	}
-	
+	}	
 }
 
 $(document).ready(function() {
 	android_size()
+	
+	$(".review .description").live('tap', function(event){
+		event.stopPropagation();
+		var id = $(this).attr('id').slice(1)
+		ajax_get_restaurant('restaurants/show/' + id)
+	})
 	
 	$(window).scroll(function() {
 		
@@ -241,11 +246,7 @@ $(document).ready(function() {
 	$(".restaurant_name").live('tap', function(event){
 		$(this).parent().parent().parent().addClass('tapped')
 		close_web_popup()
-		loader('Analyzing millions of reviews')
-		$('html, body').animate({scrollTop:0}, 'slow');
 		ajax_get_restaurant($(this).attr('href'))
-		setTimeout(function(){ loader() },10);
-		window.location.hash = 'restaurant';
 		return false
 	})
 	
@@ -548,7 +549,7 @@ function get_restaurants() {
 	init_scroll()
 	size_map()
 	
-	if ($.cookie("search").length > 0) {
+	if ($.cookie("search") != null || $.cookie("search").length > 0) {
 		$('#search_map_field').removeClass('hidden')
 		$('#search_field').val($.cookie("search"))
 	}
@@ -652,7 +653,11 @@ function size_map() {
 }
 
 function ajax_get_restaurant(href) {
+	
+	loader('Analyzing millions of reviews')
+	$('html, body').animate({scrollTop:0}, 'slow');
 	loader()
+	
 	$.ajax({
       url: href,
       type: 'get',
@@ -665,7 +670,9 @@ function ajax_get_restaurant(href) {
 				$('#search_map_canvas_big').addClass('hidden')
 				$('#stlw').addClass('hidden')
 				
+				window.location.hash = 'restaurant';
 				init_scroll()
+				
 				setTimeout(function(){ loader() },10);
       }
   })

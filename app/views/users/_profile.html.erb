@@ -19,7 +19,7 @@
 					<div class="review">
 						<img class="review_img" src="<%= review.photo.blank? ? '/images/no-dish-photo-profile.png' : review.photo %>" />
 						<div class="opinion_img <%= review.opinion == true ? 'like' : 'dislike' %>"><img src="/images/trsp.gif" /></div>
-						<div class="description">
+						<div class="description" id = "r<%= review.dish.restaurant_id %>">
 							<div class="name"><%= review.dish.name %></div>
 							<div class="place"><%= review.dish.restaurant.name %></div>
 							<div class="address"><%= review.dish.restaurant.address %></div>
