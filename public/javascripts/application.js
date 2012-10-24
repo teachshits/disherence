@@ -378,22 +378,22 @@ $(document).ready(function() {
 	})
 	
 	// Restaurant info data
-	$(".place_name, .restaurant .name").live('tap', function(){
-		loader('Analyzing millions of reviews')
-		event.preventDefault()
-		href = $(this).attr('href')		
-		$.ajax({
-	        url: href,
-	        type: 'get',
-	        dataType: 'script',
-	        success: function() {
-					setTimeout(function () {
-							init_scroll()
-							loader()
-						}, 0);
-	        }
-	    })
-	})
+	// $(".place_name, .restaurant .name").live('tap', function(){
+	// 	loader('Analyzing millions of reviews')
+	// 	event.preventDefault()
+	// 	href = $(this).attr('href')		
+	// 	$.ajax({
+	//         url: href,
+	//         type: 'get',
+	//         dataType: 'script',
+	//         success: function() {
+	// 				setTimeout(function () {
+	// 						init_scroll()
+	// 						loader()
+	// 					}, 0);
+	//         }
+	//     })
+	// })
 	
 	// if ($("#wrapper").length > 0){
 	// 	document.ontouchmove = function(e) {e.preventDefault()}
