@@ -2,26 +2,14 @@ r_info = []
 markerList = []
 infoBubbleList = []
 
-window.onhashchange = function () {
-
-	if (window.location.hash == '') {
-		$.ajax({
-        url: '/restaurants?back=1',
-        type: 'get',
-        dataType: 'script',
-        success: function() {
-					get_restaurants()					
-        }
-    })
-	} else if (window.location.hash.indexOf('restaurants') != -1) {
-		ajax_get_restaurant(window.location.hash.slice(1))
-	}	else if (window.location.hash.indexOf('profile') != -1) {
-		ajax_get_user_profile()
-	}
-}
+window.onhashchange = trace_hash()
 
 $(document).ready(function() {
 	android_size()
+	
+	$(".description ul").live('scroll', function(event){
+		event.stopPropagation();
+	})	
 	
 	$(".review .description").live('tap', function(event){
 		event.stopPropagation();
@@ -377,38 +365,6 @@ $(document).ready(function() {
 
 	})
 	
-	// Restaurant info data
-	// $(".place_name, .restaurant .name").live('tap', function(){
-	// 	loader('Analyzing millions of reviews')
-	// 	event.preventDefault()
-	// 	href = $(this).attr('href')		
-	// 	$.ajax({
-	//         url: href,
-	//         type: 'get',
-	//         dataType: 'script',
-	//         success: function() {
-	// 				setTimeout(function () {
-	// 						init_scroll()
-	// 						loader()
-	// 					}, 0);
-	//         }
-	//     })
-	// })
-	
-	// if ($("#wrapper").length > 0){
-	// 	document.ontouchmove = function(e) {e.preventDefault()}
-	// 	$('.users').children('.profiles').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
-	// 	
-	// 	var flag = true
-	// 	var page = 1
-	// 	v_height = document.getElementById('wrapper').scrollHeight
-	// 
-	// 	myScroll = new iScroll('wrapper', { 
-	// 		scrollbarClass: 'myScrollbar', 
-	// 		onBeforeScrollStart: function() {} ,
-	// 	})		
-	// }
-	
 	$('.flag_content').live('swipeleft', function(){
 		
 		$('.dish_info').removeClass('swipe')
@@ -533,6 +489,24 @@ $(document).ready(function() {
 	})
 
 });
+
+function trace_hash() {
+	
+	if (window.location.hash == '') {
+		$.ajax({
+        url: '/restaurants?back=1',
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+					get_restaurants()					
+        }
+    })
+	} else if (window.location.hash.indexOf('restaurants') != -1) {
+		ajax_get_restaurant(window.location.hash.slice(1))
+	}	else if (window.location.hash.indexOf('profile') != -1) {
+		ajax_get_user_profile()
+	}
+}
 
 function get_restaurants() {
 	center = map.getCenter()
