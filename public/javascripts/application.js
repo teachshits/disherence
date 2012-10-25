@@ -7,8 +7,9 @@ window.onhashchange = trace_hash()
 $(document).ready(function() {
 	android_size()
 	
-	$(".description ul").live('scroll', function(event){
+	$(".description ul").live('tap', function(event){
 		event.stopPropagation();
+		
 	})	
 	
 	$(".review .description").live('tap', function(event){
