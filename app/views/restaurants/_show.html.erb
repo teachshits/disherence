@@ -59,12 +59,12 @@
 										<div class="description">
 											<%= d.description %>
 											<ul>
-												<li>
-												<% d.reviews.where('comment != ""').each do |r| %> 												
+											<% d.reviews.where('comment != ""').each do |r| %>
+ 												<li>
 													<div class="user_img" style="background-image: url('<%= r.user.photo unless r.user.nil? %>')"></div>
-													<div><%= r.comment %></div> 
-												<% end %>	
-												</li>
+													<div><%= r.comment %></div>
+												</li> 
+											<% end %>	
 											</ul>
 										</div>
 										<%= awesome_buttons(session[:user],d) %>	
