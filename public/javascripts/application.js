@@ -582,7 +582,7 @@ function init_scroll() {
 	
 	if (check_mobile() == 1) {
 		myScroll = new iScroll('wrapper', { 
-			scrollbarClass: 'myScrollbar'
+			scrollbarClass: 'myScrollbar',
 			onBeforeScrollStart: function() {}
 		})
 	} else {
