@@ -575,7 +575,10 @@ function refresh_scroll() {
 
 function init_scroll() {
 	document.ontouchmove = function(e) {e.preventDefault()}
-	$('.description').children('ul').each(function(index, item){ item.ontouch = function(e) {e.stopPropagation()} })
+	$('.description').children('ul').each(function(index, item){ 
+		item.ontouchmove = function(e) {e.stopPropagation()}
+		item.ontouch = function(e) {e.stopPropagation()}
+	})
 	if (typeof myScroll != 'undefined'){
 		myScroll.destroy();
 		myScroll = null;
