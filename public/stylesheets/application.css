@@ -508,6 +508,10 @@ li {
             min-height: 45px;
             max-height: 1000px;
             max-width: 270px; }
+            #top_dishes .dish_info_container .dish_info .description .overflow .overflow_inside .user_comment_container {
+              display: block;
+              float: none;
+              clear: both; }
       #top_dishes .dish_info_container .dish_info .hr_b {
         clear: both;
         height: 2px;
