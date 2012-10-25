@@ -574,21 +574,21 @@ function refresh_scroll() {
 }
 
 function init_scroll() {
-	// document.ontouchmove = function(e) {e.preventDefault()}
-	// $('.description').children('ul').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
-	// if (typeof myScroll != 'undefined'){
-	// 	myScroll.destroy();
-	// 	myScroll = null;
-	// }
-	// 
-	// if (check_mobile() == 1) {
-	// 	myScroll = new iScroll('wrapper', { 
-	// 		scrollbarClass: 'myScrollbar',
-	// 		onBeforeScrollStart: function() {}
-	// 	})
-	// } else {
-	// 	$("#wrapper").css("position", "relative");
-	// }
+	document.ontouchmove = function(e) {e.preventDefault()}
+	$('.description').children('ul').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
+	if (typeof myScroll != 'undefined'){
+		myScroll.destroy();
+		myScroll = null;
+	}
+	
+	if (check_mobile() == 1) {
+		myScroll = new iScroll('wrapper', { 
+			scrollbarClass: 'myScrollbar',
+			onBeforeScrollStart: function() {}
+		})
+	} else {
+		$("#wrapper").css("position", "relative");
+	}
 	android_size()
 
 }
