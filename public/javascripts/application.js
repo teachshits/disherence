@@ -7,9 +7,8 @@ window.onhashchange = trace_hash()
 $(document).ready(function() {
 	android_size()
 	
-	$(".description ul").live('tap', function(event){
+	$(".description .overflow").live('tap', function(event){
 		event.stopPropagation();
-		
 	})	
 	
 	$(".review .description").live('tap', function(event){
@@ -575,10 +574,7 @@ function refresh_scroll() {
 
 function init_scroll() {
 	document.ontouchmove = function(e) {e.preventDefault()}
-	$('.description').children('.overflow').each(function(index, item){ 
-		item.ontouchmove = function(e) {e.stopPropagation()}
-		item.ontouch = function(e) {e.stopPropagation()}
-	})
+	$('.description').children('.overflow').each(function(index, item){ item.ontouchmove = function(e) {e.stopPropagation()} })
 	if (typeof myScroll != 'undefined'){
 		myScroll.destroy();
 		myScroll = null;
