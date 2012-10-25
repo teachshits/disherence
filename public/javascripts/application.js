@@ -575,7 +575,7 @@ function refresh_scroll() {
 
 function init_scroll() {
 	document.ontouchmove = function(e) {e.preventDefault()}
-	$('.description').children('ul').each(function(index, item){ 
+	$('.description').children('.overflow').each(function(index, item){ 
 		item.ontouchmove = function(e) {e.stopPropagation()}
 		item.ontouch = function(e) {e.stopPropagation()}
 	})
