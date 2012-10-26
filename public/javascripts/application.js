@@ -6,7 +6,6 @@ window.onhashchange = function (){trace_hash()}
 
 $(document).ready(function() {
 	android_size()
-	trace_hash()
 
 	$("html").live('tap', function(event){
 		close_web_popup()
@@ -220,7 +219,7 @@ $(document).ready(function() {
 		
 		document.ontouchmove = function(e) {e.preventDefault()}				
 		navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
-		
+	
 		id = setInterval(function(){
 			
 			if ($.cookie("clear_interval")!= null){
@@ -230,14 +229,7 @@ $(document).ready(function() {
 			
 			if ($.cookie("lat") != null && $.cookie("lng") != null){
 				clearInterval(id);
-				$.ajax({
-		        url: '/restaurants/index',
-		        type: 'get',
-		        dataType: 'script',
-		        success: function() {
-							init_scroll()
-		        }
-		    })
+				trace_hash()
 			}
 		},200);
 	}

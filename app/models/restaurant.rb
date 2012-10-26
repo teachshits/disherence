@@ -4,7 +4,7 @@ class Restaurant < ActiveRecord::Base
 
   scope :with_dishes, where("id IN (SELECT DISTINCT(restaurant_id) FROM dishes)")
    
-  RAD_PER_DEG = 0.017453293 # PI/180; PI = 3.1415926535
+  RAD_PER_DEG = 3.1415926535/180 # PI/180; PI = 3.1415926535
 
   Rmiles = 3956           # radius of the great circle in miles
   Rkm = 6371              # radius in kilometers...some algorithms use 6367
@@ -46,8 +46,8 @@ class Restaurant < ActiveRecord::Base
     lat_cur = lat_cur.to_f
     lng_cur = lng_cur.to_f
     
-    lat = lat.to_f
-    lng = lng.to_f
+    lat = self.lat.to_f
+    lng = self.lng.to_f
     
     dlng = lng_cur - lng 
     dlat = lat_cur - lat
@@ -62,7 +62,7 @@ class Restaurant < ActiveRecord::Base
     lng_cur_rad = lng_cur * RAD_PER_DEG
     
     a = (Math.sin(dlat_rad/2))**2 + Math.cos(lat_rad) * Math.cos(lat_cur_rad) * (Math.sin(dlng_rad/2))**2
-    c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a))
+    c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
     
     dMi = Rmiles * c          # delta between the two points in miles
     dKm = Rkm * c             # delta in kilometers
