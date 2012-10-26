@@ -2,10 +2,15 @@ r_info = []
 markerList = []
 infoBubbleList = []
 
-window.onhashchange = trace_hash()
+window.onhashchange = function (){trace_hash()}
 
 $(document).ready(function() {
 	android_size()
+	trace_hash()
+
+	$("html").live('tap', function(event){
+		close_web_popup()
+	})	
 	
 	$(".description .overflow").live('tap', function(event){
 		event.stopPropagation();
@@ -32,11 +37,6 @@ $(document).ready(function() {
 	$(".source_type, .src_photo_link").live('tap', function(event){
 		event.stopPropagation();
 		loader('Redirecting to source website')
-	})
-	
-	$("#wvb").live('tap', function(event){
-		close_web_popup()
-		return false
 	})
 	
 	$(".close_popup").live('tap', function(event){
@@ -151,19 +151,9 @@ $(document).ready(function() {
 	})
 	
 	$("#bbutton").live('tap', function(event){
-		loader('Loading places next to You')
 		event.preventDefault();
-		
 		$(this).addClass('pressed')
-		
-		$.ajax({
-        url: back_url,
-        type: 'get',
-        dataType: 'script',
-        success: function() {
-					get_restaurants()
-        }
-    })
+		ajax_get_restaurants(back_url)
 	})
 	
 	$("#search_restaurant, #web_search").live('tap', function(event){
@@ -199,7 +189,6 @@ $(document).ready(function() {
 	
 	$("#search_on_map, #stlw").live('tap', function(event){
 
-		close_web_popup()
 		loader('Loading places next to You')
 		center = map.getCenter()
 		
@@ -223,8 +212,7 @@ $(document).ready(function() {
 	
 	$(".restaurant_name").live('tap', function(event){
 		$(this).parent().parent().parent().addClass('tapped')
-		close_web_popup()
-		ajax_get_restaurant($(this).attr('href'))
+		window.location.hash = $(this).attr('href');
 		return false
 	})
 	
@@ -320,10 +308,11 @@ $(document).ready(function() {
 		if (!(el.parent().hasClass('expand') && !el.hasClass('slideLeft'))) {
 			el.parent().toggleClass('expand')
 			console.log(el)
-		}
-		
+		}		
 		el.toggleClass('slideLeft')
-		el.next('.comment').addClass('hidden')
+
+		container.next('.comment').addClass('hidden')
+		container.nextAll('.src_photo_link').addClass('hidden')
 		
 		setTimeout(function () {refresh_scroll()}, 300);
 	})
@@ -331,8 +320,11 @@ $(document).ready(function() {
 	$('.dish_info_container').live('swiperight', function(event){
 		$(this).parent().removeClass('expand')
 		$(this).removeClass('slideLeft')
-		el.next('.comment').removeClass('hidden')
-		 setTimeout(function () {refresh_scroll()}, 300);
+		
+		$(this).next('.comment').removeClass('hidden')
+		$(this).nextAll('.src_photo_link').addClass('hidden')
+		
+		setTimeout(function () {refresh_scroll()}, 300);
 	})
 	
 	$('.dish_info_container').live('tap', function(event){
@@ -340,12 +332,22 @@ $(document).ready(function() {
 		dish = $(this).parent()
 		container = $(this)
 		
+		console.log(dish.hasClass('expand'))
+		console.log(container.hasClass('slideLeft'))
+		
+		if (dish.hasClass('expand') && container.hasClass('slideLeft')){
+			container.next('.comment').removeClass('hidden')
+			container.nextAll('.src_photo_link').addClass('hidden')
+		} else {
+			container.next('.comment').addClass('hidden')
+			container.nextAll('.src_photo_link').addClass('hidden')
+		}
+		
 		if (!(dish.hasClass('expand') && !container.hasClass('slideLeft'))){
 			$(this).parent().toggleClass('expand')
 		}
 		
 		$(this).toggleClass('slideLeft')
-		$(this).next('.comment').toggleClass('hidden')
 		 setTimeout(function () {refresh_scroll()}, 300);
 	})
 	
@@ -359,8 +361,15 @@ $(document).ready(function() {
 		$('.dish').not(this).removeClass('expand')
 		$(this).toggleClass('expand')
 		setTimeout(function () {
-			dish.children('.comment').toggleClass('hidden')
-			dish.children('.src_photo_link').toggleClass('hidden')
+			
+			if (dish.hasClass('expand')) {
+				dish.children('.comment').addClass('hidden')
+				dish.children('.src_photo_link').removeClass('hidden')
+			} else {
+				dish.children('.comment').removeClass('hidden')
+				dish.children('.src_photo_link').addClass('hidden')
+			}
+			
 			refresh_scroll()}, 300);
 
 	})
@@ -491,34 +500,65 @@ $(document).ready(function() {
 });
 
 function trace_hash() {
-	
+	console.log('trace_hash')
 	if (window.location.hash == '') {
-		$.ajax({
-        url: '/restaurants?back=1',
-        type: 'get',
-        dataType: 'script',
-        success: function() {
-					get_restaurants()					
-        }
-    })
+		console.log('0')
+		ajax_get_restaurants('/restaurants?back=1')					
 	} else if (window.location.hash.indexOf('restaurants') != -1) {
+		console.log(window.location.hash.slice(1))
 		ajax_get_restaurant(window.location.hash.slice(1))
 	}	else if (window.location.hash.indexOf('profile') != -1) {
+		console.log('2')
 		ajax_get_user_profile()
 	}
 }
 
-function get_restaurants() {
-	center = map.getCenter()
-	init_scroll()
-	size_map()
+function ajax_get_restaurants(link) {
+	console.log('ajax_get_restaurants')
+	loader('Loading places next to You')
+	$('html, body').animate({scrollTop:0}, 'slow');
 	
-	if ($.cookie("search") != null) {
-		if ($.cookie("search").length > 0) {
-			$('#search_map_field').removeClass('hidden')
-			$('#search_field').val($.cookie("search"))
-		}
-	}
+	$.ajax({
+      url: link,
+      type: 'get',
+      dataType: 'script',
+      success: function() {
+				init_scroll()				
+				center = map.getCenter()
+				size_map()
+				
+				if ($.cookie("search") != null) {
+					if ($.cookie("search").length > 0) {
+						$('#search_map_field').removeClass('hidden')
+						$('#search_field').val($.cookie("search"))
+					}
+				}							
+      }
+  })
+}
+
+function ajax_get_restaurant(href) {
+	
+	loader('Analyzing millions of reviews')
+	$('html, body').animate({scrollTop:0}, 'slow');
+	
+	$.ajax({
+      url: href,
+      type: 'get',
+      dataType: 'script',
+      success: function() {
+				
+				$('#search_restaurant').addClass('hidden')
+				$(".close_map").addClass('hidden');
+				$("#bbutton").attr('href', '/').removeClass('hidden');
+				$('#search_map_canvas_big').addClass('hidden')
+				$('#stlw').addClass('hidden')
+				
+				init_scroll()
+				
+				setTimeout(function(){ loader() },10);
+      }
+  })
 }
 
 function ajax_get_user_profile() {
@@ -544,7 +584,6 @@ function close_web_popup() {
 	$.cookie("ask_version", 1);
 }
 
-
 function check_Android() {
 	return (navigator.userAgent.indexOf("Android") != -1) ? 1 : 0
 }
@@ -553,16 +592,12 @@ function check_iPhone() {
 	return (navigator.userAgent.indexOf("iPhone") != -1) ? 1 : 0
 }
 
-function check_mobile() {
-	if (navigator.userAgent.indexOf("Android") != -1 || 
-			navigator.userAgent.indexOf("iPhone") != -1 || 
-			navigator.userAgent.indexOf("iPad") != -1
-	) {
-		return 1
-	} else {
-		return 0
-	}
+function check_iPad() {
+	return (navigator.userAgent.indexOf("iPad") != -1) ? 1 : 0
+}
 
+function check_mobile() {
+	return (check_Android() == 1 || check_iPhone() == 1 || check_iPad() == 1) ? 1 : 0
 }
 
 function refresh_scroll() {
@@ -601,10 +636,7 @@ function android_size(){
 }
 
 function loader(message) {
-	$('#loader').toggleClass('hidden')
-	if (message) {
-		$('#loader').text(message)
-	}
+	message ? $('#loader').text(message).removeClass('hidden') : $('#loader').addClass('hidden')
 }
 
 function preload(images) {	
@@ -633,31 +665,6 @@ function size_map() {
 				$('#search_on_map').removeClass('hidden')
 		}, 400);
 	}
-}
-
-function ajax_get_restaurant(href) {
-	
-	loader('Analyzing millions of reviews')
-	$('html, body').animate({scrollTop:0}, 'slow');
-	
-	$.ajax({
-      url: href,
-      type: 'get',
-      dataType: 'script',
-      success: function() {
-				
-				$('#search_restaurant').addClass('hidden')
-				$(".close_map").addClass('hidden');
-				$("#bbutton").attr('href', '/').removeClass('hidden');
-				$('#search_map_canvas_big').addClass('hidden')
-				$('#stlw').addClass('hidden')
-				
-				window.location.hash = href;
-				init_scroll()
-				
-				setTimeout(function(){ loader() },10);
-      }
-  })
 }
 
 function getLocation(pos)
