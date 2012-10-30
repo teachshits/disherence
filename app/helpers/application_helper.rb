@@ -35,7 +35,7 @@ module ApplicationHelper
         <meta property="og:url"    content="#{url}" /> 
         <meta property="og:title"  content="#{title}" /> 
         <meta property="og:image"  content="#{image}" />
-        <meta property="og:see_also"  content="#{best_dishes}" />
+        <meta property="og:see_also"  content="['#{best_dishes.join("','")}']" />
       }
     end
   end
