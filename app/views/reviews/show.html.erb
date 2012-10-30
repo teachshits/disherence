@@ -1,0 +1,113 @@
+<div id="loader" class="hidden">Loading</div>
+<div id="header">
+	<%= user_picture%>
+	<div class="close_map hidden"><img src="/images/trsp.gif" /></div>
+	<a id="bbutton" class="hidden" href="/"><img src="/images/trsp.gif" /></a>
+	<div id="search_restaurant" class="hidden" ><img src="/images/trsp.gif" /></div>
+	<a id="logo" href="/"><img id="logo_img" src="/images/trsp.gif" /></a>
+</div> 
+<div id="content">
+	
+	<div id="share" class="hidden">
+		<a href="#" class="close_popup"><img src="/images/trsp.gif" /></a>
+		<p>Share info</p>
+		<a id="fb" href="/api/share?provider=facebook&restaurant_id=<%= @restaurant.id %>"><img src="/images/trsp.gif" /></a>
+		<textarea id="fb_share_text"></textarea>
+		<input type="button" name="send" value="share" id="fb_share_button"/>
+		<a id="tw" href="/api/share?provider=twitter&restaurant_id=<%= @restaurant.id %>" ><img src="/images/trsp.gif" /></a>
+		<textarea id="tw_share_text">Check out <%= @restaurant.name %> on @disherence</textarea>
+		<input type="button" name="send" value="share" id="tw_share_button"/>
+	</div>
+
+	<div id="login_popup" class="hidden">
+		<a href="#" class="close_popup"><img src="/images/trsp.gif" /></a>
+		<p>Join Disherence</p>
+		<a id="fb" href="<%= @fb_url %>"><img src="/images/trsp.gif" /></a>
+		<a id="tw" href="<%= @tw_url %>" ><img src="/images/trsp.gif" /></a>
+	</div>
+
+			<div id="wrapper" class="big"> 
+				<div id="scroller">
+					<div id="top_dishes"> 
+						<ul id="thelist">
+							<li>
+								<div class="restaurant">
+									<div class="info">
+										<div class="name"><%= @restaurant.name %></div>
+										<div class="rate">
+											<%= yelp_rating(@restaurant) %>
+											<div class="rating"><div class="ico"></div><%= @restaurant.yelp_reviews_count %> on Yelp</div>
+										</div>
+									</div>
+									<div class="b_share"><img src="/images/trsp.gif" /></div>
+									<div class="address"><%= @restaurant.address %></div>
+									<div class="stats"><%= @restaurant.cuisine %> | <% @restaurant.bill.to_i.times do%>$<% end %></div>	
+								</div>
+								<div class="hr"></div>
+								<div id="banner">
+									Based on <%= @restaurant.yelp_reviews_count %> reviews on Foursquare and other sites
+								</div>
+							</li>						
+
+							<li>
+								<img class="preloader" src="/images/preloader.gif" />
+								<div class="dish" style="background-image: url('/images/no_foto.png')">
+								
+									<div class="name"><%= @dish.name.length > 20 ? @dish.name[0 .. 20] + ' ...' : @dish.name %></div>
+								
+									<div class="dish_info_container">				
+										<%= dish_likes(session[:user],@dish) %>
+										<div class="dish_info">
+											<div class="name"><%= @dish.name.length > 190 ? @dish.name[0 .. 190] + ' ...' : @dish.name %></div>
+										
+											<div class="price"><% if @dish.price.to_i > 0 %><%= @dish.price %> <%= @dish.currency %><% end %></div>
+											<div class="stats">
+												<div class="dislike"><%= @dish.dislikes %></div>
+												<div class="like"><%= @dish.likes %></div>
+											</div>
+											<div class="hr_b"></div>
+											<div class="description">
+												<%= @dish.description %>
+												<div class="overflow">
+													<div class="overflow_inside">
+												<% @dish.reviews.where('comment != ""').each do |r| %>
+														<div class="user_comment_container">
+															<div class="user_img" style="background-image: url('<%= r.user.photo unless r.user.nil? %>')"></div>
+															<%= r.comment %>
+														</div>
+												<% end %>	
+													</div>
+												</div>
+											</div>
+											<%= awesome_buttons(session[:user],@dish) %>	
+										</div>
+									</div>
+																
+									<% if dish = @dish.reviews.where("dish_id = #{@dish.id} AND remote_photo IS NOT NULL").first %>
+										<div class="comment">
+											<div class="user_img" style="background-image: url('<%= @dish.reviews.where("dish_id = #{@dish.id} AND remote_photo IS NOT NULL").first.user.remote_photo %>')"></div>
+											<% comment = @dish.reviews.where("dish_id = #{@dish.id} AND remote_photo IS NOT NULL").first.comment.to_s %>
+										
+											<%= comment.length > 70 ? comment[0 .. 70] + ' ...' : comment %>
+										
+											<a class="source_type" href="<%= dish.comment_source_url %>" >
+											<% if dish.comment_source_type == 'yelp' %>
+												<img src="/images/yelp_src.png" />
+											<% end %>
+											</a>
+										
+										</div>
+										<div class="src_photo_link hidden">	
+											<a href="<%= dish.remote_photo_source_url %>">Photo taken by <%= dish.user.name %> via <%= dish.remote_photo_source_type %></a>
+										</div>
+									<% end %>
+							
+								</div>
+							</li>
+												
+						</div>
+					</ul>
+					</div>
+					</div>
+					</div>
+</div>					

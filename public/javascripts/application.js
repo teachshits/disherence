@@ -492,15 +492,11 @@ $(document).ready(function() {
 });
 
 function trace_hash() {
-	console.log('trace_hash')
 	if (window.location.hash == '') {
-		console.log('0')
-		ajax_get_restaurants('/restaurants?back=1')					
+		ajax_get_restaurants('/restaurants')					
 	} else if (window.location.hash.indexOf('restaurants') != -1) {
-		console.log(window.location.hash.slice(1))
 		ajax_get_restaurant(window.location.hash.slice(1))
 	}	else if (window.location.hash.indexOf('profile') != -1) {
-		console.log('2')
 		ajax_get_user_profile()
 	}
 }
