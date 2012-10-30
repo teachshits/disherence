@@ -1,14 +1,4 @@
 <%if @restaurant %>
-<script>
-	arrayOfImages = [];
-		<% if review = @dish.reviews.where("dish_id = #{@dish.id} AND remote_photo IS NOT NULL").first %>								
-	arrayOfImages.push("<%= review.remote_photo %>");
-		<% else %>
-	arrayOfImages.push("");
-		<% end %>
-	preload(arrayOfImages);
-</script>
-
 <div id="loader" class="hidden">Loading</div>
 <div id="header">
 	<%= user_picture%>
@@ -62,7 +52,7 @@
 
 							<li>
 								<img class="preloader" src="/images/preloader.gif" />
-								<div class="dish" style="background-image: url('/images/no_foto.png')">
+								<div class="dish expand" style="background-image: url('/images/no_foto.png')">
 								
 									<div class="name"><%= @dish.name.length > 20 ? @dish.name[0 .. 20] + ' ...' : @dish.name %></div>
 								
@@ -121,5 +111,14 @@
 					</div>
 					</div>
 					</div>
-</div>					
+</div>	
+<script>
+	arrayOfImages = [];
+		<% if review = @dish.reviews.where("dish_id = #{@dish.id} AND remote_photo IS NOT NULL").first %>								
+	arrayOfImages.push("<%= review.remote_photo %>");
+		<% else %>
+	arrayOfImages.push("");
+		<% end %>
+	preload(arrayOfImages);
+</script>				
 <% end %>

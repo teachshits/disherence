@@ -20,8 +20,14 @@ module ApplicationHelper
             
       dish = Dish.where("restaurant_id = ? AND photos > 0 ",params[:id]).first
       review = Review.where("dish_id = ? AND remote_photo IS NOT NULL", dish.id).first
-      
       image = review.remote_photo
+      
+      best_dishes = []
+      restaurant.dishes.where('photos > 0').order('likes DESC').each do |d|
+        if best_dishes.count < 3 && review = d.reviews.where('remote_photo IS NOT NULL').first
+          best_dishes.push("<meta property=\"disherence:best_dishes\"  content=\"#{domain}/reviews/show/#{review.dish_id}\" />")
+        end
+      end
       
       raw %Q{
         <meta property="fb:app_id" content="#{app_id}" /> 
@@ -29,6 +35,7 @@ module ApplicationHelper
         <meta property="og:url"    content="#{url}" /> 
         <meta property="og:title"  content="#{title}" /> 
         <meta property="og:image"  content="#{image}" />
+        #{best_dishes.join("\n")}
       }
     end
   end
