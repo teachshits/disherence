@@ -25,7 +25,7 @@ module ApplicationHelper
       best_dishes = []
       restaurant.dishes.where('photos > 0').order('likes DESC').each do |d|
         if best_dishes.count < 3 && review = d.reviews.where('remote_photo IS NOT NULL').first
-          best_dishes.push("<meta property=\"og:see_also\"  content=\"#{domain}/reviews/show/#{review.dish_id}\" />")
+          best_dishes.push("#{domain}/reviews/show/#{review.dish_id}")
         end
       end
       
@@ -35,7 +35,7 @@ module ApplicationHelper
         <meta property="og:url"    content="#{url}" /> 
         <meta property="og:title"  content="#{title}" /> 
         <meta property="og:image"  content="#{image}" />
-        #{best_dishes.join("\n")}
+        <meta property="og:image"  content="#{best_dishes}" />
       }
     end
   end
