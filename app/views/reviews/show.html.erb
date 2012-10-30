@@ -1,4 +1,12 @@
 <%if @restaurant %>
+<script>
+	arrayOfImages = [];
+		<% if review = @dish.reviews.where("dish_id = #{@dish.id} AND remote_photo IS NOT NULL").first %>								
+	arrayOfImages.push("<%= review.remote_photo %>");
+		<% else %>
+	arrayOfImages.push("");
+</script>
+
 <div id="loader" class="hidden">Loading</div>
 <div id="header">
 	<%= user_picture%>
