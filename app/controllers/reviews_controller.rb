@@ -30,30 +30,33 @@ class ReviewsController < ApplicationController
   
   
   def show
-    @dish = Dish.find_by_id(params[:id])
-    @restaurant = Restaurant.find_by_id(@dish.restaurant_id)
+    if @dish = Dish.find_by_id(params[:id])
+
+      @restaurant = Restaurant.find_by_id(@dish.restaurant_id)
     
-    url_params = []
-    url_params.push("back=1")
-    url_params.push("lat=#{cookies[:lat]}")
-    url_params.push("lng=#{cookies[:lng]}")
-    url_params.push("search=#{cookies[:search]}") unless cookies[:search].blank?
-    url_params = url_params.join('&')
+      url_params = []
+      url_params.push("back=1")
+      url_params.push("lat=#{cookies[:lat]}")
+      url_params.push("lng=#{cookies[:lng]}")
+      url_params.push("search=#{cookies[:search]}") unless cookies[:search].blank?
+      url_params = url_params.join('&')
     
-    @back_url = "restaurants?#{url_params}"
+      @back_url = "restaurants?#{url_params}"
     
-    @fb_url = Rails.application.config.fb_auth_url
+      @fb_url = Rails.application.config.fb_auth_url
     
-    consumer_key = "XQlhrLVWUJK7q1AK9uTeQ"
-    consumer_secret = "M2iDOlkxW8Y7430Q6HgFquY1haZnaEqIVrFhyE0XIo"
+      consumer_key = "XQlhrLVWUJK7q1AK9uTeQ"
+      consumer_secret = "M2iDOlkxW8Y7430Q6HgFquY1haZnaEqIVrFhyE0XIo"
         
-    consumer = OAuth::Consumer.new(consumer_key, consumer_secret, :site => "http://api.twitter.com", :scheme => :header)    
-    request_token = consumer.get_request_token(:oauth_callback => "http://demo.disherence.com/users/auth_callback")
+      consumer = OAuth::Consumer.new(consumer_key, consumer_secret, :site => "http://api.twitter.com", :scheme => :header)    
+      request_token = consumer.get_request_token(:oauth_callback => "http://demo.disherence.com/users/auth_callback")
     
-    session[:request_token] = request_token.token
-    session[:request_secret] = request_token.secret
+      session[:request_token] = request_token.token
+      session[:request_secret] = request_token.secret
     
-    @tw_url = request_token.authorize_url    
+      @tw_url = request_token.authorize_url
+      
+    end    
   end
   
   def awesome
