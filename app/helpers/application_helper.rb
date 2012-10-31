@@ -22,6 +22,8 @@ module ApplicationHelper
       review = Review.where("dish_id = ? AND remote_photo IS NOT NULL", dish.id).first
       image = review.remote_photo
       
+      description = "#{restaurant.cuisine}, #{@restaurant.bill.to_i.times do '$' end}"
+      
       best_dishes = []
       restaurant.dishes.where('photos > 0').order('likes DESC').each do |d|
         if best_dishes.count < 1 && review = d.reviews.where('remote_photo IS NOT NULL').first
@@ -35,6 +37,8 @@ module ApplicationHelper
         <meta property="og:url"    content="#{url}" /> 
         <meta property="og:title"  content="#{title}" /> 
         <meta property="og:image"  content="#{image}" />
+        <meta property="og:description"  content="#{description}" />
+        
         #{best_dishes.join("\n")}
       }
     end
