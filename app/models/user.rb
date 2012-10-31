@@ -56,9 +56,11 @@ class User < ActiveRecord::Base
           fb_share_url += "&picture=" + CGI.escape(photo).gsub("+", "%20")
         end
         
+        i = 0
         restaurant.dishes.where('photos > 0').order('likes DESC').each do |d|
-          if best_dishes.count < 1 && review = d.reviews.where('remote_photo IS NOT NULL').first
+          if i < 1 && review = d.reviews.where('remote_photo IS NOT NULL').first
             fb_share_url += "&best_dishes=#{domain}/reviews/show/#{review.dish_id}"
+            i += 1
           end
         end
 
