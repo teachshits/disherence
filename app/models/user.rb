@@ -35,20 +35,31 @@ class User < ActiveRecord::Base
     if user = find_by_token(user_token)
       if restaurant = Restaurant.find_by_id(restaurant_id)
         
+        domain = 'http://demo.disherence.com'
         restaurant_name = CGI.escape(restaurant.name).gsub("+", "%20")
+        
+        bill = ''
+        @restaurant.bill.to_i.times do bill += '$' end  
+        description = "#{restaurant.cuisine}, #{bill}"
         
         fb_share_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
         fb_share_url += "?access_token=#{user.fb_access_token}"
         
-        fb_share_url += "&link=" + CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
-        fb_share_url += "&message=Check%20out%20#{restaurant_name}" + CGI.escape(" http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
-        fb_share_url += "&description=#{text}"
-        fb_share_url += "&name=#{restaurant_name}"
-        fb_share_url += "&caption=#{restaurant_name}"       
+        fb_share_url += "&link=" + CGI.escape("#{domain}/restaurants/show/#{restaurant_id}").gsub("+", "%20")
+        # fb_share_url += "&message=#{restaurant_name}" + CGI.escape(" #{domain}/restaurants/show/#{restaurant_id}").gsub("+", "%20")
+        fb_share_url += "&description=#{description}"
+        # fb_share_url += "&name=#{restaurant_name}"
+        # fb_share_url += "&caption=#{restaurant_name}"       
         
         if dish = Dish.where("restaurant_id = ? AND photos > 0",restaurant_id).order("likes DESC").first
           photo = dish.reviews.where("remote_photo IS NOT NULL").first.remote_photo
           fb_share_url += "&picture=" + CGI.escape(photo).gsub("+", "%20")
+        end
+        
+        restaurant.dishes.where('photos > 0').order('likes DESC').each do |d|
+          if best_dishes.count < 1 && review = d.reviews.where('remote_photo IS NOT NULL').first
+            fb_share_url += "&best_dishes=#{domain}/reviews/show/#{review.dish_id}"
+          end
         end
 
         activity_url = "https://graph.facebook.com/me/disherence:shared"

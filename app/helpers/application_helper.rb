@@ -22,7 +22,9 @@ module ApplicationHelper
       review = Review.where("dish_id = ? AND remote_photo IS NOT NULL", dish.id).first
       image = review.remote_photo
       
-      description = "#{restaurant.cuisine}, #{@restaurant.bill.to_i.times do '$' end}"
+      bill = ''
+      @restaurant.bill.to_i.times do bill += '$' end  
+      description = "#{restaurant.cuisine}, #{bill}"
       
       best_dishes = []
       restaurant.dishes.where('photos > 0').order('likes DESC').each do |d|
