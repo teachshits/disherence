@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
         restaurant_name = CGI.escape(restaurant.name).gsub("+", "%20")
         
         bill = ''
-        @restaurant.bill.to_i.times do bill += '$' end  
+        restaurant.bill.to_i.times do bill += '$' end  
         description = "#{restaurant.cuisine}, #{bill}"
         
         fb_share_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
