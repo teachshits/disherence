@@ -26,12 +26,12 @@ module ApplicationHelper
       @restaurant.bill.to_i.times do bill += '$' end  
       description = "#{restaurant.cuisine}, #{bill}"
       
-      best_dishes = []
-      restaurant.dishes.where('photos > 0').order('likes DESC').each do |d|
-        if best_dishes.count < 1 && review = d.reviews.where('remote_photo IS NOT NULL').first
-          best_dishes.push("<meta property=\"disherence:best_dishes\"  content=\"#{domain}/reviews/show/#{review.dish_id}\" />")
-        end
-      end
+      # best_dishes = []
+      # restaurant.dishes.where('photos > 0').order('likes DESC').each do |d|
+      #   if best_dishes.count < 1 && review = d.reviews.where('remote_photo IS NOT NULL').first
+      #     best_dishes.push("<meta property=\"disherence:best_dishes\"  content=\"#{domain}/reviews/show/#{review.dish_id}\" />")
+      #   end
+      # end
       
       raw %Q{
         <meta property="fb:app_id" content="#{app_id}" /> 
@@ -40,9 +40,9 @@ module ApplicationHelper
         <meta property="og:title"  content="#{title}" /> 
         <meta property="og:image"  content="#{image}" />
         <meta property="og:description"  content="#{description}" />
-        
-        #{best_dishes.join("\n")}
-      }
+        <meta property="disherence:best_dishes" content="http://signup.disherence.com" />
+      }   
+      
     end
   end
   
