@@ -41,6 +41,7 @@ module ApplicationHelper
         <meta property="og:image"  content="#{image}" />
         <meta property="og:description"  content="#{description}" />
         <meta property="disherence:best_dishes" content="http://signup.disherence.com" />
+        <meta property="disherence:test"        content="123" /> 
       }   
       
     end
