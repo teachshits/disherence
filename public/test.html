@@ -1,0 +1,424 @@
+<!DOCTYPE html> 
+<html> 
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object#"> 
+		<title>Disherence</title> 
+		<meta name="viewport" content="width=device-width, user-scalable=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		
+        <meta property="fb:app_id" content="361774547226492" /> 
+        <meta property="og:type"   content="disherence:restaurant" /> 
+        <meta property="og:url"    content="http://demo.disherence.com/restaurants/3904" /> 
+        <meta property="og:title"  content="Daniel" /> 
+        <meta property="og:image"  content="http://lh4.ggpht.com/qHNYONtNejn82NY7uprgR5Tk2FhESH2rBnNgqnEkE2hX3fdWUDtKmlE_zlZGWX4Tf512Hs9LIEMrV06zb_T3Bk0JkeA=s640" />
+        <meta property="og:description"  content="French, $$$$" />
+        <meta property="disherence:best_dishes" content="http://signup.disherence.com" />
+        <meta property="disherence:test"        content="123" /> 
+      
+		<link rel="stylesheet" href="/stylesheets/application.css?1351757823" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/scrollbar.css"> 
+		<script src="/javascripts/jquery-1.7.2.min.js"></script>
+		<script src="/javascripts/jquery.mobile.custom.min.js"></script>
+		<script src="/javascripts/iscroll.js"></script>
+		<script src="/javascripts/jquery.cookie.js"></script> 
+		<script src="/javascripts/jquery.xdomainajax.js"></script> 		
+		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAuEnV8Q2S5-Q284dxPFLHohCE37L0gPlo&sensor=false" type="text/javascript"></script>
+		<script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js" type="text/javascript" ></script>
+		<script src="/javascripts/jquery.sausage.js"></script> 
+		<script src="/javascripts/application.js?1351757823"></script>
+		
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-35768021-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+		
+	</head>
+<body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=361774547226492";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<div id="web_popup" class="hidden">
+		<a href="#" class="close_popup"><img src="/images/trsp.gif" /></a>
+		We analyze millions of reviews on the web to show you the best dishes at any restaurants<br />
+		<a href="/"><img src="/images/app_store.png"></a>
+		<a href="/"><img src="/images/google.png"></a>
+		<a href="/" id="wvb"><img src="/images/web.png"></a>
+	</div>
+	<div id="web_header" class="hidden">
+		<a href="/"><img src="/images/logo_web.png" /></a>
+		
+	</div>
+	<img id="stlw" src="/images/web-search-here.png" class="hidden" />
+	<div id="search_map_canvas_big" class="hidden"></div>
+	<div id="container">
+		<div id="loader" class="hidden">Loading</div>
+		<div class="application" class="hidden">
+			<a href="/"><img src="/images/appstore_small_web.png" /></a><br />
+			<a href="/"><img src="/images/gplay_small_web.png" /></a><br />
+			<div class="fb-like" data-href="http://disherence.com" data-send="false" data-width="20" data-show-faces="true"></div><br />
+			<a href="https://twitter.com/disherence" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @disherence</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</div>
+		<div id="loader" class="hidden">Loading</div>
+<div id="header">
+	
+	<div class="close_map hidden"><img src="/images/trsp.gif" /></div>
+	<a id="bbutton" class="hidden" href="/"><img src="/images/trsp.gif" /></a>
+	<div id="search_restaurant" class="hidden" ><img src="/images/trsp.gif" /></div>
+	<a id="logo" href="/"><img id="logo_img" src="/images/trsp.gif" /></a>
+</div> 
+<div id="content">
+						<div id="share" class="hidden">
+							<a href="#" class="close_popup"><img src="/images/trsp.gif" /></a>
+							<p>Share info</p>
+							<a id="fb" href="/api/share?provider=facebook&restaurant_id=3904"><img src="/images/trsp.gif" /></a>
+							<textarea id="fb_share_text"></textarea>
+							<input type="button" name="send" value="share" id="fb_share_button"/>
+							<a id="tw" href="/api/share?provider=twitter&restaurant_id=3904" ><img src="/images/trsp.gif" /></a>
+							<textarea id="tw_share_text">Check out Daniel on @disherence</textarea>
+							<input type="button" name="send" value="share" id="tw_share_button"/>
+						</div>
+						<div id="login_popup" class="hidden">
+							<a href="#" class="close_popup"><img src="/images/trsp.gif" /></a>
+							<p>Join Disherence</p>
+							<a id="fb" href="https://www.facebook.com/dialog/oauth?client_id=361774547226492&amp;redirect_uri=http://demo.disherence.com/users/auth_callback/facebook&amp;scope=email,publish_actions,offline_access&amp;state=0"><img src="/images/trsp.gif" /></a>
+							<a id="tw" href="http://api.twitter.com/oauth/authorize?oauth_token=IYXt3qk6LjoowxhOAjc2VYFgOqdQIb7OLlxTyK0I" ><img src="/images/trsp.gif" /></a>
+						</div>
+						<div id="wrapper" style="position:relative"> 
+							<div id="scroller">
+								<div id="top_dishes"> 
+									<ul id="thelist">
+										<li>
+											<div class="restaurant">
+												<div class="info">
+													<div class="name">Daniel</div>
+
+													<div class="rate">
+														<div class="star fill"></div><div class="star fill"></div><div class="star fill"></div><div class="star fill"></div><div class="star half"></div>
+														<div class="rating"><div class="ico"></div>560 on Yelp</div>
+													</div>
+												</div>
+												<div class="b_share"><img src="/images/trsp.gif" /></div>
+												<div class="address">60 E 65th St, New York, NY</div>
+												<div class="stats">French | $$$$</div>	
+											</div>
+											<div class="hr"></div>
+											<div id="banner">
+												Based on 560 reviews on Yelp, Zagat, Foursquare
+											</div>
+										</li>						
+										<li>
+												<div class="dish" style="background-image: url('http://lh4.ggpht.com/qHNYONtNejn82NY7uprgR5Tk2FhESH2rBnNgqnEkE2hX3fdWUDtKmlE_zlZGWX4Tf512Hs9LIEMrV06zb_T3Bk0JkeA=s640')">
+
+												<div class="name">Duo of Beef</div>
+
+												<div class="dish_info_container">				
+													<div class="rating"><span>55</span></div>
+													<div class="dish_info">
+														<div class="name">Duo of Beef</div>
+
+														<div class="price"></div>
+														<div class="stats">
+															<div class="dislike">0</div>
+															<div class="like">55</div>
+														</div>
+														<div class="hr_b"></div>
+														<div class="description">Braised black angus short ribs with lentil coulis
+seared wagyu tenderloin, roasted beets, black trumpet.
+supplement $18.00</div>
+														
+		    <div class="btn_container">
+      		<a class="status_aw" href="/reviews/destroy/10661"><img class="trsp_status" src="/images/trsp_status.gif" /></a>
+      		<a class="btn_agree_aw" href="/reviews/awesome/10661"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      		<a class="btn_disagree_aw" href="/reviews/awful/10661"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      	</div>
+			
+													</div>
+												</div>
+
+													<div class="comment">
+														<div class="user_img" style="background-image: url('')"></div>
+														The duo of beef was better, but still heavy and a bit incoherent.
+													</div>	
+
+											</div>
+										</li>
+										<li>
+												<div class="dish" style="background-image: url('http://lh6.ggpht.com/IFkV-91qL0WYTCehwRE7VduZ3SmtHd_SSC00bOqw5mxzZMo15kTT-FXXILLbCYBRebkHR3WUF6nwz2JsN8aErJ6I93c=s640')">
+
+												<div class="name">Northern Lights</div>
+
+												<div class="dish_info_container">				
+													<div class="rating"><span>6</span></div>
+													<div class="dish_info">
+														<div class="name">Northern Lights</div>
+
+														<div class="price"></div>
+														<div class="stats">
+															<div class="dislike">0</div>
+															<div class="like">6</div>
+														</div>
+														<div class="hr_b"></div>
+														<div class="description"></div>
+														
+		    <div class="btn_container">
+      		<a class="status_aw" href="/reviews/destroy/10676"><img class="trsp_status" src="/images/trsp_status.gif" /></a>
+      		<a class="btn_agree_aw" href="/reviews/awesome/10676"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      		<a class="btn_disagree_aw" href="/reviews/awful/10676"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      	</div>
+			
+													</div>
+												</div>
+
+													<div class="comment">
+														<div class="user_img" style="background-image: url('http://lh5.ggpht.com/jaQ482I2kJsc2IZRwUB3iRcU0T_4pnuzrQUUcNt-WCWFkBvwz2f8XVc5W6qGuaBnRPTuZEV3pX04R6w293cuk6j0-g')"></div>
+														SO good.&quot;Tasting of yellow fin tuna&quot; was yellow fin tuna prepared in three different ways: 1) &quot;en  ...
+													</div>	
+
+											</div>
+										</li>
+										<li>
+												 <div class="dish" style="background-image: url('/images/no_foto.png')">
+
+												<div class="name">Duck Terrine with Marcona  ...</div>
+
+												<div class="dish_info_container">				
+													<div class="rating"><span>3</span></div>
+													<div class="dish_info">
+														<div class="name">Duck Terrine with Marcona Almond</div>
+
+														<div class="price"></div>
+														<div class="stats">
+															<div class="dislike">0</div>
+															<div class="like">3</div>
+														</div>
+														<div class="hr_b"></div>
+														<div class="description">Honeycrisp apple confit, sauternes glazed date
+mâche salad, hazelnut-cider vinaigrette</div>
+														
+		    <div class="btn_container">
+      		<a class="status_aw" href="/reviews/destroy/10664"><img class="trsp_status" src="/images/trsp_status.gif" /></a>
+      		<a class="btn_agree_aw" href="/reviews/awesome/10664"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      		<a class="btn_disagree_aw" href="/reviews/awful/10664"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      	</div>
+			
+													</div>
+												</div>
+
+
+											</div>
+										</li>
+										<li>
+												 <div class="dish" style="background-image: url('/images/no_foto.png')">
+
+												<div class="name">Smoked Sturgeon</div>
+
+												<div class="dish_info_container">				
+													<div class="rating"><span>2</span></div>
+													<div class="dish_info">
+														<div class="name">Smoked Sturgeon</div>
+
+														<div class="price"></div>
+														<div class="stats">
+															<div class="dislike">0</div>
+															<div class="like">2</div>
+														</div>
+														<div class="hr_b"></div>
+														<div class="description">With northern lights caviar
+purple potato, horseradish cream, majii salad</div>
+														
+		    <div class="btn_container">
+      		<a class="status_aw" href="/reviews/destroy/10674"><img class="trsp_status" src="/images/trsp_status.gif" /></a>
+      		<a class="btn_agree_aw" href="/reviews/awesome/10674"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      		<a class="btn_disagree_aw" href="/reviews/awful/10674"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      	</div>
+			
+													</div>
+												</div>
+
+
+											</div>
+										</li>
+										<li>
+												 <div class="dish" style="background-image: url('/images/no_foto.png')">
+
+												<div class="name">Dodge Cove Oysters In Sea  ...</div>
+
+												<div class="dish_info_container">				
+													<div class="rating"><span>2</span></div>
+													<div class="dish_info">
+														<div class="name">Dodge Cove Oysters In Sea Water Gel</div>
+
+														<div class="price"></div>
+														<div class="stats">
+															<div class="dislike">0</div>
+															<div class="like">2</div>
+														</div>
+														<div class="hr_b"></div>
+														<div class="description"></div>
+														
+		    <div class="btn_container">
+      		<a class="status_aw" href="/reviews/destroy/10677"><img class="trsp_status" src="/images/trsp_status.gif" /></a>
+      		<a class="btn_agree_aw" href="/reviews/awesome/10677"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      		<a class="btn_disagree_aw" href="/reviews/awful/10677"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      	</div>
+			
+													</div>
+												</div>
+
+
+											</div>
+										</li>
+										<li>
+												 <div class="dish" style="background-image: url('/images/no_foto.png')">
+
+												<div class="name">Spinach Raviolini</div>
+
+												<div class="dish_info_container">				
+													<div class="rating"><span>1</span></div>
+													<div class="dish_info">
+														<div class="name">Spinach Raviolini</div>
+
+														<div class="price"></div>
+														<div class="stats">
+															<div class="dislike">0</div>
+															<div class="like">1</div>
+														</div>
+														<div class="hr_b"></div>
+														<div class="description">With scottish langoustines
+littleneck clams, young turnips, riesling sauce</div>
+														
+		    <div class="btn_container">
+      		<a class="status_aw" href="/reviews/destroy/10662"><img class="trsp_status" src="/images/trsp_status.gif" /></a>
+      		<a class="btn_agree_aw" href="/reviews/awesome/10662"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      		<a class="btn_disagree_aw" href="/reviews/awful/10662"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      	</div>
+			
+													</div>
+												</div>
+
+
+											</div>
+										</li>
+										<li>
+												 <div class="dish" style="background-image: url('/images/no_foto.png')">
+
+												<div class="name">Tasting of Rabbit</div>
+
+												<div class="dish_info_container">				
+													<div class="rating"><span>1</span></div>
+													<div class="dish_info">
+														<div class="name">Tasting of Rabbit</div>
+
+														<div class="price"></div>
+														<div class="stats">
+															<div class="dislike">0</div>
+															<div class="like">1</div>
+														</div>
+														<div class="hr_b"></div>
+														<div class="description">Stuffed saddle with asparagus fricassée
+roasted rack with hedgehog mushroom
+braised shoulder tortellini with fava beans, mint oil</div>
+														
+		    <div class="btn_container">
+      		<a class="status_aw" href="/reviews/destroy/10663"><img class="trsp_status" src="/images/trsp_status.gif" /></a>
+      		<a class="btn_agree_aw" href="/reviews/awesome/10663"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      		<a class="btn_disagree_aw" href="/reviews/awful/10663"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      	</div>
+			
+													</div>
+												</div>
+
+
+											</div>
+										</li>
+										<li>
+												<div class="dish" style="background-image: url('http://lh4.ggpht.com/Z9byfNvMUZw3HdOroVnqWvBf63k2kSZ--blzt4m5IbE9Ta-LP0KPFOZivEu4BPJjibhjOPw42ffDvdGxY3XYKGHuAsA=s640')">
+
+												<div class="name">Squab Terrine</div>
+
+												<div class="dish_info_container">				
+													<div class="rating"><span>1</span></div>
+													<div class="dish_info">
+														<div class="name">Squab Terrine</div>
+
+														<div class="price"></div>
+														<div class="stats">
+															<div class="dislike">0</div>
+															<div class="like">1</div>
+														</div>
+														<div class="hr_b"></div>
+														<div class="description">With pickled daikon radish
+artichoke salad, lillet gelée</div>
+														
+		    <div class="btn_container">
+      		<a class="status_aw" href="/reviews/destroy/10670"><img class="trsp_status" src="/images/trsp_status.gif" /></a>
+      		<a class="btn_agree_aw" href="/reviews/awesome/10670"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      		<a class="btn_disagree_aw" href="/reviews/awful/10670"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      	</div>
+			
+													</div>
+												</div>
+
+													<div class="comment">
+														<div class="user_img" style="background-image: url('http://lh5.ggpht.com/R7qthGWUqddj4fTWm44G4ESH3wrqtPz5veYNx4RrR3XxFf5Z0pyINgFKsYK8LmJWdctz5ww1goB1hzS4D1Rw4WkEuKOx')"></div>
+														I liked the squab terrine and the duck terrine for an appetizer.
+													</div>	
+
+											</div>
+										</li>
+										<li>
+												 <div class="dish" style="background-image: url('/images/no_foto.png')">
+
+												<div class="name">Golden Ossetra</div>
+
+												<div class="dish_info_container">				
+													<div class="rating"><span>1</span></div>
+													<div class="dish_info">
+														<div class="name">Golden Ossetra</div>
+
+														<div class="price"></div>
+														<div class="stats">
+															<div class="dislike">0</div>
+															<div class="like">1</div>
+														</div>
+														<div class="hr_b"></div>
+														<div class="description"></div>
+														
+		    <div class="btn_container">
+      		<a class="status_aw" href="/reviews/destroy/10675"><img class="trsp_status" src="/images/trsp_status.gif" /></a>
+      		<a class="btn_agree_aw" href="/reviews/awesome/10675"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      		<a class="btn_disagree_aw" href="/reviews/awful/10675"><img class="trsp_btn" src="/images/trsp_btn.gif" /></a>
+      	</div>
+			
+													</div>
+												</div>
+
+
+											</div>
+										</li>
+
+									</div>
+								</ul>
+								</div>
+								</div>
+								</div>
+				
+</div>
+	</div>
+</body>
+</html>
