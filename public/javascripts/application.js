@@ -156,6 +156,7 @@ $(document).ready(function() {
 	})
 	
 	$("#search_restaurant, #web_search").live('tap', function(event){
+		close_web_popup()
 		$('#search_map_field').toggleClass('hidden')
 		$(this).toggleClass('pressed')
 		return false
@@ -187,7 +188,7 @@ $(document).ready(function() {
 	})
 	
 	$("#search_on_map, #stlw").live('tap', function(event){
-
+		close_web_popup()
 		loader('Loading places next to You')
 		center = map.getCenter()
 		
@@ -210,6 +211,7 @@ $(document).ready(function() {
 	})
 	
 	$(".restaurant_name").live('tap', function(event){
+		close_web_popup()
 		$(this).parent().parent().parent().addClass('tapped')
 		window.location.hash = $(this).attr('href');
 		return false
