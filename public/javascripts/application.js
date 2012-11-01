@@ -504,7 +504,7 @@ function trace_hash() {
 }
 
 function ajax_get_restaurants(link) {
-	console.log('ajax_get_restaurants')
+
 	loader('Loading places next to You')
 	$('html, body').animate({scrollTop:0}, 'slow');
 	
@@ -523,6 +523,7 @@ function ajax_get_restaurants(link) {
 						$('#search_field').val($.cookie("search"))
 					}
 				}							
+				setTimeout(function(){ loader() },10);
       }
   })
 }
