@@ -33,6 +33,8 @@ module ApplicationHelper
         <meta property="og:url"    content="#{url}" /> 
         <meta property="og:title"  content="#{title}" /> 
         <meta property="og:image"  content="#{image}" />
+        <meta property="disherence:best_dishes" content="http://signup.disherence.com" />
+        <meta property="disherence:info"        content="Mic Chek" /> 
       }   
       
     end
