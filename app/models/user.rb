@@ -42,13 +42,13 @@ class User < ActiveRecord::Base
         description = "#{restaurant.cuisine}, #{bill}".gsub(" ", "%20")
         
         google_map_link = CGI.escape('https://maps.google.com/?q=' + restaurant.lat + ',' + restaurant.lng + '&z=17').gsub("+", "%20")
-        properties_json = '{"address" : {"text":"' + restaurant.address + '", "href" : "' + google_map_link + '"},'
+        properties_json = '{"address":{"text":"' + restaurant.address + '", "href":"' + google_map_link + '"},'
         
         i = 0
         restaurant.dishes.where('photos > 0').order("likes DESC").limit(3).each do |bd|
           i += 1
           href = CGI.escape("#{domain}/reviews/show/#{bd.id}").gsub("+", "%20")
-          properties_json += '"Top dish #' + i.to_s + '":{"text":"' + bd.name + '", "href" : "' + href + '"},'
+          properties_json += '"Top dish #' + i.to_s + '":{"text":"' + bd.name + '","href":"' + href + '"},'.gsub(" ", "%20")
         end
         
         properties_json += '"Dish.fm":"an easy way to order the best dishes in any restaurant with confidence."'
