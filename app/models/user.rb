@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
         
         fb_share_url += "&link=" + CGI.escape("#{domain}/restaurants/show/#{restaurant_id}").gsub("+", "%20")
         fb_share_url += "&caption=#{description}"
-        fb_share_url += "&properties={#{properties_json.gsub(" ", "%20")}}"
+        fb_share_url += "&properties="+ CGI.escape("{#{properties_json.gsub(" ", "%20")}}").gsub("+", "%20") 
         
         if dish = Dish.where("restaurant_id = ? AND photos > 0",restaurant_id).order("likes DESC").first
           photo = dish.reviews.where("remote_photo IS NOT NULL").first.remote_photo
