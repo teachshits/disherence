@@ -57,9 +57,9 @@
 										</div>
 										<div class="hr_b"></div>
 										<div class="description">
-											<%= d.description %>
 											<div class="overflow">
 												<div class="overflow_inside">
+													<%= d.description %>
 											<% d.reviews.where('comment != ""').each do |r| %>
 													<div class="user_comment_container">
 														<div class="user_img" style="background-image: url('<%= r.user.photo unless r.user.nil? %>')"></div>
