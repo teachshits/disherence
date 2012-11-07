@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
         restaurant.dishes.where('photos > 0').order("likes DESC").limit(3).each do |bd|
           i += 1
           href = CGI.escape("#{domain}/reviews/show/#{bd.id}").gsub("+", "%20")
-          properties_json += '"Top dish #' + i.to_s + '" : {"text":"' + bd.name + '", "href" : "' + href + '"},'
+          properties_json += '"Top dish #' + i.to_s + '":{"text":"' + bd.name + '", "href" : "' + href + '"},'
         end
         
         properties_json = '"Dish.fm" : "an easy way to order the best dishes in any restaurant with confidence."'
