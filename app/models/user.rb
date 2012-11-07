@@ -41,13 +41,13 @@ class User < ActiveRecord::Base
         restaurant.bill.to_i.times do bill += '$' end  
         description = "#{restaurant.cuisine}, #{bill}".gsub(" ", "%20")
         
-        google_map_link = CGI.escape('https://maps.google.com/?q=' + restaurant.lat + ',' + restaurant.lng + '&z=17').gsub("+", "%20")
-        properties_json = '{"address":{"text":"' + restaurant.address + '","href":"' + google_map_link + '"},'
+        google_map_link = 'https://maps.google.com/?q=' + restaurant.lat + ',' + restaurant.lng + '&z=17'
+        properties_json = '"address":{"text":"' + restaurant.address + '","href":"' + google_map_link + '"},'
         
         i = 0
-        restaurant.dishes.where('photos > 0').order("likes DESC").limit(3).each do |bd|
+        restaurant.dishes.order("photos DESC, likes DESC").limit(3).each do |bd|
           i += 1
-          href = CGI.escape("#{domain}/reviews/show/#{bd.id}").gsub("+", "%20")
+          href = "#{domain}/reviews/show/#{bd.id}"
           properties_json += '"Top dish #' + i.to_s + '":{"text":"' + bd.name + '","href":"' + href + '"},'
         end
         
@@ -58,26 +58,28 @@ class User < ActiveRecord::Base
         
         fb_share_url += "&link=" + CGI.escape("#{domain}/restaurants/show/#{restaurant_id}").gsub("+", "%20")
         fb_share_url += "&caption=#{description}"
-        fb_share_url += "&properties="+ CGI.escape("{#{properties_json.gsub(" ", "%20")}}").gsub("+", "%20") 
+        pp properties_json
+        fb_share_url += "&properties="+ CGI.escape("{#{properties_json}}").gsub("+", "%20").gsub(" ", "%20")
         
-        if dish = Dish.where("restaurant_id = ? AND photos > 0",restaurant_id).order("likes DESC").first
-          photo = dish.reviews.where("remote_photo IS NOT NULL").first.remote_photo
-          fb_share_url += "&picture=" + CGI.escape(photo).gsub("+", "%20")
-        end
+        # if dish = Dish.where("restaurant_id = ? AND photos > 0",restaurant_id).order("likes DESC").first
+        #   photo = dish.reviews.where("remote_photo IS NOT NULL").first.remote_photo
+        #   fb_share_url += "&picture=" + CGI.escape(photo).gsub("+", "%20")
+        # end
         
-        i = 0
-        restaurant.dishes.where('photos > 0').order('likes DESC').each do |d|
-          if i < 1 && review = d.reviews.where('remote_photo IS NOT NULL').first
-            fb_share_url += "&best_dishes=" + CGI.escape("#{domain}/reviews/show/#{review.dish_id}").gsub("+", "%20")
-            i += 1
-          end
-        end
+        # i = 0
+        # restaurant.dishes.where('photos > 0').order('likes DESC').each do |d|
+        #   if i < 1 && review = d.reviews.where('remote_photo IS NOT NULL').first
+        #     fb_share_url += "&best_dishes=" + CGI.escape("#{domain}/reviews/show/#{review.dish_id}").gsub("+", "%20")
+        #     i += 1
+        #   end
+        # end
 
         activity_url = "https://graph.facebook.com/me/disherence:shared"
         activity_url += "?access_token=#{user.fb_access_token}"
         activity_url += "&restaurant="+ CGI.escape("http://demo.disherence.com/restaurants/show/#{restaurant_id}").gsub("+", "%20")
 
         activity = HTTParty.post(activity_url)
+        p fb_share_url
         response = HTTParty.post(fb_share_url)
         
       end
