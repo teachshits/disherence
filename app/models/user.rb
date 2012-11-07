@@ -36,20 +36,29 @@ class User < ActiveRecord::Base
       if restaurant = Restaurant.find_by_id(restaurant_id)
         
         domain = 'http://demo.disherence.com'
-        restaurant_name = CGI.escape(restaurant.name).gsub("+", "%20")
         
         bill = ''
         restaurant.bill.to_i.times do bill += '$' end  
         description = "#{restaurant.cuisine}, #{bill}".gsub(" ", "%20")
         
+        google_map_link = CGI.escape('https://maps.google.com/?q=' + restaurant.lat + ',' + restaurant.lng + '&z=17').gsub("+", "%20")
+        properties_json = '{"address" : {"text":"' + restaurant.address + '", "href" : "' + google_map_link + '"},'
+        
+        i = 0
+        restaurant.dishes.where('photos > 0').order("likes DESC").limit(3).each do |bd|
+          i += 1
+          href = CGI.escape("#{domain}/reviews/show/#{db.id}").gsub("+", "%20")
+          properties_json += '"Top dish #' + i + '" : {"text":"' + bd.name + '", "href" : "' + href + '"},'
+        end
+        
+        properties_json = '"Dish.fm" : "an easy way to order the best dishes in any restaurant with confidence."'
+        
         fb_share_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
         fb_share_url += "?access_token=#{user.fb_access_token}"
         
         fb_share_url += "&link=" + CGI.escape("#{domain}/restaurants/show/#{restaurant_id}").gsub("+", "%20")
-        # fb_share_url += "&message=#{restaurant_name}" + CGI.escape(" #{domain}/restaurants/show/#{restaurant_id}").gsub("+", "%20")
-        fb_share_url += "&description=#{description}"
-        # fb_share_url += "&name=#{restaurant_name}"
-        # fb_share_url += "&caption=#{restaurant_name}"       
+        fb_share_url += "&caption=#{description}"
+        fb_share_url += "&properties={#{properties_json}}"
         
         if dish = Dish.where("restaurant_id = ? AND photos > 0",restaurant_id).order("likes DESC").first
           photo = dish.reviews.where("remote_photo IS NOT NULL").first.remote_photo
