@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
           properties_json += '"Top dish #' + i.to_s + '":{"text":"' + bd.name + '", "href" : "' + href + '"},'
         end
         
-        properties_json = '"Dish.fm" : "an easy way to order the best dishes in any restaurant with confidence."'
+        properties_json += '"Dish.fm":"an easy way to order the best dishes in any restaurant with confidence."'
         
         fb_share_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
         fb_share_url += "?access_token=#{user.fb_access_token}"
