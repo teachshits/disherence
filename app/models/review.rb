@@ -106,7 +106,7 @@ class Review < ActiveRecord::Base
     
     activity_url = "https://graph.facebook.com/me/disherence:loved"
     activity_url += "?access_token=#{user.fb_access_token}"
-    activity_url += "&restaurant="+ CGI.escape("#{domain}/restaurants/show/#{dish_id}").gsub("+", "%20")
+    activity_url += "&dish="+ CGI.escape("#{domain}/reviews/show/#{dish_id}").gsub("+", "%20")
     
     activity = HTTParty.post(activity_url)
   end
@@ -116,7 +116,7 @@ class Review < ActiveRecord::Base
     
     activity_url = "https://graph.facebook.com/me/disherence:hate"
     activity_url += "?access_token=#{user.fb_access_token}"
-    activity_url += "&restaurant="+ CGI.escape("#{domain}/restaurants/show/#{dish_id}").gsub("+", "%20")
+    activity_url += "&dish="+ CGI.escape("#{domain}/reviews/show/#{dish_id}").gsub("+", "%20")
     
     activity = HTTParty.post(activity_url)
   end

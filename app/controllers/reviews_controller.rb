@@ -55,6 +55,10 @@ class ReviewsController < ApplicationController
       session[:request_secret] = request_token.secret
     
       @tw_url = request_token.authorize_url
+      @share_obj = {
+        :name => 'dish',
+        :id => params[:id]
+      }
       
     end    
   end
