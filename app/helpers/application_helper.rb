@@ -24,7 +24,7 @@ module ApplicationHelper
     
       elsif @share_obj[:name] = 'dish' && dish = Dish.find_by_id(@share_obj[:id])
         object = 'dish'
-        title = "dish.name @ #{dish.restaurant.name}"
+        title = "#{dish.name} @ #{dish.restaurant.name}"
         url = "#{domain}/reviews/show/#{@share_obj[:id]}"
         
         image = dish.reviews.where('remote_photo IS NOT NULL').first.remote_photo
