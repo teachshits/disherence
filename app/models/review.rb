@@ -104,7 +104,7 @@ class Review < ActiveRecord::Base
   def self.loves_fb_action(user, dish_id)
     domain = 'http://demo.disherence.com'
     
-    activity_url = "https://graph.facebook.com/me/disherence:loved"
+    activity_url = "https://graph.facebook.com/me/disherence:love"
     activity_url += "?access_token=#{user.fb_access_token}"
     activity_url += "&dish="+ CGI.escape("#{domain}/reviews/show/#{dish_id}").gsub("+", "%20")
     
