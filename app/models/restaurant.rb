@@ -42,6 +42,17 @@ class Restaurant < ActiveRecord::Base
     super(:only => [:id, :name, :address, :cuisine, :bill, :yelp_reviews_count, :lat, :lng, :yelp_rating])
   end
   
+  def view_restaurant_fb_action(user)
+    domain = 'http://demo.disherence.com'
+    
+    activity_url = "https://graph.facebook.com/me/disherence:viewed"
+    activity_url += "?access_token=#{user.fb_access_token}"
+    activity_url += "&restaurant="+ CGI.escape("#{domain}/restaurants/show/#{self.id}").gsub("+", "%20")
+    
+    activity = HTTParty.post(activity_url)
+  end
+  
+  
   def remoteness(lat_cur,lng_cur)
     lat_cur = lat_cur.to_f
     lng_cur = lng_cur.to_f

@@ -67,15 +67,21 @@ class ApiController < ApplicationController
       params[:offset] ||= 0
       
       data = Dish.where("restaurant_id = ? AND (likes > 0 || photos > 0)", params[:restaurant_id]).order("likes - dislikes DESC").limit(params[:limit]).offset(params[:offset])
-      
       data.each do |dish|
+        
         dish.opinion = 3
         if !params[:token].blank? && user = User.find_by_token(params[:token])
           if review = Review.find_by_user_id_and_dish_id(user.id, dish.id)
             dish.opinion = review.opinion
           end
         end
+        
       end
+      
+      if !params[:token].blank? && current_user = User.find_by_token(params[:token])       
+        Restaurant.find_by_id(params[:restaurant_id]).view_restaurant_fb_action(current_user)
+      end
+      
     end
     return render :json => {
       :best_dishes => data || 0

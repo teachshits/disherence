@@ -90,6 +90,7 @@ class Review < ActiveRecord::Base
       rd.destroy
     end
     create(:dish_id => dish_id, :user_id => user_id, :opinion => true, :local_photo => local_photo)
+    loves_fb_action(User.find_by_id(user_id), dish_id)
   end
   
   def self.awful(dish_id, user_id, photo = nil)
@@ -97,7 +98,29 @@ class Review < ActiveRecord::Base
       rd.destroy
     end
     create(:dish_id => dish_id, :user_id => user_id, :opinion => false, :local_photo => photo)
+    hate_fb_action(User.find_by_id(user_id), dish_id)
   end
+  
+  def loves_fb_action(user, dish_id)
+    domain = 'http://demo.disherence.com'
+    
+    activity_url = "https://graph.facebook.com/me/disherence:loved"
+    activity_url += "?access_token=#{user.fb_access_token}"
+    activity_url += "&restaurant="+ CGI.escape("#{domain}/restaurants/show/#{dish_id}").gsub("+", "%20")
+    
+    activity = HTTParty.post(activity_url)
+  end
+  
+  def hate_fb_action(user, dish_id)
+    domain = 'http://demo.disherence.com'
+    
+    activity_url = "https://graph.facebook.com/me/disherence:hate"
+    activity_url += "?access_token=#{user.fb_access_token}"
+    activity_url += "&restaurant="+ CGI.escape("#{domain}/restaurants/show/#{dish_id}").gsub("+", "%20")
+    
+    activity = HTTParty.post(activity_url)
+  end
+  
   
   def self.agree(review_id, user_id)
     if r = Review.find_by_id(review_id)
