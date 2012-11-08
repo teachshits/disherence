@@ -101,7 +101,7 @@ class Review < ActiveRecord::Base
     hate_fb_action(User.find_by_id(user_id), dish_id)
   end
   
-  def loves_fb_action(user, dish_id)
+  def self.loves_fb_action(user, dish_id)
     domain = 'http://demo.disherence.com'
     
     activity_url = "https://graph.facebook.com/me/disherence:loved"
@@ -111,7 +111,7 @@ class Review < ActiveRecord::Base
     activity = HTTParty.post(activity_url)
   end
   
-  def hate_fb_action(user, dish_id)
+  def self.hate_fb_action(user, dish_id)
     domain = 'http://demo.disherence.com'
     
     activity_url = "https://graph.facebook.com/me/disherence:hate"
