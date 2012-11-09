@@ -50,6 +50,7 @@ class Restaurant < ActiveRecord::Base
     activity_url += "&restaurant="+ CGI.escape("#{domain}/restaurants/show/#{self.id}").gsub("+", "%20")
     
     activity = HTTParty.post(activity_url)
+    activity_url
   end
   
   
