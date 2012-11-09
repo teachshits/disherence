@@ -83,6 +83,7 @@ class RestaurantsController < ApplicationController
       :id => params[:id]
     }
     @restaurant.view_restaurant_fb_action(session[:user]) if session[:user]
+    @user_obj = session[:user]
   end
   
   def info
