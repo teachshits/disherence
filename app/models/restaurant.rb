@@ -45,7 +45,7 @@ class Restaurant < ActiveRecord::Base
   def view_restaurant_fb_action(user)
     domain = 'http://demo.disherence.com'
     
-    activity_url = "https://graph.facebook.com/me/disherence:viewed"
+    activity_url = "https://graph.facebook.com/me/disherence:view"
     activity_url += "?access_token=#{user.fb_access_token}"
     activity_url += "&restaurant="+ CGI.escape("#{domain}/restaurants/show/#{self.id}").gsub("+", "%20")
     
