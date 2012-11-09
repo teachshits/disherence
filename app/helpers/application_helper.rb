@@ -15,7 +15,7 @@ module ApplicationHelper
       
       if @share_obj[:name] = 'restaurant' && restaurant = Restaurant.find_by_id(@share_obj[:id])
         object = 'restaurant'
-        title = restaurant.name
+        title = "top dishes in #{restaurant.name}"
         url = "#{domain}/restaurants/#{@share_obj[:id]}"
             
         dish = Dish.where("restaurant_id = ? AND photos > 0 ",params[:id]).first
