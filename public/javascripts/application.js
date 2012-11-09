@@ -495,7 +495,7 @@ $(document).ready(function() {
 
 function trace_hash() {
 	if (window.location.hash == '') {
-		ajax_get_restaurants('/restaurants')					
+		ajax_get_restaurants('/restaurants?back=1')					
 	} else if (window.location.hash.indexOf('restaurants') != -1) {
 		ajax_get_restaurant(window.location.hash.slice(1))
 	}	else if (window.location.hash.indexOf('profile') != -1) {
