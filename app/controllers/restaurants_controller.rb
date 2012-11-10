@@ -71,11 +71,11 @@ class RestaurantsController < ApplicationController
     consumer_key = "XQlhrLVWUJK7q1AK9uTeQ"
     consumer_secret = "M2iDOlkxW8Y7430Q6HgFquY1haZnaEqIVrFhyE0XIo"
         
-    consumer = OAuth::Consumer.new(consumer_key, consumer_secret, :site => "http://api.twitter.com", :scheme => :header)    
-    request_token = consumer.get_request_token(:oauth_callback => "http://demo.disherence.com/users/auth_callback")
+    # consumer = OAuth::Consumer.new(consumer_key, consumer_secret, :site => "http://api.twitter.com", :scheme => :header)    
+    # request_token = consumer.get_request_token(:oauth_callback => "http://demo.disherence.com/users/auth_callback")
     
-    session[:request_token] = request_token.token
-    session[:request_secret] = request_token.secret
+    # session[:request_token] = request_token.token
+    # session[:request_secret] = request_token.secret
     
     @tw_url = request_token.authorize_url    
     @share_obj = {
