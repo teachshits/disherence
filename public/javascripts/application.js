@@ -163,7 +163,7 @@ $(document).ready(function() {
 	})
 	
 	$("#search_me").live('tap', function(event){
-		loader('Loading places next to You')
+		loader('Searching')
 		keyword = $(this).prev('input').val()
 
 		center = map.getCenter()
