@@ -8,7 +8,7 @@ class Review < ActiveRecord::Base
   
   validates :user_id, :uniqueness => {:scope => [:dish_id, :opinion]}
 
-  mount_uploader :local_photo, LocalPhotoUploader
+  mount_uploader :photo, LocalPhotoUploader
 
   scope :with_photos, where('reviews.remote_photo IS NOT NULL')
 
