@@ -39,7 +39,15 @@ class Restaurant < ActiveRecord::Base
   end  
   
   def as_json(options={})
-    super(:only => [:id, :name, :address, :cuisine, :bill, :yelp_reviews_count, :lat, :lng, :yelp_rating])
+    super(:only => [:id, :name, :address, :cuisine, :bill, :lat, :lng, :yelp_rating], :methods => [:reviews_count, :reviews_info])
+  end
+  
+  def reviews_count
+    "#{yelp_reviews_count} on Yelp"
+  end
+  
+  def reviews_info
+    "Based on #{yelp_reviews_count} reviews on Yelp, Foursquare and other sites"
   end
   
   def view_restaurant_fb_action(user)
