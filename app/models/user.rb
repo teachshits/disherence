@@ -56,6 +56,7 @@ class User < ActiveRecord::Base
         fb_share_url =  "https://graph.facebook.com/#{user.facebook_id}/feed"
         fb_share_url += "?access_token=#{user.fb_access_token}"
         
+        fb_share_url += "&name=" + CGI.escape("restaurant.name").gsub("+", "%20").gsub(" ", "%20")
         fb_share_url += "&link=" + CGI.escape("#{domain}/restaurants/show/#{restaurant_id}").gsub("+", "%20")
         fb_share_url += "&caption=#{description}"
         fb_share_url += "&properties="+ CGI.escape("{#{properties_json}}").gsub("+", "%20").gsub(" ", "%20")
@@ -77,8 +78,11 @@ class User < ActiveRecord::Base
         activity_url += "?access_token=#{user.fb_access_token}"
         activity_url += "&restaurant="+ CGI.escape("#{domain}/restaurants/show/#{restaurant_id}").gsub("+", "%20")
 
-        activity = HTTParty.post(activity_url)
-        response = HTTParty.post(fb_share_url)
+        system "rake net:post URL='#{activity_url}' &"
+        system "rake net:post URL='#{fb_share_url}' &"
+        
+        # activity = HTTParty.post(activity_url)
+        # response = HTTParty.post(fb_share_url)
         
       end
     end
