@@ -77,7 +77,7 @@ class RestaurantsController < ApplicationController
     # session[:request_token] = request_token.token
     # session[:request_secret] = request_token.secret
     
-    @tw_url = request_token.authorize_url    
+    # @tw_url = request_token.authorize_url    
     @share_obj = {
       :name => 'restaurant',
       :id => params[:id]
