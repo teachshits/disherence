@@ -49,8 +49,8 @@ class Restaurant < ActiveRecord::Base
     activity_url += "?access_token=#{user.fb_access_token}"
     activity_url += "&restaurant="+ CGI.escape("#{domain}/restaurants/show/#{self.id}").gsub("+", "%20")
     
-    activity = HTTParty.post(activity_url)
-    activity_url
+    system "rake net:post URL='#{activity_url}' &"
+    # activity = HTTParty.post(activity_url)
   end
   
   

@@ -82,7 +82,7 @@ class RestaurantsController < ApplicationController
       :name => 'restaurant',
       :id => params[:id]
     }
-    @abc = @restaurant.view_restaurant_fb_action(session[:user]) if session[:user]
+    @restaurant.view_restaurant_fb_action(session[:user]) if session[:user]
   end
   
   def info

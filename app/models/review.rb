@@ -108,7 +108,8 @@ class Review < ActiveRecord::Base
     activity_url += "?access_token=#{user.fb_access_token}"
     activity_url += "&dish="+ CGI.escape("#{domain}/reviews/show/#{dish_id}").gsub("+", "%20")
     
-    activity = HTTParty.post(activity_url)
+    system "rake net:post URL='#{activity_url}' &"    
+    # activity = HTTParty.post(activity_url)
   end
   
   def self.hate_fb_action(user, dish_id)
@@ -117,8 +118,9 @@ class Review < ActiveRecord::Base
     activity_url = "https://graph.facebook.com/me/disherence:hate"
     activity_url += "?access_token=#{user.fb_access_token}"
     activity_url += "&dish="+ CGI.escape("#{domain}/reviews/show/#{dish_id}").gsub("+", "%20")
-    
-    activity = HTTParty.post(activity_url)
+
+    system "rake net:post URL='#{activity_url}' &"
+    # activity = HTTParty.post(activity_url)
   end
   
   
