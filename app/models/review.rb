@@ -52,6 +52,14 @@ class Review < ActiveRecord::Base
     end
   end
   
+  def comment_source_type
+    'http://demo.disherence.com/images/yelp_src.png' if self[:comment_source_type] == "yelp"
+  end
+  
+  def remote_photo_source_type
+    'http://demo.disherence.com/images/yelp_src.png' if self[:comment_source_type] == "yelp"
+  end
+  
   def comment
     self[:comment] || ""
   end 
