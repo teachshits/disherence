@@ -12,6 +12,7 @@ gem 'mini_magick', '~> 3.4'
 gem 'kaminari'
 gem "oauth"
 gem "twitter", :git => "https://github.com/sferik/twitter"
+gem "rsolr"
 
 gem 'rails_admin'
 gem 'devise'

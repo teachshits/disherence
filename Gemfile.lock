@@ -162,6 +162,8 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     remotipart (1.0.2)
+    rsolr (1.0.8)
+      builder (>= 2.1.2)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -222,6 +224,7 @@ DEPENDENCIES
   oauth
   rails (= 3.2.6)
   rails_admin
+  rsolr
   rspec-rails (~> 2.9)
   sass-rails (~> 3.2.3)
   thin
