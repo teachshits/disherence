@@ -97,15 +97,17 @@ class Review < ActiveRecord::Base
     if rd = find_by_dish_id_and_user_id(dish_id,user_id)
       rd.destroy
     end
-    
-    loves_fb_action(User.find_by_id(user_id), dish_id)
-    create(:dish_id => dish_id, :user_id => user_id, :opinion => true, :local_photo => local_photo)
-    
-    unless local_photo.nil?
+
+    if local_photo.nil?
+      loves_fb_action(User.find_by_id(user_id), dish_id)
+    else
       dish = Dish.find_by_id(dish_id)
       dish.update_attributes(:photos => dish.photos + 1)
+      
+      add_a_photo_fb_action(User.find_by_id(user_id), dish_id)
     end
     
+    create(:dish_id => dish_id, :user_id => user_id, :opinion => true, :local_photo => local_photo)
   end
   
   def self.awful(dish_id, user_id, photo = nil)
@@ -114,6 +116,17 @@ class Review < ActiveRecord::Base
     end
     hate_fb_action(User.find_by_id(user_id), dish_id)
     create(:dish_id => dish_id, :user_id => user_id, :opinion => false, :local_photo => photo)
+  end
+  
+  def self.add_a_photo_fb_action(user, dish_id)
+    domain = 'http://demo.disherence.com'
+    
+    activity_url = "https://graph.facebook.com/me/disherence:add"
+    activity_url += "?access_token=#{user.fb_access_token}"
+    activity_url += "&dish="+ CGI.escape("#{domain}/reviews/show/#{dish_id}").gsub("+", "%20")
+    
+    system "rake net:post URL='#{activity_url}' &"    
+    # activity = HTTParty.post(activity_url)
   end
   
   def self.loves_fb_action(user, dish_id)
