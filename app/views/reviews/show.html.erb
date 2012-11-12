@@ -51,9 +51,13 @@
 							</li>						
 
 							<li>
-								<img class="preloader" src="/images/preloader.gif" />
-								<div class="dish expand" style="background-image: url('/images/no_foto.png')">
 								
+								<% if dish = @dish.reviews.where("dish_id = #{@dish.id} AND (remote_photo IS NOT NULL || local_photo IS NOT NULL)").first %>
+									<div class="dish expand" style="background-image: url('<%= dish.photo %>')">
+								<% else %>
+									 <div class="dish expand" style="background-image: url('/images/no_foto.png')">
+								<% end %>
+																
 									<div class="name"><%= @dish.name.length > 20 ? @dish.name[0 .. 20] + ' ...' : @dish.name %></div>
 								
 									<div class="dish_info_container">				
