@@ -20,10 +20,8 @@ module ApplicationHelper
             
         dish = Dish.where("restaurant_id = ? AND photos > 0 ",params[:id]).first
         
-        if review = Review.where("dish_id = ? AND remote_photo IS NOT NULL", dish.id).first
-          image = review.remote_photo
-        elsif review = Review.where("dish_id = ? AND local_photo IS NOT NULL", dish.id).first
-          image = review.local_photo
+        if review = Review.where("dish_id = ? AND (remote_photo IS NOT NULL || local_photo IS NOT NULL)", dish.id).first
+          image = review.photo
         end
     
       elsif @share_obj[:name] = 'dish' && dish = Dish.find_by_id(@share_obj[:id])
@@ -31,10 +29,8 @@ module ApplicationHelper
         title = "#{dish.name} @ #{dish.restaurant.name}"
         url = "#{domain}/reviews/show/#{@share_obj[:id]}"
         
-        if review = dish.reviews.where('remote_photo IS NOT NULL').first
-          image = review.remote_photo
-        elsif review = dish.reviews.where('local_photo IS NOT NULL').first
-          image = review.local_photo
+        if review = dish.reviews.where('remote_photo IS NOT NULL || local_photo IS NOT NULL').first
+          image = review.photo
         end
         
       end
