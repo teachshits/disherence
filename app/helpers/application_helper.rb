@@ -31,7 +31,11 @@ module ApplicationHelper
         title = "#{dish.name} @ #{dish.restaurant.name}"
         url = "#{domain}/reviews/show/#{@share_obj[:id]}"
         
-        image = dish.reviews.where('remote_photo IS NOT NULL').first.remote_photo
+        if review = dish.reviews.where('remote_photo IS NOT NULL').first
+          image = review.remote_photo
+        elsif review = dish.reviews.where('local_photo IS NOT NULL').first
+          image = review.local_photo
+        end
         
       end
     
