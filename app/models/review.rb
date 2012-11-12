@@ -48,7 +48,7 @@ class Review < ActiveRecord::Base
         "http://demo.disherence.com/images/no-dish-photo-profile.png"
       end
     else
-      'http://demo.disherence.com' + self[:local_photo][:url]
+      'http://demo.disherence.com' + local_photo.url
     end
   end
   
