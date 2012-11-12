@@ -27,7 +27,7 @@ class ApiController < ApplicationController
         
     return render :json => {
       :user => user.as_json,
-      :reviews => data.as_json(:only => [:id, :remote_photo, :photo, :opinion], :include => [:dish => {:only => [:name], :include => [:restaurant => {:only => [:name, :address, :id, :bill, :cuisine, :lat, :lng, :yelp_reviews_count, :yelp_rating]}]}])
+      :reviews => data.as_json(:only => [:id, :remote_photo, :photo, :opinion], :include => [:dish => {:only => [:name], :include => [:restaurant => {:only => [:name, :address, :id, :bill, :cuisine, :lat, :lng, :yelp_rating], :methods => [:reviews_count]}]}])
     }
   end
   
