@@ -84,7 +84,7 @@
 										</div>
 									</div>
 																
-									<% if dish = @dish.reviews.where("dish_id = #{@dish.id} AND remote_photo IS NOT NULL").first %>
+									<% if dish = @dish.reviews.where("dish_id = #{@dish.id} AND (remote_photo IS NOT NULL || local_photo IS NOT NULL)").first %>
 										<div class="comment">
 											<div class="user_img" style="background-image: url('<%= @dish.reviews.where("dish_id = #{@dish.id} AND remote_photo IS NOT NULL").first.user.remote_photo %>')"></div>
 											<% comment = @dish.reviews.where("dish_id = #{@dish.id} AND remote_photo IS NOT NULL").first.comment.to_s %>
