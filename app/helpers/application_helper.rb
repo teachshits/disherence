@@ -19,8 +19,12 @@ module ApplicationHelper
         url = "#{domain}/restaurants/#{@share_obj[:id]}"
             
         dish = Dish.where("restaurant_id = ? AND photos > 0 ",params[:id]).first
-        review = Review.where("dish_id = ? AND remote_photo IS NOT NULL", dish.id).first
-        image = review.remote_photo
+        
+        if review = Review.where("dish_id = ? AND remote_photo IS NOT NULL", dish.id).first
+          image = review.remote_photo
+        elsif review = Review.where("dish_id = ? AND local_photo IS NOT NULL", dish.id).first
+          image = review.local_photo
+        end
     
       elsif @share_obj[:name] = 'dish' && dish = Dish.find_by_id(@share_obj[:id])
         object = 'dish'
