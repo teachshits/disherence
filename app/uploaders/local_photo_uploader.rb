@@ -1,5 +1,5 @@
 # encoding: utf-8
-require "securerandom"
+# require "securerandom"
 
 class LocalPhotoUploader < CarrierWave::Uploader::Base
 
@@ -84,14 +84,14 @@ class LocalPhotoUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-  def filename
-       @name ||= "#{secure_token}.#{file.extension}" if original_filename.present?
-  end
+  # def filename
+  #      @name ||= "#{secure_token}.#{file.extension}" if original_filename.present?
+  # end
   
-  protected  
-  def secure_token
-    var = :"@#{mounted_as}_secure_token"
-    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
-  end
+  # protected  
+  # def secure_token
+  #   var = :"@#{mounted_as}_secure_token"
+  #   model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  # end
 
 end
