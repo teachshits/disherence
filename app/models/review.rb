@@ -99,6 +99,10 @@ class Review < ActiveRecord::Base
     end
     loves_fb_action(User.find_by_id(user_id), dish_id)
     create(:dish_id => dish_id, :user_id => user_id, :opinion => true, :local_photo => local_photo)
+    unless local_photo.nil?
+      dish = Dish.find_by_id(dish_id)
+      dish.update_attributes(:photos => dish.photos + 1)
+    end
   end
   
   def self.awful(dish_id, user_id, photo = nil)
