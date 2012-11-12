@@ -48,8 +48,8 @@
 										</li>						
 										<% @restaurant.dishes.where('photos > 0 || likes > 0').order('likes DESC').each do |d| %>
 										<li>
-											<% if dish = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL").first %>
-												<div class="dish" style="background-image: url('<%= dish.remote_photo %>')">
+											<% if dish = d.reviews.where("dish_id = #{d.id} AND remote_photo IS NOT NULL || local_photo IS NOT NULL").first %>
+												<div class="dish" style="background-image: url('<%= dish.photo %>')">
 											<% else %>
 												 <div class="dish" style="background-image: url('/images/no_foto.png')">
 											<% end %>
