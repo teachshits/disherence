@@ -6,8 +6,8 @@ class LocalPhotoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-  include CarrierWave::MiniMagick
-  MiniMagick.processor = :gm
+  # include CarrierWave::MiniMagick
+  # MiniMagick.processor = :gm
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
@@ -31,35 +31,35 @@ class LocalPhotoUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
   
-  version :thumb do
-      process :resize_to_smaller => [640, 570]
-  end
-
-  def resize_to_smaller(width, height, gravity = 'Center')
-    manipulate! do |img|
-      cols, rows = img[:dimensions]
-      img.combine_options do |cmd|
-        cmd.gravity gravity
-        if cols <= rows
-          if width < cols
-            cols = width
-            rows = ((width * rows) / cols).round
-            cmd.resize "#{cols}x#{rows}"            
-            img.crop("#{cols}x#{height}") if rows > height
-          end
-        else
-          if height < rows
-            rows = height
-            cols = ((height * cols) / rows).round
-            cmd.resize "#{cols}x#{rows}"
-            img.crop("#{width}x#{rows}") if cols > width
-          end
-        end
-      end
-      img = yield(img) if block_given?
-      img
-    end
-  end
+  # version :thumb do
+  #     process :resize_to_smaller => [640, 570]
+  # end
+  # 
+  # def resize_to_smaller(width, height, gravity = 'Center')
+  #   manipulate! do |img|
+  #     cols, rows = img[:dimensions]
+  #     img.combine_options do |cmd|
+  #       cmd.gravity gravity
+  #       if cols <= rows
+  #         if width < cols
+  #           cols = width
+  #           rows = ((width * rows) / cols).round
+  #           cmd.resize "#{cols}x#{rows}"            
+  #           img.crop("#{cols}x#{height}") if rows > height
+  #         end
+  #       else
+  #         if height < rows
+  #           rows = height
+  #           cols = ((height * cols) / rows).round
+  #           cmd.resize "#{cols}x#{rows}"
+  #           img.crop("#{width}x#{rows}") if cols > width
+  #         end
+  #       end
+  #     end
+  #     img = yield(img) if block_given?
+  #     img
+  #   end
+  # end
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
